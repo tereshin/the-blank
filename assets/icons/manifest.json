@@ -1,0 +1,4232 @@
+[
+  {
+    "name": "heroui-v3-icon__abbr-api__regular",
+    "file": "heroui-v3-icon__abbr-api__regular.svg",
+    "nodeId": "2217:4687",
+    "componentSetId": "2217:4686"
+  },
+  {
+    "name": "heroui-v3-icon__abbr-ml__regular",
+    "file": "heroui-v3-icon__abbr-ml__regular.svg",
+    "nodeId": "2217:4695",
+    "componentSetId": "2217:4694"
+  },
+  {
+    "name": "heroui-v3-icon__abbr-ql__regular",
+    "file": "heroui-v3-icon__abbr-ql__regular.svg",
+    "nodeId": "2217:5366",
+    "componentSetId": "2217:5365"
+  },
+  {
+    "name": "heroui-v3-icon__abbr-sql__regular",
+    "file": "heroui-v3-icon__abbr-sql__regular.svg",
+    "nodeId": "2217:4701",
+    "componentSetId": "2217:4700"
+  },
+  {
+    "name": "heroui-v3-icon__abbr-zip__regular",
+    "file": "heroui-v3-icon__abbr-zip__regular.svg",
+    "nodeId": "2217:4709",
+    "componentSetId": "2217:4708"
+  },
+  {
+    "name": "heroui-v3-icon__antenna-signal__regular",
+    "file": "heroui-v3-icon__antenna-signal__regular.svg",
+    "nodeId": "2217:5021",
+    "componentSetId": "2217:5020"
+  },
+  {
+    "name": "heroui-v3-icon__aperture__regular",
+    "file": "heroui-v3-icon__aperture__regular.svg",
+    "nodeId": "2217:4716",
+    "componentSetId": "2217:4715"
+  },
+  {
+    "name": "heroui-v3-icon__archive__regular",
+    "file": "heroui-v3-icon__archive__regular.svg",
+    "nodeId": "2217:1492",
+    "componentSetId": "2217:1491"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-chevron-down__regular",
+    "file": "heroui-v3-icon__arrow-chevron-down__regular.svg",
+    "nodeId": "2217:6058",
+    "componentSetId": "2217:6057"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-chevron-left__regular",
+    "file": "heroui-v3-icon__arrow-chevron-left__regular.svg",
+    "nodeId": "2217:6046",
+    "componentSetId": "2217:6045"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-chevron-right__regular",
+    "file": "heroui-v3-icon__arrow-chevron-right__regular.svg",
+    "nodeId": "2217:6040",
+    "componentSetId": "2217:6039"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-chevron-up__regular",
+    "file": "heroui-v3-icon__arrow-chevron-up__regular.svg",
+    "nodeId": "2217:6052",
+    "componentSetId": "2217:6051"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-down-from-line__regular",
+    "file": "heroui-v3-icon__arrow-down-from-line__regular.svg",
+    "nodeId": "2217:3214",
+    "componentSetId": "2217:3213"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-down-to-line__regular",
+    "file": "heroui-v3-icon__arrow-down-to-line__regular.svg",
+    "nodeId": "2217:3196",
+    "componentSetId": "2217:3195"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-down-to-square__regular",
+    "file": "heroui-v3-icon__arrow-down-to-square__regular.svg",
+    "nodeId": "2217:2482",
+    "componentSetId": "2217:2481"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-down__regular",
+    "file": "heroui-v3-icon__arrow-down__regular.svg",
+    "nodeId": "2217:1270",
+    "componentSetId": "2217:1269"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-left-from-line__regular",
+    "file": "heroui-v3-icon__arrow-left-from-line__regular.svg",
+    "nodeId": "2217:5445",
+    "componentSetId": "2217:5444"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-left-to-line__regular",
+    "file": "heroui-v3-icon__arrow-left-to-line__regular.svg",
+    "nodeId": "2217:5427",
+    "componentSetId": "2217:5426"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-left__regular",
+    "file": "heroui-v3-icon__arrow-left__regular.svg",
+    "nodeId": "2217:1280",
+    "componentSetId": "2217:1279"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-right-arrow-left__regular",
+    "file": "heroui-v3-icon__arrow-right-arrow-left__regular.svg",
+    "nodeId": "2217:3065",
+    "componentSetId": "2217:3064"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-right-from-line__regular",
+    "file": "heroui-v3-icon__arrow-right-from-line__regular.svg",
+    "nodeId": "2217:5454",
+    "componentSetId": "2217:5453"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-right-from-square__regular",
+    "file": "heroui-v3-icon__arrow-right-from-square__regular.svg",
+    "nodeId": "2217:2530",
+    "componentSetId": "2217:2529"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-right-to-line__regular",
+    "file": "heroui-v3-icon__arrow-right-to-line__regular.svg",
+    "nodeId": "2217:5436",
+    "componentSetId": "2217:5435"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-right-to-square__regular",
+    "file": "heroui-v3-icon__arrow-right-to-square__regular.svg",
+    "nodeId": "2217:2493",
+    "componentSetId": "2217:2492"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-right__regular",
+    "file": "heroui-v3-icon__arrow-right__regular.svg",
+    "nodeId": "2217:1275",
+    "componentSetId": "2217:1274"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-rotate-left__regular",
+    "file": "heroui-v3-icon__arrow-rotate-left__regular.svg",
+    "nodeId": "2217:2183",
+    "componentSetId": "2217:2182"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-rotate-right__regular",
+    "file": "heroui-v3-icon__arrow-rotate-right__regular.svg",
+    "nodeId": "2217:2044",
+    "componentSetId": "2217:2043"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-down-from-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-down-from-line__regular.svg",
+    "nodeId": "2217:5512",
+    "componentSetId": "2217:5511"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-down-to-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-down-to-line__regular.svg",
+    "nodeId": "2217:5498",
+    "componentSetId": "2217:5497"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-down__regular",
+    "file": "heroui-v3-icon__arrow-shape-down__regular.svg",
+    "nodeId": "2217:3951",
+    "componentSetId": "2217:3950"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-left-from-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-left-from-line__regular.svg",
+    "nodeId": "2217:5477",
+    "componentSetId": "2217:5476"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-left-to-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-left-to-line__regular.svg",
+    "nodeId": "2217:5463",
+    "componentSetId": "2217:5462"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-left__regular",
+    "file": "heroui-v3-icon__arrow-shape-left__regular.svg",
+    "nodeId": "2217:3968",
+    "componentSetId": "2217:3967"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-right-from-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-right-from-line__regular.svg",
+    "nodeId": "2217:5484",
+    "componentSetId": "2217:5483"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-right-to-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-right-to-line__regular.svg",
+    "nodeId": "2217:5470",
+    "componentSetId": "2217:5469"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-right__regular",
+    "file": "heroui-v3-icon__arrow-shape-right__regular.svg",
+    "nodeId": "2217:3984",
+    "componentSetId": "2217:3983"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-turn-up-left__regular",
+    "file": "heroui-v3-icon__arrow-shape-turn-up-left__regular.svg",
+    "nodeId": "2217:2305",
+    "componentSetId": "2217:2304"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-turn-up-right__regular",
+    "file": "heroui-v3-icon__arrow-shape-turn-up-right__regular.svg",
+    "nodeId": "2217:2299",
+    "componentSetId": "2217:2298"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-up-from-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-up-from-line__regular.svg",
+    "nodeId": "2217:5491",
+    "componentSetId": "2217:5490"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-up-to-line__regular",
+    "file": "heroui-v3-icon__arrow-shape-up-to-line__regular.svg",
+    "nodeId": "2217:5505",
+    "componentSetId": "2217:5504"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-shape-up__regular",
+    "file": "heroui-v3-icon__arrow-shape-up__regular.svg",
+    "nodeId": "2217:4100",
+    "componentSetId": "2217:4099"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-up-arrow-down__regular",
+    "file": "heroui-v3-icon__arrow-up-arrow-down__regular.svg",
+    "nodeId": "2217:3077",
+    "componentSetId": "2217:3076"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-up-from-line__regular",
+    "file": "heroui-v3-icon__arrow-up-from-line__regular.svg",
+    "nodeId": "2217:3205",
+    "componentSetId": "2217:3204"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-up-from-square-slash__regular",
+    "file": "heroui-v3-icon__arrow-up-from-square-slash__regular.svg",
+    "nodeId": "2217:2515",
+    "componentSetId": "2217:2514"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-up-from-square__regular",
+    "file": "heroui-v3-icon__arrow-up-from-square__regular.svg",
+    "nodeId": "2217:2504",
+    "componentSetId": "2217:2503"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-up-right-from-square__regular",
+    "file": "heroui-v3-icon__arrow-up-right-from-square__regular.svg",
+    "nodeId": "2217:2551",
+    "componentSetId": "2217:2550"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-up-to-line__regular",
+    "file": "heroui-v3-icon__arrow-up-to-line__regular.svg",
+    "nodeId": "2217:3223",
+    "componentSetId": "2217:3222"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-up__regular",
+    "file": "heroui-v3-icon__arrow-up__regular.svg",
+    "nodeId": "2217:1265",
+    "componentSetId": "2217:1264"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-uturn-ccw-down__regular",
+    "file": "heroui-v3-icon__arrow-uturn-ccw-down__regular.svg",
+    "nodeId": "2217:2269",
+    "componentSetId": "2217:2268"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-uturn-ccw-left__regular",
+    "file": "heroui-v3-icon__arrow-uturn-ccw-left__regular.svg",
+    "nodeId": "2217:2257",
+    "componentSetId": "2217:2256"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-uturn-ccw-right__regular",
+    "file": "heroui-v3-icon__arrow-uturn-ccw-right__regular.svg",
+    "nodeId": "2217:2281",
+    "componentSetId": "2217:2280"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-uturn-cw-down__regular",
+    "file": "heroui-v3-icon__arrow-uturn-cw-down__regular.svg",
+    "nodeId": "2217:2287",
+    "componentSetId": "2217:2286"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-uturn-cw-left__regular",
+    "file": "heroui-v3-icon__arrow-uturn-cw-left__regular.svg",
+    "nodeId": "2217:2263",
+    "componentSetId": "2217:2262"
+  },
+  {
+    "name": "heroui-v3-icon__arrow-uturn-cw-right__regular",
+    "file": "heroui-v3-icon__arrow-uturn-cw-right__regular.svg",
+    "nodeId": "2217:2275",
+    "componentSetId": "2217:2274"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-3-rotate-left-letter-a__regular",
+    "file": "heroui-v3-icon__arrows-3-rotate-left-letter-a__regular.svg",
+    "nodeId": "2217:2223",
+    "componentSetId": "2217:2222"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-3-rotate-left__regular",
+    "file": "heroui-v3-icon__arrows-3-rotate-left__regular.svg",
+    "nodeId": "2217:2204",
+    "componentSetId": "2217:2203"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-3-rotate-right__regular",
+    "file": "heroui-v3-icon__arrows-3-rotate-right__regular.svg",
+    "nodeId": "2217:2059",
+    "componentSetId": "2217:2058"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-opposite-to-dots__regular",
+    "file": "heroui-v3-icon__arrows-opposite-to-dots__regular.svg",
+    "nodeId": "2217:4979",
+    "componentSetId": "2217:4978"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-rotate-left-slash__regular",
+    "file": "heroui-v3-icon__arrows-rotate-left-slash__regular.svg",
+    "nodeId": "2217:5654",
+    "componentSetId": "2217:5653"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-rotate-left__regular",
+    "file": "heroui-v3-icon__arrows-rotate-left__regular.svg",
+    "nodeId": "2217:2196",
+    "componentSetId": "2217:2195"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-rotate-right-slash__regular",
+    "file": "heroui-v3-icon__arrows-rotate-right-slash__regular.svg",
+    "nodeId": "2217:5666",
+    "componentSetId": "2217:5665"
+  },
+  {
+    "name": "heroui-v3-icon__arrows-rotate-right__regular",
+    "file": "heroui-v3-icon__arrows-rotate-right__regular.svg",
+    "nodeId": "2217:2051",
+    "componentSetId": "2217:2050"
+  },
+  {
+    "name": "heroui-v3-icon__at__regular",
+    "file": "heroui-v3-icon__at__regular.svg",
+    "nodeId": "2217:1885",
+    "componentSetId": "2217:1884"
+  },
+  {
+    "name": "heroui-v3-icon__ban__regular",
+    "file": "heroui-v3-icon__ban__regular.svg",
+    "nodeId": "2217:1894",
+    "componentSetId": "2217:1893"
+  },
+  {
+    "name": "heroui-v3-icon__bar-high__regular",
+    "file": "heroui-v3-icon__bar-high__regular.svg",
+    "nodeId": "17684:5953",
+    "componentSetId": "17684:5952"
+  },
+  {
+    "name": "heroui-v3-icon__bar-low__regular",
+    "file": "heroui-v3-icon__bar-low__regular.svg",
+    "nodeId": "17684:5909",
+    "componentSetId": "17684:5908"
+  },
+  {
+    "name": "heroui-v3-icon__bar-medium__regular",
+    "file": "heroui-v3-icon__bar-medium__regular.svg",
+    "nodeId": "17684:5942",
+    "componentSetId": "17684:5941"
+  },
+  {
+    "name": "heroui-v3-icon__bars-ascending-align-center__regular",
+    "file": "heroui-v3-icon__bars-ascending-align-center__regular.svg",
+    "nodeId": "2217:2995",
+    "componentSetId": "2217:2994"
+  },
+  {
+    "name": "heroui-v3-icon__bars-ascending-align-left-arrow-down__regular",
+    "file": "heroui-v3-icon__bars-ascending-align-left-arrow-down__regular.svg",
+    "nodeId": "2217:5758",
+    "componentSetId": "2217:5757"
+  },
+  {
+    "name": "heroui-v3-icon__bars-ascending-align-left-arrow-up__regular",
+    "file": "heroui-v3-icon__bars-ascending-align-left-arrow-up__regular.svg",
+    "nodeId": "2217:5766",
+    "componentSetId": "2217:5765"
+  },
+  {
+    "name": "heroui-v3-icon__bars-ascending-align-left__regular",
+    "file": "heroui-v3-icon__bars-ascending-align-left__regular.svg",
+    "nodeId": "2217:2988",
+    "componentSetId": "2217:2987"
+  },
+  {
+    "name": "heroui-v3-icon__bars-ascending-align-right__regular",
+    "file": "heroui-v3-icon__bars-ascending-align-right__regular.svg",
+    "nodeId": "2217:3002",
+    "componentSetId": "2217:3001"
+  },
+  {
+    "name": "heroui-v3-icon__bars-descending-align-center__regular",
+    "file": "heroui-v3-icon__bars-descending-align-center__regular.svg",
+    "nodeId": "2217:2974",
+    "componentSetId": "2217:2973"
+  },
+  {
+    "name": "heroui-v3-icon__bars-descending-align-left-arrow-down__regular",
+    "file": "heroui-v3-icon__bars-descending-align-left-arrow-down__regular.svg",
+    "nodeId": "2217:5692",
+    "componentSetId": "2217:5691"
+  },
+  {
+    "name": "heroui-v3-icon__bars-descending-align-left-arrow-up__regular",
+    "file": "heroui-v3-icon__bars-descending-align-left-arrow-up__regular.svg",
+    "nodeId": "2217:5700",
+    "componentSetId": "2217:5699"
+  },
+  {
+    "name": "heroui-v3-icon__bars-descending-align-left__regular",
+    "file": "heroui-v3-icon__bars-descending-align-left__regular.svg",
+    "nodeId": "2217:2967",
+    "componentSetId": "2217:2966"
+  },
+  {
+    "name": "heroui-v3-icon__bars-descending-align-right__regular",
+    "file": "heroui-v3-icon__bars-descending-align-right__regular.svg",
+    "nodeId": "2217:2981",
+    "componentSetId": "2217:2980"
+  },
+  {
+    "name": "heroui-v3-icon__bars-play__regular",
+    "file": "heroui-v3-icon__bars-play__regular.svg",
+    "nodeId": "2217:4780",
+    "componentSetId": "2217:4779"
+  },
+  {
+    "name": "heroui-v3-icon__bars-unaligned__regular",
+    "file": "heroui-v3-icon__bars-unaligned__regular.svg",
+    "nodeId": "2217:5169",
+    "componentSetId": "2217:5168"
+  },
+  {
+    "name": "heroui-v3-icon__bars__regular",
+    "file": "heroui-v3-icon__bars__regular.svg",
+    "nodeId": "2217:2960",
+    "componentSetId": "2217:2959"
+  },
+  {
+    "name": "heroui-v3-icon__bell-dot__regular",
+    "file": "heroui-v3-icon__bell-dot__regular.svg",
+    "nodeId": "2217:1652",
+    "componentSetId": "2217:1651"
+  },
+  {
+    "name": "heroui-v3-icon__bell-slash__regular",
+    "file": "heroui-v3-icon__bell-slash__regular.svg",
+    "nodeId": "2217:5738",
+    "componentSetId": "2217:5737"
+  },
+  {
+    "name": "heroui-v3-icon__bell__regular",
+    "file": "heroui-v3-icon__bell__regular.svg",
+    "nodeId": "2217:832",
+    "componentSetId": "2217:831"
+  },
+  {
+    "name": "heroui-v3-icon__binoculars__regular",
+    "file": "heroui-v3-icon__binoculars__regular.svg",
+    "nodeId": "2217:5989",
+    "componentSetId": "2217:5988"
+  },
+  {
+    "name": "heroui-v3-icon__bold__regular",
+    "file": "heroui-v3-icon__bold__regular.svg",
+    "nodeId": "2217:1257",
+    "componentSetId": "2217:1256"
+  },
+  {
+    "name": "heroui-v3-icon__book-open__regular",
+    "file": "heroui-v3-icon__book-open__regular.svg",
+    "nodeId": "2217:2702",
+    "componentSetId": "2217:2701"
+  },
+  {
+    "name": "heroui-v3-icon__book__regular",
+    "file": "heroui-v3-icon__book__regular.svg",
+    "nodeId": "2217:4639",
+    "componentSetId": "2217:4638"
+  },
+  {
+    "name": "heroui-v3-icon__bookmark__fill",
+    "file": "heroui-v3-icon__bookmark__fill.svg",
+    "nodeId": "2217:999",
+    "componentSetId": "2217:994"
+  },
+  {
+    "name": "heroui-v3-icon__bookmark__regular",
+    "file": "heroui-v3-icon__bookmark__regular.svg",
+    "nodeId": "2217:995",
+    "componentSetId": "2217:994"
+  },
+  {
+    "name": "heroui-v3-icon__box__regular",
+    "file": "heroui-v3-icon__box__regular.svg",
+    "nodeId": "2217:2834",
+    "componentSetId": "2217:2833"
+  },
+  {
+    "name": "heroui-v3-icon__boxes-3__regular",
+    "file": "heroui-v3-icon__boxes-3__regular.svg",
+    "nodeId": "2217:2841",
+    "componentSetId": "2217:2840"
+  },
+  {
+    "name": "heroui-v3-icon__brain__regular",
+    "file": "heroui-v3-icon__brain__regular.svg",
+    "nodeId": "15110:2633",
+    "componentSetId": "15110:2632"
+  },
+  {
+    "name": "heroui-v3-icon__branches-down__regular",
+    "file": "heroui-v3-icon__branches-down__regular.svg",
+    "nodeId": "2217:3861",
+    "componentSetId": "2217:3860"
+  },
+  {
+    "name": "heroui-v3-icon__branches-right-arrow-right__regular",
+    "file": "heroui-v3-icon__branches-right-arrow-right__regular.svg",
+    "nodeId": "2217:5045",
+    "componentSetId": "2217:5044"
+  },
+  {
+    "name": "heroui-v3-icon__branches-right__regular",
+    "file": "heroui-v3-icon__branches-right__regular.svg",
+    "nodeId": "2217:3852",
+    "componentSetId": "2217:3851"
+  },
+  {
+    "name": "heroui-v3-icon__briefcase__regular",
+    "file": "heroui-v3-icon__briefcase__regular.svg",
+    "nodeId": "2217:1337",
+    "componentSetId": "2217:1336"
+  },
+  {
+    "name": "heroui-v3-icon__broadcast-signal__regular",
+    "file": "heroui-v3-icon__broadcast-signal__regular.svg",
+    "nodeId": "2217:5034",
+    "componentSetId": "2217:5033"
+  },
+  {
+    "name": "heroui-v3-icon__broom-motion__regular",
+    "file": "heroui-v3-icon__broom-motion__regular.svg",
+    "nodeId": "2217:3124",
+    "componentSetId": "2217:3123"
+  },
+  {
+    "name": "heroui-v3-icon__brush__regular",
+    "file": "heroui-v3-icon__brush__regular.svg",
+    "nodeId": "2217:6024",
+    "componentSetId": "2217:6023"
+  },
+  {
+    "name": "heroui-v3-icon__bucket-paint__regular",
+    "file": "heroui-v3-icon__bucket-paint__regular.svg",
+    "nodeId": "2217:3942",
+    "componentSetId": "2217:3941"
+  },
+  {
+    "name": "heroui-v3-icon__bucket__regular",
+    "file": "heroui-v3-icon__bucket__regular.svg",
+    "nodeId": "2217:1506",
+    "componentSetId": "2217:1505"
+  },
+  {
+    "name": "heroui-v3-icon__bug__regular",
+    "file": "heroui-v3-icon__bug__regular.svg",
+    "nodeId": "2217:844",
+    "componentSetId": "2217:843"
+  },
+  {
+    "name": "heroui-v3-icon__bulb__regular",
+    "file": "heroui-v3-icon__bulb__regular.svg",
+    "nodeId": "2217:2728",
+    "componentSetId": "2217:2727"
+  },
+  {
+    "name": "heroui-v3-icon__calculator__regular",
+    "file": "heroui-v3-icon__calculator__regular.svg",
+    "nodeId": "2217:4939",
+    "componentSetId": "2217:4938"
+  },
+  {
+    "name": "heroui-v3-icon__calendar__regular",
+    "file": "heroui-v3-icon__calendar__regular.svg",
+    "nodeId": "2217:905",
+    "componentSetId": "2217:904"
+  },
+  {
+    "name": "heroui-v3-icon__camera__regular",
+    "file": "heroui-v3-icon__camera__regular.svg",
+    "nodeId": "2217:1408",
+    "componentSetId": "2217:1407"
+  },
+  {
+    "name": "heroui-v3-icon__car__regular",
+    "file": "heroui-v3-icon__car__regular.svg",
+    "nodeId": "2217:5748",
+    "componentSetId": "2217:5747"
+  },
+  {
+    "name": "heroui-v3-icon__card-club__regular",
+    "file": "heroui-v3-icon__card-club__regular.svg",
+    "nodeId": "2217:5728",
+    "componentSetId": "2217:5727"
+  },
+  {
+    "name": "heroui-v3-icon__card-diamond__regular",
+    "file": "heroui-v3-icon__card-diamond__regular.svg",
+    "nodeId": "2217:5716",
+    "componentSetId": "2217:5715"
+  },
+  {
+    "name": "heroui-v3-icon__card-heart__regular",
+    "file": "heroui-v3-icon__card-heart__regular.svg",
+    "nodeId": "2217:5722",
+    "componentSetId": "2217:5721"
+  },
+  {
+    "name": "heroui-v3-icon__card-spade__regular",
+    "file": "heroui-v3-icon__card-spade__regular.svg",
+    "nodeId": "2217:5708",
+    "componentSetId": "2217:5707"
+  },
+  {
+    "name": "heroui-v3-icon__caret-down__regular",
+    "file": "heroui-v3-icon__caret-down__regular.svg",
+    "nodeId": "2217:2656",
+    "componentSetId": "2217:2655"
+  },
+  {
+    "name": "heroui-v3-icon__caret-left__regular",
+    "file": "heroui-v3-icon__caret-left__regular.svg",
+    "nodeId": "2217:2666",
+    "componentSetId": "2217:2665"
+  },
+  {
+    "name": "heroui-v3-icon__caret-right__regular",
+    "file": "heroui-v3-icon__caret-right__regular.svg",
+    "nodeId": "2217:2671",
+    "componentSetId": "2217:2670"
+  },
+  {
+    "name": "heroui-v3-icon__caret-up__regular",
+    "file": "heroui-v3-icon__caret-up__regular.svg",
+    "nodeId": "2217:2661",
+    "componentSetId": "2217:2660"
+  },
+  {
+    "name": "heroui-v3-icon__carets-expand-vertical__regular",
+    "file": "heroui-v3-icon__carets-expand-vertical__regular.svg",
+    "nodeId": "2217:4898",
+    "componentSetId": "2217:4897"
+  },
+  {
+    "name": "heroui-v3-icon__chart-area-stacked-normalized__regular",
+    "file": "heroui-v3-icon__chart-area-stacked-normalized__regular.svg",
+    "nodeId": "2217:4245",
+    "componentSetId": "2217:4244"
+  },
+  {
+    "name": "heroui-v3-icon__chart-area-stacked__regular",
+    "file": "heroui-v3-icon__chart-area-stacked__regular.svg",
+    "nodeId": "2217:2349",
+    "componentSetId": "2217:2348"
+  },
+  {
+    "name": "heroui-v3-icon__chart-bar-stacked__regular",
+    "file": "heroui-v3-icon__chart-bar-stacked__regular.svg",
+    "nodeId": "2217:3658",
+    "componentSetId": "2217:3657"
+  },
+  {
+    "name": "heroui-v3-icon__chart-bar__regular",
+    "file": "heroui-v3-icon__chart-bar__regular.svg",
+    "nodeId": "2217:3650",
+    "componentSetId": "2217:3649"
+  },
+  {
+    "name": "heroui-v3-icon__chart-column-stacked__regular",
+    "file": "heroui-v3-icon__chart-column-stacked__regular.svg",
+    "nodeId": "2217:3639",
+    "componentSetId": "2217:3638"
+  },
+  {
+    "name": "heroui-v3-icon__chart-column__regular",
+    "file": "heroui-v3-icon__chart-column__regular.svg",
+    "nodeId": "2217:2323",
+    "componentSetId": "2217:2322"
+  },
+  {
+    "name": "heroui-v3-icon__chart-donut__regular",
+    "file": "heroui-v3-icon__chart-donut__regular.svg",
+    "nodeId": "2217:3629",
+    "componentSetId": "2217:3628"
+  },
+  {
+    "name": "heroui-v3-icon__chart-line-label__regular",
+    "file": "heroui-v3-icon__chart-line-label__regular.svg",
+    "nodeId": "2217:5142",
+    "componentSetId": "2217:5141"
+  },
+  {
+    "name": "heroui-v3-icon__chart-line__regular",
+    "file": "heroui-v3-icon__chart-line__regular.svg",
+    "nodeId": "2217:2355",
+    "componentSetId": "2217:2354"
+  },
+  {
+    "name": "heroui-v3-icon__chart-mixed__regular",
+    "file": "heroui-v3-icon__chart-mixed__regular.svg",
+    "nodeId": "2217:4227",
+    "componentSetId": "2217:4226"
+  },
+  {
+    "name": "heroui-v3-icon__chart-pie__regular",
+    "file": "heroui-v3-icon__chart-pie__regular.svg",
+    "nodeId": "2217:2378",
+    "componentSetId": "2217:2377"
+  },
+  {
+    "name": "heroui-v3-icon__chart-treemap__regular",
+    "file": "heroui-v3-icon__chart-treemap__regular.svg",
+    "nodeId": "2217:4236",
+    "componentSetId": "2217:4235"
+  },
+  {
+    "name": "heroui-v3-icon__check-2__regular",
+    "file": "heroui-v3-icon__check-2__regular.svg",
+    "nodeId": "13354:831",
+    "componentSetId": "13354:830"
+  },
+  {
+    "name": "heroui-v3-icon__check__regular",
+    "file": "heroui-v3-icon__check__regular.svg",
+    "nodeId": "2217:1140",
+    "componentSetId": "2217:1139"
+  },
+  {
+    "name": "heroui-v3-icon__cherry__regular",
+    "file": "heroui-v3-icon__cherry__regular.svg",
+    "nodeId": "2217:2738",
+    "componentSetId": "2217:2737"
+  },
+  {
+    "name": "heroui-v3-icon__chevron-down-wide__regular",
+    "file": "heroui-v3-icon__chevron-down-wide__regular.svg",
+    "nodeId": "2217:5531",
+    "componentSetId": "2217:5530"
+  },
+  {
+    "name": "heroui-v3-icon__chevron-down__regular",
+    "file": "heroui-v3-icon__chevron-down__regular.svg",
+    "nodeId": "2217:1170",
+    "componentSetId": "2217:1169"
+  },
+  {
+    "name": "heroui-v3-icon__chevron-left__regular",
+    "file": "heroui-v3-icon__chevron-left__regular.svg",
+    "nodeId": "2217:1180",
+    "componentSetId": "2217:1179"
+  },
+  {
+    "name": "heroui-v3-icon__chevron-right__regular",
+    "file": "heroui-v3-icon__chevron-right__regular.svg",
+    "nodeId": "2217:1175",
+    "componentSetId": "2217:1174"
+  },
+  {
+    "name": "heroui-v3-icon__chevron-up-wide__regular",
+    "file": "heroui-v3-icon__chevron-up-wide__regular.svg",
+    "nodeId": "2217:5536",
+    "componentSetId": "2217:5535"
+  },
+  {
+    "name": "heroui-v3-icon__chevron-up__regular",
+    "file": "heroui-v3-icon__chevron-up__regular.svg",
+    "nodeId": "2217:1165",
+    "componentSetId": "2217:1164"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-collapse-from-lines__regular",
+    "file": "heroui-v3-icon__chevrons-collapse-from-lines__regular.svg",
+    "nodeId": "2217:4208",
+    "componentSetId": "2217:4207"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-collapse-horizontal__regular",
+    "file": "heroui-v3-icon__chevrons-collapse-horizontal__regular.svg",
+    "nodeId": "2217:2190",
+    "componentSetId": "2217:2189"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-collapse-to-line__regular",
+    "file": "heroui-v3-icon__chevrons-collapse-to-line__regular.svg",
+    "nodeId": "2217:4201",
+    "componentSetId": "2217:4200"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-collapse-up-right__regular",
+    "file": "heroui-v3-icon__chevrons-collapse-up-right__regular.svg",
+    "nodeId": "2217:2682",
+    "componentSetId": "2217:2681"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-collapse-vertical__regular",
+    "file": "heroui-v3-icon__chevrons-collapse-vertical__regular.svg",
+    "nodeId": "2217:2177",
+    "componentSetId": "2217:2176"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-down-wide__regular",
+    "file": "heroui-v3-icon__chevrons-down-wide__regular.svg",
+    "nodeId": "2217:5541",
+    "componentSetId": "2217:5540"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-down__regular",
+    "file": "heroui-v3-icon__chevrons-down__regular.svg",
+    "nodeId": "2217:2251",
+    "componentSetId": "2217:2250"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-expand-from-line__regular",
+    "file": "heroui-v3-icon__chevrons-expand-from-line__regular.svg",
+    "nodeId": "2217:4194",
+    "componentSetId": "2217:4193"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-expand-horizontal__regular",
+    "file": "heroui-v3-icon__chevrons-expand-horizontal__regular.svg",
+    "nodeId": "2217:2245",
+    "componentSetId": "2217:2244"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-expand-to-lines__regular",
+    "file": "heroui-v3-icon__chevrons-expand-to-lines__regular.svg",
+    "nodeId": "2217:4009",
+    "componentSetId": "2217:4008"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-expand-up-right__regular",
+    "file": "heroui-v3-icon__chevrons-expand-up-right__regular.svg",
+    "nodeId": "2217:2676",
+    "componentSetId": "2217:2675"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-expand-vertical-2__regular",
+    "file": "heroui-v3-icon__chevrons-expand-vertical-2__regular.svg",
+    "nodeId": "15075:1000",
+    "componentSetId": "15075:999"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-expand-vertical__regular",
+    "file": "heroui-v3-icon__chevrons-expand-vertical__regular.svg",
+    "nodeId": "2217:2239",
+    "componentSetId": "2217:2238"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-left__regular",
+    "file": "heroui-v3-icon__chevrons-left__regular.svg",
+    "nodeId": "2217:2317",
+    "componentSetId": "2217:2316"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-right__regular",
+    "file": "heroui-v3-icon__chevrons-right__regular.svg",
+    "nodeId": "2217:2293",
+    "componentSetId": "2217:2292"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-up-wide__regular",
+    "file": "heroui-v3-icon__chevrons-up-wide__regular.svg",
+    "nodeId": "2217:5519",
+    "componentSetId": "2217:5518"
+  },
+  {
+    "name": "heroui-v3-icon__chevrons-up__regular",
+    "file": "heroui-v3-icon__chevrons-up__regular.svg",
+    "nodeId": "2217:2311",
+    "componentSetId": "2217:2310"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-down__fill",
+    "file": "heroui-v3-icon__circle-arrow-down__fill.svg",
+    "nodeId": "2217:3721",
+    "componentSetId": "2217:3715"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-down__regular",
+    "file": "heroui-v3-icon__circle-arrow-down__regular.svg",
+    "nodeId": "2217:3716",
+    "componentSetId": "2217:3715"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-left__fill",
+    "file": "heroui-v3-icon__circle-arrow-left__fill.svg",
+    "nodeId": "2217:3743",
+    "componentSetId": "2217:3737"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-left__regular",
+    "file": "heroui-v3-icon__circle-arrow-left__regular.svg",
+    "nodeId": "2217:3738",
+    "componentSetId": "2217:3737"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-right__fill",
+    "file": "heroui-v3-icon__circle-arrow-right__fill.svg",
+    "nodeId": "2217:3732",
+    "componentSetId": "2217:3726"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-right__regular",
+    "file": "heroui-v3-icon__circle-arrow-right__regular.svg",
+    "nodeId": "2217:3727",
+    "componentSetId": "2217:3726"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-up__fill",
+    "file": "heroui-v3-icon__circle-arrow-up__fill.svg",
+    "nodeId": "2217:3710",
+    "componentSetId": "2217:3704"
+  },
+  {
+    "name": "heroui-v3-icon__circle-arrow-up__regular",
+    "file": "heroui-v3-icon__circle-arrow-up__regular.svg",
+    "nodeId": "2217:3705",
+    "componentSetId": "2217:3704"
+  },
+  {
+    "name": "heroui-v3-icon__circle-check__fill",
+    "file": "heroui-v3-icon__circle-check__fill.svg",
+    "nodeId": "2217:1927",
+    "componentSetId": "2217:1921"
+  },
+  {
+    "name": "heroui-v3-icon__circle-check__regular",
+    "file": "heroui-v3-icon__circle-check__regular.svg",
+    "nodeId": "2217:1922",
+    "componentSetId": "2217:1921"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-down__fill",
+    "file": "heroui-v3-icon__circle-chevron-down__fill.svg",
+    "nodeId": "2217:1201",
+    "componentSetId": "2217:1195"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-down__regular",
+    "file": "heroui-v3-icon__circle-chevron-down__regular.svg",
+    "nodeId": "2217:1196",
+    "componentSetId": "2217:1195"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-left__fill",
+    "file": "heroui-v3-icon__circle-chevron-left__fill.svg",
+    "nodeId": "2217:1223",
+    "componentSetId": "2217:1217"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-left__regular",
+    "file": "heroui-v3-icon__circle-chevron-left__regular.svg",
+    "nodeId": "2217:1218",
+    "componentSetId": "2217:1217"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-right__fill",
+    "file": "heroui-v3-icon__circle-chevron-right__fill.svg",
+    "nodeId": "2217:1212",
+    "componentSetId": "2217:1206"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-right__regular",
+    "file": "heroui-v3-icon__circle-chevron-right__regular.svg",
+    "nodeId": "2217:1207",
+    "componentSetId": "2217:1206"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-up__fill",
+    "file": "heroui-v3-icon__circle-chevron-up__fill.svg",
+    "nodeId": "2217:1190",
+    "componentSetId": "2217:1184"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevron-up__regular",
+    "file": "heroui-v3-icon__circle-chevron-up__regular.svg",
+    "nodeId": "2217:1185",
+    "componentSetId": "2217:1184"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevrons-down__regular",
+    "file": "heroui-v3-icon__circle-chevrons-down__regular.svg",
+    "nodeId": "2217:1236",
+    "componentSetId": "2217:1235"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevrons-left__regular",
+    "file": "heroui-v3-icon__circle-chevrons-left__regular.svg",
+    "nodeId": "2217:1250",
+    "componentSetId": "2217:1249"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevrons-right__regular",
+    "file": "heroui-v3-icon__circle-chevrons-right__regular.svg",
+    "nodeId": "2217:1243",
+    "componentSetId": "2217:1242"
+  },
+  {
+    "name": "heroui-v3-icon__circle-chevrons-up__regular",
+    "file": "heroui-v3-icon__circle-chevrons-up__regular.svg",
+    "nodeId": "2217:1229",
+    "componentSetId": "2217:1228"
+  },
+  {
+    "name": "heroui-v3-icon__circle-dashed__regular",
+    "file": "heroui-v3-icon__circle-dashed__regular.svg",
+    "nodeId": "2217:3821",
+    "componentSetId": "2217:3820"
+  },
+  {
+    "name": "heroui-v3-icon__circle-dollar__regular",
+    "file": "heroui-v3-icon__circle-dollar__regular.svg",
+    "nodeId": "2217:4185",
+    "componentSetId": "2217:4184"
+  },
+  {
+    "name": "heroui-v3-icon__circle-exclamation__fill",
+    "file": "heroui-v3-icon__circle-exclamation__fill.svg",
+    "nodeId": "2217:1810",
+    "componentSetId": "2217:1803"
+  },
+  {
+    "name": "heroui-v3-icon__circle-exclamation__regular",
+    "file": "heroui-v3-icon__circle-exclamation__regular.svg",
+    "nodeId": "2217:1804",
+    "componentSetId": "2217:1803"
+  },
+  {
+    "name": "heroui-v3-icon__circle-info__fill",
+    "file": "heroui-v3-icon__circle-info__fill.svg",
+    "nodeId": "2217:1866",
+    "componentSetId": "2217:1859"
+  },
+  {
+    "name": "heroui-v3-icon__circle-info__regular",
+    "file": "heroui-v3-icon__circle-info__regular.svg",
+    "nodeId": "2217:1860",
+    "componentSetId": "2217:1859"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-c__regular",
+    "file": "heroui-v3-icon__circle-letter-c__regular.svg",
+    "nodeId": "2217:1605",
+    "componentSetId": "2217:1604"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-f__regular",
+    "file": "heroui-v3-icon__circle-letter-f__regular.svg",
+    "nodeId": "2217:1631",
+    "componentSetId": "2217:1630"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-h__regular",
+    "file": "heroui-v3-icon__circle-letter-h__regular.svg",
+    "nodeId": "2217:1591",
+    "componentSetId": "2217:1590"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-p__regular",
+    "file": "heroui-v3-icon__circle-letter-p__regular.svg",
+    "nodeId": "2217:1619",
+    "componentSetId": "2217:1618"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-r__regular",
+    "file": "heroui-v3-icon__circle-letter-r__regular.svg",
+    "nodeId": "2217:1611",
+    "componentSetId": "2217:1610"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-s__regular",
+    "file": "heroui-v3-icon__circle-letter-s__regular.svg",
+    "nodeId": "2217:4633",
+    "componentSetId": "2217:4632"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-t__regular",
+    "file": "heroui-v3-icon__circle-letter-t__regular.svg",
+    "nodeId": "2217:1599",
+    "componentSetId": "2217:1598"
+  },
+  {
+    "name": "heroui-v3-icon__circle-letter-w__regular",
+    "file": "heroui-v3-icon__circle-letter-w__regular.svg",
+    "nodeId": "2217:1625",
+    "componentSetId": "2217:1624"
+  },
+  {
+    "name": "heroui-v3-icon__circle-link__regular",
+    "file": "heroui-v3-icon__circle-link__regular.svg",
+    "nodeId": "2217:5946",
+    "componentSetId": "2217:5945"
+  },
+  {
+    "name": "heroui-v3-icon__circle-minus__fill",
+    "file": "heroui-v3-icon__circle-minus__fill.svg",
+    "nodeId": "2217:1905",
+    "componentSetId": "2217:1899"
+  },
+  {
+    "name": "heroui-v3-icon__circle-minus__regular",
+    "file": "heroui-v3-icon__circle-minus__regular.svg",
+    "nodeId": "2217:1900",
+    "componentSetId": "2217:1899"
+  },
+  {
+    "name": "heroui-v3-icon__circle-number-0__regular",
+    "file": "heroui-v3-icon__circle-number-0__regular.svg",
+    "nodeId": "2217:1554",
+    "componentSetId": "2217:1553"
+  },
+  {
+    "name": "heroui-v3-icon__circle-number-1__regular",
+    "file": "heroui-v3-icon__circle-number-1__regular.svg",
+    "nodeId": "2217:1560",
+    "componentSetId": "2217:1559"
+  },
+  {
+    "name": "heroui-v3-icon__circle-number-6__regular",
+    "file": "heroui-v3-icon__circle-number-6__regular.svg",
+    "nodeId": "2217:1566",
+    "componentSetId": "2217:1565"
+  },
+  {
+    "name": "heroui-v3-icon__circle-number-7__regular",
+    "file": "heroui-v3-icon__circle-number-7__regular.svg",
+    "nodeId": "2217:1572",
+    "componentSetId": "2217:1571"
+  },
+  {
+    "name": "heroui-v3-icon__circle-number-8__regular",
+    "file": "heroui-v3-icon__circle-number-8__regular.svg",
+    "nodeId": "2217:1578",
+    "componentSetId": "2217:1577"
+  },
+  {
+    "name": "heroui-v3-icon__circle-number-9__regular",
+    "file": "heroui-v3-icon__circle-number-9__regular.svg",
+    "nodeId": "2217:1585",
+    "componentSetId": "2217:1584"
+  },
+  {
+    "name": "heroui-v3-icon__circle-pause__regular",
+    "file": "heroui-v3-icon__circle-pause__regular.svg",
+    "nodeId": "2217:2086",
+    "componentSetId": "2217:2085"
+  },
+  {
+    "name": "heroui-v3-icon__circle-play__regular",
+    "file": "heroui-v3-icon__circle-play__regular.svg",
+    "nodeId": "2217:2099",
+    "componentSetId": "2217:2098"
+  },
+  {
+    "name": "heroui-v3-icon__circle-plus__fill",
+    "file": "heroui-v3-icon__circle-plus__fill.svg",
+    "nodeId": "2217:1879",
+    "componentSetId": "2217:1873"
+  },
+  {
+    "name": "heroui-v3-icon__circle-plus__regular",
+    "file": "heroui-v3-icon__circle-plus__regular.svg",
+    "nodeId": "2217:1874",
+    "componentSetId": "2217:1873"
+  },
+  {
+    "name": "heroui-v3-icon__circle-question-dot__regular",
+    "file": "heroui-v3-icon__circle-question-dot__regular.svg",
+    "nodeId": "2217:6015",
+    "componentSetId": "2217:6014"
+  },
+  {
+    "name": "heroui-v3-icon__circle-question__fill",
+    "file": "heroui-v3-icon__circle-question__fill.svg",
+    "nodeId": "2217:1838",
+    "componentSetId": "2217:1831"
+  },
+  {
+    "name": "heroui-v3-icon__circle-question__regular",
+    "file": "heroui-v3-icon__circle-question__regular.svg",
+    "nodeId": "2217:1832",
+    "componentSetId": "2217:1831"
+  },
+  {
+    "name": "heroui-v3-icon__circle-ruble__regular",
+    "file": "heroui-v3-icon__circle-ruble__regular.svg",
+    "nodeId": "2217:4179",
+    "componentSetId": "2217:4178"
+  },
+  {
+    "name": "heroui-v3-icon__circle-small__fill",
+    "file": "heroui-v3-icon__circle-small__fill.svg",
+    "nodeId": "2416:5249",
+    "componentSetId": "2416:5244"
+  },
+  {
+    "name": "heroui-v3-icon__circle-small__regular",
+    "file": "heroui-v3-icon__circle-small__regular.svg",
+    "nodeId": "2416:5245",
+    "componentSetId": "2416:5244"
+  },
+  {
+    "name": "heroui-v3-icon__circle-stop__regular",
+    "file": "heroui-v3-icon__circle-stop__regular.svg",
+    "nodeId": "2217:2093",
+    "componentSetId": "2217:2092"
+  },
+  {
+    "name": "heroui-v3-icon__circle-xmark__fill",
+    "file": "heroui-v3-icon__circle-xmark__fill.svg",
+    "nodeId": "2217:1916",
+    "componentSetId": "2217:1910"
+  },
+  {
+    "name": "heroui-v3-icon__circle-xmark__regular",
+    "file": "heroui-v3-icon__circle-xmark__regular.svg",
+    "nodeId": "2217:1911",
+    "componentSetId": "2217:1910"
+  },
+  {
+    "name": "heroui-v3-icon__circle__fill",
+    "file": "heroui-v3-icon__circle__fill.svg",
+    "nodeId": "2217:3830",
+    "componentSetId": "2217:3825"
+  },
+  {
+    "name": "heroui-v3-icon__circle__regular",
+    "file": "heroui-v3-icon__circle__regular.svg",
+    "nodeId": "2217:3826",
+    "componentSetId": "2217:3825"
+  },
+  {
+    "name": "heroui-v3-icon__circles-3-plus__regular",
+    "file": "heroui-v3-icon__circles-3-plus__regular.svg",
+    "nodeId": "2217:4079",
+    "componentSetId": "2217:4078"
+  },
+  {
+    "name": "heroui-v3-icon__circles-4-diamond__regular",
+    "file": "heroui-v3-icon__circles-4-diamond__regular.svg",
+    "nodeId": "2217:3009",
+    "componentSetId": "2217:3008"
+  },
+  {
+    "name": "heroui-v3-icon__circles-4-square__regular",
+    "file": "heroui-v3-icon__circles-4-square__regular.svg",
+    "nodeId": "2217:3017",
+    "componentSetId": "2217:3016"
+  },
+  {
+    "name": "heroui-v3-icon__circles-5-random__regular",
+    "file": "heroui-v3-icon__circles-5-random__regular.svg",
+    "nodeId": "2217:5342",
+    "componentSetId": "2217:5341"
+  },
+  {
+    "name": "heroui-v3-icon__circles-concentric__regular",
+    "file": "heroui-v3-icon__circles-concentric__regular.svg",
+    "nodeId": "2217:4794",
+    "componentSetId": "2217:4793"
+  },
+  {
+    "name": "heroui-v3-icon__circles-intersection__regular",
+    "file": "heroui-v3-icon__circles-intersection__regular.svg",
+    "nodeId": "2217:4925",
+    "componentSetId": "2217:4924"
+  },
+  {
+    "name": "heroui-v3-icon__clock-arrow-rotate-left__regular",
+    "file": "heroui-v3-icon__clock-arrow-rotate-left__regular.svg",
+    "nodeId": "2217:3918",
+    "componentSetId": "2217:3917"
+  },
+  {
+    "name": "heroui-v3-icon__clock__fill",
+    "file": "heroui-v3-icon__clock__fill.svg",
+    "nodeId": "2217:1324",
+    "componentSetId": "2217:1318"
+  },
+  {
+    "name": "heroui-v3-icon__clock__regular",
+    "file": "heroui-v3-icon__clock__regular.svg",
+    "nodeId": "2217:1319",
+    "componentSetId": "2217:1318"
+  },
+  {
+    "name": "heroui-v3-icon__cloud-arrow-up-in__regular",
+    "file": "heroui-v3-icon__cloud-arrow-up-in__regular.svg",
+    "nodeId": "2217:2573",
+    "componentSetId": "2217:2572"
+  },
+  {
+    "name": "heroui-v3-icon__cloud-check__regular",
+    "file": "heroui-v3-icon__cloud-check__regular.svg",
+    "nodeId": "2217:4583",
+    "componentSetId": "2217:4582"
+  },
+  {
+    "name": "heroui-v3-icon__cloud-gear__regular",
+    "file": "heroui-v3-icon__cloud-gear__regular.svg",
+    "nodeId": "2217:5641",
+    "componentSetId": "2217:5640"
+  },
+  {
+    "name": "heroui-v3-icon__cloud-nut-hex__regular",
+    "file": "heroui-v3-icon__cloud-nut-hex__regular.svg",
+    "nodeId": "2217:5607",
+    "componentSetId": "2217:5606"
+  },
+  {
+    "name": "heroui-v3-icon__cloud__regular",
+    "file": "heroui-v3-icon__cloud__regular.svg",
+    "nodeId": "2217:1450",
+    "componentSetId": "2217:1449"
+  },
+  {
+    "name": "heroui-v3-icon__clouds__regular",
+    "file": "heroui-v3-icon__clouds__regular.svg",
+    "nodeId": "2217:4593",
+    "componentSetId": "2217:4592"
+  },
+  {
+    "name": "heroui-v3-icon__code-commit-horizontal__regular",
+    "file": "heroui-v3-icon__code-commit-horizontal__regular.svg",
+    "nodeId": "2217:5381",
+    "componentSetId": "2217:5380"
+  },
+  {
+    "name": "heroui-v3-icon__code-commit__regular",
+    "file": "heroui-v3-icon__code-commit__regular.svg",
+    "nodeId": "2217:2953",
+    "componentSetId": "2217:2952"
+  },
+  {
+    "name": "heroui-v3-icon__code-commits__regular",
+    "file": "heroui-v3-icon__code-commits__regular.svg",
+    "nodeId": "2217:5418",
+    "componentSetId": "2217:5417"
+  },
+  {
+    "name": "heroui-v3-icon__code-compare__regular",
+    "file": "heroui-v3-icon__code-compare__regular.svg",
+    "nodeId": "2217:5373",
+    "componentSetId": "2217:5372"
+  },
+  {
+    "name": "heroui-v3-icon__code-fork__regular",
+    "file": "heroui-v3-icon__code-fork__regular.svg",
+    "nodeId": "2217:2915",
+    "componentSetId": "2217:2914"
+  },
+  {
+    "name": "heroui-v3-icon__code-merge__regular",
+    "file": "heroui-v3-icon__code-merge__regular.svg",
+    "nodeId": "2217:2934",
+    "componentSetId": "2217:2933"
+  },
+  {
+    "name": "heroui-v3-icon__code-pull-request-arrow-left__regular",
+    "file": "heroui-v3-icon__code-pull-request-arrow-left__regular.svg",
+    "nodeId": "2217:4124",
+    "componentSetId": "2217:4123"
+  },
+  {
+    "name": "heroui-v3-icon__code-pull-request-arrow-right__regular",
+    "file": "heroui-v3-icon__code-pull-request-arrow-right__regular.svg",
+    "nodeId": "2217:4132",
+    "componentSetId": "2217:4131"
+  },
+  {
+    "name": "heroui-v3-icon__code-pull-request-check__regular",
+    "file": "heroui-v3-icon__code-pull-request-check__regular.svg",
+    "nodeId": "2217:4106",
+    "componentSetId": "2217:4105"
+  },
+  {
+    "name": "heroui-v3-icon__code-pull-request-xmark__regular",
+    "file": "heroui-v3-icon__code-pull-request-xmark__regular.svg",
+    "nodeId": "2217:4115",
+    "componentSetId": "2217:4114"
+  },
+  {
+    "name": "heroui-v3-icon__code-pull-request__regular",
+    "file": "heroui-v3-icon__code-pull-request__regular.svg",
+    "nodeId": "2217:2944",
+    "componentSetId": "2217:2943"
+  },
+  {
+    "name": "heroui-v3-icon__code-trunk__regular",
+    "file": "heroui-v3-icon__code-trunk__regular.svg",
+    "nodeId": "2217:2924",
+    "componentSetId": "2217:2923"
+  },
+  {
+    "name": "heroui-v3-icon__code__regular",
+    "file": "heroui-v3-icon__code__regular.svg",
+    "nodeId": "2217:2901",
+    "componentSetId": "2217:2900"
+  },
+  {
+    "name": "heroui-v3-icon__cog__regular",
+    "file": "heroui-v3-icon__cog__regular.svg",
+    "nodeId": "17399:33576",
+    "componentSetId": "17399:33575"
+  },
+  {
+    "name": "heroui-v3-icon__comment-dot__regular",
+    "file": "heroui-v3-icon__comment-dot__regular.svg",
+    "nodeId": "2217:2799",
+    "componentSetId": "2217:2798"
+  },
+  {
+    "name": "heroui-v3-icon__comment-plus__regular",
+    "file": "heroui-v3-icon__comment-plus__regular.svg",
+    "nodeId": "2217:5410",
+    "componentSetId": "2217:5409"
+  },
+  {
+    "name": "heroui-v3-icon__comment-slash__regular",
+    "file": "heroui-v3-icon__comment-slash__regular.svg",
+    "nodeId": "2217:5930",
+    "componentSetId": "2217:5929"
+  },
+  {
+    "name": "heroui-v3-icon__comment__fill",
+    "file": "heroui-v3-icon__comment__fill.svg",
+    "nodeId": "2217:1078",
+    "componentSetId": "2217:1072"
+  },
+  {
+    "name": "heroui-v3-icon__comment__regular",
+    "file": "heroui-v3-icon__comment__regular.svg",
+    "nodeId": "2217:1073",
+    "componentSetId": "2217:1072"
+  },
+  {
+    "name": "heroui-v3-icon__comments__regular",
+    "file": "heroui-v3-icon__comments__regular.svg",
+    "nodeId": "2217:1792",
+    "componentSetId": "2217:1791"
+  },
+  {
+    "name": "heroui-v3-icon__compass__regular",
+    "file": "heroui-v3-icon__compass__regular.svg",
+    "nodeId": "2217:913",
+    "componentSetId": "2217:912"
+  },
+  {
+    "name": "heroui-v3-icon__copy-arrow-right__regular",
+    "file": "heroui-v3-icon__copy-arrow-right__regular.svg",
+    "nodeId": "2217:5133",
+    "componentSetId": "2217:5132"
+  },
+  {
+    "name": "heroui-v3-icon__copy-check-xmark__regular",
+    "file": "heroui-v3-icon__copy-check-xmark__regular.svg",
+    "nodeId": "2217:4969",
+    "componentSetId": "2217:4968"
+  },
+  {
+    "name": "heroui-v3-icon__copy-check__regular",
+    "file": "heroui-v3-icon__copy-check__regular.svg",
+    "nodeId": "2217:3367",
+    "componentSetId": "2217:3366"
+  },
+  {
+    "name": "heroui-v3-icon__copy-chevron-right__regular",
+    "file": "heroui-v3-icon__copy-chevron-right__regular.svg",
+    "nodeId": "2217:5076",
+    "componentSetId": "2217:5075"
+  },
+  {
+    "name": "heroui-v3-icon__copy-minus__regular",
+    "file": "heroui-v3-icon__copy-minus__regular.svg",
+    "nodeId": "2217:3385",
+    "componentSetId": "2217:3384"
+  },
+  {
+    "name": "heroui-v3-icon__copy-picture__regular",
+    "file": "heroui-v3-icon__copy-picture__regular.svg",
+    "nodeId": "2217:4951",
+    "componentSetId": "2217:4950"
+  },
+  {
+    "name": "heroui-v3-icon__copy-plus__regular",
+    "file": "heroui-v3-icon__copy-plus__regular.svg",
+    "nodeId": "2217:3376",
+    "componentSetId": "2217:3375"
+  },
+  {
+    "name": "heroui-v3-icon__copy-transparent__regular",
+    "file": "heroui-v3-icon__copy-transparent__regular.svg",
+    "nodeId": "2217:3870",
+    "componentSetId": "2217:3869"
+  },
+  {
+    "name": "heroui-v3-icon__copy-xmark__regular",
+    "file": "heroui-v3-icon__copy-xmark__regular.svg",
+    "nodeId": "2217:5547",
+    "componentSetId": "2217:5546"
+  },
+  {
+    "name": "heroui-v3-icon__copy__regular",
+    "file": "heroui-v3-icon__copy__regular.svg",
+    "nodeId": "2217:1778",
+    "componentSetId": "2217:1777"
+  },
+  {
+    "name": "heroui-v3-icon__cpu__regular",
+    "file": "heroui-v3-icon__cpu__regular.svg",
+    "nodeId": "2217:1429",
+    "componentSetId": "2217:1428"
+  },
+  {
+    "name": "heroui-v3-icon__cpus__regular",
+    "file": "heroui-v3-icon__cpus__regular.svg",
+    "nodeId": "2217:4366",
+    "componentSetId": "2217:4365"
+  },
+  {
+    "name": "heroui-v3-icon__credit-card__regular",
+    "file": "heroui-v3-icon__credit-card__regular.svg",
+    "nodeId": "2217:1312",
+    "componentSetId": "2217:1311"
+  },
+  {
+    "name": "heroui-v3-icon__crop__regular",
+    "file": "heroui-v3-icon__crop__regular.svg",
+    "nodeId": "2217:4400",
+    "componentSetId": "2217:4399"
+  },
+  {
+    "name": "heroui-v3-icon__crown-diamond__regular",
+    "file": "heroui-v3-icon__crown-diamond__regular.svg",
+    "nodeId": "2217:1538",
+    "componentSetId": "2217:1537"
+  },
+  {
+    "name": "heroui-v3-icon__cube__regular",
+    "file": "heroui-v3-icon__cube__regular.svg",
+    "nodeId": "2217:2820",
+    "componentSetId": "2217:2819"
+  },
+  {
+    "name": "heroui-v3-icon__cubes-3-overlap__regular",
+    "file": "heroui-v3-icon__cubes-3-overlap__regular.svg",
+    "nodeId": "2217:4646",
+    "componentSetId": "2217:4645"
+  },
+  {
+    "name": "heroui-v3-icon__cubes-3__regular",
+    "file": "heroui-v3-icon__cubes-3__regular.svg",
+    "nodeId": "2217:2826",
+    "componentSetId": "2217:2825"
+  },
+  {
+    "name": "heroui-v3-icon__cup__regular",
+    "file": "heroui-v3-icon__cup__regular.svg",
+    "nodeId": "2217:5850",
+    "componentSetId": "2217:5849"
+  },
+  {
+    "name": "heroui-v3-icon__curly-brackets-function__regular",
+    "file": "heroui-v3-icon__curly-brackets-function__regular.svg",
+    "nodeId": "2217:4830",
+    "componentSetId": "2217:4829"
+  },
+  {
+    "name": "heroui-v3-icon__curly-brackets-lock__regular",
+    "file": "heroui-v3-icon__curly-brackets-lock__regular.svg",
+    "nodeId": "2217:4856",
+    "componentSetId": "2217:4855"
+  },
+  {
+    "name": "heroui-v3-icon__curly-brackets__regular",
+    "file": "heroui-v3-icon__curly-brackets__regular.svg",
+    "nodeId": "2217:4838",
+    "componentSetId": "2217:4837"
+  },
+  {
+    "name": "heroui-v3-icon__cursor__regular",
+    "file": "heroui-v3-icon__cursor__regular.svg",
+    "nodeId": "4678:42514",
+    "componentSetId": "4678:42513"
+  },
+  {
+    "name": "heroui-v3-icon__database-arrow-right__regular",
+    "file": "heroui-v3-icon__database-arrow-right__regular.svg",
+    "nodeId": "2217:5587",
+    "componentSetId": "2217:5586"
+  },
+  {
+    "name": "heroui-v3-icon__database-magnifier__regular",
+    "file": "heroui-v3-icon__database-magnifier__regular.svg",
+    "nodeId": "2217:4353",
+    "componentSetId": "2217:4352"
+  },
+  {
+    "name": "heroui-v3-icon__database__fill",
+    "file": "heroui-v3-icon__database__fill.svg",
+    "nodeId": "2217:1466",
+    "componentSetId": "2217:1459"
+  },
+  {
+    "name": "heroui-v3-icon__database__regular",
+    "file": "heroui-v3-icon__database__regular.svg",
+    "nodeId": "2217:1460",
+    "componentSetId": "2217:1459"
+  },
+  {
+    "name": "heroui-v3-icon__databases__fill",
+    "file": "heroui-v3-icon__databases__fill.svg",
+    "nodeId": "2217:2631",
+    "componentSetId": "2217:2621"
+  },
+  {
+    "name": "heroui-v3-icon__databases__regular",
+    "file": "heroui-v3-icon__databases__regular.svg",
+    "nodeId": "2217:2622",
+    "componentSetId": "2217:2621"
+  },
+  {
+    "name": "heroui-v3-icon__delete__regular",
+    "file": "heroui-v3-icon__delete__regular.svg",
+    "nodeId": "2217:5983",
+    "componentSetId": "2217:5982"
+  },
+  {
+    "name": "heroui-v3-icon__diamond-exclamation__regular",
+    "file": "heroui-v3-icon__diamond-exclamation__regular.svg",
+    "nodeId": "2217:1853",
+    "componentSetId": "2217:1852"
+  },
+  {
+    "name": "heroui-v3-icon__diamond__fill",
+    "file": "heroui-v3-icon__diamond__fill.svg",
+    "nodeId": "2217:3513",
+    "componentSetId": "2217:3508"
+  },
+  {
+    "name": "heroui-v3-icon__diamond__regular",
+    "file": "heroui-v3-icon__diamond__regular.svg",
+    "nodeId": "2217:3509",
+    "componentSetId": "2217:3508"
+  },
+  {
+    "name": "heroui-v3-icon__dice-1__regular",
+    "file": "heroui-v3-icon__dice-1__regular.svg",
+    "nodeId": "2217:3232",
+    "componentSetId": "2217:3231"
+  },
+  {
+    "name": "heroui-v3-icon__dice-2__regular",
+    "file": "heroui-v3-icon__dice-2__regular.svg",
+    "nodeId": "2217:3238",
+    "componentSetId": "2217:3237"
+  },
+  {
+    "name": "heroui-v3-icon__dice-3__regular",
+    "file": "heroui-v3-icon__dice-3__regular.svg",
+    "nodeId": "2217:3245",
+    "componentSetId": "2217:3244"
+  },
+  {
+    "name": "heroui-v3-icon__dice-4__regular",
+    "file": "heroui-v3-icon__dice-4__regular.svg",
+    "nodeId": "2217:3253",
+    "componentSetId": "2217:3252"
+  },
+  {
+    "name": "heroui-v3-icon__dice-5__regular",
+    "file": "heroui-v3-icon__dice-5__regular.svg",
+    "nodeId": "2217:3262",
+    "componentSetId": "2217:3261"
+  },
+  {
+    "name": "heroui-v3-icon__dice-6__regular",
+    "file": "heroui-v3-icon__dice-6__regular.svg",
+    "nodeId": "2217:3272",
+    "componentSetId": "2217:3271"
+  },
+  {
+    "name": "heroui-v3-icon__display-pulse__regular",
+    "file": "heroui-v3-icon__display-pulse__regular.svg",
+    "nodeId": "2217:2078",
+    "componentSetId": "2217:2077"
+  },
+  {
+    "name": "heroui-v3-icon__display__regular",
+    "file": "heroui-v3-icon__display__regular.svg",
+    "nodeId": "2217:1330",
+    "componentSetId": "2217:1329"
+  },
+  {
+    "name": "heroui-v3-icon__dots-9__regular",
+    "file": "heroui-v3-icon__dots-9__regular.svg",
+    "nodeId": "2217:3052",
+    "componentSetId": "2217:3051"
+  },
+  {
+    "name": "heroui-v3-icon__droplet__regular",
+    "file": "heroui-v3-icon__droplet__regular.svg",
+    "nodeId": "2217:3190",
+    "componentSetId": "2217:3189"
+  },
+  {
+    "name": "heroui-v3-icon__ear__regular",
+    "file": "heroui-v3-icon__ear__regular.svg",
+    "nodeId": "2217:5163",
+    "componentSetId": "2217:5162"
+  },
+  {
+    "name": "heroui-v3-icon__ellipsis-vertical__regular",
+    "file": "heroui-v3-icon__ellipsis-vertical__regular.svg",
+    "nodeId": "2217:2017",
+    "componentSetId": "2217:2016"
+  },
+  {
+    "name": "heroui-v3-icon__ellipsis__regular",
+    "file": "heroui-v3-icon__ellipsis__regular.svg",
+    "nodeId": "2217:2010",
+    "componentSetId": "2217:2009"
+  },
+  {
+    "name": "heroui-v3-icon__envelope-open-xmark__regular",
+    "file": "heroui-v3-icon__envelope-open-xmark__regular.svg",
+    "nodeId": "2217:5678",
+    "componentSetId": "2217:5677"
+  },
+  {
+    "name": "heroui-v3-icon__envelope-open__regular",
+    "file": "heroui-v3-icon__envelope-open__regular.svg",
+    "nodeId": "2217:5151",
+    "componentSetId": "2217:5150"
+  },
+  {
+    "name": "heroui-v3-icon__envelope__regular",
+    "file": "heroui-v3-icon__envelope__regular.svg",
+    "nodeId": "2217:892",
+    "componentSetId": "2217:891"
+  },
+  {
+    "name": "heroui-v3-icon__equal__regular",
+    "file": "heroui-v3-icon__equal__regular.svg",
+    "nodeId": "2217:5525",
+    "componentSetId": "2217:5524"
+  },
+  {
+    "name": "heroui-v3-icon__eraser__regular",
+    "file": "heroui-v3-icon__eraser__regular.svg",
+    "nodeId": "2217:3134",
+    "componentSetId": "2217:3133"
+  },
+  {
+    "name": "heroui-v3-icon__exclamation-shape__regular",
+    "file": "heroui-v3-icon__exclamation-shape__regular.svg",
+    "nodeId": "2217:4382",
+    "componentSetId": "2217:4381"
+  },
+  {
+    "name": "heroui-v3-icon__external__regular",
+    "file": "heroui-v3-icon__external__regular.svg",
+    "nodeId": "2356:3863",
+    "componentSetId": "2356:3862"
+  },
+  {
+    "name": "heroui-v3-icon__eye-slash__regular",
+    "file": "heroui-v3-icon__eye-slash__regular.svg",
+    "nodeId": "2217:2439",
+    "componentSetId": "2217:2438"
+  },
+  {
+    "name": "heroui-v3-icon__eye__regular",
+    "file": "heroui-v3-icon__eye__regular.svg",
+    "nodeId": "2217:1416",
+    "componentSetId": "2217:1415"
+  },
+  {
+    "name": "heroui-v3-icon__eyes-look-left__regular",
+    "file": "heroui-v3-icon__eyes-look-left__regular.svg",
+    "nodeId": "2217:5967",
+    "componentSetId": "2217:5966"
+  },
+  {
+    "name": "heroui-v3-icon__eyes-look-right__regular",
+    "file": "heroui-v3-icon__eyes-look-right__regular.svg",
+    "nodeId": "2217:5975",
+    "componentSetId": "2217:5974"
+  },
+  {
+    "name": "heroui-v3-icon__face-alien__regular",
+    "file": "heroui-v3-icon__face-alien__regular.svg",
+    "nodeId": "2217:3464",
+    "componentSetId": "2217:3463"
+  },
+  {
+    "name": "heroui-v3-icon__face-fun__regular",
+    "file": "heroui-v3-icon__face-fun__regular.svg",
+    "nodeId": "2217:1084",
+    "componentSetId": "2217:1083"
+  },
+  {
+    "name": "heroui-v3-icon__face-neutral-dashed__regular",
+    "file": "heroui-v3-icon__face-neutral-dashed__regular.svg",
+    "nodeId": "2217:5684",
+    "componentSetId": "2217:5683"
+  },
+  {
+    "name": "heroui-v3-icon__face-neutral__regular",
+    "file": "heroui-v3-icon__face-neutral__regular.svg",
+    "nodeId": "2217:1101",
+    "componentSetId": "2217:1100"
+  },
+  {
+    "name": "heroui-v3-icon__face-robot__regular",
+    "file": "heroui-v3-icon__face-robot__regular.svg",
+    "nodeId": "2217:3876",
+    "componentSetId": "2217:3875"
+  },
+  {
+    "name": "heroui-v3-icon__face-sad__regular",
+    "file": "heroui-v3-icon__face-sad__regular.svg",
+    "nodeId": "2217:1109",
+    "componentSetId": "2217:1108"
+  },
+  {
+    "name": "heroui-v3-icon__face-smile__regular",
+    "file": "heroui-v3-icon__face-smile__regular.svg",
+    "nodeId": "2217:1093",
+    "componentSetId": "2217:1092"
+  },
+  {
+    "name": "heroui-v3-icon__face-surprise__regular",
+    "file": "heroui-v3-icon__face-surprise__regular.svg",
+    "nodeId": "2217:1117",
+    "componentSetId": "2217:1116"
+  },
+  {
+    "name": "heroui-v3-icon__factory__regular",
+    "file": "heroui-v3-icon__factory__regular.svg",
+    "nodeId": "2217:3143",
+    "componentSetId": "2217:3142"
+  },
+  {
+    "name": "heroui-v3-icon__file-arrow-down__regular",
+    "file": "heroui-v3-icon__file-arrow-down__regular.svg",
+    "nodeId": "2217:3815",
+    "componentSetId": "2217:3814"
+  },
+  {
+    "name": "heroui-v3-icon__file-arrow-left__regular",
+    "file": "heroui-v3-icon__file-arrow-left__regular.svg",
+    "nodeId": "2217:3797",
+    "componentSetId": "2217:3796"
+  },
+  {
+    "name": "heroui-v3-icon__file-arrow-right-out__regular",
+    "file": "heroui-v3-icon__file-arrow-right-out__regular.svg",
+    "nodeId": "2217:2541",
+    "componentSetId": "2217:2540"
+  },
+  {
+    "name": "heroui-v3-icon__file-arrow-right__regular",
+    "file": "heroui-v3-icon__file-arrow-right__regular.svg",
+    "nodeId": "2217:3803",
+    "componentSetId": "2217:3802"
+  },
+  {
+    "name": "heroui-v3-icon__file-arrow-up__regular",
+    "file": "heroui-v3-icon__file-arrow-up__regular.svg",
+    "nodeId": "2217:3809",
+    "componentSetId": "2217:3808"
+  },
+  {
+    "name": "heroui-v3-icon__file-check__regular",
+    "file": "heroui-v3-icon__file-check__regular.svg",
+    "nodeId": "2217:3761",
+    "componentSetId": "2217:3760"
+  },
+  {
+    "name": "heroui-v3-icon__file-code__regular",
+    "file": "heroui-v3-icon__file-code__regular.svg",
+    "nodeId": "2217:4265",
+    "componentSetId": "2217:4264"
+  },
+  {
+    "name": "heroui-v3-icon__file-dollar__regular",
+    "file": "heroui-v3-icon__file-dollar__regular.svg",
+    "nodeId": "2217:4251",
+    "componentSetId": "2217:4250"
+  },
+  {
+    "name": "heroui-v3-icon__file-exclamation__regular",
+    "file": "heroui-v3-icon__file-exclamation__regular.svg",
+    "nodeId": "2217:3781",
+    "componentSetId": "2217:3780"
+  },
+  {
+    "name": "heroui-v3-icon__file-letter-p__regular",
+    "file": "heroui-v3-icon__file-letter-p__regular.svg",
+    "nodeId": "2217:6064",
+    "componentSetId": "2217:6063"
+  },
+  {
+    "name": "heroui-v3-icon__file-letter-w__regular",
+    "file": "heroui-v3-icon__file-letter-w__regular.svg",
+    "nodeId": "2217:6070",
+    "componentSetId": "2217:6069"
+  },
+  {
+    "name": "heroui-v3-icon__file-letter-x__regular",
+    "file": "heroui-v3-icon__file-letter-x__regular.svg",
+    "nodeId": "2217:6076",
+    "componentSetId": "2217:6075"
+  },
+  {
+    "name": "heroui-v3-icon__file-magnifier__regular",
+    "file": "heroui-v3-icon__file-magnifier__regular.svg",
+    "nodeId": "2217:3789",
+    "componentSetId": "2217:3788"
+  },
+  {
+    "name": "heroui-v3-icon__file-minus__regular",
+    "file": "heroui-v3-icon__file-minus__regular.svg",
+    "nodeId": "2217:3755",
+    "componentSetId": "2217:3754"
+  },
+  {
+    "name": "heroui-v3-icon__file-plus__regular",
+    "file": "heroui-v3-icon__file-plus__regular.svg",
+    "nodeId": "2217:3749",
+    "componentSetId": "2217:3748"
+  },
+  {
+    "name": "heroui-v3-icon__file-question__regular",
+    "file": "heroui-v3-icon__file-question__regular.svg",
+    "nodeId": "2217:3773",
+    "componentSetId": "2217:3772"
+  },
+  {
+    "name": "heroui-v3-icon__file-ruble__regular",
+    "file": "heroui-v3-icon__file-ruble__regular.svg",
+    "nodeId": "2217:5595",
+    "componentSetId": "2217:5594"
+  },
+  {
+    "name": "heroui-v3-icon__file-text__regular",
+    "file": "heroui-v3-icon__file-text__regular.svg",
+    "nodeId": "2217:5388",
+    "componentSetId": "2217:5387"
+  },
+  {
+    "name": "heroui-v3-icon__file-xmark__regular",
+    "file": "heroui-v3-icon__file-xmark__regular.svg",
+    "nodeId": "2217:3767",
+    "componentSetId": "2217:3766"
+  },
+  {
+    "name": "heroui-v3-icon__file-zipper__regular",
+    "file": "heroui-v3-icon__file-zipper__regular.svg",
+    "nodeId": "2217:4752",
+    "componentSetId": "2217:4751"
+  },
+  {
+    "name": "heroui-v3-icon__file__regular",
+    "file": "heroui-v3-icon__file__regular.svg",
+    "nodeId": "2217:876",
+    "componentSetId": "2217:875"
+  },
+  {
+    "name": "heroui-v3-icon__files__regular",
+    "file": "heroui-v3-icon__files__regular.svg",
+    "nodeId": "2217:1746",
+    "componentSetId": "2217:1745"
+  },
+  {
+    "name": "heroui-v3-icon__filmstrip__regular",
+    "file": "heroui-v3-icon__filmstrip__regular.svg",
+    "nodeId": "2217:4931",
+    "componentSetId": "2217:4930"
+  },
+  {
+    "name": "heroui-v3-icon__fingerprint__regular",
+    "file": "heroui-v3-icon__fingerprint__regular.svg",
+    "nodeId": "2217:2810",
+    "componentSetId": "2217:2809"
+  },
+  {
+    "name": "heroui-v3-icon__flag__regular",
+    "file": "heroui-v3-icon__flag__regular.svg",
+    "nodeId": "2217:3185",
+    "componentSetId": "2217:3184"
+  },
+  {
+    "name": "heroui-v3-icon__flame__regular",
+    "file": "heroui-v3-icon__flame__regular.svg",
+    "nodeId": "2217:2750",
+    "componentSetId": "2217:2749"
+  },
+  {
+    "name": "heroui-v3-icon__flask__regular",
+    "file": "heroui-v3-icon__flask__regular.svg",
+    "nodeId": "2217:2764",
+    "componentSetId": "2217:2763"
+  },
+  {
+    "name": "heroui-v3-icon__floppy-disk__regular",
+    "file": "heroui-v3-icon__floppy-disk__regular.svg",
+    "nodeId": "2217:3622",
+    "componentSetId": "2217:3621"
+  },
+  {
+    "name": "heroui-v3-icon__folder-arrow-down__regular",
+    "file": "heroui-v3-icon__folder-arrow-down__regular.svg",
+    "nodeId": "2217:2152",
+    "componentSetId": "2217:2151"
+  },
+  {
+    "name": "heroui-v3-icon__folder-arrow-left__regular",
+    "file": "heroui-v3-icon__folder-arrow-left__regular.svg",
+    "nodeId": "2217:2164",
+    "componentSetId": "2217:2163"
+  },
+  {
+    "name": "heroui-v3-icon__folder-arrow-right__regular",
+    "file": "heroui-v3-icon__folder-arrow-right__regular.svg",
+    "nodeId": "2217:2146",
+    "componentSetId": "2217:2145"
+  },
+  {
+    "name": "heroui-v3-icon__folder-arrow-up-in__regular",
+    "file": "heroui-v3-icon__folder-arrow-up-in__regular.svg",
+    "nodeId": "2217:2560",
+    "componentSetId": "2217:2559"
+  },
+  {
+    "name": "heroui-v3-icon__folder-arrow-up__regular",
+    "file": "heroui-v3-icon__folder-arrow-up__regular.svg",
+    "nodeId": "2217:2158",
+    "componentSetId": "2217:2157"
+  },
+  {
+    "name": "heroui-v3-icon__folder-check__regular",
+    "file": "heroui-v3-icon__folder-check__regular.svg",
+    "nodeId": "2217:5940",
+    "componentSetId": "2217:5939"
+  },
+  {
+    "name": "heroui-v3-icon__folder-code__regular",
+    "file": "heroui-v3-icon__folder-code__regular.svg",
+    "nodeId": "2217:2105",
+    "componentSetId": "2217:2104"
+  },
+  {
+    "name": "heroui-v3-icon__folder-exclamation__regular",
+    "file": "heroui-v3-icon__folder-exclamation__regular.svg",
+    "nodeId": "2217:2132",
+    "componentSetId": "2217:2131"
+  },
+  {
+    "name": "heroui-v3-icon__folder-flows__regular",
+    "file": "heroui-v3-icon__folder-flows__regular.svg",
+    "nodeId": "2217:2120",
+    "componentSetId": "2217:2119"
+  },
+  {
+    "name": "heroui-v3-icon__folder-house__regular",
+    "file": "heroui-v3-icon__folder-house__regular.svg",
+    "nodeId": "2217:2114",
+    "componentSetId": "2217:2113"
+  },
+  {
+    "name": "heroui-v3-icon__folder-keyhole__regular",
+    "file": "heroui-v3-icon__folder-keyhole__regular.svg",
+    "nodeId": "2217:2139",
+    "componentSetId": "2217:2138"
+  },
+  {
+    "name": "heroui-v3-icon__folder-lock__regular",
+    "file": "heroui-v3-icon__folder-lock__regular.svg",
+    "nodeId": "2217:4300",
+    "componentSetId": "2217:4299"
+  },
+  {
+    "name": "heroui-v3-icon__folder-magnifier__regular",
+    "file": "heroui-v3-icon__folder-magnifier__regular.svg",
+    "nodeId": "2217:2170",
+    "componentSetId": "2217:2169"
+  },
+  {
+    "name": "heroui-v3-icon__folder-open__fill",
+    "file": "heroui-v3-icon__folder-open__fill.svg",
+    "nodeId": "2217:3113",
+    "componentSetId": "2217:3105"
+  },
+  {
+    "name": "heroui-v3-icon__folder-open__regular",
+    "file": "heroui-v3-icon__folder-open__regular.svg",
+    "nodeId": "2217:3106",
+    "componentSetId": "2217:3105"
+  },
+  {
+    "name": "heroui-v3-icon__folder-plus__regular",
+    "file": "heroui-v3-icon__folder-plus__regular.svg",
+    "nodeId": "2217:2126",
+    "componentSetId": "2217:2125"
+  },
+  {
+    "name": "heroui-v3-icon__folder-tree__regular",
+    "file": "heroui-v3-icon__folder-tree__regular.svg",
+    "nodeId": "2217:1966",
+    "componentSetId": "2217:1965"
+  },
+  {
+    "name": "heroui-v3-icon__folder__fill",
+    "file": "heroui-v3-icon__folder__fill.svg",
+    "nodeId": "2217:1150",
+    "componentSetId": "2217:1144"
+  },
+  {
+    "name": "heroui-v3-icon__folder__regular",
+    "file": "heroui-v3-icon__folder__regular.svg",
+    "nodeId": "2217:1145",
+    "componentSetId": "2217:1144"
+  },
+  {
+    "name": "heroui-v3-icon__folders__regular",
+    "file": "heroui-v3-icon__folders__regular.svg",
+    "nodeId": "2217:1957",
+    "componentSetId": "2217:1956"
+  },
+  {
+    "name": "heroui-v3-icon__font-case__regular",
+    "file": "heroui-v3-icon__font-case__regular.svg",
+    "nodeId": "2217:3908",
+    "componentSetId": "2217:3907"
+  },
+  {
+    "name": "heroui-v3-icon__font-cursor__regular",
+    "file": "heroui-v3-icon__font-cursor__regular.svg",
+    "nodeId": "2217:4454",
+    "componentSetId": "2217:4453"
+  },
+  {
+    "name": "heroui-v3-icon__font__regular",
+    "file": "heroui-v3-icon__font__regular.svg",
+    "nodeId": "2217:3902",
+    "componentSetId": "2217:3901"
+  },
+  {
+    "name": "heroui-v3-icon__frame__regular",
+    "file": "heroui-v3-icon__frame__regular.svg",
+    "nodeId": "2217:3565",
+    "componentSetId": "2217:3564"
+  },
+  {
+    "name": "heroui-v3-icon__frames__regular",
+    "file": "heroui-v3-icon__frames__regular.svg",
+    "nodeId": "2217:4336",
+    "componentSetId": "2217:4335"
+  },
+  {
+    "name": "heroui-v3-icon__function__regular",
+    "file": "heroui-v3-icon__function__regular.svg",
+    "nodeId": "2217:4866",
+    "componentSetId": "2217:4865"
+  },
+  {
+    "name": "heroui-v3-icon__funnel-xmark__regular",
+    "file": "heroui-v3-icon__funnel-xmark__regular.svg",
+    "nodeId": "2217:5923",
+    "componentSetId": "2217:5922"
+  },
+  {
+    "name": "heroui-v3-icon__funnel__regular",
+    "file": "heroui-v3-icon__funnel__regular.svg",
+    "nodeId": "2217:2771",
+    "componentSetId": "2217:2770"
+  },
+  {
+    "name": "heroui-v3-icon__gear-branches__regular",
+    "file": "heroui-v3-icon__gear-branches__regular.svg",
+    "nodeId": "2217:5331",
+    "componentSetId": "2217:5330"
+  },
+  {
+    "name": "heroui-v3-icon__gear-dot__regular",
+    "file": "heroui-v3-icon__gear-dot__regular.svg",
+    "nodeId": "2217:4272",
+    "componentSetId": "2217:4271"
+  },
+  {
+    "name": "heroui-v3-icon__gear-play__regular",
+    "file": "heroui-v3-icon__gear-play__regular.svg",
+    "nodeId": "2217:2793",
+    "componentSetId": "2217:2792"
+  },
+  {
+    "name": "heroui-v3-icon__gear__regular",
+    "file": "heroui-v3-icon__gear__regular.svg",
+    "nodeId": "2217:838",
+    "componentSetId": "2217:837"
+  },
+  {
+    "name": "heroui-v3-icon__geo-dots__regular",
+    "file": "heroui-v3-icon__geo-dots__regular.svg",
+    "nodeId": "2217:1992",
+    "componentSetId": "2217:1991"
+  },
+  {
+    "name": "heroui-v3-icon__geo-pin__regular",
+    "file": "heroui-v3-icon__geo-pin__regular.svg",
+    "nodeId": "2217:2000",
+    "componentSetId": "2217:1999"
+  },
+  {
+    "name": "heroui-v3-icon__geo-polygons__regular",
+    "file": "heroui-v3-icon__geo-polygons__regular.svg",
+    "nodeId": "2217:1974",
+    "componentSetId": "2217:1973"
+  },
+  {
+    "name": "heroui-v3-icon__geo__fill",
+    "file": "heroui-v3-icon__geo__fill.svg",
+    "nodeId": "2217:1986",
+    "componentSetId": "2217:1980"
+  },
+  {
+    "name": "heroui-v3-icon__geo__regular",
+    "file": "heroui-v3-icon__geo__regular.svg",
+    "nodeId": "2217:1981",
+    "componentSetId": "2217:1980"
+  },
+  {
+    "name": "heroui-v3-icon__ghost__regular",
+    "file": "heroui-v3-icon__ghost__regular.svg",
+    "nodeId": "2217:3471",
+    "componentSetId": "2217:3470"
+  },
+  {
+    "name": "heroui-v3-icon__gift__regular",
+    "file": "heroui-v3-icon__gift__regular.svg",
+    "nodeId": "2217:4884",
+    "componentSetId": "2217:4883"
+  },
+  {
+    "name": "heroui-v3-icon__globe__regular",
+    "file": "heroui-v3-icon__globe__regular.svg",
+    "nodeId": "2217:857",
+    "componentSetId": "2217:856"
+  },
+  {
+    "name": "heroui-v3-icon__gpu__regular",
+    "file": "heroui-v3-icon__gpu__regular.svg",
+    "nodeId": "2217:6008",
+    "componentSetId": "2217:6007"
+  },
+  {
+    "name": "heroui-v3-icon__graduation-cap__regular",
+    "file": "heroui-v3-icon__graduation-cap__regular.svg",
+    "nodeId": "2217:1529",
+    "componentSetId": "2217:1528"
+  },
+  {
+    "name": "heroui-v3-icon__graph-node__regular",
+    "file": "heroui-v3-icon__graph-node__regular.svg",
+    "nodeId": "2217:3998",
+    "componentSetId": "2217:3997"
+  },
+  {
+    "name": "heroui-v3-icon__grip-horizontal__regular",
+    "file": "heroui-v3-icon__grip-horizontal__regular.svg",
+    "nodeId": "2217:2034",
+    "componentSetId": "2217:2033"
+  },
+  {
+    "name": "heroui-v3-icon__grip__regular",
+    "file": "heroui-v3-icon__grip__regular.svg",
+    "nodeId": "2217:2024",
+    "componentSetId": "2217:2023"
+  },
+  {
+    "name": "heroui-v3-icon__hammer__regular",
+    "file": "heroui-v3-icon__hammer__regular.svg",
+    "nodeId": "2217:6034",
+    "componentSetId": "2217:6033"
+  },
+  {
+    "name": "heroui-v3-icon__hand-ok__regular",
+    "file": "heroui-v3-icon__hand-ok__regular.svg",
+    "nodeId": "2217:3095",
+    "componentSetId": "2217:3094"
+  },
+  {
+    "name": "heroui-v3-icon__hand-point-down__regular",
+    "file": "heroui-v3-icon__hand-point-down__regular.svg",
+    "nodeId": "2217:3299",
+    "componentSetId": "2217:3298"
+  },
+  {
+    "name": "heroui-v3-icon__hand-point-left__regular",
+    "file": "heroui-v3-icon__hand-point-left__regular.svg",
+    "nodeId": "2217:3291",
+    "componentSetId": "2217:3290"
+  },
+  {
+    "name": "heroui-v3-icon__hand-point-right__regular",
+    "file": "heroui-v3-icon__hand-point-right__regular.svg",
+    "nodeId": "2217:3283",
+    "componentSetId": "2217:3282"
+  },
+  {
+    "name": "heroui-v3-icon__hand-point-up__regular",
+    "file": "heroui-v3-icon__hand-point-up__regular.svg",
+    "nodeId": "2217:1055",
+    "componentSetId": "2217:1054"
+  },
+  {
+    "name": "heroui-v3-icon__hand-stop__regular",
+    "file": "heroui-v3-icon__hand-stop__regular.svg",
+    "nodeId": "2217:3101",
+    "componentSetId": "2217:3100"
+  },
+  {
+    "name": "heroui-v3-icon__hand__regular",
+    "file": "heroui-v3-icon__hand__regular.svg",
+    "nodeId": "2217:3089",
+    "componentSetId": "2217:3088"
+  },
+  {
+    "name": "heroui-v3-icon__handset-arrow-in__regular",
+    "file": "heroui-v3-icon__handset-arrow-in__regular.svg",
+    "nodeId": "2217:6125",
+    "componentSetId": "2217:6124"
+  },
+  {
+    "name": "heroui-v3-icon__handset-arrow-out__regular",
+    "file": "heroui-v3-icon__handset-arrow-out__regular.svg",
+    "nodeId": "2217:6132",
+    "componentSetId": "2217:6131"
+  },
+  {
+    "name": "heroui-v3-icon__handset__regular",
+    "file": "heroui-v3-icon__handset__regular.svg",
+    "nodeId": "2217:4879",
+    "componentSetId": "2217:4878"
+  },
+  {
+    "name": "heroui-v3-icon__hard-drive__regular",
+    "file": "heroui-v3-icon__hard-drive__regular.svg",
+    "nodeId": "2217:1499",
+    "componentSetId": "2217:1498"
+  },
+  {
+    "name": "heroui-v3-icon__hashtag__regular",
+    "file": "heroui-v3-icon__hashtag__regular.svg",
+    "nodeId": "2217:3456",
+    "componentSetId": "2217:3455"
+  },
+  {
+    "name": "heroui-v3-icon__heading-1__regular",
+    "file": "heroui-v3-icon__heading-1__regular.svg",
+    "nodeId": "2217:5085",
+    "componentSetId": "2217:5084"
+  },
+  {
+    "name": "heroui-v3-icon__heading-2__regular",
+    "file": "heroui-v3-icon__heading-2__regular.svg",
+    "nodeId": "2217:5093",
+    "componentSetId": "2217:5092"
+  },
+  {
+    "name": "heroui-v3-icon__heading-3__regular",
+    "file": "heroui-v3-icon__heading-3__regular.svg",
+    "nodeId": "2217:5101",
+    "componentSetId": "2217:5100"
+  },
+  {
+    "name": "heroui-v3-icon__heading-4__regular",
+    "file": "heroui-v3-icon__heading-4__regular.svg",
+    "nodeId": "2217:5109",
+    "componentSetId": "2217:5108"
+  },
+  {
+    "name": "heroui-v3-icon__heading-5__regular",
+    "file": "heroui-v3-icon__heading-5__regular.svg",
+    "nodeId": "2217:5117",
+    "componentSetId": "2217:5116"
+  },
+  {
+    "name": "heroui-v3-icon__heading-6__regular",
+    "file": "heroui-v3-icon__heading-6__regular.svg",
+    "nodeId": "2217:5125",
+    "componentSetId": "2217:5124"
+  },
+  {
+    "name": "heroui-v3-icon__heading__regular",
+    "file": "heroui-v3-icon__heading__regular.svg",
+    "nodeId": "2217:3895",
+    "componentSetId": "2217:3894"
+  },
+  {
+    "name": "heroui-v3-icon__headphones__regular",
+    "file": "heroui-v3-icon__headphones__regular.svg",
+    "nodeId": "2217:4426",
+    "componentSetId": "2217:4425"
+  },
+  {
+    "name": "heroui-v3-icon__heart-crack__regular",
+    "file": "heroui-v3-icon__heart-crack__regular.svg",
+    "nodeId": "2217:4259",
+    "componentSetId": "2217:4258"
+  },
+  {
+    "name": "heroui-v3-icon__heart-pulse__regular",
+    "file": "heroui-v3-icon__heart-pulse__regular.svg",
+    "nodeId": "2217:1786",
+    "componentSetId": "2217:1785"
+  },
+  {
+    "name": "heroui-v3-icon__heart__fill",
+    "file": "heroui-v3-icon__heart__fill.svg",
+    "nodeId": "2217:1067",
+    "componentSetId": "2217:1062"
+  },
+  {
+    "name": "heroui-v3-icon__heart__regular",
+    "file": "heroui-v3-icon__heart__regular.svg",
+    "nodeId": "2217:1063",
+    "componentSetId": "2217:1062"
+  },
+  {
+    "name": "heroui-v3-icon__hierarchy__regular",
+    "file": "heroui-v3-icon__hierarchy__regular.svg",
+    "nodeId": "2217:5279",
+    "componentSetId": "2217:5278"
+  },
+  {
+    "name": "heroui-v3-icon__house__regular",
+    "file": "heroui-v3-icon__house__regular.svg",
+    "nodeId": "2217:864",
+    "componentSetId": "2217:863"
+  },
+  {
+    "name": "heroui-v3-icon__italic__regular",
+    "file": "heroui-v3-icon__italic__regular.svg",
+    "nodeId": "2217:1285",
+    "componentSetId": "2217:1284"
+  },
+  {
+    "name": "heroui-v3-icon__key__regular",
+    "file": "heroui-v3-icon__key__regular.svg",
+    "nodeId": "2217:939",
+    "componentSetId": "2217:938"
+  },
+  {
+    "name": "heroui-v3-icon__keyboard__regular",
+    "file": "heroui-v3-icon__keyboard__regular.svg",
+    "nodeId": "2217:3166",
+    "componentSetId": "2217:3165"
+  },
+  {
+    "name": "heroui-v3-icon__layers-3-diagonal__regular",
+    "file": "heroui-v3-icon__layers-3-diagonal__regular.svg",
+    "nodeId": "2217:3041",
+    "componentSetId": "2217:3040"
+  },
+  {
+    "name": "heroui-v3-icon__layers-vertical__regular",
+    "file": "heroui-v3-icon__layers-vertical__regular.svg",
+    "nodeId": "2217:3033",
+    "componentSetId": "2217:3032"
+  },
+  {
+    "name": "heroui-v3-icon__layers__regular",
+    "file": "heroui-v3-icon__layers__regular.svg",
+    "nodeId": "2217:3025",
+    "componentSetId": "2217:3024"
+  },
+  {
+    "name": "heroui-v3-icon__layout-cells-large__regular",
+    "file": "heroui-v3-icon__layout-cells-large__regular.svg",
+    "nodeId": "2217:3449",
+    "componentSetId": "2217:3448"
+  },
+  {
+    "name": "heroui-v3-icon__layout-cells__regular",
+    "file": "heroui-v3-icon__layout-cells__regular.svg",
+    "nodeId": "2217:3440",
+    "componentSetId": "2217:3439"
+  },
+  {
+    "name": "heroui-v3-icon__layout-columns-3__regular",
+    "file": "heroui-v3-icon__layout-columns-3__regular.svg",
+    "nodeId": "2217:3353",
+    "componentSetId": "2217:3352"
+  },
+  {
+    "name": "heroui-v3-icon__layout-columns__regular",
+    "file": "heroui-v3-icon__layout-columns__regular.svg",
+    "nodeId": "2217:4666",
+    "componentSetId": "2217:4665"
+  },
+  {
+    "name": "heroui-v3-icon__layout-footer__regular",
+    "file": "heroui-v3-icon__layout-footer__regular.svg",
+    "nodeId": "2217:5054",
+    "componentSetId": "2217:5053"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-cells-large-letter-d__regular",
+    "file": "heroui-v3-icon__layout-header-cells-large-letter-d__regular.svg",
+    "nodeId": "2217:4621",
+    "componentSetId": "2217:4620"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-cells-large-thunderbolt__regular",
+    "file": "heroui-v3-icon__layout-header-cells-large-thunderbolt__regular.svg",
+    "nodeId": "2217:4609",
+    "componentSetId": "2217:4608"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-cells-large__fill",
+    "file": "heroui-v3-icon__layout-header-cells-large__fill.svg",
+    "nodeId": "2217:3614",
+    "componentSetId": "2217:3606"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-cells-large__regular",
+    "file": "heroui-v3-icon__layout-header-cells-large__regular.svg",
+    "nodeId": "2217:3607",
+    "componentSetId": "2217:3606"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-cells__regular",
+    "file": "heroui-v3-icon__layout-header-cells__regular.svg",
+    "nodeId": "2217:3598",
+    "componentSetId": "2217:3597"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-columns__regular",
+    "file": "heroui-v3-icon__layout-header-columns__regular.svg",
+    "nodeId": "2217:3346",
+    "componentSetId": "2217:3345"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-cursor__regular",
+    "file": "heroui-v3-icon__layout-header-cursor__regular.svg",
+    "nodeId": "2217:5267",
+    "componentSetId": "2217:5266"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header-side-content__regular",
+    "file": "heroui-v3-icon__layout-header-side-content__regular.svg",
+    "nodeId": "2217:3333",
+    "componentSetId": "2217:3332"
+  },
+  {
+    "name": "heroui-v3-icon__layout-header__regular",
+    "file": "heroui-v3-icon__layout-header__regular.svg",
+    "nodeId": "2217:3327",
+    "componentSetId": "2217:3326"
+  },
+  {
+    "name": "heroui-v3-icon__layout-list__regular",
+    "file": "heroui-v3-icon__layout-list__regular.svg",
+    "nodeId": "2217:3990",
+    "componentSetId": "2217:3989"
+  },
+  {
+    "name": "heroui-v3-icon__layout-rows-3__regular",
+    "file": "heroui-v3-icon__layout-rows-3__regular.svg",
+    "nodeId": "2217:3360",
+    "componentSetId": "2217:3359"
+  },
+  {
+    "name": "heroui-v3-icon__layout-rows__regular",
+    "file": "heroui-v3-icon__layout-rows__regular.svg",
+    "nodeId": "2217:4672",
+    "componentSetId": "2217:4671"
+  },
+  {
+    "name": "heroui-v3-icon__layout-side-content-left__regular",
+    "file": "heroui-v3-icon__layout-side-content-left__regular.svg",
+    "nodeId": "2217:3340",
+    "componentSetId": "2217:3339"
+  },
+  {
+    "name": "heroui-v3-icon__layout-side-content-right__regular",
+    "file": "heroui-v3-icon__layout-side-content-right__regular.svg",
+    "nodeId": "2217:5774",
+    "componentSetId": "2217:5773"
+  },
+  {
+    "name": "heroui-v3-icon__layout-split-columns-3__regular",
+    "file": "heroui-v3-icon__layout-split-columns-3__regular.svg",
+    "nodeId": "2217:5580",
+    "componentSetId": "2217:5579"
+  },
+  {
+    "name": "heroui-v3-icon__layout-split-columns__regular",
+    "file": "heroui-v3-icon__layout-split-columns__regular.svg",
+    "nodeId": "2217:5556",
+    "componentSetId": "2217:5555"
+  },
+  {
+    "name": "heroui-v3-icon__layout-split-rows__regular",
+    "file": "heroui-v3-icon__layout-split-rows__regular.svg",
+    "nodeId": "2217:5562",
+    "componentSetId": "2217:5561"
+  },
+  {
+    "name": "heroui-v3-icon__layout-split-side-content-left__regular",
+    "file": "heroui-v3-icon__layout-split-side-content-left__regular.svg",
+    "nodeId": "2217:5568",
+    "componentSetId": "2217:5567"
+  },
+  {
+    "name": "heroui-v3-icon__layout-split-side-content-right__regular",
+    "file": "heroui-v3-icon__layout-split-side-content-right__regular.svg",
+    "nodeId": "2217:5574",
+    "componentSetId": "2217:5573"
+  },
+  {
+    "name": "heroui-v3-icon__layout-tabs__regular",
+    "file": "heroui-v3-icon__layout-tabs__regular.svg",
+    "nodeId": "2217:5356",
+    "componentSetId": "2217:5355"
+  },
+  {
+    "name": "heroui-v3-icon__letter-group__regular",
+    "file": "heroui-v3-icon__letter-group__regular.svg",
+    "nodeId": "2217:4904",
+    "componentSetId": "2217:4903"
+  },
+  {
+    "name": "heroui-v3-icon__letter-m__regular",
+    "file": "heroui-v3-icon__letter-m__regular.svg",
+    "nodeId": "2217:5351",
+    "componentSetId": "2217:5350"
+  },
+  {
+    "name": "heroui-v3-icon__life-ring__regular",
+    "file": "heroui-v3-icon__life-ring__regular.svg",
+    "nodeId": "2217:1513",
+    "componentSetId": "2217:1512"
+  },
+  {
+    "name": "heroui-v3-icon__line-right-2__regular",
+    "file": "heroui-v3-icon__line-right-2__regular.svg",
+    "nodeId": "4672:32880",
+    "componentSetId": "4672:32879"
+  },
+  {
+    "name": "heroui-v3-icon__line-right__regular",
+    "file": "heroui-v3-icon__line-right__regular.svg",
+    "nodeId": "4672:32870",
+    "componentSetId": "4672:32869"
+  },
+  {
+    "name": "heroui-v3-icon__link-slash__regular",
+    "file": "heroui-v3-icon__link-slash__regular.svg",
+    "nodeId": "2217:2398",
+    "componentSetId": "2217:2397"
+  },
+  {
+    "name": "heroui-v3-icon__link__regular",
+    "file": "heroui-v3-icon__link__regular.svg",
+    "nodeId": "2217:953",
+    "componentSetId": "2217:952"
+  },
+  {
+    "name": "heroui-v3-icon__list-check-lock__regular",
+    "file": "heroui-v3-icon__list-check-lock__regular.svg",
+    "nodeId": "2217:4435",
+    "componentSetId": "2217:4434"
+  },
+  {
+    "name": "heroui-v3-icon__list-check__regular",
+    "file": "heroui-v3-icon__list-check__regular.svg",
+    "nodeId": "2217:3422",
+    "componentSetId": "2217:3421"
+  },
+  {
+    "name": "heroui-v3-icon__list-ol__regular",
+    "file": "heroui-v3-icon__list-ol__regular.svg",
+    "nodeId": "2217:5251",
+    "componentSetId": "2217:5250"
+  },
+  {
+    "name": "heroui-v3-icon__list-timeline__regular",
+    "file": "heroui-v3-icon__list-timeline__regular.svg",
+    "nodeId": "2217:3957",
+    "componentSetId": "2217:3956"
+  },
+  {
+    "name": "heroui-v3-icon__list-ul__regular",
+    "file": "heroui-v3-icon__list-ul__regular.svg",
+    "nodeId": "2217:3412",
+    "componentSetId": "2217:3411"
+  },
+  {
+    "name": "heroui-v3-icon__lock-open__regular",
+    "file": "heroui-v3-icon__lock-open__regular.svg",
+    "nodeId": "2217:930",
+    "componentSetId": "2217:929"
+  },
+  {
+    "name": "heroui-v3-icon__lock__regular",
+    "file": "heroui-v3-icon__lock__regular.svg",
+    "nodeId": "2217:921",
+    "componentSetId": "2217:920"
+  },
+  {
+    "name": "heroui-v3-icon__logo-acrobat__regular",
+    "file": "heroui-v3-icon__logo-acrobat__regular.svg",
+    "nodeId": "2217:4567",
+    "componentSetId": "2217:4566"
+  },
+  {
+    "name": "heroui-v3-icon__logo-android__solid",
+    "file": "heroui-v3-icon__logo-android__solid.svg",
+    "nodeId": "7649:1823",
+    "componentSetId": "7649:1822"
+  },
+  {
+    "name": "heroui-v3-icon__logo-apple__solid",
+    "file": "heroui-v3-icon__logo-apple__solid.svg",
+    "nodeId": "3045:13483",
+    "componentSetId": "3045:13482"
+  },
+  {
+    "name": "heroui-v3-icon__logo-claude__solid",
+    "file": "heroui-v3-icon__logo-claude__solid.svg",
+    "nodeId": "15214:16380",
+    "componentSetId": "15214:16379"
+  },
+  {
+    "name": "heroui-v3-icon__logo-cursor__solid",
+    "file": "heroui-v3-icon__logo-cursor__solid.svg",
+    "nodeId": "15214:16401",
+    "componentSetId": "15214:16400"
+  },
+  {
+    "name": "heroui-v3-icon__logo-discord__solid",
+    "file": "heroui-v3-icon__logo-discord__solid.svg",
+    "nodeId": "7896:5008",
+    "componentSetId": "7896:5007"
+  },
+  {
+    "name": "heroui-v3-icon__logo-docker__regular",
+    "file": "heroui-v3-icon__logo-docker__regular.svg",
+    "nodeId": "2217:4560",
+    "componentSetId": "2217:4559"
+  },
+  {
+    "name": "heroui-v3-icon__logo-draw-io__regular",
+    "file": "heroui-v3-icon__logo-draw-io__regular.svg",
+    "nodeId": "2217:5881",
+    "componentSetId": "2217:5880"
+  },
+  {
+    "name": "heroui-v3-icon__logo-facebook__regular",
+    "file": "heroui-v3-icon__logo-facebook__regular.svg",
+    "nodeId": "2217:4816",
+    "componentSetId": "2217:4815"
+  },
+  {
+    "name": "heroui-v3-icon__logo-figma__solid",
+    "file": "heroui-v3-icon__logo-figma__solid.svg",
+    "nodeId": "17287:9165",
+    "componentSetId": "17287:9164"
+  },
+  {
+    "name": "heroui-v3-icon__logo-github__solid",
+    "file": "heroui-v3-icon__logo-github__solid.svg",
+    "nodeId": "6249:782",
+    "componentSetId": "6249:781"
+  },
+  {
+    "name": "heroui-v3-icon__logo-gitlab__regular",
+    "file": "heroui-v3-icon__logo-gitlab__regular.svg",
+    "nodeId": "2217:4503",
+    "componentSetId": "2217:4502"
+  },
+  {
+    "name": "heroui-v3-icon__logo-google__solid",
+    "file": "heroui-v3-icon__logo-google__solid.svg",
+    "nodeId": "3045:13467",
+    "componentSetId": "3045:13466"
+  },
+  {
+    "name": "heroui-v3-icon__logo-linux__regular",
+    "file": "heroui-v3-icon__logo-linux__regular.svg",
+    "nodeId": "2217:4528",
+    "componentSetId": "2217:4527"
+  },
+  {
+    "name": "heroui-v3-icon__logo-macos__regular",
+    "file": "heroui-v3-icon__logo-macos__regular.svg",
+    "nodeId": "2217:4518",
+    "componentSetId": "2217:4517"
+  },
+  {
+    "name": "heroui-v3-icon__logo-markdown__regular",
+    "file": "heroui-v3-icon__logo-markdown__regular.svg",
+    "nodeId": "2217:4919",
+    "componentSetId": "2217:4918"
+  },
+  {
+    "name": "heroui-v3-icon__logo-mermaid__regular",
+    "file": "heroui-v3-icon__logo-mermaid__regular.svg",
+    "nodeId": "2217:5876",
+    "componentSetId": "2217:5875"
+  },
+  {
+    "name": "heroui-v3-icon__logo-notion__regular",
+    "file": "heroui-v3-icon__logo-notion__regular.svg",
+    "nodeId": "2217:4469",
+    "componentSetId": "2217:4468"
+  },
+  {
+    "name": "heroui-v3-icon__logo-openai__solid",
+    "file": "heroui-v3-icon__logo-openai__solid.svg",
+    "nodeId": "15213:16371",
+    "componentSetId": "15213:16370"
+  },
+  {
+    "name": "heroui-v3-icon__logo-osi__regular",
+    "file": "heroui-v3-icon__logo-osi__regular.svg",
+    "nodeId": "2217:4823",
+    "componentSetId": "2217:4822"
+  },
+  {
+    "name": "heroui-v3-icon__logo-playstore__solid",
+    "file": "heroui-v3-icon__logo-playstore__solid.svg",
+    "nodeId": "7483:818",
+    "componentSetId": "7483:817"
+  },
+  {
+    "name": "heroui-v3-icon__logo-python__regular",
+    "file": "heroui-v3-icon__logo-python__regular.svg",
+    "nodeId": "2217:4480",
+    "componentSetId": "2217:4479"
+  },
+  {
+    "name": "heroui-v3-icon__logo-stack-overflow__regular",
+    "file": "heroui-v3-icon__logo-stack-overflow__regular.svg",
+    "nodeId": "2217:4548",
+    "componentSetId": "2217:4547"
+  },
+  {
+    "name": "heroui-v3-icon__logo-telegram__regular",
+    "file": "heroui-v3-icon__logo-telegram__regular.svg",
+    "nodeId": "2217:4463",
+    "componentSetId": "2217:4462"
+  },
+  {
+    "name": "heroui-v3-icon__logo-twitter__solid",
+    "file": "heroui-v3-icon__logo-twitter__solid.svg",
+    "nodeId": "17286:9041",
+    "componentSetId": "17286:9040"
+  },
+  {
+    "name": "heroui-v3-icon__logo-ubuntu__regular",
+    "file": "heroui-v3-icon__logo-ubuntu__regular.svg",
+    "nodeId": "2217:4538",
+    "componentSetId": "2217:4537"
+  },
+  {
+    "name": "heroui-v3-icon__logo-vscode__solid",
+    "file": "heroui-v3-icon__logo-vscode__solid.svg",
+    "nodeId": "15214:16392",
+    "componentSetId": "15214:16391"
+  },
+  {
+    "name": "heroui-v3-icon__logo-windows__regular",
+    "file": "heroui-v3-icon__logo-windows__regular.svg",
+    "nodeId": "2217:4511",
+    "componentSetId": "2217:4510"
+  },
+  {
+    "name": "heroui-v3-icon__logo-yandex-cloud__regular",
+    "file": "heroui-v3-icon__logo-yandex-cloud__regular.svg",
+    "nodeId": "2217:4496",
+    "componentSetId": "2217:4495"
+  },
+  {
+    "name": "heroui-v3-icon__logo-yandex-messenger__regular",
+    "file": "heroui-v3-icon__logo-yandex-messenger__regular.svg",
+    "nodeId": "2217:5868",
+    "componentSetId": "2217:5867"
+  },
+  {
+    "name": "heroui-v3-icon__logo-yandex-tracker__regular",
+    "file": "heroui-v3-icon__logo-yandex-tracker__regular.svg",
+    "nodeId": "2217:4893",
+    "componentSetId": "2217:4892"
+  },
+  {
+    "name": "heroui-v3-icon__logo-yandex__regular",
+    "file": "heroui-v3-icon__logo-yandex__regular.svg",
+    "nodeId": "2217:4490",
+    "componentSetId": "2217:4489"
+  },
+  {
+    "name": "heroui-v3-icon__magic-wand__regular",
+    "file": "heroui-v3-icon__magic-wand__regular.svg",
+    "nodeId": "2217:5060",
+    "componentSetId": "2217:5059"
+  },
+  {
+    "name": "heroui-v3-icon__magnet__regular",
+    "file": "heroui-v3-icon__magnet__regular.svg",
+    "nodeId": "2217:3320",
+    "componentSetId": "2217:3319"
+  },
+  {
+    "name": "heroui-v3-icon__magnifier-minus__regular",
+    "file": "heroui-v3-icon__magnifier-minus__regular.svg",
+    "nodeId": "2217:2688",
+    "componentSetId": "2217:2687"
+  },
+  {
+    "name": "heroui-v3-icon__magnifier-plus__regular",
+    "file": "heroui-v3-icon__magnifier-plus__regular.svg",
+    "nodeId": "2217:2695",
+    "componentSetId": "2217:2694"
+  },
+  {
+    "name": "heroui-v3-icon__magnifier__regular",
+    "file": "heroui-v3-icon__magnifier__regular.svg",
+    "nodeId": "2217:826",
+    "componentSetId": "2217:825"
+  },
+  {
+    "name": "heroui-v3-icon__map-pin-minus__regular",
+    "file": "heroui-v3-icon__map-pin-minus__regular.svg",
+    "nodeId": "2217:5312",
+    "componentSetId": "2217:5311"
+  },
+  {
+    "name": "heroui-v3-icon__map-pin-plus__regular",
+    "file": "heroui-v3-icon__map-pin-plus__regular.svg",
+    "nodeId": "2217:5306",
+    "componentSetId": "2217:5305"
+  },
+  {
+    "name": "heroui-v3-icon__map-pin__regular",
+    "file": "heroui-v3-icon__map-pin__regular.svg",
+    "nodeId": "2217:5300",
+    "componentSetId": "2217:5299"
+  },
+  {
+    "name": "heroui-v3-icon__math-intersection-shape__regular",
+    "file": "heroui-v3-icon__math-intersection-shape__regular.svg",
+    "nodeId": "2217:3932",
+    "componentSetId": "2217:3931"
+  },
+  {
+    "name": "heroui-v3-icon__math-operations__regular",
+    "file": "heroui-v3-icon__math-operations__regular.svg",
+    "nodeId": "2217:4041",
+    "componentSetId": "2217:4040"
+  },
+  {
+    "name": "heroui-v3-icon__math-union-shape__regular",
+    "file": "heroui-v3-icon__math-union-shape__regular.svg",
+    "nodeId": "2217:3937",
+    "componentSetId": "2217:3936"
+  },
+  {
+    "name": "heroui-v3-icon__medal__regular",
+    "file": "heroui-v3-icon__medal__regular.svg",
+    "nodeId": "2217:4572",
+    "componentSetId": "2217:4571"
+  },
+  {
+    "name": "heroui-v3-icon__megaphone__regular",
+    "file": "heroui-v3-icon__megaphone__regular.svg",
+    "nodeId": "2217:2777",
+    "componentSetId": "2217:2776"
+  },
+  {
+    "name": "heroui-v3-icon__microphone-slash__regular",
+    "file": "heroui-v3-icon__microphone-slash__regular.svg",
+    "nodeId": "2217:2449",
+    "componentSetId": "2217:2448"
+  },
+  {
+    "name": "heroui-v3-icon__microphone__regular",
+    "file": "heroui-v3-icon__microphone__regular.svg",
+    "nodeId": "2217:1393",
+    "componentSetId": "2217:1392"
+  },
+  {
+    "name": "heroui-v3-icon__minus__regular",
+    "file": "heroui-v3-icon__minus__regular.svg",
+    "nodeId": "2217:1130",
+    "componentSetId": "2217:1129"
+  },
+  {
+    "name": "heroui-v3-icon__molecule__regular",
+    "file": "heroui-v3-icon__molecule__regular.svg",
+    "nodeId": "2217:5318",
+    "componentSetId": "2217:5317"
+  },
+  {
+    "name": "heroui-v3-icon__moon__regular",
+    "file": "heroui-v3-icon__moon__regular.svg",
+    "nodeId": "2217:4989",
+    "componentSetId": "2217:4988"
+  },
+  {
+    "name": "heroui-v3-icon__mug__regular",
+    "file": "heroui-v3-icon__mug__regular.svg",
+    "nodeId": "2217:5859",
+    "componentSetId": "2217:5858"
+  },
+  {
+    "name": "heroui-v3-icon__music-note__regular",
+    "file": "heroui-v3-icon__music-note__regular.svg",
+    "nodeId": "2217:5293",
+    "componentSetId": "2217:5292"
+  },
+  {
+    "name": "heroui-v3-icon__nodes-down__regular",
+    "file": "heroui-v3-icon__nodes-down__regular.svg",
+    "nodeId": "2217:3687",
+    "componentSetId": "2217:3686"
+  },
+  {
+    "name": "heroui-v3-icon__nodes-left__regular",
+    "file": "heroui-v3-icon__nodes-left__regular.svg",
+    "nodeId": "2217:3678",
+    "componentSetId": "2217:3677"
+  },
+  {
+    "name": "heroui-v3-icon__nodes-right__regular",
+    "file": "heroui-v3-icon__nodes-right__regular.svg",
+    "nodeId": "2217:3669",
+    "componentSetId": "2217:3668"
+  },
+  {
+    "name": "heroui-v3-icon__nodes-up__regular",
+    "file": "heroui-v3-icon__nodes-up__regular.svg",
+    "nodeId": "2217:3696",
+    "componentSetId": "2217:3695"
+  },
+  {
+    "name": "heroui-v3-icon__nut-hex__regular",
+    "file": "heroui-v3-icon__nut-hex__regular.svg",
+    "nodeId": "2217:5601",
+    "componentSetId": "2217:5600"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-bottom__regular",
+    "file": "heroui-v3-icon__object-align-bottom__regular.svg",
+    "nodeId": "2217:5844",
+    "componentSetId": "2217:5843"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-center-horizontal__regular",
+    "file": "heroui-v3-icon__object-align-center-horizontal__regular.svg",
+    "nodeId": "2217:5816",
+    "componentSetId": "2217:5815"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-center-vertical__regular",
+    "file": "heroui-v3-icon__object-align-center-vertical__regular.svg",
+    "nodeId": "2217:5836",
+    "componentSetId": "2217:5835"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-justify-horizontal__regular",
+    "file": "heroui-v3-icon__object-align-justify-horizontal__regular.svg",
+    "nodeId": "2217:5796",
+    "componentSetId": "2217:5795"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-justify-vertical__regular",
+    "file": "heroui-v3-icon__object-align-justify-vertical__regular.svg",
+    "nodeId": "2217:5803",
+    "componentSetId": "2217:5802"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-left__regular",
+    "file": "heroui-v3-icon__object-align-left__regular.svg",
+    "nodeId": "2217:5810",
+    "componentSetId": "2217:5809"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-right__regular",
+    "file": "heroui-v3-icon__object-align-right__regular.svg",
+    "nodeId": "2217:5824",
+    "componentSetId": "2217:5823"
+  },
+  {
+    "name": "heroui-v3-icon__object-align-top__regular",
+    "file": "heroui-v3-icon__object-align-top__regular.svg",
+    "nodeId": "2217:5830",
+    "componentSetId": "2217:5829"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-bottom__regular",
+    "file": "heroui-v3-icon__objects-align-bottom__regular.svg",
+    "nodeId": "2217:2391",
+    "componentSetId": "2217:2390"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-center-horizontal__regular",
+    "file": "heroui-v3-icon__objects-align-center-horizontal__regular.svg",
+    "nodeId": "2217:2331",
+    "componentSetId": "2217:2330"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-center-vertical__regular",
+    "file": "heroui-v3-icon__objects-align-center-vertical__regular.svg",
+    "nodeId": "2217:2340",
+    "componentSetId": "2217:2339"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-justify-horizontal__regular",
+    "file": "heroui-v3-icon__objects-align-justify-horizontal__regular.svg",
+    "nodeId": "2217:5780",
+    "componentSetId": "2217:5779"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-justify-vertical__regular",
+    "file": "heroui-v3-icon__objects-align-justify-vertical__regular.svg",
+    "nodeId": "2217:5788",
+    "componentSetId": "2217:5787"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-left__regular",
+    "file": "heroui-v3-icon__objects-align-left__regular.svg",
+    "nodeId": "2217:2384",
+    "componentSetId": "2217:2383"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-right__regular",
+    "file": "heroui-v3-icon__objects-align-right__regular.svg",
+    "nodeId": "2217:2364",
+    "componentSetId": "2217:2363"
+  },
+  {
+    "name": "heroui-v3-icon__objects-align-top__regular",
+    "file": "heroui-v3-icon__objects-align-top__regular.svg",
+    "nodeId": "2217:2371",
+    "componentSetId": "2217:2370"
+  },
+  {
+    "name": "heroui-v3-icon__octagon-xmark__regular",
+    "file": "heroui-v3-icon__octagon-xmark__regular.svg",
+    "nodeId": "2217:4140",
+    "componentSetId": "2217:4139"
+  },
+  {
+    "name": "heroui-v3-icon__office-badge__regular",
+    "file": "heroui-v3-icon__office-badge__regular.svg",
+    "nodeId": "2217:4290",
+    "componentSetId": "2217:4289"
+  },
+  {
+    "name": "heroui-v3-icon__palette__regular",
+    "file": "heroui-v3-icon__palette__regular.svg",
+    "nodeId": "2217:4310",
+    "componentSetId": "2217:4309"
+  },
+  {
+    "name": "heroui-v3-icon__paper-plane__regular",
+    "file": "heroui-v3-icon__paper-plane__regular.svg",
+    "nodeId": "2217:5234",
+    "componentSetId": "2217:5233"
+  },
+  {
+    "name": "heroui-v3-icon__paperclip__regular",
+    "file": "heroui-v3-icon__paperclip__regular.svg",
+    "nodeId": "2217:961",
+    "componentSetId": "2217:960"
+  },
+  {
+    "name": "heroui-v3-icon__passport__regular",
+    "file": "heroui-v3-icon__passport__regular.svg",
+    "nodeId": "2217:2786",
+    "componentSetId": "2217:2785"
+  },
+  {
+    "name": "heroui-v3-icon__pause__fill",
+    "file": "heroui-v3-icon__pause__fill.svg",
+    "nodeId": "2217:3559",
+    "componentSetId": "2217:3553"
+  },
+  {
+    "name": "heroui-v3-icon__pause__regular",
+    "file": "heroui-v3-icon__pause__regular.svg",
+    "nodeId": "2217:3554",
+    "componentSetId": "2217:3553"
+  },
+  {
+    "name": "heroui-v3-icon__pencil-to-line__regular",
+    "file": "heroui-v3-icon__pencil-to-line__regular.svg",
+    "nodeId": "2217:3307",
+    "componentSetId": "2217:3306"
+  },
+  {
+    "name": "heroui-v3-icon__pencil-to-square__regular",
+    "file": "heroui-v3-icon__pencil-to-square__regular.svg",
+    "nodeId": "2217:2473",
+    "componentSetId": "2217:2472"
+  },
+  {
+    "name": "heroui-v3-icon__pencil__regular",
+    "file": "heroui-v3-icon__pencil__regular.svg",
+    "nodeId": "2217:3314",
+    "componentSetId": "2217:3313"
+  },
+  {
+    "name": "heroui-v3-icon__percent__regular",
+    "file": "heroui-v3-icon__percent__regular.svg",
+    "nodeId": "2217:5286",
+    "componentSetId": "2217:5285"
+  },
+  {
+    "name": "heroui-v3-icon__person-gear__regular",
+    "file": "heroui-v3-icon__person-gear__regular.svg",
+    "nodeId": "2217:5625",
+    "componentSetId": "2217:5624"
+  },
+  {
+    "name": "heroui-v3-icon__person-magnifier__regular",
+    "file": "heroui-v3-icon__person-magnifier__regular.svg",
+    "nodeId": "2217:1735",
+    "componentSetId": "2217:1734"
+  },
+  {
+    "name": "heroui-v3-icon__person-nut-hex__regular",
+    "file": "heroui-v3-icon__person-nut-hex__regular.svg",
+    "nodeId": "2217:5614",
+    "componentSetId": "2217:5613"
+  },
+  {
+    "name": "heroui-v3-icon__person-pencil__regular",
+    "file": "heroui-v3-icon__person-pencil__regular.svg",
+    "nodeId": "2217:1694",
+    "componentSetId": "2217:1693"
+  },
+  {
+    "name": "heroui-v3-icon__person-planet-earth__regular",
+    "file": "heroui-v3-icon__person-planet-earth__regular.svg",
+    "nodeId": "2217:5955",
+    "componentSetId": "2217:5954"
+  },
+  {
+    "name": "heroui-v3-icon__person-plus__regular",
+    "file": "heroui-v3-icon__person-plus__regular.svg",
+    "nodeId": "2217:1703",
+    "componentSetId": "2217:1702"
+  },
+  {
+    "name": "heroui-v3-icon__person-speaker__regular",
+    "file": "heroui-v3-icon__person-speaker__regular.svg",
+    "nodeId": "2217:4280",
+    "componentSetId": "2217:4279"
+  },
+  {
+    "name": "heroui-v3-icon__person-worker__regular",
+    "file": "heroui-v3-icon__person-worker__regular.svg",
+    "nodeId": "2217:1721",
+    "componentSetId": "2217:1720"
+  },
+  {
+    "name": "heroui-v3-icon__person-xmark__regular",
+    "file": "heroui-v3-icon__person-xmark__regular.svg",
+    "nodeId": "2217:1712",
+    "componentSetId": "2217:1711"
+  },
+  {
+    "name": "heroui-v3-icon__person__regular",
+    "file": "heroui-v3-icon__person__regular.svg",
+    "nodeId": "2217:870",
+    "componentSetId": "2217:869"
+  },
+  {
+    "name": "heroui-v3-icon__persons-lock__regular",
+    "file": "heroui-v3-icon__persons-lock__regular.svg",
+    "nodeId": "2217:4026",
+    "componentSetId": "2217:4025"
+  },
+  {
+    "name": "heroui-v3-icon__persons__regular",
+    "file": "heroui-v3-icon__persons__regular.svg",
+    "nodeId": "2217:1680",
+    "componentSetId": "2217:1679"
+  },
+  {
+    "name": "heroui-v3-icon__picture__regular",
+    "file": "heroui-v3-icon__picture__regular.svg",
+    "nodeId": "2217:898",
+    "componentSetId": "2217:897"
+  },
+  {
+    "name": "heroui-v3-icon__pill__regular",
+    "file": "heroui-v3-icon__pill__regular.svg",
+    "nodeId": "2217:1544",
+    "componentSetId": "2217:1543"
+  },
+  {
+    "name": "heroui-v3-icon__pin-slash__fill",
+    "file": "heroui-v3-icon__pin-slash__fill.svg",
+    "nodeId": "2217:2424",
+    "componentSetId": "2217:2409"
+  },
+  {
+    "name": "heroui-v3-icon__pin-slash__regular",
+    "file": "heroui-v3-icon__pin-slash__regular.svg",
+    "nodeId": "2217:2410",
+    "componentSetId": "2217:2409"
+  },
+  {
+    "name": "heroui-v3-icon__pin__fill",
+    "file": "heroui-v3-icon__pin__fill.svg",
+    "nodeId": "2217:1014",
+    "componentSetId": "2217:1003"
+  },
+  {
+    "name": "heroui-v3-icon__pin__regular",
+    "file": "heroui-v3-icon__pin__regular.svg",
+    "nodeId": "2217:1004",
+    "componentSetId": "2217:1003"
+  },
+  {
+    "name": "heroui-v3-icon__pipeline__regular",
+    "file": "heroui-v3-icon__pipeline__regular.svg",
+    "nodeId": "2217:6000",
+    "componentSetId": "2217:5999"
+  },
+  {
+    "name": "heroui-v3-icon__planet-earth__regular",
+    "file": "heroui-v3-icon__planet-earth__regular.svg",
+    "nodeId": "2217:5898",
+    "componentSetId": "2217:5897"
+  },
+  {
+    "name": "heroui-v3-icon__play__fill",
+    "file": "heroui-v3-icon__play__fill.svg",
+    "nodeId": "2217:3540",
+    "componentSetId": "2217:3535"
+  },
+  {
+    "name": "heroui-v3-icon__play__regular",
+    "file": "heroui-v3-icon__play__regular.svg",
+    "nodeId": "2217:3536",
+    "componentSetId": "2217:3535"
+  },
+  {
+    "name": "heroui-v3-icon__plug-connection__regular",
+    "file": "heroui-v3-icon__plug-connection__regular.svg",
+    "nodeId": "2217:3835",
+    "componentSetId": "2217:3834"
+  },
+  {
+    "name": "heroui-v3-icon__plug-wire__regular",
+    "file": "heroui-v3-icon__plug-wire__regular.svg",
+    "nodeId": "2217:3844",
+    "componentSetId": "2217:3843"
+  },
+  {
+    "name": "heroui-v3-icon__plus__regular",
+    "file": "heroui-v3-icon__plus__regular.svg",
+    "nodeId": "2217:1125",
+    "componentSetId": "2217:1124"
+  },
+  {
+    "name": "heroui-v3-icon__power__regular",
+    "file": "heroui-v3-icon__power__regular.svg",
+    "nodeId": "2217:4073",
+    "componentSetId": "2217:4072"
+  },
+  {
+    "name": "heroui-v3-icon__printer__regular",
+    "file": "heroui-v3-icon__printer__regular.svg",
+    "nodeId": "2217:4388",
+    "componentSetId": "2217:4387"
+  },
+  {
+    "name": "heroui-v3-icon__pulse__regular",
+    "file": "heroui-v3-icon__pulse__regular.svg",
+    "nodeId": "2217:5229",
+    "componentSetId": "2217:5228"
+  },
+  {
+    "name": "heroui-v3-icon__puzzle__regular",
+    "file": "heroui-v3-icon__puzzle__regular.svg",
+    "nodeId": "2217:1440",
+    "componentSetId": "2217:1439"
+  },
+  {
+    "name": "heroui-v3-icon__qr-code__regular",
+    "file": "heroui-v3-icon__qr-code__regular.svg",
+    "nodeId": "2217:3149",
+    "componentSetId": "2217:3148"
+  },
+  {
+    "name": "heroui-v3-icon__quote-close__regular",
+    "file": "heroui-v3-icon__quote-close__regular.svg",
+    "nodeId": "2217:4800",
+    "componentSetId": "2217:4799"
+  },
+  {
+    "name": "heroui-v3-icon__quote-open__regular",
+    "file": "heroui-v3-icon__quote-open__regular.svg",
+    "nodeId": "2217:4808",
+    "componentSetId": "2217:4807"
+  },
+  {
+    "name": "heroui-v3-icon__radius-1__regular",
+    "file": "heroui-v3-icon__radius-1__regular.svg",
+    "nodeId": "14779:6041",
+    "componentSetId": "14779:6040"
+  },
+  {
+    "name": "heroui-v3-icon__radius-2__regular",
+    "file": "heroui-v3-icon__radius-2__regular.svg",
+    "nodeId": "14779:6047",
+    "componentSetId": "14779:6046"
+  },
+  {
+    "name": "heroui-v3-icon__radius-3__regular",
+    "file": "heroui-v3-icon__radius-3__regular.svg",
+    "nodeId": "14779:6051",
+    "componentSetId": "14779:6050"
+  },
+  {
+    "name": "heroui-v3-icon__radius-4__regular",
+    "file": "heroui-v3-icon__radius-4__regular.svg",
+    "nodeId": "14779:6055",
+    "componentSetId": "14779:6054"
+  },
+  {
+    "name": "heroui-v3-icon__radius-field__regular",
+    "file": "heroui-v3-icon__radius-field__regular.svg",
+    "nodeId": "15217:17138",
+    "componentSetId": "15217:17137"
+  },
+  {
+    "name": "heroui-v3-icon__receipt__regular",
+    "file": "heroui-v3-icon__receipt__regular.svg",
+    "nodeId": "2217:3484",
+    "componentSetId": "2217:3483"
+  },
+  {
+    "name": "heroui-v3-icon__rectangle-pulse__regular",
+    "file": "heroui-v3-icon__rectangle-pulse__regular.svg",
+    "nodeId": "2217:4448",
+    "componentSetId": "2217:4447"
+  },
+  {
+    "name": "heroui-v3-icon__rectangles-4__regular",
+    "file": "heroui-v3-icon__rectangles-4__regular.svg",
+    "nodeId": "2217:3432",
+    "componentSetId": "2217:3431"
+  },
+  {
+    "name": "heroui-v3-icon__rocket__regular",
+    "file": "heroui-v3-icon__rocket__regular.svg",
+    "nodeId": "2217:4216",
+    "componentSetId": "2217:4215"
+  },
+  {
+    "name": "heroui-v3-icon__round-brackets__regular",
+    "file": "heroui-v3-icon__round-brackets__regular.svg",
+    "nodeId": "2217:4844",
+    "componentSetId": "2217:4843"
+  },
+  {
+    "name": "heroui-v3-icon__route__regular",
+    "file": "heroui-v3-icon__route__regular.svg",
+    "nodeId": "2217:3178",
+    "componentSetId": "2217:3177"
+  },
+  {
+    "name": "heroui-v3-icon__sack__regular",
+    "file": "heroui-v3-icon__sack__regular.svg",
+    "nodeId": "2217:4416",
+    "componentSetId": "2217:4415"
+  },
+  {
+    "name": "heroui-v3-icon__scales-balanced__regular",
+    "file": "heroui-v3-icon__scales-balanced__regular.svg",
+    "nodeId": "2217:4017",
+    "componentSetId": "2217:4016"
+  },
+  {
+    "name": "heroui-v3-icon__scales-unbalanced__regular",
+    "file": "heroui-v3-icon__scales-unbalanced__regular.svg",
+    "nodeId": "2217:4678",
+    "componentSetId": "2217:4677"
+  },
+  {
+    "name": "heroui-v3-icon__scissors__regular",
+    "file": "heroui-v3-icon__scissors__regular.svg",
+    "nodeId": "2217:2755",
+    "componentSetId": "2217:2754"
+  },
+  {
+    "name": "heroui-v3-icon__seal-check__regular",
+    "file": "heroui-v3-icon__seal-check__regular.svg",
+    "nodeId": "2217:2648",
+    "componentSetId": "2217:2647"
+  },
+  {
+    "name": "heroui-v3-icon__seal-percent__regular",
+    "file": "heroui-v3-icon__seal-percent__regular.svg",
+    "nodeId": "2217:5066",
+    "componentSetId": "2217:5065"
+  },
+  {
+    "name": "heroui-v3-icon__server__regular",
+    "file": "heroui-v3-icon__server__regular.svg",
+    "nodeId": "2217:1484",
+    "componentSetId": "2217:1483"
+  },
+  {
+    "name": "heroui-v3-icon__shapes-3__regular",
+    "file": "heroui-v3-icon__shapes-3__regular.svg",
+    "nodeId": "2217:5176",
+    "componentSetId": "2217:5175"
+  },
+  {
+    "name": "heroui-v3-icon__shapes-4__regular",
+    "file": "heroui-v3-icon__shapes-4__regular.svg",
+    "nodeId": "2217:5188",
+    "componentSetId": "2217:5187"
+  },
+  {
+    "name": "heroui-v3-icon__shield-check__regular",
+    "file": "heroui-v3-icon__shield-check__regular.svg",
+    "nodeId": "2217:1764",
+    "componentSetId": "2217:1763"
+  },
+  {
+    "name": "heroui-v3-icon__shield-exclamation__regular",
+    "file": "heroui-v3-icon__shield-exclamation__regular.svg",
+    "nodeId": "2217:1757",
+    "componentSetId": "2217:1756"
+  },
+  {
+    "name": "heroui-v3-icon__shield-keyhole__regular",
+    "file": "heroui-v3-icon__shield-keyhole__regular.svg",
+    "nodeId": "2217:1770",
+    "componentSetId": "2217:1769"
+  },
+  {
+    "name": "heroui-v3-icon__shield__regular",
+    "file": "heroui-v3-icon__shield__regular.svg",
+    "nodeId": "2217:947",
+    "componentSetId": "2217:946"
+  },
+  {
+    "name": "heroui-v3-icon__shopping-bag__regular",
+    "file": "heroui-v3-icon__shopping-bag__regular.svg",
+    "nodeId": "2217:1361",
+    "componentSetId": "2217:1360"
+  },
+  {
+    "name": "heroui-v3-icon__shopping-basket__regular",
+    "file": "heroui-v3-icon__shopping-basket__regular.svg",
+    "nodeId": "2217:1369",
+    "componentSetId": "2217:1368"
+  },
+  {
+    "name": "heroui-v3-icon__shopping-cart__regular",
+    "file": "heroui-v3-icon__shopping-cart__regular.svg",
+    "nodeId": "2217:1351",
+    "componentSetId": "2217:1350"
+  },
+  {
+    "name": "heroui-v3-icon__shuffle__regular",
+    "file": "heroui-v3-icon__shuffle__regular.svg",
+    "nodeId": "2217:4406",
+    "componentSetId": "2217:4405"
+  },
+  {
+    "name": "heroui-v3-icon__signal__regular",
+    "file": "heroui-v3-icon__signal__regular.svg",
+    "nodeId": "2217:5009",
+    "componentSetId": "2217:5008"
+  },
+  {
+    "name": "heroui-v3-icon__sliders-vertical__regular",
+    "file": "heroui-v3-icon__sliders-vertical__regular.svg",
+    "nodeId": "2217:1670",
+    "componentSetId": "2217:1669"
+  },
+  {
+    "name": "heroui-v3-icon__sliders__regular",
+    "file": "heroui-v3-icon__sliders__regular.svg",
+    "nodeId": "2217:1660",
+    "componentSetId": "2217:1659"
+  },
+  {
+    "name": "heroui-v3-icon__smartphone__regular",
+    "file": "heroui-v3-icon__smartphone__regular.svg",
+    "nodeId": "2217:1306",
+    "componentSetId": "2217:1305"
+  },
+  {
+    "name": "heroui-v3-icon__snail__regular",
+    "file": "heroui-v3-icon__snail__regular.svg",
+    "nodeId": "2217:5912",
+    "componentSetId": "2217:5911"
+  },
+  {
+    "name": "heroui-v3-icon__snowflake__regular",
+    "file": "heroui-v3-icon__snowflake__regular.svg",
+    "nodeId": "2217:3159",
+    "componentSetId": "2217:3158"
+  },
+  {
+    "name": "heroui-v3-icon__sphere__regular",
+    "file": "heroui-v3-icon__sphere__regular.svg",
+    "nodeId": "2217:2722",
+    "componentSetId": "2217:2721"
+  },
+  {
+    "name": "heroui-v3-icon__square-article__regular",
+    "file": "heroui-v3-icon__square-article__regular.svg",
+    "nodeId": "2217:3925",
+    "componentSetId": "2217:3924"
+  },
+  {
+    "name": "heroui-v3-icon__square-bars-vertical__regular",
+    "file": "heroui-v3-icon__square-bars-vertical__regular.svg",
+    "nodeId": "2217:5213",
+    "componentSetId": "2217:5212"
+  },
+  {
+    "name": "heroui-v3-icon__square-bars__regular",
+    "file": "heroui-v3-icon__square-bars__regular.svg",
+    "nodeId": "2217:5221",
+    "componentSetId": "2217:5220"
+  },
+  {
+    "name": "heroui-v3-icon__square-brackets-bars-vertical__regular",
+    "file": "heroui-v3-icon__square-brackets-bars-vertical__regular.svg",
+    "nodeId": "2217:4772",
+    "componentSetId": "2217:4771"
+  },
+  {
+    "name": "heroui-v3-icon__square-brackets-letter-a__regular",
+    "file": "heroui-v3-icon__square-brackets-letter-a__regular.svg",
+    "nodeId": "2217:4765",
+    "componentSetId": "2217:4764"
+  },
+  {
+    "name": "heroui-v3-icon__square-brackets__regular",
+    "file": "heroui-v3-icon__square-brackets__regular.svg",
+    "nodeId": "2217:4850",
+    "componentSetId": "2217:4849"
+  },
+  {
+    "name": "heroui-v3-icon__square-chart-bar__regular",
+    "file": "heroui-v3-icon__square-chart-bar__regular.svg",
+    "nodeId": "2217:5205",
+    "componentSetId": "2217:5204"
+  },
+  {
+    "name": "heroui-v3-icon__square-chart-column__regular",
+    "file": "heroui-v3-icon__square-chart-column__regular.svg",
+    "nodeId": "2217:5197",
+    "componentSetId": "2217:5196"
+  },
+  {
+    "name": "heroui-v3-icon__square-check__regular",
+    "file": "heroui-v3-icon__square-check__regular.svg",
+    "nodeId": "2217:1951",
+    "componentSetId": "2217:1950"
+  },
+  {
+    "name": "heroui-v3-icon__square-dashed-circle__regular",
+    "file": "heroui-v3-icon__square-dashed-circle__regular.svg",
+    "nodeId": "2217:4735",
+    "componentSetId": "2217:4734"
+  },
+  {
+    "name": "heroui-v3-icon__square-dashed-letter-a__regular",
+    "file": "heroui-v3-icon__square-dashed-letter-a__regular.svg",
+    "nodeId": "2217:4758",
+    "componentSetId": "2217:4757"
+  },
+  {
+    "name": "heroui-v3-icon__square-dashed-letter-t__regular",
+    "file": "heroui-v3-icon__square-dashed-letter-t__regular.svg",
+    "nodeId": "2217:4741",
+    "componentSetId": "2217:4740"
+  },
+  {
+    "name": "heroui-v3-icon__square-dashed-text__regular",
+    "file": "heroui-v3-icon__square-dashed-text__regular.svg",
+    "nodeId": "2217:4788",
+    "componentSetId": "2217:4787"
+  },
+  {
+    "name": "heroui-v3-icon__square-dashed__regular",
+    "file": "heroui-v3-icon__square-dashed__regular.svg",
+    "nodeId": "2217:4730",
+    "componentSetId": "2217:4729"
+  },
+  {
+    "name": "heroui-v3-icon__square-dot__regular",
+    "file": "heroui-v3-icon__square-dot__regular.svg",
+    "nodeId": "2217:2465",
+    "componentSetId": "2217:2464"
+  },
+  {
+    "name": "heroui-v3-icon__square-exclamation__regular",
+    "file": "heroui-v3-icon__square-exclamation__regular.svg",
+    "nodeId": "2217:1846",
+    "componentSetId": "2217:1845"
+  },
+  {
+    "name": "heroui-v3-icon__square-hashtag__regular",
+    "file": "heroui-v3-icon__square-hashtag__regular.svg",
+    "nodeId": "2217:1643",
+    "componentSetId": "2217:1642"
+  },
+  {
+    "name": "heroui-v3-icon__square-letter-p__regular",
+    "file": "heroui-v3-icon__square-letter-p__regular.svg",
+    "nodeId": "2217:5906",
+    "componentSetId": "2217:5905"
+  },
+  {
+    "name": "heroui-v3-icon__square-letter-t__regular",
+    "file": "heroui-v3-icon__square-letter-t__regular.svg",
+    "nodeId": "2217:1637",
+    "componentSetId": "2217:1636"
+  },
+  {
+    "name": "heroui-v3-icon__square-list-ul__regular",
+    "file": "heroui-v3-icon__square-list-ul__regular.svg",
+    "nodeId": "2217:5240",
+    "componentSetId": "2217:5239"
+  },
+  {
+    "name": "heroui-v3-icon__square-minus__regular",
+    "file": "heroui-v3-icon__square-minus__regular.svg",
+    "nodeId": "2217:1939",
+    "componentSetId": "2217:1938"
+  },
+  {
+    "name": "heroui-v3-icon__square-plus__regular",
+    "file": "heroui-v3-icon__square-plus__regular.svg",
+    "nodeId": "2217:1933",
+    "componentSetId": "2217:1932"
+  },
+  {
+    "name": "heroui-v3-icon__square-xmark__regular",
+    "file": "heroui-v3-icon__square-xmark__regular.svg",
+    "nodeId": "2217:1945",
+    "componentSetId": "2217:1944"
+  },
+  {
+    "name": "heroui-v3-icon__square__fill",
+    "file": "heroui-v3-icon__square__fill.svg",
+    "nodeId": "2217:4661",
+    "componentSetId": "2217:4656"
+  },
+  {
+    "name": "heroui-v3-icon__square__regular",
+    "file": "heroui-v3-icon__square__regular.svg",
+    "nodeId": "2217:4657",
+    "componentSetId": "2217:4656"
+  },
+  {
+    "name": "heroui-v3-icon__star__fill",
+    "file": "heroui-v3-icon__star__fill.svg",
+    "nodeId": "2217:990",
+    "componentSetId": "2217:985"
+  },
+  {
+    "name": "heroui-v3-icon__star__regular",
+    "file": "heroui-v3-icon__star__regular.svg",
+    "nodeId": "2217:986",
+    "componentSetId": "2217:985"
+  },
+  {
+    "name": "heroui-v3-icon__stethoscope__regular",
+    "file": "heroui-v3-icon__stethoscope__regular.svg",
+    "nodeId": "2217:1522",
+    "componentSetId": "2217:1521"
+  },
+  {
+    "name": "heroui-v3-icon__sticker__regular",
+    "file": "heroui-v3-icon__sticker__regular.svg",
+    "nodeId": "2217:884",
+    "componentSetId": "2217:883"
+  },
+  {
+    "name": "heroui-v3-icon__stop__fill",
+    "file": "heroui-v3-icon__stop__fill.svg",
+    "nodeId": "2217:3549",
+    "componentSetId": "2217:3544"
+  },
+  {
+    "name": "heroui-v3-icon__stop__regular",
+    "file": "heroui-v3-icon__stop__regular.svg",
+    "nodeId": "2217:3545",
+    "componentSetId": "2217:3544"
+  },
+  {
+    "name": "heroui-v3-icon__stopwatch__regular",
+    "file": "heroui-v3-icon__stopwatch__regular.svg",
+    "nodeId": "2217:4961",
+    "componentSetId": "2217:4960"
+  },
+  {
+    "name": "heroui-v3-icon__strikethrough__regular",
+    "file": "heroui-v3-icon__strikethrough__regular.svg",
+    "nodeId": "2217:1298",
+    "componentSetId": "2217:1297"
+  },
+  {
+    "name": "heroui-v3-icon__suitcase__regular",
+    "file": "heroui-v3-icon__suitcase__regular.svg",
+    "nodeId": "2217:1344",
+    "componentSetId": "2217:1343"
+  },
+  {
+    "name": "heroui-v3-icon__sun__regular",
+    "file": "heroui-v3-icon__sun__regular.svg",
+    "nodeId": "2217:4996",
+    "componentSetId": "2217:4995"
+  },
+  {
+    "name": "heroui-v3-icon__t-shirt__regular",
+    "file": "heroui-v3-icon__t-shirt__regular.svg",
+    "nodeId": "2217:2714",
+    "componentSetId": "2217:2713"
+  },
+  {
+    "name": "heroui-v3-icon__tag-dollar__regular",
+    "file": "heroui-v3-icon__tag-dollar__regular.svg",
+    "nodeId": "2217:4170",
+    "componentSetId": "2217:4169"
+  },
+  {
+    "name": "heroui-v3-icon__tag-ruble__regular",
+    "file": "heroui-v3-icon__tag-ruble__regular.svg",
+    "nodeId": "2217:4164",
+    "componentSetId": "2217:4163"
+  },
+  {
+    "name": "heroui-v3-icon__tag__regular",
+    "file": "heroui-v3-icon__tag__regular.svg",
+    "nodeId": "2217:4158",
+    "componentSetId": "2217:4157"
+  },
+  {
+    "name": "heroui-v3-icon__tags__regular",
+    "file": "heroui-v3-icon__tags__regular.svg",
+    "nodeId": "2217:4146",
+    "componentSetId": "2217:4145"
+  },
+  {
+    "name": "heroui-v3-icon__target-dart__regular",
+    "file": "heroui-v3-icon__target-dart__regular.svg",
+    "nodeId": "2217:5890",
+    "componentSetId": "2217:5889"
+  },
+  {
+    "name": "heroui-v3-icon__target__regular",
+    "file": "heroui-v3-icon__target__regular.svg",
+    "nodeId": "2217:1422",
+    "componentSetId": "2217:1421"
+  },
+  {
+    "name": "heroui-v3-icon__terminal-line__regular",
+    "file": "heroui-v3-icon__terminal-line__regular.svg",
+    "nodeId": "2217:5261",
+    "componentSetId": "2217:5260"
+  },
+  {
+    "name": "heroui-v3-icon__terminal__regular",
+    "file": "heroui-v3-icon__terminal__regular.svg",
+    "nodeId": "2217:2908",
+    "componentSetId": "2217:2907"
+  },
+  {
+    "name": "heroui-v3-icon__text-align-center__regular",
+    "file": "heroui-v3-icon__text-align-center__regular.svg",
+    "nodeId": "2217:2598",
+    "componentSetId": "2217:2597"
+  },
+  {
+    "name": "heroui-v3-icon__text-align-justify__regular",
+    "file": "heroui-v3-icon__text-align-justify__regular.svg",
+    "nodeId": "2217:2614",
+    "componentSetId": "2217:2613"
+  },
+  {
+    "name": "heroui-v3-icon__text-align-left__regular",
+    "file": "heroui-v3-icon__text-align-left__regular.svg",
+    "nodeId": "2217:2590",
+    "componentSetId": "2217:2589"
+  },
+  {
+    "name": "heroui-v3-icon__text-align-right__regular",
+    "file": "heroui-v3-icon__text-align-right__regular.svg",
+    "nodeId": "2217:2606",
+    "componentSetId": "2217:2605"
+  },
+  {
+    "name": "heroui-v3-icon__text-indent__regular",
+    "file": "heroui-v3-icon__text-indent__regular.svg",
+    "nodeId": "2217:3403",
+    "componentSetId": "2217:3402"
+  },
+  {
+    "name": "heroui-v3-icon__text-outdent__regular",
+    "file": "heroui-v3-icon__text-outdent__regular.svg",
+    "nodeId": "2217:3394",
+    "componentSetId": "2217:3393"
+  },
+  {
+    "name": "heroui-v3-icon__text__regular",
+    "file": "heroui-v3-icon__text__regular.svg",
+    "nodeId": "2217:4747",
+    "componentSetId": "2217:4746"
+  },
+  {
+    "name": "heroui-v3-icon__thumbs-down__fill",
+    "file": "heroui-v3-icon__thumbs-down__fill.svg",
+    "nodeId": "2217:1032",
+    "componentSetId": "2217:1024"
+  },
+  {
+    "name": "heroui-v3-icon__thumbs-down__regular",
+    "file": "heroui-v3-icon__thumbs-down__regular.svg",
+    "nodeId": "2217:1025",
+    "componentSetId": "2217:1024"
+  },
+  {
+    "name": "heroui-v3-icon__thumbs-up-2__regular",
+    "file": "heroui-v3-icon__thumbs-up-2__regular.svg",
+    "nodeId": "2217:5395",
+    "componentSetId": "2217:5394"
+  },
+  {
+    "name": "heroui-v3-icon__thumbs-up__fill",
+    "file": "heroui-v3-icon__thumbs-up__fill.svg",
+    "nodeId": "2217:1047",
+    "componentSetId": "2217:1039"
+  },
+  {
+    "name": "heroui-v3-icon__thumbs-up__regular",
+    "file": "heroui-v3-icon__thumbs-up__regular.svg",
+    "nodeId": "2217:1040",
+    "componentSetId": "2217:1039"
+  },
+  {
+    "name": "heroui-v3-icon__thunderbolt__fill",
+    "file": "heroui-v3-icon__thunderbolt__fill.svg",
+    "nodeId": "2217:981",
+    "componentSetId": "2217:976"
+  },
+  {
+    "name": "heroui-v3-icon__thunderbolt__regular",
+    "file": "heroui-v3-icon__thunderbolt__regular.svg",
+    "nodeId": "2217:977",
+    "componentSetId": "2217:976"
+  },
+  {
+    "name": "heroui-v3-icon__ticket__regular",
+    "file": "heroui-v3-icon__ticket__regular.svg",
+    "nodeId": "2217:5157",
+    "componentSetId": "2217:5156"
+  },
+  {
+    "name": "heroui-v3-icon__timeline__regular",
+    "file": "heroui-v3-icon__timeline__regular.svg",
+    "nodeId": "2217:3974",
+    "componentSetId": "2217:3973"
+  },
+  {
+    "name": "heroui-v3-icon__timestamps__regular",
+    "file": "heroui-v3-icon__timestamps__regular.svg",
+    "nodeId": "2217:3885",
+    "componentSetId": "2217:3884"
+  },
+  {
+    "name": "heroui-v3-icon__traffic-light__regular",
+    "file": "heroui-v3-icon__traffic-light__regular.svg",
+    "nodeId": "2217:4061",
+    "componentSetId": "2217:4060"
+  },
+  {
+    "name": "heroui-v3-icon__trash-bin__regular",
+    "file": "heroui-v3-icon__trash-bin__regular.svg",
+    "nodeId": "2217:1156",
+    "componentSetId": "2217:1155"
+  },
+  {
+    "name": "heroui-v3-icon__tray__regular",
+    "file": "heroui-v3-icon__tray__regular.svg",
+    "nodeId": "2217:1476",
+    "componentSetId": "2217:1475"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-down__fill",
+    "file": "heroui-v3-icon__triangle-down__fill.svg",
+    "nodeId": "2217:3495",
+    "componentSetId": "2217:3490"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-down__regular",
+    "file": "heroui-v3-icon__triangle-down__regular.svg",
+    "nodeId": "2217:3491",
+    "componentSetId": "2217:3490"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-exclamation__fill",
+    "file": "heroui-v3-icon__triangle-exclamation__fill.svg",
+    "nodeId": "2217:1824",
+    "componentSetId": "2217:1817"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-exclamation__regular",
+    "file": "heroui-v3-icon__triangle-exclamation__regular.svg",
+    "nodeId": "2217:1818",
+    "componentSetId": "2217:1817"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-left__fill",
+    "file": "heroui-v3-icon__triangle-left__fill.svg",
+    "nodeId": "2217:3504",
+    "componentSetId": "2217:3499"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-left__regular",
+    "file": "heroui-v3-icon__triangle-left__regular.svg",
+    "nodeId": "2217:3500",
+    "componentSetId": "2217:3499"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-right__fill",
+    "file": "heroui-v3-icon__triangle-right__fill.svg",
+    "nodeId": "2217:3531",
+    "componentSetId": "2217:3526"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-right__regular",
+    "file": "heroui-v3-icon__triangle-right__regular.svg",
+    "nodeId": "2217:3527",
+    "componentSetId": "2217:3526"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-thunderbolt__regular",
+    "file": "heroui-v3-icon__triangle-thunderbolt__regular.svg",
+    "nodeId": "2217:3478",
+    "componentSetId": "2217:3477"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-up__fill",
+    "file": "heroui-v3-icon__triangle-up__fill.svg",
+    "nodeId": "2217:3522",
+    "componentSetId": "2217:3517"
+  },
+  {
+    "name": "heroui-v3-icon__triangle-up__regular",
+    "file": "heroui-v3-icon__triangle-up__regular.svg",
+    "nodeId": "2217:3518",
+    "componentSetId": "2217:3517"
+  },
+  {
+    "name": "heroui-v3-icon__trolley__regular",
+    "file": "heroui-v3-icon__trolley__regular.svg",
+    "nodeId": "2217:1382",
+    "componentSetId": "2217:1381"
+  },
+  {
+    "name": "heroui-v3-icon__tv-retro__regular",
+    "file": "heroui-v3-icon__tv-retro__regular.svg",
+    "nodeId": "2217:4325",
+    "componentSetId": "2217:4324"
+  },
+  {
+    "name": "heroui-v3-icon__tv__regular",
+    "file": "heroui-v3-icon__tv__regular.svg",
+    "nodeId": "2217:4319",
+    "componentSetId": "2217:4318"
+  },
+  {
+    "name": "heroui-v3-icon__umbrella__regular",
+    "file": "heroui-v3-icon__umbrella__regular.svg",
+    "nodeId": "2217:2707",
+    "componentSetId": "2217:2706"
+  },
+  {
+    "name": "heroui-v3-icon__underline__regular",
+    "file": "heroui-v3-icon__underline__regular.svg",
+    "nodeId": "2217:1292",
+    "componentSetId": "2217:1291"
+  },
+  {
+    "name": "heroui-v3-icon__vault__regular",
+    "file": "heroui-v3-icon__vault__regular.svg",
+    "nodeId": "2217:4087",
+    "componentSetId": "2217:4086"
+  },
+  {
+    "name": "heroui-v3-icon__vector-circle__regular",
+    "file": "heroui-v3-icon__vector-circle__regular.svg",
+    "nodeId": "2217:3585",
+    "componentSetId": "2217:3584"
+  },
+  {
+    "name": "heroui-v3-icon__vector-square__regular",
+    "file": "heroui-v3-icon__vector-square__regular.svg",
+    "nodeId": "2217:3573",
+    "componentSetId": "2217:3572"
+  },
+  {
+    "name": "heroui-v3-icon__video__regular",
+    "file": "heroui-v3-icon__video__regular.svg",
+    "nodeId": "2217:1402",
+    "componentSetId": "2217:1401"
+  },
+  {
+    "name": "heroui-v3-icon__volume-low__regular",
+    "file": "heroui-v3-icon__volume-low__regular.svg",
+    "nodeId": "2217:2875",
+    "componentSetId": "2217:2874"
+  },
+  {
+    "name": "heroui-v3-icon__volume-off__regular",
+    "file": "heroui-v3-icon__volume-off__regular.svg",
+    "nodeId": "2217:2886",
+    "componentSetId": "2217:2885"
+  },
+  {
+    "name": "heroui-v3-icon__volume-xmark__regular",
+    "file": "heroui-v3-icon__volume-xmark__regular.svg",
+    "nodeId": "2217:2893",
+    "componentSetId": "2217:2892"
+  },
+  {
+    "name": "heroui-v3-icon__volume__fill",
+    "file": "heroui-v3-icon__volume__fill.svg",
+    "nodeId": "2217:2863",
+    "componentSetId": "2217:2851"
+  },
+  {
+    "name": "heroui-v3-icon__volume__regular",
+    "file": "heroui-v3-icon__volume__regular.svg",
+    "nodeId": "2217:2852",
+    "componentSetId": "2217:2851"
+  },
+  {
+    "name": "heroui-v3-icon__weight-hanging__regular",
+    "file": "heroui-v3-icon__weight-hanging__regular.svg",
+    "nodeId": "2217:4054",
+    "componentSetId": "2217:4053"
+  },
+  {
+    "name": "heroui-v3-icon__wrench__regular",
+    "file": "heroui-v3-icon__wrench__regular.svg",
+    "nodeId": "2217:2806",
+    "componentSetId": "2217:2805"
+  },
+  {
+    "name": "heroui-v3-icon__xmark__regular",
+    "file": "heroui-v3-icon__xmark__regular.svg",
+    "nodeId": "2217:1135",
+    "componentSetId": "2217:1134"
+  }
+]
