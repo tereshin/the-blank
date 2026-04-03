@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../design_system/design_system.dart';
+
 class ComponentDemoTitle extends StatelessWidget {
   const ComponentDemoTitle(this.text, {super.key});
 
@@ -79,5 +81,5 @@ class ComponentDemoSubtitle extends StatelessWidget {
 }
 
 void showComponentDemoMessage(BuildContext context, String message) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  HeroUiToastService.show(context, message: message);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
 import 'shared_demo_widgets.dart';
 
@@ -26,14 +27,38 @@ Widget buildLinkDemo(BuildContext context) => SingleChildScrollView(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       HeroUiLink(
-        label: 'Open docs',
-        trailing: const Icon(Icons.open_in_new_rounded),
-        onTap: () => showComponentDemoMessage(context, 'Open docs clicked'),
+        label: 'Default',
+        onTap: () => showComponentDemoMessage(context, 'Default link clicked'),
+      ),
+      const SizedBox(height: 12),
+      HeroUiLink(
+        label: 'With external icon',
+        showIcon: true,
+        onTap: () => showComponentDemoMessage(context, 'External link clicked'),
+      ),
+      const SizedBox(height: 12),
+      const HeroUiLink(
+        label: 'Hover state',
+        state: HeroUiLinkState.hover,
+        showIcon: true,
+      ),
+      const SizedBox(height: 12),
+      const HeroUiLink(
+        label: 'Pressed state',
+        state: HeroUiLinkState.pressed,
+        showIcon: true,
+      ),
+      const SizedBox(height: 12),
+      const HeroUiLink(
+        label: 'Focus state',
+        state: HeroUiLinkState.focus,
+        showIcon: true,
       ),
       const SizedBox(height: 12),
       const HeroUiLink(
         label: 'Disabled link',
-        trailing: Icon(Icons.block_rounded),
+        state: HeroUiLinkState.disabled,
+        showIcon: true,
       ),
     ],
   ),
@@ -45,20 +70,104 @@ Widget buildTabsDemo(BuildContext context) => const _TabsDemo();
 
 Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
   padding: const EdgeInsets.all(16),
-  child: HeroUiToolbar(
-    leading: const Icon(Icons.tune_rounded),
-    title: const Text('Component actions'),
-    actions: [
-      HeroUiButton(
-        label: 'Filter',
-        onPressed: () => showComponentDemoMessage(context, 'Filter clicked'),
-        variant: HeroUiButtonVariant.secondary,
-        size: HeroUiButtonSize.sm,
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const ComponentDemoSubtitle('Detached / Horizontal'),
+      HeroUiToolbar(
+        children: [
+          HeroUiButton(
+            label: 'Undo',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(HeroUiIconManifest.arrowLeftRegular),
+            onPressed: () => showComponentDemoMessage(context, 'Undo clicked'),
+          ),
+          const HeroUiToolbarDivider(),
+          HeroUiButton(
+            label: 'Redo',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(HeroUiIconManifest.chevronRightRegular),
+            onPressed: () => showComponentDemoMessage(context, 'Redo clicked'),
+          ),
+        ],
       ),
-      HeroUiButton(
-        label: 'Create',
-        onPressed: () => showComponentDemoMessage(context, 'Create clicked'),
-        size: HeroUiButtonSize.sm,
+      const SizedBox(height: 16),
+      const ComponentDemoSubtitle('Attached / Horizontal'),
+      HeroUiToolbar(
+        isAttached: true,
+        children: [
+          HeroUiButton(
+            label: 'Copy',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(HeroUiIconManifest.houseRegular),
+            onPressed: () => showComponentDemoMessage(context, 'Copy clicked'),
+          ),
+          const HeroUiToolbarDivider(),
+          HeroUiButton(
+            label: 'Paste',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(HeroUiIconManifest.plusRegular),
+            onPressed: () => showComponentDemoMessage(context, 'Paste clicked'),
+          ),
+        ],
+      ),
+      const SizedBox(height: 16),
+      const ComponentDemoSubtitle('Detached / Vertical'),
+      HeroUiToolbar(
+        orientation: HeroUiToolbarOrientation.vertical,
+        children: [
+          HeroUiButton(
+            label: 'Save',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(HeroUiIconManifest.bellRegular),
+            onPressed: () => showComponentDemoMessage(context, 'Save clicked'),
+          ),
+          const HeroUiToolbarDivider(
+            toolbarOrientation: HeroUiToolbarOrientation.vertical,
+          ),
+          HeroUiButton(
+            label: 'Delete',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(HeroUiIconManifest.trashBinRegular),
+            onPressed: () =>
+                showComponentDemoMessage(context, 'Delete clicked'),
+          ),
+        ],
+      ),
+      const SizedBox(height: 16),
+      const ComponentDemoSubtitle('Attached / Vertical'),
+      HeroUiToolbar(
+        isAttached: true,
+        orientation: HeroUiToolbarOrientation.vertical,
+        children: [
+          HeroUiButton(
+            label: 'Settings',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(HeroUiIconManifest.gearRegular),
+            onPressed: () =>
+                showComponentDemoMessage(context, 'Settings clicked'),
+          ),
+          const HeroUiToolbarDivider(
+            toolbarOrientation: HeroUiToolbarOrientation.vertical,
+          ),
+          HeroUiButton(
+            label: 'Archive',
+            variant: HeroUiButtonVariant.tertiary,
+            size: HeroUiButtonSize.md,
+            leading: const HeroUiIcon(
+              HeroUiIconManifest.envelopeOpenXmarkRegular,
+            ),
+            onPressed: () =>
+                showComponentDemoMessage(context, 'Archive clicked'),
+          ),
+        ],
       ),
     ],
   ),
@@ -90,12 +199,12 @@ class _TabsDemoState extends State<_TabsDemo> {
   List<HeroUiTabItem> get _iconTabs => const [
     HeroUiTabItem(
       label: 'Chats',
-      icon: Icons.chat_bubble_outline_rounded,
+      leading: HeroUiIcon('heroui-v3-icon__comment__regular', size: 16),
       child: Text('Chats content'),
     ),
     HeroUiTabItem(
       label: 'Emails',
-      icon: Icons.mail_outline_rounded,
+      leading: HeroUiIcon(HeroUiIconManifest.envelopeRegular, size: 16),
       child: Text('Emails content'),
     ),
   ];
@@ -103,22 +212,25 @@ class _TabsDemoState extends State<_TabsDemo> {
   List<HeroUiTabItem> get _verticalTabs => const [
     HeroUiTabItem(
       label: 'Center Stage for photos',
-      icon: Icons.crop_free_rounded,
+      leading: HeroUiIcon('heroui-v3-icon__square-dashed__regular', size: 16),
       child: Text('Photo mode'),
     ),
     HeroUiTabItem(
       label: 'Dual Capture Video',
-      icon: Icons.groups_2_outlined,
+      leading: HeroUiIcon('heroui-v3-icon__persons__regular', size: 16),
       child: Text('Dual capture'),
     ),
     HeroUiTabItem(
       label: 'Ultra-stabilized video',
-      icon: Icons.videocam_outlined,
+      leading: HeroUiIcon(
+        'heroui-v3-icon__square-dashed-circle__regular',
+        size: 16,
+      ),
       child: Text('Stabilized video'),
     ),
     HeroUiTabItem(
-      label: 'Center Stage for calls',
-      icon: Icons.person_outline_rounded,
+      label: 'Center Stage for video calls',
+      leading: HeroUiIcon(HeroUiIconManifest.personRegular, size: 16),
       child: Text('Calls mode'),
     ),
   ];
@@ -145,51 +257,112 @@ class _TabsDemoState extends State<_TabsDemo> {
         children: [
           const ComponentDemoTitle('Tabs'),
           const ComponentDemoSubtitle('Primary / Hug / Scroll shadow'),
-          SizedBox(
-            width: 210,
-            child: HeroUiTabs(
-              tabs: _durationTabs,
-              variant: HeroUiTabsVariant.primary,
-              behavior: HeroUiTabsBehavior.hug,
-              showPanel: false,
-              showScrollShadow: true,
+          Center(
+            child: SizedBox(
+              width: 211,
+              child: HeroUiTabs(
+                tabs: _durationTabs,
+                variant: HeroUiTabsVariant.primary,
+                behavior: HeroUiTabsBehavior.hug,
+                initialIndex: 2,
+                showPanel: false,
+                showScrollShadow: true,
+              ),
             ),
           ),
           const SizedBox(height: 14),
           const ComponentDemoSubtitle('Primary / Fill'),
-          HeroUiTabs(
-            tabs: _durationTabs,
-            variant: HeroUiTabsVariant.primary,
-            behavior: HeroUiTabsBehavior.fill,
-            showPanel: false,
+          Center(
+            child: SizedBox(
+              width: 253,
+              child: HeroUiTabs(
+                tabs: _durationTabs,
+                variant: HeroUiTabsVariant.primary,
+                behavior: HeroUiTabsBehavior.fill,
+                showPanel: false,
+              ),
+            ),
+          ),
+          const SizedBox(height: 14),
+          const ComponentDemoSubtitle('Primary / Fill / 2 options'),
+          Center(
+            child: SizedBox(
+              width: 229,
+              child: HeroUiTabs(
+                tabs: _inboxTabs,
+                variant: HeroUiTabsVariant.primary,
+                behavior: HeroUiTabsBehavior.fill,
+                showPanel: false,
+              ),
+            ),
+          ),
+          const SizedBox(height: 14),
+          const ComponentDemoSubtitle('Primary / Fill / With icons'),
+          Center(
+            child: SizedBox(
+              width: 229,
+              child: HeroUiTabs(
+                tabs: _iconTabs,
+                variant: HeroUiTabsVariant.primary,
+                behavior: HeroUiTabsBehavior.fill,
+                showPanel: false,
+              ),
+            ),
+          ),
+          const SizedBox(height: 14),
+          const ComponentDemoSubtitle('Primary / Fill / Vertical layout'),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: SizedBox(
+              width: 501,
+              child: HeroUiTabs(
+                tabs: _verticalTabs,
+                variant: HeroUiTabsVariant.primary,
+                behavior: HeroUiTabsBehavior.fill,
+                tabContentOrientation: HeroUiTabContentOrientation.vertical,
+                showPanel: false,
+              ),
+            ),
           ),
           const SizedBox(height: 14),
           const ComponentDemoSubtitle('Secondary / Hug'),
-          SizedBox(
-            width: 240,
-            child: HeroUiTabs(
-              tabs: _durationTabs,
-              variant: HeroUiTabsVariant.secondary,
-              behavior: HeroUiTabsBehavior.hug,
-              showPanel: false,
+          Center(
+            child: SizedBox(
+              width: 211,
+              child: HeroUiTabs(
+                tabs: _durationTabs,
+                variant: HeroUiTabsVariant.secondary,
+                behavior: HeroUiTabsBehavior.hug,
+                showPanel: false,
+                showScrollShadow: false,
+              ),
+            ),
+          ),
+          const SizedBox(height: 14),
+          const ComponentDemoSubtitle('Secondary / Fill / 2 options'),
+          Center(
+            child: SizedBox(
+              width: 229,
+              child: HeroUiTabs(
+                tabs: _inboxTabs,
+                variant: HeroUiTabsVariant.secondary,
+                behavior: HeroUiTabsBehavior.fill,
+                showPanel: false,
+              ),
             ),
           ),
           const SizedBox(height: 14),
           const ComponentDemoSubtitle('Secondary / Fill / With icons'),
-          HeroUiTabs(
-            tabs: _iconTabs,
-            variant: HeroUiTabsVariant.secondary,
-            behavior: HeroUiTabsBehavior.fill,
-            showPanel: false,
-          ),
-          const SizedBox(height: 14),
-          const ComponentDemoSubtitle('Primary / Fill / Vertical layout'),
-          HeroUiTabs(
-            tabs: _verticalTabs,
-            variant: HeroUiTabsVariant.primary,
-            behavior: HeroUiTabsBehavior.fill,
-            tabContentOrientation: HeroUiTabContentOrientation.vertical,
-            showPanel: false,
+          Center(
+            child: SizedBox(
+              width: 229,
+              child: HeroUiTabs(
+                tabs: _iconTabs,
+                variant: HeroUiTabsVariant.secondary,
+                behavior: HeroUiTabsBehavior.fill,
+                showPanel: false,
+              ),
+            ),
           ),
           const SizedBox(height: 14),
           const ComponentDemoSubtitle('Disabled option'),
@@ -270,21 +443,55 @@ class _PaginationDemo extends StatefulWidget {
 }
 
 class _PaginationDemoState extends State<_PaginationDemo> {
-  int _page = 3;
+  static const int _totalItems = 120;
+  int _primaryPage = 1;
+  int _secondaryPage = 1;
+  int _pageSize = 10;
+
+  int get _secondaryTotalPages => (_totalItems / _pageSize).ceil();
 
   @override
   Widget build(BuildContext context) {
+    final clampedSecondaryPage = _secondaryPage
+        .clamp(1, _secondaryTotalPages)
+        .toInt();
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Current page: $_page'),
+          const ComponentDemoSubtitle('Primary'),
+          HeroUiPagination(
+            variant: HeroUiPaginationVariant.primary,
+            currentPage: _primaryPage,
+            totalPages: 12,
+            totalItems: _totalItems,
+            pageSize: 10,
+            itemLabel: 'invoices',
+            onPageChanged: (page) => setState(() => _primaryPage = page),
+          ),
+          const SizedBox(height: 16),
+          const ComponentDemoSubtitle('Secondary'),
           const SizedBox(height: 12),
           HeroUiPagination(
-            currentPage: _page,
-            totalPages: 12,
-            onPageChanged: (page) => setState(() => _page = page),
+            variant: HeroUiPaginationVariant.secondary,
+            currentPage: clampedSecondaryPage,
+            totalPages: _secondaryTotalPages,
+            totalItems: _totalItems,
+            pageSize: _pageSize,
+            pageSizeOptions: const [5, 10, 20, 40],
+            itemLabel: 'results',
+            onPageChanged: (page) => setState(() => _secondaryPage = page),
+            onPageSizeChanged: (value) {
+              setState(() {
+                _pageSize = value;
+                final maxPage = _secondaryTotalPages;
+                if (_secondaryPage > maxPage) {
+                  _secondaryPage = maxPage;
+                }
+              });
+            },
           ),
         ],
       ),

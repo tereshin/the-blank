@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
 import 'shared_demo_widgets.dart';
 
@@ -8,6 +9,8 @@ const String _kInputAffixCopyIcon = 'heroui-v3-icon__copy__regular';
 const String _kInputAffixHandsetIcon = 'heroui-v3-icon__handset__regular';
 const String _kInputAffixEnvelopeIcon = 'heroui-v3-icon__envelope__regular';
 const String _kInputAffixEyeSlashIcon = 'heroui-v3-icon__eye-slash__regular';
+const String _kIconLock = 'heroui-v3-icon__lock__regular';
+const String _kIconKey = 'heroui-v3-icon__key__regular';
 
 // ─── Form ─────────────────────────────────────────────────────────────────────
 Widget buildFormDemo(BuildContext context) => const _SimpleFormDemo();
@@ -480,53 +483,392 @@ class _SimpleFormDemo extends StatefulWidget {
 }
 
 class _SimpleFormDemoState extends State<_SimpleFormDemo> {
-  final _emailController = TextEditingController();
-  final _nameController = TextEditingController();
-  String? _emailError;
+  final _authEmail = TextEditingController();
+  final _authPassword = TextEditingController();
+  final _regName = TextEditingController();
+  final _regEmail = TextEditingController();
+  final _regPassword = TextEditingController();
+  final _newsletterEmail = TextEditingController();
+  final _bookingNotes = TextEditingController();
+
+  bool _rememberMe = false;
+  bool _termsAccepted = false;
+  bool _newsletterWeekly = true;
+  bool _newsletterProduct = false;
+  String? _partySize;
+
+  Color _iconColor(BuildContext context) =>
+      Theme.of(context).colorScheme.onSurfaceVariant;
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _nameController.dispose();
+    _authEmail.dispose();
+    _authPassword.dispose();
+    _regName.dispose();
+    _regEmail.dispose();
+    _regPassword.dispose();
+    _newsletterEmail.dispose();
+    _bookingNotes.dispose();
     super.dispose();
   }
 
-  void _submit() {
-    setState(() {
-      _emailError = _emailController.text.contains('@')
-          ? null
-          : 'Please enter a valid email';
-    });
-    if (_emailError == null) {
-      showComponentDemoMessage(context, 'Form submitted successfully');
-    }
+  Widget _passwordBlock(
+    BuildContext context, {
+    required TextEditingController controller,
+    required String label,
+    String placeholder = '••••••••',
+    HeroUiInputVariant variant = HeroUiInputVariant.primary,
+  }) {
+    final c = _iconColor(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        HeroUiLabel(label, requiredField: true),
+        const SizedBox(height: 4),
+        HeroUiInput(
+          controller: controller,
+          type: HeroUiInputType.password,
+          variant: variant,
+          placeholder: placeholder,
+          prefix: HeroUiIcon(_kIconLock, size: 16, color: c),
+          suffix: HeroUiIcon(_kInputAffixEyeSlashIcon, size: 16, color: c),
+        ),
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final icon = _iconColor(context);
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
-      child: HeroUiForm(
-        child: HeroUiFieldset(
-          legend: 'Profile',
-          description: 'Basic form composition using HeroUI primitives.',
-          children: [
-            HeroUiTextField(
-              label: 'Full name',
-              requiredField: true,
-              controller: _nameController,
-              placeholder: 'Jane Doe',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const ComponentDemoTitle('Form compositions'),
+          const SizedBox(height: 8),
+          HeroUiDescription(
+            'Примеры экранов из компонентов дизайн-системы и HeroUiIcon.',
+          ),
+          const SizedBox(height: 24),
+
+          // ── Авторизация ─────────────────────────────────────────────
+          const ComponentDemoSubtitle('Авторизация'),
+          HeroUiCard(
+            borderRadius: 20,
+
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                HeroUiTextField(
+                  label: 'Email',
+                  requiredField: true,
+                  controller: _authEmail,
+                  placeholder: 'you@example.com',
+                  variant: HeroUiInputVariant.secondary,
+                  prefix: HeroUiIcon(
+                    _kInputAffixEnvelopeIcon,
+                    size: 16,
+                    color: icon,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                _passwordBlock(
+                  context,
+                  controller: _authPassword,
+                  label: 'Пароль',
+                  variant: HeroUiInputVariant.secondary,
+                ),
+                const SizedBox(height: 12),
+                HeroUiCheckbox(
+                  label: 'Запомнить меня на этом устройстве',
+                  value: _rememberMe,
+                  onChanged: (v) => setState(() => _rememberMe = v),
+                  variant: HeroUiCheckboxVariant.secondary,
+                ),
+                const SizedBox(height: 16),
+                HeroUiButton(
+                  label: 'Войти',
+                  size: HeroUiButtonSize.lg,
+                  expand: true,
+
+                  onPressed: () => showComponentDemoMessage(
+                    context,
+                    'Вход: ${_authEmail.text.isEmpty ? '…' : _authEmail.text}',
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Center(
+                  child: HeroUiLink(
+                    label: 'Забыли пароль?',
+                    leading: HeroUiIcon(_kIconKey, size: 16),
+                    onTap: () => showComponentDemoMessage(
+                      context,
+                      'Восстановление пароля (демо)',
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Center(
+                  child: HeroUiLink(
+                    label: 'Создать аккаунт',
+                    leading: HeroUiIcon(
+                      HeroUiIconManifest.plusRegular,
+                      size: 16,
+                    ),
+                    onTap: () =>
+                        showComponentDemoMessage(context, 'Регистрация'),
+                  ),
+                ),
+              ],
             ),
-            HeroUiTextField(
-              label: 'Email',
-              requiredField: true,
-              controller: _emailController,
-              placeholder: 'you@example.com',
-              errorText: _emailError,
+          ),
+
+          const SizedBox(height: 32),
+
+          // ── Регистрация ────────────────────────────────────────────
+          const ComponentDemoSubtitle('Регистрация'),
+          HeroUiSurface(
+            variant: HeroUiSurfaceVariant.secondary,
+            borderRadius: 16,
+            padding: const EdgeInsets.all(4),
+            child: HeroUiFieldset(
+              legend: 'Новый аккаунт',
+              description:
+                  'Мы отправим письмо с подтверждением на указанный адрес.',
+              children: [
+                HeroUiTextField(
+                  label: 'Имя и фамилия',
+                  requiredField: true,
+                  controller: _regName,
+                  placeholder: 'Алексей Иванов',
+                  prefix: HeroUiIcon(
+                    HeroUiIconManifest.personRegular,
+                    size: 16,
+                    color: icon,
+                  ),
+                ),
+                HeroUiTextField(
+                  label: 'Email',
+                  requiredField: true,
+                  controller: _regEmail,
+                  placeholder: 'name@company.com',
+                  description: 'Рабочая почта предпочтительнее.',
+                  prefix: HeroUiIcon(
+                    _kInputAffixEnvelopeIcon,
+                    size: 16,
+                    color: icon,
+                  ),
+                ),
+                _passwordBlock(
+                  context,
+                  controller: _regPassword,
+                  label: 'Пароль',
+                  placeholder: 'Не менее 8 символов',
+                ),
+                HeroUiCheckbox(
+                  label:
+                      'Я принимаю условия использования и политику конфиденциальности',
+                  value: _termsAccepted,
+                  onChanged: (v) => setState(() => _termsAccepted = v),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: HeroUiButton(
+                        label: 'Зарегистрироваться',
+                        variant: HeroUiButtonVariant.primary,
+                        expand: true,
+                        onPressed: _termsAccepted
+                            ? () => showComponentDemoMessage(
+                                context,
+                                'Регистрация отправлена',
+                              )
+                            : null,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    HeroUiButton(
+                      label: 'Отмена',
+                      variant: HeroUiButtonVariant.ghost,
+                      onPressed: () =>
+                          showComponentDemoMessage(context, 'Отмена'),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            HeroUiButton(label: 'Submit', onPressed: _submit),
-          ],
-        ),
+          ),
+
+          const SizedBox(height: 32),
+
+          // ── Рассылка ───────────────────────────────────────────────
+          const ComponentDemoSubtitle('Подписаться на рассылку'),
+          HeroUiCard(
+            borderRadius: 16,
+            showShadow: false,
+            borderColor: Theme.of(context).colorScheme.outlineVariant,
+            header: HeroUiCardHeader(
+              tagline: 'Рассылка',
+              title: 'Будьте в курсе',
+              description: 'Советы, релизы и подборки — без спама.',
+              trailing: HeroUiIcon(
+                HeroUiIconManifest.bellRegular,
+                size: 26,
+                color: icon,
+              ),
+            ),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                HeroUiTextField(
+                  label: 'Email для подписки',
+                  controller: _newsletterEmail,
+                  placeholder: 'hello@example.com',
+                  variant: HeroUiInputVariant.secondary,
+                  prefix: HeroUiIcon(
+                    HeroUiIconManifest.envelopeOpenXmarkRegular,
+                    size: 16,
+                    color: icon,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                HeroUiCheckbox(
+                  label: 'Еженедельный дайджест',
+                  description: 'Лучшие материалы за неделю одним письмом.',
+                  value: _newsletterWeekly,
+                  onChanged: (v) => setState(() => _newsletterWeekly = v),
+                ),
+                HeroUiCheckbox(
+                  variant: HeroUiCheckboxVariant.secondary,
+                  label: 'Продуктовые обновления',
+                  description: 'Новые функции и изменения в сервисе.',
+                  value: _newsletterProduct,
+                  onChanged: (v) => setState(() => _newsletterProduct = v),
+                ),
+                const SizedBox(height: 8),
+                HeroUiButton(
+                  label: 'Подписаться',
+                  variant: HeroUiButtonVariant.secondary,
+                  expand: true,
+                  leading: HeroUiIcon(_kInputAffixEnvelopeIcon, size: 16),
+                  onPressed: () => showComponentDemoMessage(
+                    context,
+                    'Подписка: дайджест ${_newsletterWeekly ? "да" : "нет"}, продукт ${_newsletterProduct ? "да" : "нет"}',
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 32),
+
+          // ── Бронирование ───────────────────────────────────────────
+          const ComponentDemoSubtitle('Бронирование'),
+          HeroUiCard(
+            borderRadius: 24,
+            header: HeroUiCardHeader(
+              title: 'Забронировать визит',
+              trailing: HeroUiIcon(
+                HeroUiIconManifest.calendarRegular,
+                size: 26,
+                color: icon,
+              ),
+            ),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: HeroUiDateField(
+                        label: 'Дата',
+                        description: 'Ближайшие 30 дней',
+                        placeholder: 'Выберите день',
+                        variant: HeroUiInputVariant.secondary,
+                        minDate: DateTime.now(),
+                        maxDate: DateTime.now().add(const Duration(days: 30)),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: HeroUiTimeField(
+                        label: 'Время',
+                        description: 'Интервал 30 мин',
+                        placeholder: 'ЧЧ:ММ',
+                        variant: HeroUiInputVariant.secondary,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                HeroUiSelect<String>(
+                  label: 'Гостей',
+                  requiredField: true,
+                  placeholder: 'Сколько человек',
+                  value: _partySize,
+                  variant: HeroUiInputVariant.secondary,
+                  onChanged: (v) => setState(() => _partySize = v),
+                  items: const [
+                    HeroUiPickerItem(value: '1', label: '1 гость'),
+                    HeroUiPickerItem(value: '2', label: '2 гостя'),
+                    HeroUiPickerItem(value: '3', label: '3 гостя'),
+                    HeroUiPickerItem(value: '4', label: '4 гостя'),
+                    HeroUiPickerItem(value: '5', label: '5+ гостей'),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                HeroUiTextArea(
+                  label: 'Пожелания',
+                  controller: _bookingNotes,
+                  placeholder: 'Детское кресло, аллергии, повод…',
+                  description: 'Необязательно, до 200 символов.',
+                  minLines: 3,
+                  maxLines: 5,
+                  variant: HeroUiInputVariant.secondary,
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: HeroUiButton(
+                        label: 'Отправить заявку',
+                        expand: true,
+                        leading: HeroUiIcon(
+                          HeroUiIconManifest.calendarRegular,
+                          size: 16,
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                        onPressed: _partySize == null
+                            ? null
+                            : () => showComponentDemoMessage(
+                                context,
+                                'Бронирование: $_partySize гостей',
+                              ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    HeroUiButton(
+                      label: '',
+                      iconOnly: true,
+                      variant: HeroUiButtonVariant.outline,
+                      leading: HeroUiIcon(
+                        HeroUiIconManifest.gearRegular,
+                        size: 18,
+                      ),
+                      onPressed: () => showComponentDemoMessage(
+                        context,
+                        'Настройки бронирования',
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

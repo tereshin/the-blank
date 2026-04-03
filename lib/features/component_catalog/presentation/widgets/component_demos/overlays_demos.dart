@@ -82,18 +82,12 @@ Widget _dropdownTriggerButton(String label, {VoidCallback? onTap}) {
   );
 }
 
-Widget _dropdownItemIcon(
-  String name, {
-  Color? color,
-}) {
+Widget _dropdownItemIcon(String name, {Color? color}) {
   return HeroUiIcon(name, size: 16, color: color);
 }
 
 Widget _dropdownShortcut(List<String> keys) {
-  return HeroUiKbd(
-    keys: keys,
-    variant: HeroUiKbdVariant.light,
-  );
+  return HeroUiKbd(keys: keys, variant: HeroUiKbdVariant.light);
 }
 
 // ─── Tooltip demo ─────────────────────────────────────────────────────────────
@@ -183,13 +177,9 @@ class _PopoverDemoPage extends StatelessWidget {
               children: [
                 HeroUiPopover(
                   trigger: _demoButton('Click me'),
-                  content: const Text(
+                  content: Text(
                     'This is the popover content. You can put any content here.',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFF18181B),
-                      height: 1.5,
-                    ),
+                    style: TextStyle(fontSize: 12, height: 1.5),
                   ),
                 ),
               ],
@@ -214,23 +204,18 @@ class _PopoverDemoPage extends StatelessWidget {
                   content: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
+                    children: [
                       Text(
                         'Popover title',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF18181B),
                         ),
                       ),
                       SizedBox(height: 8),
                       Text(
                         'This popover appears above the trigger button.',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Color(0xFF71717A),
-                          height: 1.5,
-                        ),
+                        style: TextStyle(fontSize: 13, height: 1.5),
                       ),
                     ],
                   ),
@@ -253,11 +238,7 @@ class _ModalDemoPage extends StatelessWidget {
     final bodyText = const Text(
       'This is the modal body. You can put any content here, '
       'including forms, images, or other components.',
-      style: TextStyle(
-        fontSize: 14,
-        color: Color(0xFF71717A),
-        height: 1.5,
-      ),
+      style: TextStyle(fontSize: 14, color: Color(0xFF71717A), height: 1.5),
     );
 
     return SingleChildScrollView(
@@ -285,10 +266,14 @@ class _ModalDemoPage extends StatelessWidget {
                       title: '${size.name.toUpperCase()} Modal',
                       body: bodyText,
                       actions: [
-                        _outlineButton('Cancel',
-                            onTap: () => Navigator.of(context).pop()),
-                        _demoButton('Confirm',
-                            onTap: () => Navigator.of(context).pop()),
+                        _outlineButton(
+                          'Cancel',
+                          onTap: () => Navigator.of(context).pop(),
+                        ),
+                        _demoButton(
+                          'Confirm',
+                          onTap: () => Navigator.of(context).pop(),
+                        ),
                       ],
                       size: size,
                     ),
@@ -337,8 +322,10 @@ class _ModalDemoPage extends StatelessWidget {
                   ],
                 ),
                 actions: [
-                  _outlineButton('Cancel',
-                      onTap: () => Navigator.of(context).pop()),
+                  _outlineButton(
+                    'Cancel',
+                    onTap: () => Navigator.of(context).pop(),
+                  ),
                   _demoButton('Save', onTap: () => Navigator.of(context).pop()),
                 ],
               ),
@@ -438,19 +425,25 @@ class _DropdownDemoPage extends StatelessWidget {
                     HeroUiDropdownItem(
                       label: 'New file',
                       description: 'Create a new file',
-                      leading: _dropdownItemIcon(HeroUiIconManifest.plusRegular),
+                      leading: _dropdownItemIcon(
+                        HeroUiIconManifest.plusRegular,
+                      ),
                       trailing: _dropdownShortcut(const ['⌘', 'N']),
                     ),
                     HeroUiDropdownItem(
                       label: 'Copy link',
                       description: 'Copy the file link',
-                      leading: _dropdownItemIcon('heroui-v3-icon__link__regular'),
+                      leading: _dropdownItemIcon(
+                        'heroui-v3-icon__link__regular',
+                      ),
                       trailing: _dropdownShortcut(const ['⌘', 'L']),
                     ),
                     HeroUiDropdownItem(
                       label: 'Edit file',
                       description: 'Make changes',
-                      leading: _dropdownItemIcon('heroui-v3-icon__pencil__regular'),
+                      leading: _dropdownItemIcon(
+                        'heroui-v3-icon__pencil__regular',
+                      ),
                       trailing: _dropdownShortcut(const ['⌘', 'E']),
                     ),
                   ],
@@ -621,11 +614,20 @@ class _DrawerDemoPage extends StatelessWidget {
           style: TextStyle(fontSize: 14, color: Color(0xFF71717A), height: 1.5),
         ),
         SizedBox(height: 12),
-        Text('Item 1', style: TextStyle(fontSize: 14, color: Color(0xFF18181B))),
+        Text(
+          'Item 1',
+          style: TextStyle(fontSize: 14, color: Color(0xFF18181B)),
+        ),
         SizedBox(height: 8),
-        Text('Item 2', style: TextStyle(fontSize: 14, color: Color(0xFF18181B))),
+        Text(
+          'Item 2',
+          style: TextStyle(fontSize: 14, color: Color(0xFF18181B)),
+        ),
         SizedBox(height: 8),
-        Text('Item 3', style: TextStyle(fontSize: 14, color: Color(0xFF18181B))),
+        Text(
+          'Item 3',
+          style: TextStyle(fontSize: 14, color: Color(0xFF18181B)),
+        ),
       ],
     );
 
@@ -656,10 +658,14 @@ class _DrawerDemoPage extends StatelessWidget {
                       subtitle: 'Drawer content example',
                       body: bodyContent,
                       footerActions: [
-                        _outlineButton('Cancel',
-                            onTap: () => Navigator.of(context).pop()),
-                        _demoButton('Save',
-                            onTap: () => Navigator.of(context).pop()),
+                        _outlineButton(
+                          'Cancel',
+                          onTap: () => Navigator.of(context).pop(),
+                        ),
+                        _demoButton(
+                          'Save',
+                          onTap: () => Navigator.of(context).pop(),
+                        ),
                       ],
                     ),
                   ),
@@ -678,10 +684,8 @@ class _DrawerDemoPage extends StatelessWidget {
             ),
             child: _demoButton(
               'Open minimal',
-              onTap: () => HeroUiDrawer.show(
-                context: context,
-                body: bodyContent,
-              ),
+              onTap: () =>
+                  HeroUiDrawer.show(context: context, body: bodyContent),
             ),
           ),
           const SizedBox(height: 24),

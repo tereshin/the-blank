@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../features/component_catalog/presentation/screens/categories_screen.dart';
 
@@ -8,11 +7,13 @@ class TheBlankApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lightTextTheme = _withoutLetterSpacing(GoogleFonts.interTextTheme());
+    final lightTextTheme = _withoutLetterSpacing(
+      ThemeData.light().textTheme.apply(fontFamily: 'Inter'),
+    );
     final darkTextTheme = _withoutLetterSpacing(
-      GoogleFonts.interTextTheme(
-        ThemeData(brightness: Brightness.dark).textTheme,
-      ),
+      ThemeData(
+        brightness: Brightness.dark,
+      ).textTheme.apply(fontFamily: 'Inter'),
     );
     const lightBackground = Color(0xFFF5F5F5);
     const darkBackground = Color(0xFF060607);
@@ -31,7 +32,7 @@ class TheBlankApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: ThemeData(
         colorScheme: lightScheme.copyWith(surface: lightBackground),
-        fontFamily: GoogleFonts.inter().fontFamily,
+        fontFamily: 'Inter',
         textTheme: lightTextTheme,
         primaryTextTheme: lightTextTheme,
         scaffoldBackgroundColor: lightBackground,
@@ -43,7 +44,7 @@ class TheBlankApp extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         colorScheme: darkScheme.copyWith(surface: darkBackground),
-        fontFamily: GoogleFonts.inter().fontFamily,
+        fontFamily: 'Inter',
         textTheme: darkTextTheme,
         primaryTextTheme: darkTextTheme,
         scaffoldBackgroundColor: darkBackground,
