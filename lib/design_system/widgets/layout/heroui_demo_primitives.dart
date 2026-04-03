@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_blank/design_system/widgets/data_display/heroui_cards.dart';
 
 import '../../../core/icons/heroui_icon.dart';
 import '../../typography/heroui_typography.dart';
@@ -83,14 +84,8 @@ class HeroUiDemoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: _kDemoSectionBorder),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
+    return HeroUiCard(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: children,

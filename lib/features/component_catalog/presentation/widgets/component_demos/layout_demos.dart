@@ -21,6 +21,20 @@ class _SectionBox extends StatelessWidget {
   }
 }
 
+Widget _outlinedDemoCard({required double height, required Widget child}) {
+  return SizedBox(
+    width: double.infinity,
+    height: height,
+    child: HeroUiCard(
+      padding: EdgeInsets.zero,
+      borderRadius: 12,
+      showShadow: false,
+      borderColor: const Color(0xFFE4E4E7),
+      body: child,
+    ),
+  );
+}
+
 // ─── Surface demo ─────────────────────────────────────────────────────────────
 
 class _SurfaceDemoPage extends StatelessWidget {
@@ -154,10 +168,7 @@ class _DisclosureDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('Disclosure — closed by default'),
-          HeroUiDisclosure(
-            title: 'What is HeroUI?',
-            child: bodyText,
-          ),
+          HeroUiDisclosure(title: 'What is HeroUI?', child: bodyText),
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Disclosure — open by default'),
@@ -184,10 +195,7 @@ class _DisclosureDemoPage extends StatelessWidget {
           HeroUiDisclosureGroup(
             initiallyOpenIndex: 0,
             items: [
-              HeroUiDisclosureItem(
-                title: 'What is HeroUI?',
-                child: bodyText,
-              ),
+              HeroUiDisclosureItem(title: 'What is HeroUI?', child: bodyText),
               HeroUiDisclosureItem(
                 title: 'How to install',
                 child: const Text(
@@ -251,29 +259,29 @@ class _ScrollShadowDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget scrollContent() => Column(
-          children: [
-            for (var i = 1; i <= 12; i++)
-              Container(
-                margin: const EdgeInsets.only(bottom: 8),
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFEFEFF0),
-                  borderRadius: BorderRadius.circular(12),
+      children: [
+        for (var i = 1; i <= 12; i++)
+          Container(
+            margin: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: const Color(0xFFEFEFF0),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                Text(
+                  'Item $i',
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFF18181B),
+                  ),
                 ),
-                child: Row(
-                  children: [
-                    Text(
-                      'Item $i',
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF18181B),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-          ],
-        );
+              ],
+            ),
+          ),
+      ],
+    );
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -281,12 +289,8 @@ class _ScrollShadowDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('ScrollShadow — opacity type'),
-          Container(
+          _outlinedDemoCard(
             height: 200,
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
             child: HeroUiScrollShadow(
               type: HeroUiScrollShadowType.opacity,
               child: SingleChildScrollView(
@@ -298,12 +302,8 @@ class _ScrollShadowDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('ScrollShadow — blur type'),
-          Container(
+          _outlinedDemoCard(
             height: 200,
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
             child: HeroUiScrollShadow(
               type: HeroUiScrollShadowType.blur,
               child: SingleChildScrollView(
@@ -329,12 +329,8 @@ class _ScrollShadowDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('ScrollShadow — horizontal'),
-          Container(
+          _outlinedDemoCard(
             height: 80,
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
             child: HeroUiScrollShadow(
               scrollDirection: Axis.horizontal,
               child: SingleChildScrollView(

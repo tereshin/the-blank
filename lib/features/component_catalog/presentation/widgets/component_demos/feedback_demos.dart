@@ -87,10 +87,22 @@ class _SpinnerDemoPage extends StatelessWidget {
                   runSpacing: 16,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: const [
-                    HeroUiSpinner(size: HeroUiSpinnerSize.sm, type: HeroUiComponentType.accent),
-                    HeroUiSpinner(size: HeroUiSpinnerSize.md, type: HeroUiComponentType.success),
-                    HeroUiSpinner(size: HeroUiSpinnerSize.lg, type: HeroUiComponentType.warning),
-                    HeroUiSpinner(size: HeroUiSpinnerSize.xl, type: HeroUiComponentType.danger),
+                    HeroUiSpinner(
+                      size: HeroUiSpinnerSize.sm,
+                      type: HeroUiComponentType.accent,
+                    ),
+                    HeroUiSpinner(
+                      size: HeroUiSpinnerSize.md,
+                      type: HeroUiComponentType.success,
+                    ),
+                    HeroUiSpinner(
+                      size: HeroUiSpinnerSize.lg,
+                      type: HeroUiComponentType.warning,
+                    ),
+                    HeroUiSpinner(
+                      size: HeroUiSpinnerSize.xl,
+                      type: HeroUiComponentType.danger,
+                    ),
                   ],
                 ),
               ),
@@ -130,8 +142,8 @@ class _ProgressBarDemoPageState extends State<_ProgressBarDemoPage> {
                 type: _progress > 0.8
                     ? HeroUiComponentType.danger
                     : _progress > 0.6
-                        ? HeroUiComponentType.warning
-                        : HeroUiComponentType.accent,
+                    ? HeroUiComponentType.warning
+                    : HeroUiComponentType.accent,
               ),
               HeroUiSlider(
                 value: _progress,
@@ -175,13 +187,33 @@ class _ProgressBarDemoPageState extends State<_ProgressBarDemoPage> {
           const ComponentDemoTitle('ProgressBar — types'),
           _SectionBox(
             children: [
-              const HeroUiProgressBar(value: 0.4, label: 'Accent', valueLabel: '40%', type: HeroUiComponentType.accent),
+              const HeroUiProgressBar(
+                value: 0.4,
+                label: 'Accent',
+                valueLabel: '40%',
+                type: HeroUiComponentType.accent,
+              ),
               const SizedBox(height: 12),
-              const HeroUiProgressBar(value: 0.7, label: 'Success', valueLabel: '70%', type: HeroUiComponentType.success),
+              const HeroUiProgressBar(
+                value: 0.7,
+                label: 'Success',
+                valueLabel: '70%',
+                type: HeroUiComponentType.success,
+              ),
               const SizedBox(height: 12),
-              const HeroUiProgressBar(value: 0.85, label: 'Warning', valueLabel: '85%', type: HeroUiComponentType.warning),
+              const HeroUiProgressBar(
+                value: 0.85,
+                label: 'Warning',
+                valueLabel: '85%',
+                type: HeroUiComponentType.warning,
+              ),
               const SizedBox(height: 12),
-              const HeroUiProgressBar(value: 0.95, label: 'Danger', valueLabel: '95%', type: HeroUiComponentType.danger),
+              const HeroUiProgressBar(
+                value: 0.95,
+                label: 'Danger',
+                valueLabel: '95%',
+                type: HeroUiComponentType.danger,
+              ),
             ],
           ),
           const SizedBox(height: 20),
@@ -260,9 +292,18 @@ class _ProgressCircleDemoPageState extends State<_ProgressCircleDemoPage> {
                 runSpacing: 16,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
-                  HeroUiProgressCircle(value: _value, size: HeroUiProgressCircleSize.sm),
-                  HeroUiProgressCircle(value: _value, size: HeroUiProgressCircleSize.md),
-                  HeroUiProgressCircle(value: _value, size: HeroUiProgressCircleSize.lg),
+                  HeroUiProgressCircle(
+                    value: _value,
+                    size: HeroUiProgressCircleSize.sm,
+                  ),
+                  HeroUiProgressCircle(
+                    value: _value,
+                    size: HeroUiProgressCircleSize.md,
+                  ),
+                  HeroUiProgressCircle(
+                    value: _value,
+                    size: HeroUiProgressCircleSize.lg,
+                  ),
                 ],
               ),
               HeroUiSlider(
@@ -303,10 +344,22 @@ class _ProgressCircleDemoPageState extends State<_ProgressCircleDemoPage> {
                 runSpacing: 12,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: const [
-                  HeroUiProgressCircle(value: 0.4, type: HeroUiComponentType.accent),
-                  HeroUiProgressCircle(value: 0.7, type: HeroUiComponentType.success),
-                  HeroUiProgressCircle(value: 0.85, type: HeroUiComponentType.warning),
-                  HeroUiProgressCircle(value: 0.95, type: HeroUiComponentType.danger),
+                  HeroUiProgressCircle(
+                    value: 0.4,
+                    type: HeroUiComponentType.accent,
+                  ),
+                  HeroUiProgressCircle(
+                    value: 0.7,
+                    type: HeroUiComponentType.success,
+                  ),
+                  HeroUiProgressCircle(
+                    value: 0.85,
+                    type: HeroUiComponentType.warning,
+                  ),
+                  HeroUiProgressCircle(
+                    value: 0.95,
+                    type: HeroUiComponentType.danger,
+                  ),
                 ],
               ),
             ],
@@ -464,40 +517,40 @@ class _ToastDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Toast — live (bottom overlay)'),
-          Container(
+          SizedBox(
             width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              children: [
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    for (final entry in [
-                      ('Show default', HeroUiComponentType.defaultType),
-                      ('Show accent', HeroUiComponentType.accent),
-                      ('Show success', HeroUiComponentType.success),
-                      ('Show warning', HeroUiComponentType.warning),
-                      ('Show danger', HeroUiComponentType.danger),
-                    ])
-                      HeroUiButton(
-                        label: entry.$1,
-                        variant: HeroUiButtonVariant.secondary,
-                        size: HeroUiButtonSize.sm,
-                        onPressed: () => HeroUiToastService.show(
-                          context,
-                          message: 'Toast notification',
-                          description: '${entry.$1} toast.',
-                          type: entry.$2,
+            child: HeroUiCard(
+              borderRadius: 12,
+              showShadow: false,
+              borderColor: const Color(0xFFE4E4E7),
+              body: Column(
+                children: [
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: [
+                      for (final entry in [
+                        ('Show default', HeroUiComponentType.defaultType),
+                        ('Show accent', HeroUiComponentType.accent),
+                        ('Show success', HeroUiComponentType.success),
+                        ('Show warning', HeroUiComponentType.warning),
+                        ('Show danger', HeroUiComponentType.danger),
+                      ])
+                        HeroUiButton(
+                          label: entry.$1,
+                          variant: HeroUiButtonVariant.secondary,
+                          size: HeroUiButtonSize.sm,
+                          onPressed: () => HeroUiToastService.show(
+                            context,
+                            message: 'Toast notification',
+                            description: '${entry.$1} toast.',
+                            type: entry.$2,
+                          ),
                         ),
-                      ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(height: 20),

@@ -25,6 +25,21 @@ Widget buildColorFieldDemo(BuildContext context) => _ColorFieldDemoPage();
 
 Widget buildColorPickerDemo(BuildContext context) => _ColorPickerDemoPage();
 
+Widget _colorPreviewSwatch({
+  required Color color,
+  required double size,
+  required double borderRadius,
+}) {
+  return HeroUiCard(
+    padding: EdgeInsets.zero,
+    showShadow: false,
+    borderRadius: borderRadius,
+    borderColor: const Color(0xFFE4E4E7),
+    backgroundColor: color,
+    body: SizedBox(width: size, height: size),
+  );
+}
+
 // ─── Select demo ──────────────────────────────────────────────────────────────
 
 class _SelectDemoPage extends StatefulWidget {
@@ -495,14 +510,10 @@ class _ColorSwatchPickerDemoPageState
           if (_selected != null)
             Row(
               children: [
-                Container(
-                  width: 24,
-                  height: 24,
-                  decoration: BoxDecoration(
-                    color: _selected,
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: const Color(0xFFE4E4E7)),
-                  ),
+                _colorPreviewSwatch(
+                  color: _selected!,
+                  size: 24,
+                  borderRadius: 6,
                 ),
                 const SizedBox(width: 8),
                 Text(
@@ -654,15 +665,7 @@ class _ColorFieldDemoPageState extends State<_ColorFieldDemoPage> {
             onColorChanged: (c) => setState(() => _color = c),
           ),
           const SizedBox(height: 8),
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: _color,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-            ),
-          ),
+          _colorPreviewSwatch(color: _color, size: 60, borderRadius: 12),
           const SizedBox(height: 20),
           const ComponentDemoTitle('ColorField — with error'),
           const HeroUiColorField(
@@ -708,15 +711,7 @@ class _ColorPickerDemoPageState extends State<_ColorPickerDemoPage> {
           const SizedBox(height: 8),
           Row(
             children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: _color,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: const Color(0xFFE4E4E7)),
-                ),
-              ),
+              _colorPreviewSwatch(color: _color, size: 48, borderRadius: 8),
               const SizedBox(width: 12),
               Text(
                 '#${_color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}',

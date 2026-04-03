@@ -49,6 +49,23 @@ Widget _dropdownShortcut(List<String> keys) {
   return HeroUiKbd(keys: keys, variant: HeroUiKbdVariant.light);
 }
 
+Widget _demoCardSection({
+  required Widget child,
+  EdgeInsetsGeometry padding = const EdgeInsets.all(16),
+  bool fullWidth = true,
+}) {
+  final card = HeroUiCard(
+    padding: padding,
+    borderRadius: 12,
+    showShadow: false,
+    borderColor: const Color(0xFFE4E4E7),
+    body: child,
+  );
+
+  if (!fullWidth) return card;
+  return SizedBox(width: double.infinity, child: card);
+}
+
 // ─── Tooltip demo ─────────────────────────────────────────────────────────────
 
 class _TooltipDemoPage extends StatelessWidget {
@@ -60,13 +77,7 @@ class _TooltipDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('Tooltip — positions'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: Wrap(
               spacing: 16,
               runSpacing: 24,
@@ -85,12 +96,8 @@ class _TooltipDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Tooltip — inverse (dark)'),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
+            fullWidth: false,
             child: Wrap(
               spacing: 16,
               runSpacing: 24,
@@ -124,13 +131,8 @@ class _PopoverDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('Popover — basic'),
-          Container(
-            width: double.infinity,
+          _demoCardSection(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -147,13 +149,8 @@ class _PopoverDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Popover — above trigger'),
-          Container(
-            width: double.infinity,
+          _demoCardSection(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -206,13 +203,7 @@ class _ModalDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('Modal — sizes'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -243,13 +234,7 @@ class _ModalDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Modal — with form body'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: _demoButton(
               'Open with form',
               onTap: () => HeroUiModal.show(
@@ -300,13 +285,7 @@ class _AlertDialogDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('AlertDialog — confirmation'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: _demoButton(
               'Open confirmation',
               onTap: () => HeroUiAlertDialog.show(
@@ -322,13 +301,7 @@ class _AlertDialogDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('AlertDialog — danger'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: _demoButton(
               'Delete account',
               onTap: () => HeroUiAlertDialog.show(
@@ -360,13 +333,7 @@ class _DropdownDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('Dropdown — grouped actions'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: HeroUiDropdown(
               trigger: _dropdownTriggerButton('Actions'),
               sections: [
@@ -420,13 +387,7 @@ class _DropdownDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dropdown — states'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: HeroUiDropdown(
               trigger: _dropdownTriggerButton('Styles'),
               sections: [
@@ -506,13 +467,7 @@ class _DropdownDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dropdown — no groups / no divider'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: HeroUiDropdown(
               trigger: _dropdownTriggerButton('Share'),
               showGroups: false,
@@ -588,13 +543,7 @@ class _DrawerDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('Drawer — positions'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: Wrap(
               spacing: 8,
               runSpacing: 8,
@@ -626,13 +575,7 @@ class _DrawerDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Drawer — no title'),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFFE4E4E7)),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          _demoCardSection(
             child: _demoButton(
               'Open minimal',
               onTap: () =>
