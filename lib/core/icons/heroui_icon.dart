@@ -61,4 +61,15 @@ class HeroUiIconManifest {
   static const String chevronRightRegular =
       'heroui-v3-icon__arrow-chevron-right__regular';
   static const String externalRegular = 'heroui-v3-icon__external__regular';
+  static const String arrowUpRegular = 'heroui-v3-icon__arrow-up__regular';
+  static const String arrowDownRegular = 'heroui-v3-icon__arrow-down__regular';
+  static const String circleInfoRegular =
+      'heroui-v3-icon__circle-info__regular';
+  static const String barsUnalignedRegular =
+      'heroui-v3-icon__bars-unaligned__regular';
+  static const String eyeRegular = 'heroui-v3-icon__eye__regular';
+  static const String pencilRegular = 'heroui-v3-icon__pencil__regular';
+  static const String deleteRegular = 'heroui-v3-icon__delete__regular';
+  static const String squareListUlRegular =
+      'heroui-v3-icon__square-list-ul__regular';
 }

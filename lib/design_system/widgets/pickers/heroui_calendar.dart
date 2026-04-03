@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ─── Design Tokens ────────────────────────────────────────────────────────────
 const Color _kPrimary = Color(0xFF0485F7);
 const Color _kForeground = Color(0xFF18181B);
@@ -55,11 +57,13 @@ class _HeroUiCalendarState extends State<HeroUiCalendar> {
     }
   }
 
-  void _prevMonth() =>
-      setState(() => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month - 1));
+  void _prevMonth() => setState(
+    () => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month - 1),
+  );
 
-  void _nextMonth() =>
-      setState(() => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month + 1));
+  void _nextMonth() => setState(
+    () => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month + 1),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -136,11 +140,13 @@ class _HeroUiRangeCalendarState extends State<HeroUiRangeCalendar> {
     _end = widget.endDate;
   }
 
-  void _prevMonth() =>
-      setState(() => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month - 1));
+  void _prevMonth() => setState(
+    () => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month - 1),
+  );
 
-  void _nextMonth() =>
-      setState(() => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month + 1));
+  void _nextMonth() => setState(
+    () => _viewMonth = DateTime(_viewMonth.year, _viewMonth.month + 1),
+  );
 
   void _onTap(DateTime date) {
     setState(() {
@@ -214,9 +220,7 @@ class _CalendarNav extends StatelessWidget {
             child: Text(
               '$month $year',
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+              style: HeroUiTypography.bodySmMedium.copyWith(
                 color: _kForeground,
               ),
             ),
@@ -260,9 +264,7 @@ class _WeekHeader extends StatelessWidget {
                 child: Center(
                   child: Text(
                     d,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
+                    style: HeroUiTypography.bodyXsMedium.copyWith(
                       color: _kMuted,
                     ),
                   ),
@@ -298,7 +300,10 @@ class _DayGrid extends StatelessWidget {
     for (var i = 0; i < cells.length; i += 7) {
       rows.add(
         Row(
-          children: cells.sublist(i, i + 7).map((c) => Expanded(child: c)).toList(),
+          children: cells
+              .sublist(i, i + 7)
+              .map((c) => Expanded(child: c))
+              .toList(),
         ),
       );
     }
@@ -317,27 +322,32 @@ class _DayGrid extends StatelessWidget {
     final prevMonth = DateTime(viewMonth.year, viewMonth.month - 1);
     final daysInPrevMonth = _daysInMonth(prevMonth.year, prevMonth.month);
     for (var i = startOffset - 1; i >= 0; i--) {
-      final date = DateTime(prevMonth.year, prevMonth.month, daysInPrevMonth - i);
-      cells.add(_DayCell(
-        date: date,
-        isOutOfMonth: true,
-        onTap: () => onTap(date),
-      ));
+      final date = DateTime(
+        prevMonth.year,
+        prevMonth.month,
+        daysInPrevMonth - i,
+      );
+      cells.add(
+        _DayCell(date: date, isOutOfMonth: true, onTap: () => onTap(date)),
+      );
     }
 
     // Current month days
     for (var d = 1; d <= daysInMonth; d++) {
       final date = DateTime(viewMonth.year, viewMonth.month, d);
       final isSelected = selected != null && _isSameDay(date, selected!);
-      final isDisabled = (minDate != null && date.isBefore(minDate!)) ||
+      final isDisabled =
+          (minDate != null && date.isBefore(minDate!)) ||
           (maxDate != null && date.isAfter(maxDate!));
-      cells.add(_DayCell(
-        date: date,
-        isSelected: isSelected,
-        isToday: _isSameDay(date, today),
-        isDisabled: isDisabled,
-        onTap: isDisabled ? null : () => onTap(date),
-      ));
+      cells.add(
+        _DayCell(
+          date: date,
+          isSelected: isSelected,
+          isToday: _isSameDay(date, today),
+          isDisabled: isDisabled,
+          onTap: isDisabled ? null : () => onTap(date),
+        ),
+      );
     }
 
     // Trailing days to complete last row
@@ -346,11 +356,9 @@ class _DayGrid extends StatelessWidget {
     while ((cells.length) % 7 != 0) {
       trailing++;
       final date = DateTime(nextMonth.year, nextMonth.month, trailing);
-      cells.add(_DayCell(
-        date: date,
-        isOutOfMonth: true,
-        onTap: () => onTap(date),
-      ));
+      cells.add(
+        _DayCell(date: date, isOutOfMonth: true, onTap: () => onTap(date)),
+      );
     }
 
     return cells;
@@ -382,7 +390,10 @@ class _RangeDayGrid extends StatelessWidget {
     for (var i = 0; i < cells.length; i += 7) {
       rows.add(
         Row(
-          children: cells.sublist(i, i + 7).map((c) => Expanded(child: c)).toList(),
+          children: cells
+              .sublist(i, i + 7)
+              .map((c) => Expanded(child: c))
+              .toList(),
         ),
       );
     }
@@ -399,26 +410,35 @@ class _RangeDayGrid extends StatelessWidget {
     final prevMonth = DateTime(viewMonth.year, viewMonth.month - 1);
     final daysInPrevMonth = _daysInMonth(prevMonth.year, prevMonth.month);
     for (var i = startOffset - 1; i >= 0; i--) {
-      final date = DateTime(prevMonth.year, prevMonth.month, daysInPrevMonth - i);
-      cells.add(_RangeDayCell(date: date, isOutOfMonth: true, onTap: () => onTap(date)));
+      final date = DateTime(
+        prevMonth.year,
+        prevMonth.month,
+        daysInPrevMonth - i,
+      );
+      cells.add(
+        _RangeDayCell(date: date, isOutOfMonth: true, onTap: () => onTap(date)),
+      );
     }
 
     for (var d = 1; d <= daysInMonth; d++) {
       final date = DateTime(viewMonth.year, viewMonth.month, d);
       final isStart = start != null && _isSameDay(date, start!);
       final isEnd = end != null && _isSameDay(date, end!);
-      final inRange = start != null &&
+      final inRange =
+          start != null &&
           end != null &&
           date.isAfter(start!) &&
           date.isBefore(end!);
-      cells.add(_RangeDayCell(
-        date: date,
-        isRangeStart: isStart,
-        isRangeEnd: isEnd,
-        isInRange: inRange,
-        isToday: _isSameDay(date, today),
-        onTap: () => onTap(date),
-      ));
+      cells.add(
+        _RangeDayCell(
+          date: date,
+          isRangeStart: isStart,
+          isRangeEnd: isEnd,
+          isInRange: inRange,
+          isToday: _isSameDay(date, today),
+          onTap: () => onTap(date),
+        ),
+      );
     }
 
     final nextMonth = DateTime(viewMonth.year, viewMonth.month + 1);
@@ -426,7 +446,9 @@ class _RangeDayGrid extends StatelessWidget {
     while ((cells.length) % 7 != 0) {
       trailing++;
       final date = DateTime(nextMonth.year, nextMonth.month, trailing);
-      cells.add(_RangeDayCell(date: date, isOutOfMonth: true, onTap: () => onTap(date)));
+      cells.add(
+        _RangeDayCell(date: date, isOutOfMonth: true, onTap: () => onTap(date)),
+      );
     }
 
     return cells;
@@ -473,24 +495,21 @@ class _DayCell extends StatelessWidget {
             width: 28,
             height: 28,
             decoration: isSelected
-                ? const BoxDecoration(
-                    color: _kPrimary,
-                    shape: BoxShape.circle,
-                  )
+                ? const BoxDecoration(color: _kPrimary, shape: BoxShape.circle)
                 : isToday && !isSelected
-                    ? BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: _kPrimary, width: 1),
-                      )
-                    : null,
+                ? BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: _kPrimary, width: 1),
+                  )
+                : null,
             child: Center(
               child: Text(
                 '${date.day}',
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: isToday || isSelected ? FontWeight.w600 : FontWeight.w400,
-                  color: textColor,
-                ),
+                style:
+                    (isToday || isSelected
+                            ? HeroUiTypography.bodyXsMedium
+                            : HeroUiTypography.bodyXs)
+                        .copyWith(color: textColor),
               ),
             ),
           ),
@@ -550,8 +569,8 @@ class _RangeDayCell extends StatelessWidget {
                         color: (isRangeStart && !isRangeEnd)
                             ? Colors.transparent
                             : isInRange || isRangeEnd
-                                ? _kRangeHighlight
-                                : Colors.transparent,
+                            ? _kRangeHighlight
+                            : Colors.transparent,
                       ),
                     ),
                     Expanded(
@@ -559,8 +578,8 @@ class _RangeDayCell extends StatelessWidget {
                         color: (isRangeEnd && !isRangeStart)
                             ? Colors.transparent
                             : isInRange || isRangeStart
-                                ? _kRangeHighlight
-                                : Colors.transparent,
+                            ? _kRangeHighlight
+                            : Colors.transparent,
                       ),
                     ),
                   ],
@@ -571,26 +590,29 @@ class _RangeDayCell extends StatelessWidget {
                 width: 28,
                 height: 28,
                 decoration: isEndpoint
-                    ? const BoxDecoration(color: _kPrimary, shape: BoxShape.circle)
+                    ? const BoxDecoration(
+                        color: _kPrimary,
+                        shape: BoxShape.circle,
+                      )
                     : isInRange
-                        ? const BoxDecoration(
-                            color: _kRangeHighlight,
-                            shape: BoxShape.circle,
-                          )
-                        : isToday
-                            ? BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: _kPrimary),
-                              )
-                            : null,
+                    ? const BoxDecoration(
+                        color: _kRangeHighlight,
+                        shape: BoxShape.circle,
+                      )
+                    : isToday
+                    ? BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: _kPrimary),
+                      )
+                    : null,
                 child: Center(
                   child: Text(
                     '${date.day}',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: isEndpoint ? FontWeight.w600 : FontWeight.w400,
-                      color: textColor,
-                    ),
+                    style:
+                        (isEndpoint
+                                ? HeroUiTypography.bodyXsMedium
+                                : HeroUiTypography.bodyXs)
+                            .copyWith(color: textColor),
                   ),
                 ),
               ),
@@ -615,8 +637,18 @@ int _daysInMonth(int year, int month) => DateTime(year, month + 1, 0).day;
 
 String _monthName(int month) {
   const names = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   return names[month - 1];
 }

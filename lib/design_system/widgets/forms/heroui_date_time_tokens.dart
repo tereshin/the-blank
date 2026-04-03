@@ -40,23 +40,11 @@ const List<BoxShadow> _kPopoverShadow = [
   ),
 ];
 
-const TextStyle _kLabelStyle = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w500,
-  height: 1.43,
-);
+const TextStyle _kLabelStyle = HeroUiTypography.bodySmMedium;
 
-const TextStyle _kFieldTextStyle = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w400,
-  height: 1.43,
-);
+const TextStyle _kFieldTextStyle = HeroUiTypography.textFieldSm;
 
-const TextStyle _kWeekdayStyle = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w500,
-  height: 1.43,
-);
+const TextStyle _kWeekdayStyle = HeroUiTypography.bodySmMedium;
 
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;

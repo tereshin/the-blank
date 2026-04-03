@@ -80,10 +80,7 @@ class HeroUiAlertDialog {
                       const SizedBox(height: 16),
                       Text(
                         title,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          height: 1.4,
+                        style: HeroUiTypography.heading4.copyWith(
                           color: titleColor,
                         ),
                       ),
@@ -91,10 +88,7 @@ class HeroUiAlertDialog {
                         const SizedBox(height: 8),
                         Text(
                           description,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            height: 1.5,
+                          style: HeroUiTypography.bodySm.copyWith(
                             color: descColor,
                           ),
                         ),

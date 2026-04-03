@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ─── Public enums & types ─────────────────────────────────────────────────────
 
 /// Active-track colour variants (Figma: primary=blue, secondary=grey, danger=red).
@@ -71,9 +73,9 @@ class HeroUiSlider extends StatefulWidget {
     this.marks,
     this.onChanged,
     this.formatValue,
-  })  : startValue = null,
-        endValue = null,
-        onRangeChanged = null;
+  }) : startValue = null,
+       endValue = null,
+       onRangeChanged = null;
 
   const HeroUiSlider.range({
     super.key,
@@ -91,8 +93,8 @@ class HeroUiSlider extends StatefulWidget {
     this.marks,
     this.onRangeChanged,
     this.formatValue,
-  })  : value = null,
-        onChanged = null;
+  }) : value = null,
+       onChanged = null;
 
   final double? value;
   final double? startValue;
@@ -146,20 +148,23 @@ class _HeroUiSliderState extends State<HeroUiSlider> {
     if (widget.divisions == null) return _clamp(v);
     final range = widget.max - widget.min;
     final stepSize = range / widget.divisions!;
-    final snapped = ((v - widget.min) / stepSize).round() * stepSize + widget.min;
+    final snapped =
+        ((v - widget.min) / stepSize).round() * stepSize + widget.min;
     return _clamp(snapped);
   }
 
   Color get _activeColor => switch (widget.color) {
-    HeroUiSliderColor.primary   => const Color(0xFF0485F7),
+    HeroUiSliderColor.primary => const Color(0xFF0485F7),
     HeroUiSliderColor.secondary => const Color(0xFF71717A),
-    HeroUiSliderColor.danger    => const Color(0xFFFF383C),
+    HeroUiSliderColor.danger => const Color(0xFFFF383C),
   };
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final labelColor = isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B);
+    final labelColor = isDark
+        ? const Color(0xFFFCFCFC)
+        : const Color(0xFF18181B);
 
     final valueLabel = widget._isRange
         ? '${_format(widget.startValue!)} – ${_format(widget.endValue!)}'
@@ -180,20 +185,14 @@ class _HeroUiSliderState extends State<HeroUiSlider> {
                 if (widget.label != null)
                   Text(
                     widget.label!,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 1.43,
+                    style: HeroUiTypography.bodySmMedium.copyWith(
                       color: labelColor,
                     ),
                   ),
                 if (widget.showValue)
                   Text(
                     valueLabel,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 1.43,
+                    style: HeroUiTypography.bodySmMedium.copyWith(
                       color: labelColor,
                     ),
                   ),
@@ -285,7 +284,8 @@ class _SliderTrackState extends State<_SliderTrack> {
 
   void _handleTapDown(Offset local, double trackWidth) {
     if (widget.isRange) {
-      final raw = local.dx / trackWidth * (widget.max - widget.min) + widget.min;
+      final raw =
+          local.dx / trackWidth * (widget.max - widget.min) + widget.min;
       final ds = (raw - widget.startValue!).abs();
       final de = (raw - widget.endValue!).abs();
       _activeThumb = ds <= de ? 0 : 1;
@@ -322,10 +322,8 @@ class _SliderTrackState extends State<_SliderTrack> {
     });
   }
 
-  Offset _normalise(Offset raw, double thumbW, double trackWidth) => Offset(
-        (raw.dx - thumbW / 2).clamp(0.0, trackWidth),
-        raw.dy,
-      );
+  Offset _normalise(Offset raw, double thumbW, double trackWidth) =>
+      Offset((raw.dx - thumbW / 2).clamp(0.0, trackWidth), raw.dy);
 
   String get _tooltipLabel {
     if (!widget.isRange) return widget.format(widget.value ?? 0);
@@ -345,155 +343,160 @@ class _SliderTrackState extends State<_SliderTrack> {
     const tooltipAreaH = 40.0;
     final stackH = widget.showTooltip ? tooltipAreaH + t.totalH : t.totalH;
 
-    return LayoutBuilder(builder: (ctx, constraints) {
-      final trackWidth = constraints.maxWidth - t.thumbW;
+    return LayoutBuilder(
+      builder: (ctx, constraints) {
+        final trackWidth = constraints.maxWidth - t.thumbW;
 
-      // Fraction at the active (or single) thumb.
-      final activeFraction = !widget.isRange
-          ? _fraction(widget.value ?? 0)
-          : _activeThumb == 1
-              ? _fraction(widget.endValue ?? 0)
-              : _fraction(widget.startValue ?? 0);
-      final tooltipThumbCx = t.thumbW / 2 + activeFraction * trackWidth;
+        // Fraction at the active (or single) thumb.
+        final activeFraction = !widget.isRange
+            ? _fraction(widget.value ?? 0)
+            : _activeThumb == 1
+            ? _fraction(widget.endValue ?? 0)
+            : _fraction(widget.startValue ?? 0);
+        final tooltipThumbCx = t.thumbW / 2 + activeFraction * trackWidth;
 
-      return GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTapDown: widget.isDisabled
-            ? null
-            : (d) => _handleTapDown(
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTapDown: widget.isDisabled
+              ? null
+              : (d) => _handleTapDown(
                   _normalise(d.localPosition, t.thumbW, trackWidth),
                   trackWidth,
                 ),
-        onTapUp: widget.isDisabled ? null : (_) => _handleDragEnd(),
-        onHorizontalDragStart: widget.isDisabled
-            ? null
-            : (d) {
-                if (_activeThumb == null) {
-                  _handleTapDown(
-                    _normalise(d.localPosition, t.thumbW, trackWidth),
-                    trackWidth,
-                  );
-                }
-              },
-        onHorizontalDragUpdate: widget.isDisabled
-            ? null
-            : (d) => _handleMove(
+          onTapUp: widget.isDisabled ? null : (_) => _handleDragEnd(),
+          onHorizontalDragStart: widget.isDisabled
+              ? null
+              : (d) {
+                  if (_activeThumb == null) {
+                    _handleTapDown(
+                      _normalise(d.localPosition, t.thumbW, trackWidth),
+                      trackWidth,
+                    );
+                  }
+                },
+          onHorizontalDragUpdate: widget.isDisabled
+              ? null
+              : (d) => _handleMove(
                   _normalise(d.localPosition, t.thumbW, trackWidth),
                   trackWidth,
                 ),
-        onHorizontalDragEnd:
-            widget.isDisabled ? null : (_) => _handleDragEnd(),
-        child: SizedBox(
-          height: stackH,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              // ── Tooltip ─────────────────────────────────────────────────────
-              if (widget.showTooltip)
-                Positioned(
-                  top: 0,
-                  left: tooltipThumbCx,
-                  child: FractionalTranslation(
-                    translation: const Offset(-0.5, 0),
-                    child: AnimatedOpacity(
-                      duration: const Duration(milliseconds: 120),
-                      opacity: _isDragging ? 1.0 : 0.0,
-                      child: _Tooltip(
-                        label: _tooltipLabel,
-                        isDark: widget.isDark,
+          onHorizontalDragEnd: widget.isDisabled
+              ? null
+              : (_) => _handleDragEnd(),
+          child: SizedBox(
+            height: stackH,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                // ── Tooltip ─────────────────────────────────────────────────────
+                if (widget.showTooltip)
+                  Positioned(
+                    top: 0,
+                    left: tooltipThumbCx,
+                    child: FractionalTranslation(
+                      translation: const Offset(-0.5, 0),
+                      child: AnimatedOpacity(
+                        duration: const Duration(milliseconds: 120),
+                        opacity: _isDragging ? 1.0 : 0.0,
+                        child: _Tooltip(
+                          label: _tooltipLabel,
+                          isDark: widget.isDark,
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-              // ── Track + thumbs ───────────────────────────────────────────
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                height: t.totalH,
-                child: Stack(
-                  alignment: Alignment.centerLeft,
-                  clipBehavior: Clip.none,
-                  children: [
-                    // Inactive track
-                    Positioned(
-                      left: t.thumbW / 2,
-                      right: t.thumbW / 2,
-                      child: Container(
-                        height: t.trackH,
-                        decoration: BoxDecoration(
-                          color: inactive,
-                          borderRadius: BorderRadius.circular(t.trackH / 2),
-                        ),
-                      ),
-                    ),
-
-                    // Active track
-                    if (!widget.isRange)
+                // ── Track + thumbs ───────────────────────────────────────────
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  height: t.totalH,
+                  child: Stack(
+                    alignment: Alignment.centerLeft,
+                    clipBehavior: Clip.none,
+                    children: [
+                      // Inactive track
                       Positioned(
                         left: t.thumbW / 2,
-                        width: _fraction(widget.value!) * trackWidth,
+                        right: t.thumbW / 2,
                         child: Container(
                           height: t.trackH,
                           decoration: BoxDecoration(
-                            color: widget.activeColor,
-                            borderRadius: BorderRadius.circular(t.trackH / 2),
-                          ),
-                        ),
-                      )
-                    else
-                      Positioned(
-                        left: t.thumbW / 2 +
-                            _fraction(widget.startValue!) * trackWidth,
-                        width: (_fraction(widget.endValue!) -
-                                _fraction(widget.startValue!)) *
-                            trackWidth,
-                        child: Container(
-                          height: t.trackH,
-                          decoration: BoxDecoration(
-                            color: widget.activeColor,
+                            color: inactive,
                             borderRadius: BorderRadius.circular(t.trackH / 2),
                           ),
                         ),
                       ),
 
-                    // Thumb(s)
-                    if (!widget.isRange)
-                      Positioned(
-                        left: _fraction(widget.value!) * trackWidth,
-                        child: _Thumb(
-                          width: t.thumbW,
-                          height: t.thumbH,
-                          isPressed: _isDragging,
+                      // Active track
+                      if (!widget.isRange)
+                        Positioned(
+                          left: t.thumbW / 2,
+                          width: _fraction(widget.value!) * trackWidth,
+                          child: Container(
+                            height: t.trackH,
+                            decoration: BoxDecoration(
+                              color: widget.activeColor,
+                              borderRadius: BorderRadius.circular(t.trackH / 2),
+                            ),
+                          ),
+                        )
+                      else
+                        Positioned(
+                          left:
+                              t.thumbW / 2 +
+                              _fraction(widget.startValue!) * trackWidth,
+                          width:
+                              (_fraction(widget.endValue!) -
+                                  _fraction(widget.startValue!)) *
+                              trackWidth,
+                          child: Container(
+                            height: t.trackH,
+                            decoration: BoxDecoration(
+                              color: widget.activeColor,
+                              borderRadius: BorderRadius.circular(t.trackH / 2),
+                            ),
+                          ),
                         ),
-                      )
-                    else ...[
-                      Positioned(
-                        left: _fraction(widget.startValue!) * trackWidth,
-                        child: _Thumb(
-                          width: t.thumbW,
-                          height: t.thumbH,
-                          isPressed: _isDragging && _activeThumb == 0,
+
+                      // Thumb(s)
+                      if (!widget.isRange)
+                        Positioned(
+                          left: _fraction(widget.value!) * trackWidth,
+                          child: _Thumb(
+                            width: t.thumbW,
+                            height: t.thumbH,
+                            isPressed: _isDragging,
+                          ),
+                        )
+                      else ...[
+                        Positioned(
+                          left: _fraction(widget.startValue!) * trackWidth,
+                          child: _Thumb(
+                            width: t.thumbW,
+                            height: t.thumbH,
+                            isPressed: _isDragging && _activeThumb == 0,
+                          ),
                         ),
-                      ),
-                      Positioned(
-                        left: _fraction(widget.endValue!) * trackWidth,
-                        child: _Thumb(
-                          width: t.thumbW,
-                          height: t.thumbH,
-                          isPressed: _isDragging && _activeThumb == 1,
+                        Positioned(
+                          left: _fraction(widget.endValue!) * trackWidth,
+                          child: _Thumb(
+                            width: t.thumbW,
+                            height: t.thumbH,
+                            isPressed: _isDragging && _activeThumb == 1,
+                          ),
                         ),
-                      ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 }
 
@@ -528,10 +531,7 @@ class _Thumb extends StatelessWidget {
             color: const Color(0xFFFCFCFC),
             borderRadius: BorderRadius.circular(h / 2),
             boxShadow: const [
-              BoxShadow(
-                color: Color.fromRGBO(0, 0, 0, 0.06),
-                blurRadius: 1,
-              ),
+              BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.06), blurRadius: 1),
               BoxShadow(
                 color: Color.fromRGBO(0, 0, 0, 0.06),
                 blurRadius: 2,
@@ -593,12 +593,7 @@ class _Tooltip extends StatelessWidget {
           ),
           child: Text(
             label,
-            style: TextStyle(
-              fontSize: 12,
-              color: fg,
-              fontWeight: FontWeight.w400,
-              height: 1.34,
-            ),
+            style: HeroUiTypography.bodyXs.copyWith(color: fg),
           ),
         ),
         // Arrow (downward pointing)
@@ -655,34 +650,32 @@ class _MarksRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = isDark ? const Color(0xFF71717A) : const Color(0xFF71717A);
 
-    return LayoutBuilder(builder: (ctx, constraints) {
-      final trackWidth = constraints.maxWidth - tokens.thumbW;
+    return LayoutBuilder(
+      builder: (ctx, constraints) {
+        final trackWidth = constraints.maxWidth - tokens.thumbW;
 
-      return SizedBox(
-        width: constraints.maxWidth,
-        height: 18,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            for (final mark in marks)
-              Positioned(
-                left: tokens.thumbW / 2 + _fraction(mark.value) * trackWidth,
-                top: 0,
-                child: FractionalTranslation(
-                  translation: const Offset(-0.5, 0),
-                  child: Text(
-                    mark.label,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: color,
-                      height: 1.33,
+        return SizedBox(
+          width: constraints.maxWidth,
+          height: 18,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              for (final mark in marks)
+                Positioned(
+                  left: tokens.thumbW / 2 + _fraction(mark.value) * trackWidth,
+                  top: 0,
+                  child: FractionalTranslation(
+                    translation: const Offset(-0.5, 0),
+                    child: Text(
+                      mark.label,
+                      style: HeroUiTypography.bodyXs.copyWith(color: color),
                     ),
                   ),
                 ),
-              ),
-          ],
-        ),
-      );
-    });
+            ],
+          ),
+        );
+      },
+    );
   }
 }

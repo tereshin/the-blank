@@ -98,8 +98,7 @@ class _HeroUiTagGroupState extends State<HeroUiTagGroup> {
             children: [
               Text(
                 widget.label!,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w500,
+                style: HeroUiTypography.bodySmMedium.copyWith(
                   color: cs.onSurface,
                 ),
               ),
@@ -187,10 +186,10 @@ class _TagChipState extends State<_TagChip> {
     HeroUiTagSize.lg => const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
   };
 
-  double get _fontSize => switch (widget.size) {
-    HeroUiTagSize.sm => 11,
-    HeroUiTagSize.md => 12,
-    HeroUiTagSize.lg => 14,
+  TextStyle get _labelStyle => switch (widget.size) {
+    HeroUiTagSize.sm => HeroUiTypography.bodyXsMedium,
+    HeroUiTagSize.md => HeroUiTypography.bodyXsMedium,
+    HeroUiTagSize.lg => HeroUiTypography.bodySmMedium,
   };
 
   @override
@@ -243,12 +242,7 @@ class _TagChipState extends State<_TagChip> {
                 ],
                 Text(
                   widget.item.label,
-                  style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: _fontSize,
-                    fontWeight: FontWeight.w500,
-                    color: textColor,
-                  ),
+                  style: _labelStyle.copyWith(color: textColor),
                 ),
                 if (widget.item.trailing != null) ...[
                   const SizedBox(width: 4),

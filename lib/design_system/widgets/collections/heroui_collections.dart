@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/icons/heroui_icon.dart';
+import '../../typography/heroui_typography.dart';
+import '../controls/heroui_checkbox.dart';
 
 part 'heroui_accordion.dart';
 part 'heroui_list_box.dart';

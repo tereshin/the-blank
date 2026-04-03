@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/icons/heroui_icon.dart';
+import '../../typography/heroui_typography.dart';
 
 part 'heroui_button_enums.dart';
 part 'heroui_button_tokens.dart';

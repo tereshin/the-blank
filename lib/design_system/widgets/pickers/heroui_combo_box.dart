@@ -183,21 +183,13 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
             children: [
               Text(
                 widget.label!,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  height: 1.43,
-                  color: textColor,
-                ),
+                style: HeroUiTypography.bodySmMedium.copyWith(color: textColor),
               ),
               if (widget.requiredField) ...[
                 const SizedBox(width: 4),
-                const Text(
+                Text(
                   '*',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    height: 1.43,
+                  style: HeroUiTypography.bodySmMedium.copyWith(
                     color: _kDangerColor,
                   ),
                 ),
@@ -248,18 +240,12 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
                         _focus.unfocus();
                         _closeDropdown();
                       },
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        height: 1.43,
+                      style: HeroUiTypography.textFieldSm.copyWith(
                         color: textColor,
                       ),
                       decoration: InputDecoration(
                         hintText: widget.placeholder,
-                        hintStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          height: 1.43,
+                        hintStyle: HeroUiTypography.textFieldSm.copyWith(
                           color: mutedColor,
                         ),
                         isDense: true,
@@ -299,9 +285,7 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
           const SizedBox(height: 4),
           Text(
             helperText!,
-            style: TextStyle(
-              fontSize: 12,
-              height: 1.34,
+            style: HeroUiTypography.bodyXs.copyWith(
               color: hasError ? _kDangerColor : mutedColor,
             ),
           ),
@@ -368,8 +352,7 @@ class _ComboBoxOverlay<T> extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                       child: Text(
                         'No results',
-                        style: TextStyle(
-                          fontSize: 14,
+                        style: HeroUiTypography.bodySm.copyWith(
                           color: _pickerMuted(context),
                         ),
                         textAlign: TextAlign.center,

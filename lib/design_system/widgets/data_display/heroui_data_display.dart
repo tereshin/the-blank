@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ─── Shared color tokens ──────────────────────────────────────────────────────
 
 enum HeroUiComponentType { defaultType, accent, success, warning, danger }
@@ -25,6 +27,7 @@ Color _typeSoftBg(HeroUiComponentType type) => switch (type) {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 enum HeroUiSeparatorVariant { primary, secondary, tertiary }
+
 enum HeroUiSeparatorOrientation { horizontal, vertical }
 
 /// A separator line, optionally with a centered text label.
@@ -62,7 +65,9 @@ class HeroUiSeparator extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final color = _lineColor(isDark);
-    final textColor = isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
+    final textColor = isDark
+        ? const Color(0xFFA1A1AA)
+        : const Color(0xFF71717A);
 
     if (orientation == HeroUiSeparatorOrientation.vertical) {
       return IntrinsicHeight(
@@ -75,10 +80,7 @@ class HeroUiSeparator extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
                 child: Text(
                   label!,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    height: 1.34,
+                  style: HeroUiTypography.bodyXsMedium.copyWith(
                     color: textColor,
                   ),
                 ),
@@ -101,12 +103,7 @@ class HeroUiSeparator extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Text(
             label!,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              height: 1.34,
-              color: textColor,
-            ),
+            style: HeroUiTypography.bodyXsMedium.copyWith(color: textColor),
           ),
         ),
         Expanded(child: Divider(thickness: 1, color: color)),
@@ -141,7 +138,9 @@ class HeroUiKbd extends StatelessWidget {
         ? (isDark ? const Color(0xFF3F3F46) : const Color(0xFFEBEBEC))
         : Colors.transparent;
 
-    final textColor = isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
+    final textColor = isDark
+        ? const Color(0xFFA1A1AA)
+        : const Color(0xFF71717A);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
@@ -150,14 +149,13 @@ class HeroUiKbd extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         border: variant == HeroUiKbdVariant.light
             ? Border.all(
-                color: isDark ? const Color(0xFF52525B) : const Color(0xFFD4D4D8),
+                color: isDark
+                    ? const Color(0xFF52525B)
+                    : const Color(0xFFD4D4D8),
               )
             : null,
         boxShadow: [
-          BoxShadow(
-            color: const Color.fromRGBO(0, 0, 0, 0.06),
-            blurRadius: 1,
-          ),
+          BoxShadow(color: const Color.fromRGBO(0, 0, 0, 0.06), blurRadius: 1),
           BoxShadow(
             color: const Color.fromRGBO(0, 0, 0, 0.04),
             blurRadius: 4,
@@ -172,12 +170,7 @@ class HeroUiKbd extends StatelessWidget {
             if (i > 0) const SizedBox(width: 2),
             Text(
               keys[i],
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                height: 1.43,
-                color: textColor,
-              ),
+              style: HeroUiTypography.bodySmMedium.copyWith(color: textColor),
             ),
           ],
         ],
@@ -191,6 +184,12 @@ class HeroUiKbd extends StatelessWidget {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 enum HeroUiAvatarVariant { letter, letterSoft, icon, iconSoft, img }
+
+TextStyle _avatarLabelStyle(double size) {
+  if (size <= 24) return HeroUiTypography.bodyXsMedium;
+  if (size <= 36) return HeroUiTypography.bodySmMedium;
+  return HeroUiTypography.bodyBaseMedium;
+}
 
 /// A circular avatar that can display initials, an icon, or an image.
 class HeroUiAvatar extends StatelessWidget {
@@ -226,12 +225,13 @@ class HeroUiAvatar extends StatelessWidget {
   final double size;
 
   Color _bg() => switch (variant) {
-    HeroUiAvatarVariant.letterSoft || HeroUiAvatarVariant.iconSoft =>
-      _typeSoftBg(type),
+    HeroUiAvatarVariant.letterSoft ||
+    HeroUiAvatarVariant.iconSoft => _typeSoftBg(type),
     HeroUiAvatarVariant.img => Colors.transparent,
-    _ => type == HeroUiComponentType.defaultType
-        ? const Color(0xFFEBEBEC)
-        : const Color(0xFFEBEBEC),
+    _ =>
+      type == HeroUiComponentType.defaultType
+          ? const Color(0xFFEBEBEC)
+          : const Color(0xFFEBEBEC),
   };
 
   Color _fg() => switch (type) {
@@ -241,8 +241,6 @@ class HeroUiAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSize = size * 0.33;
-
     Widget content;
 
     switch (variant) {
@@ -259,40 +257,32 @@ class HeroUiAvatar extends StatelessWidget {
                 backgroundImage: provider,
                 backgroundColor: const Color(0xFFEBEBEC),
               )
-            : _PlaceholderAvatar(size: size, bg: _bg(), fg: _fg(), fontSize: fontSize);
+            : _PlaceholderAvatar(size: size, bg: _bg(), fg: _fg());
         return content;
 
       case HeroUiAvatarVariant.icon:
       case HeroUiAvatarVariant.iconSoft:
         final iconSize = size * 0.44;
-        content = icon ??
-            Icon(
-              Icons.person_outline_rounded,
-              size: iconSize,
-              color: _fg(),
-            );
+        content =
+            icon ??
+            Icon(Icons.person_outline_rounded, size: iconSize, color: _fg());
         break;
 
       case HeroUiAvatarVariant.letter:
       case HeroUiAvatarVariant.letterSoft:
         content = Text(
-          (initials ?? 'AG').toUpperCase().substring(0, (initials?.length ?? 2).clamp(1, 2)),
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: FontWeight.w500,
-            height: 1,
-            color: _fg(),
+          (initials ?? 'AG').toUpperCase().substring(
+            0,
+            (initials?.length ?? 2).clamp(1, 2),
           ),
+          style: _avatarLabelStyle(size).copyWith(color: _fg()),
         );
     }
 
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        color: _bg(),
-        shape: BoxShape.circle,
-      ),
+      decoration: BoxDecoration(color: _bg(), shape: BoxShape.circle),
       alignment: Alignment.center,
       child: content,
     );
@@ -304,13 +294,11 @@ class _PlaceholderAvatar extends StatelessWidget {
     required this.size,
     required this.bg,
     required this.fg,
-    required this.fontSize,
   });
 
   final double size;
   final Color bg;
   final Color fg;
-  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -329,6 +317,7 @@ class _PlaceholderAvatar extends StatelessWidget {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 enum HeroUiBadgeVariant { primary, secondary, soft }
+
 enum HeroUiBadgeSize { sm, md, lg }
 
 /// A compact status/label indicator badge.
@@ -388,10 +377,25 @@ class HeroUiBadge extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final tokens = _tokens(isDark);
 
-    final (textSize, iconSize, padding, radius) = switch (size) {
-      HeroUiBadgeSize.sm => (10.0, 8.0, const EdgeInsets.symmetric(horizontal: 4, vertical: 1), 12.0),
-      HeroUiBadgeSize.md => (12.0, 10.0, const EdgeInsets.symmetric(horizontal: 8, vertical: 6), 24.0),
-      HeroUiBadgeSize.lg => (14.0, 12.0, const EdgeInsets.symmetric(horizontal: 10, vertical: 6), 16.0),
+    final (textStyle, iconSize, padding, radius) = switch (size) {
+      HeroUiBadgeSize.sm => (
+        HeroUiTypography.bodyXsMedium,
+        8.0,
+        const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+        12.0,
+      ),
+      HeroUiBadgeSize.md => (
+        HeroUiTypography.bodyXsMedium,
+        10.0,
+        const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        24.0,
+      ),
+      HeroUiBadgeSize.lg => (
+        HeroUiTypography.bodySmMedium,
+        12.0,
+        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        16.0,
+      ),
     };
 
     return Container(
@@ -413,15 +417,7 @@ class HeroUiBadge extends StatelessWidget {
             ),
             const SizedBox(width: 2),
           ],
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: textSize,
-              fontWeight: FontWeight.w500,
-              height: 1.34,
-              color: tokens.text,
-            ),
-          ),
+          Text(label, style: textStyle.copyWith(color: tokens.text)),
           if (endIcon != null) ...[
             const SizedBox(width: 2),
             IconTheme(
@@ -447,6 +443,7 @@ class _BadgeTokens {
 // ═══════════════════════════════════════════════════════════════════════════════
 
 enum HeroUiChipVariant { primary, secondary, soft, tertiary }
+
 enum HeroUiChipSize { sm, md, lg }
 
 /// An interactive chip/tag with optional close button.
@@ -496,8 +493,10 @@ class _HeroUiChipState extends State<HeroUiChip> {
         bg: widget.isSelected
             ? (highlight ? const Color(0xFF3592F9) : const Color(0xFF0485F7))
             : (highlight
-                ? (isDark ? const Color(0xFF3F3F46) : const Color(0xFFD4D4D8))
-                : (isDark ? const Color(0xFF27272A) : const Color(0xFFEBEBEC))),
+                  ? (isDark ? const Color(0xFF3F3F46) : const Color(0xFFD4D4D8))
+                  : (isDark
+                        ? const Color(0xFF27272A)
+                        : const Color(0xFFEBEBEC))),
         text: widget.isSelected
             ? const Color(0xFFFFFFFF)
             : (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B)),
@@ -534,10 +533,34 @@ class _HeroUiChipState extends State<HeroUiChip> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final tokens = _tokens(isDark);
 
-    final (textSize, iconSize, padding, radius, closeSize) = switch (widget.size) {
-      HeroUiChipSize.sm => (10.0, 8.0, const EdgeInsets.symmetric(horizontal: 6, vertical: 2), 10.0, 12.0),
-      HeroUiChipSize.md => (12.0, 12.0, const EdgeInsets.symmetric(horizontal: 8, vertical: 4), 24.0, 14.0),
-      HeroUiChipSize.lg => (14.0, 14.0, const EdgeInsets.symmetric(horizontal: 10, vertical: 6), 16.0, 16.0),
+    final (
+      textStyle,
+      iconSize,
+      padding,
+      radius,
+      closeSize,
+    ) = switch (widget.size) {
+      HeroUiChipSize.sm => (
+        HeroUiTypography.bodyXsMedium,
+        8.0,
+        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        10.0,
+        12.0,
+      ),
+      HeroUiChipSize.md => (
+        HeroUiTypography.bodyXsMedium,
+        12.0,
+        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        24.0,
+        14.0,
+      ),
+      HeroUiChipSize.lg => (
+        HeroUiTypography.bodySmMedium,
+        14.0,
+        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        16.0,
+        16.0,
+      ),
     };
 
     return Opacity(
@@ -585,12 +608,7 @@ class _HeroUiChipState extends State<HeroUiChip> {
                 ],
                 Text(
                   widget.label,
-                  style: TextStyle(
-                    fontSize: textSize,
-                    fontWeight: FontWeight.w500,
-                    height: 1.34,
-                    color: tokens.text,
-                  ),
+                  style: textStyle.copyWith(color: tokens.text),
                 ),
                 if (widget.isCloseable) ...[
                   const SizedBox(width: 4),
@@ -729,9 +747,13 @@ class HeroUiMeter extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final fraction = ((value - min) / (max - min)).clamp(0.0, 1.0);
-    final trackColor = isDark ? const Color(0xFF3F3F46) : const Color(0xFFE4E4E7);
+    final trackColor = isDark
+        ? const Color(0xFF3F3F46)
+        : const Color(0xFFE4E4E7);
     final fillColor = _typeColor(type);
-    final labelColor = isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B);
+    final labelColor = isDark
+        ? const Color(0xFFFCFCFC)
+        : const Color(0xFF18181B);
     final subColor = isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
 
     return Column(
@@ -745,22 +767,14 @@ class HeroUiMeter extends StatelessWidget {
               if (label != null)
                 Text(
                   label!,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    height: 1.43,
+                  style: HeroUiTypography.bodySmMedium.copyWith(
                     color: labelColor,
                   ),
                 ),
               if (valueLabel != null)
                 Text(
                   valueLabel!,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    height: 1.34,
-                    color: subColor,
-                  ),
+                  style: HeroUiTypography.bodyXs.copyWith(color: subColor),
                 ),
             ],
           ),

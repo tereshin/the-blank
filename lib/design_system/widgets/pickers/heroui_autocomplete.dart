@@ -190,12 +190,7 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
           if (widget.label != null) ...[
             Text(
               widget.label!,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                height: 1.43,
-                color: labelColor,
-              ),
+              style: HeroUiTypography.bodySmMedium.copyWith(color: labelColor),
             ),
             const SizedBox(height: 4),
           ],
@@ -230,16 +225,14 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
                       focusNode: _focus,
                       enabled: widget.enabled,
                       onChanged: _onTextChanged,
-                      style: TextStyle(
-                        fontSize: 14,
+                      style: HeroUiTypography.textFieldSm.copyWith(
                         color: isDark
                             ? const Color(0xFFFCFCFC)
                             : const Color(0xFF18181B),
                       ),
                       decoration: InputDecoration(
                         hintText: _selected.isEmpty ? widget.placeholder : '',
-                        hintStyle: TextStyle(
-                          fontSize: 14,
+                        hintStyle: HeroUiTypography.textFieldSm.copyWith(
                           color: isDark
                               ? const Color(0xFF52525B)
                               : const Color(0xFFA1A1AA),
@@ -265,10 +258,8 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
             const SizedBox(height: 4),
             Text(
               widget.errorText!,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Color(0xFFFF383C),
-                height: 1.34,
+              style: HeroUiTypography.bodyXs.copyWith(
+                color: const Color(0xFFFF383C),
               ),
             ),
           ],
@@ -304,11 +295,7 @@ class _AutocompleteTag extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: textColor,
-            ),
+            style: HeroUiTypography.bodyXsMedium.copyWith(color: textColor),
           ),
           if (onRemove != null) ...[
             const SizedBox(width: 4),

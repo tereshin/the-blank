@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/icons/heroui_icon.dart';
+import '../../typography/heroui_typography.dart';
 
 enum HeroUiLinkState { defaultState, hover, pressed, focus, disabled }
 
-const TextStyle _kLinkSmStyle = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w500,
-  height: 1.286,
-);
+const TextStyle _kLinkSmStyle = HeroUiTypography.linkSm;
 
 class HeroUiLink extends StatefulWidget {
   const HeroUiLink({

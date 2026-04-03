@@ -1,3 +1,4 @@
+export 'typography/heroui_typography.dart';
 export 'widgets/buttons/heroui_buttons.dart';
 export 'widgets/collections/heroui_collections.dart';
 export 'widgets/controls/heroui_checkbox.dart';

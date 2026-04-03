@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/icons/heroui_icon.dart';
+import '../../typography/heroui_typography.dart';
 import '../buttons/heroui_buttons.dart';
 import 'heroui_forms.dart';
 

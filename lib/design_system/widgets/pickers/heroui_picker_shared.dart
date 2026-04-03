@@ -150,14 +150,11 @@ class _DropdownItemState extends State<_DropdownItem> {
               Expanded(
                 child: Text(
                   widget.label,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: widget.isSelected
-                        ? FontWeight.w500
-                        : FontWeight.w400,
-                    height: 1.43,
-                    color: textColor,
-                  ),
+                  style:
+                      (widget.isSelected
+                              ? HeroUiTypography.bodySmMedium
+                              : HeroUiTypography.bodySm)
+                          .copyWith(color: textColor),
                 ),
               ),
               if (widget.isSelected)
@@ -201,21 +198,13 @@ Widget _buildTriggerField({
           children: [
             Text(
               label,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                height: 1.43,
-                color: textColor,
-              ),
+              style: HeroUiTypography.bodySmMedium.copyWith(color: textColor),
             ),
             if (requiredField) ...[
               const SizedBox(width: 4),
-              const Text(
+              Text(
                 '*',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  height: 1.43,
+                style: HeroUiTypography.bodySmMedium.copyWith(
                   color: _kDangerColor,
                 ),
               ),
@@ -272,10 +261,7 @@ Widget _buildTriggerField({
                       ),
                       child: Text(
                         value ?? placeholder,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          height: 1.43,
+                        style: HeroUiTypography.textFieldSm.copyWith(
                           color: value != null ? textColor : mutedColor,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -308,9 +294,7 @@ Widget _buildTriggerField({
         const SizedBox(height: 4),
         Text(
           helperText!,
-          style: TextStyle(
-            fontSize: 12,
-            height: 1.34,
+          style: HeroUiTypography.bodyXs.copyWith(
             color: hasError ? _kDangerColor : mutedColor,
           ),
         ),

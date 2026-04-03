@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ─── Public enums ─────────────────────────────────────────────────────────────
 
 enum HeroUiSwitchSize { sm, md, lg }
@@ -81,24 +83,14 @@ class _HeroUiSwitchState extends State<HeroUiSwitch>
     final spec = _sizeSpec(widget.size);
 
     final labelStyle = switch (widget.size) {
-      HeroUiSwitchSize.sm => const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        height: 1.34,
-      ),
-      HeroUiSwitchSize.md => const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        height: 1.43,
-      ),
-      HeroUiSwitchSize.lg => const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        height: 1.5,
-      ),
+      HeroUiSwitchSize.sm => HeroUiTypography.bodyXsMedium,
+      HeroUiSwitchSize.md => HeroUiTypography.bodySmMedium,
+      HeroUiSwitchSize.lg => HeroUiTypography.bodyBaseMedium,
     };
 
-    final labelColor = isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B);
+    final labelColor = isDark
+        ? const Color(0xFFFCFCFC)
+        : const Color(0xFF18181B);
 
     return Focus(
       onFocusChange: (v) {
@@ -201,23 +193,17 @@ class _SwitchTrack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final activeColor = const Color(0xFF0485F7);
-    final inactiveColor = isDark ? const Color(0xFF3F3F46) : const Color(0xFFE4E4E7);
+    final inactiveColor = isDark
+        ? const Color(0xFF3F3F46)
+        : const Color(0xFFE4E4E7);
 
     final maxThumbTravel =
         spec.trackWidth - spec.thumbSize - spec.thumbPadding * 2;
 
     final focusShadow = isFocused
         ? const <BoxShadow>[
-            BoxShadow(
-              color: Color(0xFF0485F7),
-              blurRadius: 0,
-              spreadRadius: 3,
-            ),
-            BoxShadow(
-              color: Color(0xFFF5F5F5),
-              blurRadius: 0,
-              spreadRadius: 1,
-            ),
+            BoxShadow(color: Color(0xFF0485F7), blurRadius: 0, spreadRadius: 3),
+            BoxShadow(color: Color(0xFFF5F5F5), blurRadius: 0, spreadRadius: 1),
           ]
         : const <BoxShadow>[];
 

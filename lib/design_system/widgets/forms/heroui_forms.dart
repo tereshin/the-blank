@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../core/icons/heroui_icon.dart';
+import '../../typography/heroui_typography.dart';
 import '../layout/heroui_layout.dart';
 
 part 'heroui_form_tokens.dart';

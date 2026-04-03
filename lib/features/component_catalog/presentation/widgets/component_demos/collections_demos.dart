@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
 import 'shared_demo_widgets.dart';
 
@@ -18,11 +19,7 @@ class _SectionBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFE4E4E7)),
-        borderRadius: BorderRadius.circular(12),
-      ),
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -36,35 +33,35 @@ class _SectionBox extends StatelessWidget {
 
 class _AccordionDemoPage extends StatelessWidget {
   static List<HeroUiAccordionItem> get _items => const [
-        HeroUiAccordionItem(
-          title: 'Is it accessible?',
-          subtitle: 'Keyboard navigation & ARIA',
-          content: Text(
-            'Yes. It adheres to the WAI-ARIA design pattern and supports '
-            'keyboard navigation including Tab and Enter keys.',
-          ),
-          initiallyExpanded: true,
-        ),
-        HeroUiAccordionItem(
-          title: 'Is it styled?',
-          content: Text(
-            'Yes. It comes with default styles that match the design system. '
-            'You can customize it with your theme.',
-          ),
-        ),
-        HeroUiAccordionItem(
-          title: 'Is it animated?',
-          content: Text(
-            'Yes. Smooth height transitions and icon rotation are included '
-            'by default.',
-          ),
-        ),
-        HeroUiAccordionItem(
-          title: 'Disabled item (cannot expand)',
-          content: Text('This content cannot be shown.'),
-          isDisabled: true,
-        ),
-      ];
+    HeroUiAccordionItem(
+      title: 'Is it accessible?',
+      subtitle: 'Keyboard navigation & ARIA',
+      content: Text(
+        'Yes. It adheres to the WAI-ARIA design pattern and supports '
+        'keyboard navigation including Tab and Enter keys.',
+      ),
+      initiallyExpanded: true,
+    ),
+    HeroUiAccordionItem(
+      title: 'Is it styled?',
+      content: Text(
+        'Yes. It comes with default styles that match the design system. '
+        'You can customize it with your theme.',
+      ),
+    ),
+    HeroUiAccordionItem(
+      title: 'Is it animated?',
+      content: Text(
+        'Yes. Smooth height transitions and icon rotation are included '
+        'by default.',
+      ),
+    ),
+    HeroUiAccordionItem(
+      title: 'Disabled item (cannot expand)',
+      content: Text('This content cannot be shown.'),
+      isDisabled: true,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,15 +71,13 @@ class _AccordionDemoPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const ComponentDemoTitle('Accordion — default (flat)'),
-          _SectionBox(
-            children: [HeroUiAccordion(items: _items)],
-          ),
+          _SectionBox(children: [HeroUiAccordion(items: _items)]),
           const SizedBox(height: 24),
-          const ComponentDemoTitle('Accordion — bordered'),
+          const ComponentDemoTitle('Accordion — secondary'),
           _SectionBox(
             children: [
               HeroUiAccordion(
-                variant: HeroUiAccordionVariant.bordered,
+                variant: HeroUiAccordionVariant.secondary,
                 items: _items,
               ),
             ],
@@ -119,7 +114,7 @@ class _AccordionDemoPage extends StatelessWidget {
             child: _SectionBox(
               children: [
                 HeroUiAccordion(
-                  variant: HeroUiAccordionVariant.bordered,
+                  variant: HeroUiAccordionVariant.secondary,
                   items: _items.take(3).toList(),
                 ),
               ],
@@ -142,16 +137,8 @@ class _ListBoxDemoPage extends StatelessWidget {
       description: 'Progressive JavaScript framework',
     ),
     HeroUiListBoxItem(value: 'angular', label: 'Angular'),
-    HeroUiListBoxItem(
-      value: 'svelte',
-      label: 'Svelte',
-      isDisabled: true,
-    ),
-    HeroUiListBoxItem<String>(
-      value: 'delete',
-      label: 'Delete',
-      isDanger: true,
-    ),
+    HeroUiListBoxItem(value: 'svelte', label: 'Svelte', isDisabled: true),
+    HeroUiListBoxItem<String>(value: 'delete', label: 'Delete', isDanger: true),
   ];
 
   static const _petItems = [
@@ -256,21 +243,30 @@ class _TagGroupDemoPage extends StatelessWidget {
           const ComponentDemoTitle('TagGroup — sizes'),
           _SectionBox(
             children: [
-              const Text('Small', style: TextStyle(fontSize: 12, color: Color(0xFF71717A))),
+              const Text(
+                'Small',
+                style: TextStyle(fontSize: 12, color: Color(0xFF71717A)),
+              ),
               const SizedBox(height: 8),
               HeroUiTagGroup(
                 items: _techTags.take(4).toList(),
                 size: HeroUiTagSize.sm,
               ),
               const SizedBox(height: 16),
-              const Text('Medium (default)', style: TextStyle(fontSize: 12, color: Color(0xFF71717A))),
+              const Text(
+                'Medium (default)',
+                style: TextStyle(fontSize: 12, color: Color(0xFF71717A)),
+              ),
               const SizedBox(height: 8),
               HeroUiTagGroup(
                 items: _techTags.take(4).toList(),
                 size: HeroUiTagSize.md,
               ),
               const SizedBox(height: 16),
-              const Text('Large', style: TextStyle(fontSize: 12, color: Color(0xFF71717A))),
+              const Text(
+                'Large',
+                style: TextStyle(fontSize: 12, color: Color(0xFF71717A)),
+              ),
               const SizedBox(height: 8),
               HeroUiTagGroup(
                 items: _techTags.take(4).toList(),
@@ -313,114 +309,302 @@ class _TagGroupDemoPage extends StatelessWidget {
 // ─── Table ────────────────────────────────────────────────────────────────────
 
 class _TableDemoPage extends StatelessWidget {
-  static const _columns = [
-    HeroUiTableColumn(key: 'name', label: 'Name', flex: 2, sortable: true),
-    HeroUiTableColumn(key: 'role', label: 'Role', flex: 2),
-    HeroUiTableColumn(key: 'status', label: 'Status', flex: 1),
-    HeroUiTableColumn(
-      key: 'actions',
-      label: '',
-      flex: 1,
-      alignment: Alignment.centerRight,
-    ),
-  ];
+  static const HeroUiTableHeader _leadingHeader = HeroUiTableHeader(
+    variant: HeroUiTableHeaderVariant.primary,
+    width: HeroUiTableHeaderWidth.leading,
+    showCheck: true,
+    showDrag: true,
+    cells: [
+      HeroUiTableHeaderCell(
+        label: 'Employee',
+        variant: HeroUiTableHeaderCellVariant.sortingHighest,
+        showTooltip: true,
+        tooltipMessage: 'Sort by employee name',
+        minWidth: 260,
+      ),
+      HeroUiTableHeaderCell(label: 'Revenue', minWidth: 140),
+      HeroUiTableHeaderCell(
+        label: 'Growth',
+        variant: HeroUiTableHeaderCellVariant.sortingLowest,
+        minWidth: 120,
+      ),
+      HeroUiTableHeaderCell(label: 'Status', minWidth: 130),
+      HeroUiTableHeaderCell(
+        label: 'Actions',
+        alignment: Alignment.centerRight,
+        minWidth: 140,
+      ),
+    ],
+  );
 
-  static List<HeroUiTableRow> _buildRows(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
+  static const HeroUiTableHeader _equalHeader = HeroUiTableHeader(
+    variant: HeroUiTableHeaderVariant.secondary,
+    width: HeroUiTableHeaderWidth.equal,
+    cells: [
+      HeroUiTableHeaderCell(label: 'Avatar', alignment: Alignment.center),
+      HeroUiTableHeaderCell(label: 'Name', minWidth: 160),
+      HeroUiTableHeaderCell(
+        label: 'Team',
+        showTooltip: true,
+        tooltipMessage: 'Current team assignment',
+      ),
+      HeroUiTableHeaderCell(
+        label: 'Utilization',
+        variant: HeroUiTableHeaderCellVariant.sortingHighest,
+        alignment: Alignment.centerRight,
+      ),
+    ],
+  );
 
-    Widget statusBadge(String status) {
-      final isActive = status == 'Active';
-      return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-        decoration: BoxDecoration(
-          color: isActive
-              ? Colors.green.withOpacity(0.12)
-              : cs.surfaceContainerHighest,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          status,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            color: isActive ? const Color(0xFF15803D) : cs.onSurfaceVariant,
-          ),
-        ),
-      );
-    }
-
-    Widget actions() => Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            _TableIconBtn(icon: Icons.edit_outlined),
-            const SizedBox(width: 4),
-            _TableIconBtn(
-              icon: Icons.delete_outline_rounded,
-              isDanger: true,
-            ),
-          ],
-        );
-
+  static List<HeroUiTableRow> _buildLeadingRows() {
     return [
-      HeroUiTableRow(cells: {
-        'name': const Text('Kate Moore', style: TextStyle(fontSize: 14)),
-        'role': const Text('Designer', style: TextStyle(fontSize: 14)),
-        'status': statusBadge('Active'),
-        'actions': actions(),
-      }),
-      HeroUiTableRow(cells: {
-        'name': const Text('Alex Taylor', style: TextStyle(fontSize: 14)),
-        'role': const Text('Developer', style: TextStyle(fontSize: 14)),
-        'status': statusBadge('Inactive'),
-        'actions': actions(),
-      }),
-      HeroUiTableRow(cells: {
-        'name': const Text('Sam Rivera', style: TextStyle(fontSize: 14)),
-        'role': const Text('Product Manager', style: TextStyle(fontSize: 14)),
-        'status': statusBadge('Active'),
-        'actions': actions(),
-      }),
-      HeroUiTableRow(cells: {
-        'name': const Text('Jordan Lee', style: TextStyle(fontSize: 14)),
-        'role': const Text('Engineer', style: TextStyle(fontSize: 14)),
-        'status': statusBadge('Active'),
-        'actions': actions(),
-      }),
+      HeroUiTableRow(
+        isChecked: true,
+        cells: [
+          _employeeCell(
+            initials: 'KM',
+            name: 'Kate Moore',
+            email: 'kate.moore@heroui.com',
+            type: HeroUiComponentType.accent,
+          ),
+          const HeroUiTableRowCell(child: Text('\$18,430')),
+          _compareCell('+18.3%'),
+          _statusCell('Active', HeroUiComponentType.success),
+          _actionsCell(),
+        ],
+      ),
+      HeroUiTableRow(
+        state: HeroUiTableRowState.hover,
+        cells: [
+          _employeeCell(
+            initials: 'AT',
+            name: 'Alex Taylor',
+            email: 'alex.taylor@heroui.com',
+            type: HeroUiComponentType.defaultType,
+          ),
+          const HeroUiTableRowCell(child: Text('\$14,820')),
+          _compareCell('-4.2%'),
+          _statusCell('On hold', HeroUiComponentType.warning),
+          _actionsCell(),
+        ],
+      ),
+      HeroUiTableRow(
+        cells: [
+          _employeeCell(
+            initials: 'SR',
+            name: 'Sam Rivera',
+            email: 'sam.rivera@heroui.com',
+            type: HeroUiComponentType.success,
+          ),
+          const HeroUiTableRowCell(child: Text('\$22,110')),
+          _compareCell('+26.7%'),
+          _statusCell('Active', HeroUiComponentType.success),
+          _actionsCell(),
+        ],
+      ),
+      HeroUiTableRow(
+        state: HeroUiTableRowState.disabled,
+        showCheck: false,
+        showDrag: false,
+        cells: [
+          _employeeCell(
+            initials: 'JL',
+            name: 'Jordan Lee',
+            email: 'jordan.lee@heroui.com',
+            type: HeroUiComponentType.defaultType,
+          ),
+          const HeroUiTableRowCell(child: Text('\$11,390')),
+          _compareCell('-2.1%'),
+          _statusCell('Archived', HeroUiComponentType.defaultType),
+          _actionsCell(),
+        ],
+      ),
     ];
+  }
+
+  static List<HeroUiTableRow> _buildEqualRows() {
+    return [
+      HeroUiTableRow(
+        width: HeroUiTableRowWidth.equal,
+        cells: [
+          HeroUiTableRowCell(
+            type: HeroUiTableRowCellType.visual,
+            alignment: Alignment.center,
+            child: const HeroUiAvatar(
+              initials: 'KM',
+              size: 28,
+              variant: HeroUiAvatarVariant.letterSoft,
+              type: HeroUiComponentType.accent,
+            ),
+          ),
+          const HeroUiTableRowCell(child: Text('Kate Moore')),
+          const HeroUiTableRowCell(child: Text('Design')),
+          _compareCell('+84%'),
+        ],
+      ),
+      HeroUiTableRow(
+        width: HeroUiTableRowWidth.equal,
+        cells: [
+          HeroUiTableRowCell(
+            type: HeroUiTableRowCellType.visual,
+            alignment: Alignment.center,
+            child: const HeroUiAvatar(
+              initials: 'AT',
+              size: 28,
+              variant: HeroUiAvatarVariant.letter,
+              type: HeroUiComponentType.defaultType,
+            ),
+          ),
+          const HeroUiTableRowCell(child: Text('Alex Taylor')),
+          const HeroUiTableRowCell(child: Text('Engineering')),
+          _compareCell('+67%'),
+        ],
+      ),
+      HeroUiTableRow(
+        width: HeroUiTableRowWidth.equal,
+        cells: [
+          HeroUiTableRowCell(
+            type: HeroUiTableRowCellType.visual,
+            alignment: Alignment.center,
+            child: const HeroUiAvatar(
+              initials: 'SR',
+              size: 28,
+              variant: HeroUiAvatarVariant.letterSoft,
+              type: HeroUiComponentType.success,
+            ),
+          ),
+          const HeroUiTableRowCell(child: Text('Sam Rivera')),
+          const HeroUiTableRowCell(child: Text('Product')),
+          _compareCell('-12%'),
+        ],
+      ),
+    ];
+  }
+
+  static HeroUiTableRowCell _employeeCell({
+    required String initials,
+    required String name,
+    required String email,
+    required HeroUiComponentType type,
+  }) {
+    return HeroUiTableRowCell(
+      type: HeroUiTableRowCellType.visualSupport,
+      variant: HeroUiTableRowCellVariant.leading,
+      prefix: HeroUiAvatar(
+        initials: initials,
+        size: 32,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: type,
+      ),
+      child: _TableEmployeeInfo(name: name, email: email),
+    );
+  }
+
+  static HeroUiTableRowCell _compareCell(String value) {
+    final isPositive = value.trimLeft().startsWith('+');
+    return HeroUiTableRowCell(
+      type: HeroUiTableRowCellType.compare,
+      alignment: Alignment.centerRight,
+      prefix: HeroUiIcon(
+        isPositive
+            ? HeroUiIconManifest.arrowUpRegular
+            : HeroUiIconManifest.arrowDownRegular,
+        size: 14,
+      ),
+      child: Text(value),
+    );
+  }
+
+  static HeroUiTableRowCell _statusCell(
+    String value,
+    HeroUiComponentType type,
+  ) {
+    return HeroUiTableRowCell(
+      type: HeroUiTableRowCellType.chip,
+      child: HeroUiBadge(
+        label: value,
+        type: type,
+        variant: HeroUiBadgeVariant.soft,
+        size: HeroUiBadgeSize.sm,
+      ),
+    );
+  }
+
+  static HeroUiTableRowCell _actionsCell() {
+    return const HeroUiTableRowCell(
+      type: HeroUiTableRowCellType.actions,
+      alignment: Alignment.centerRight,
+      child: _TableRowActions(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final rows = _buildRows(context);
+    final leadingRows = _buildLeadingRows();
+    final equalRows = _buildEqualRows();
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ComponentDemoTitle('Table — primary variant'),
+          const ComponentDemoTitle(
+            'Table — primary (leading width, data footer)',
+          ),
           HeroUiTable(
-            columns: _columns,
-            rows: rows,
+            variant: HeroUiTableVariant.primary,
+            header: _leadingHeader,
+            rows: leadingRows,
+            footer: const HeroUiTableFooter(
+              type: HeroUiTableFooterType.data,
+              leading: Text('Total quarterly revenue'),
+              trailing: Text(
+                '\$66,750',
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
           ),
           const SizedBox(height: 24),
-          const ComponentDemoTitle('Table — secondary variant'),
+          const ComponentDemoTitle('Table — secondary (equal width)'),
           HeroUiTable(
             variant: HeroUiTableVariant.secondary,
-            columns: _columns,
-            rows: rows,
+            header: _equalHeader,
+            rows: equalRows,
+          ),
+          const SizedBox(height: 24),
+          const ComponentDemoTitle('Table — pagination footer'),
+          HeroUiTable(
+            variant: HeroUiTableVariant.primary,
+            header: _leadingHeader,
+            rows: leadingRows.take(3).toList(),
+            footer: HeroUiTableFooter(
+              type: HeroUiTableFooterType.pagination,
+              leading: const Text('Showing 1-3 of 12 employees'),
+              trailing: HeroUiPagination(
+                currentPage: 1,
+                totalPages: 4,
+                onPageChanged: (_) {},
+                showRangeSummary: false,
+                showPageNumbers: false,
+                showPageSizeSelector: false,
+              ),
+            ),
           ),
           const SizedBox(height: 24),
           const ComponentDemoTitle('Table — empty state'),
           HeroUiTable(
-            columns: _columns,
+            header: _leadingHeader,
             rows: const [],
             emptyWidget: Column(
               children: const [
-                Icon(Icons.inbox_outlined, size: 48, color: Color(0xFFD4D4D8)),
+                HeroUiIcon(
+                  HeroUiIconManifest.squareListUlRegular,
+                  size: 48,
+                  color: Color(0xFFD4D4D8),
+                ),
                 SizedBox(height: 8),
                 Text(
-                  'No results found.',
+                  'No employee records found.',
                   style: TextStyle(color: Color(0xFF71717A)),
                 ),
               ],
@@ -431,8 +615,16 @@ class _TableDemoPage extends StatelessWidget {
           Theme(
             data: ThemeData.dark(),
             child: HeroUiTable(
-              columns: _columns,
-              rows: _buildRows(context).take(3).toList(),
+              header: _leadingHeader,
+              rows: leadingRows.take(2).toList(),
+              footer: const HeroUiTableFooter(
+                type: HeroUiTableFooterType.data,
+                leading: Text('Total quarterly revenue'),
+                trailing: Text(
+                  '\$33,250',
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+              ),
             ),
           ),
         ],
@@ -441,44 +633,84 @@ class _TableDemoPage extends StatelessWidget {
   }
 }
 
-class _TableIconBtn extends StatefulWidget {
-  const _TableIconBtn({required this.icon, this.isDanger = false});
-  final IconData icon;
-  final bool isDanger;
+class _TableEmployeeInfo extends StatelessWidget {
+  const _TableEmployeeInfo({required this.name, required this.email});
 
-  @override
-  State<_TableIconBtn> createState() => _TableIconBtnState();
-}
-
-class _TableIconBtnState extends State<_TableIconBtn> {
-  bool _isHovered = false;
+  final String name;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final supportColor = isDark
+        ? const Color(0xFFA1A1AA)
+        : const Color(0xFF71717A);
 
-    final bg = widget.isDanger
-        ? (_isHovered
-            ? const Color(0xFFFF383C).withOpacity(0.15)
-            : const Color(0xFFFF383C).withOpacity(0.08))
-        : (_isHovered ? cs.surfaceContainerHighest : const Color(0xFFEBEBEC));
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(name, style: HeroUiTypography.bodySmMedium),
+        const SizedBox(height: 2),
+        Text(
+          email,
+          style: HeroUiTypography.bodyXs.copyWith(color: supportColor),
+        ),
+      ],
+    );
+  }
+}
 
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 120),
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.circular(16),
+class _TableRowActions extends StatelessWidget {
+  const _TableRowActions();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _TableActionIconButton(
+          iconName: HeroUiIconManifest.eyeRegular,
+          label: 'View',
         ),
-        child: Icon(
-          widget.icon,
-          size: 16,
-          color: widget.isDanger ? const Color(0xFFFF383C) : cs.onSurface,
+        SizedBox(width: 4),
+        _TableActionIconButton(
+          iconName: HeroUiIconManifest.pencilRegular,
+          label: 'Edit',
         ),
-      ),
+        SizedBox(width: 4),
+        _TableActionIconButton(
+          iconName: HeroUiIconManifest.deleteRegular,
+          label: 'Delete',
+          isDanger: true,
+        ),
+      ],
+    );
+  }
+}
+
+class _TableActionIconButton extends StatelessWidget {
+  const _TableActionIconButton({
+    required this.iconName,
+    required this.label,
+    this.isDanger = false,
+  });
+
+  final String iconName;
+  final String label;
+  final bool isDanger;
+
+  @override
+  Widget build(BuildContext context) {
+    return HeroUiButton(
+      label: label,
+      iconOnly: true,
+      size: HeroUiButtonSize.sm,
+      variant: isDanger
+          ? HeroUiButtonVariant.dangerSoft
+          : HeroUiButtonVariant.ghost,
+      leading: HeroUiIcon(iconName, size: 16),
+      onPressed: () {},
     );
   }
 }

@@ -257,12 +257,7 @@ class _TooltipOverlay extends StatelessWidget {
       ),
       child: Text(
         message,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          height: 1.34,
-          color: textColor,
-        ),
+        style: HeroUiTypography.bodyXsMedium.copyWith(color: textColor),
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
       ),

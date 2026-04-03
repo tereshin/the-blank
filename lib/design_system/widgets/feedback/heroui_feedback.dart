@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
 import '../data_display/heroui_data_display.dart';
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -123,10 +124,7 @@ class _SpinnerPainter extends CustomPainter {
     final gradient = SweepGradient(
       startAngle: startAngle,
       endAngle: startAngle + sweepAngle,
-      colors: [
-        trackColor,
-        activeColor,
-      ],
+      colors: [trackColor, activeColor],
       transform: GradientRotation(startAngle),
     );
 
@@ -181,7 +179,9 @@ class HeroUiProgressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final labelColor = isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B);
+    final labelColor = isDark
+        ? const Color(0xFFFCFCFC)
+        : const Color(0xFF18181B);
     final trackH = switch (size) {
       HeroUiProgressBarSize.sm => 4.0,
       HeroUiProgressBarSize.md => 8.0,
@@ -189,7 +189,9 @@ class HeroUiProgressBar extends StatelessWidget {
     };
     final fraction = value.clamp(0.0, 1.0);
     final fillColor = _typeColor(type);
-    final trackColor = isDark ? const Color(0xFF3F3F46) : const Color(0xFFEBEBEC);
+    final trackColor = isDark
+        ? const Color(0xFF3F3F46)
+        : const Color(0xFFEBEBEC);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -202,20 +204,14 @@ class HeroUiProgressBar extends StatelessWidget {
               if (label != null)
                 Text(
                   label!,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    height: 1.43,
+                  style: HeroUiTypography.bodySmMedium.copyWith(
                     color: labelColor,
                   ),
                 ),
               if (valueLabel != null)
                 Text(
                   valueLabel!,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    height: 1.43,
+                  style: HeroUiTypography.bodySmMedium.copyWith(
                     color: labelColor,
                   ),
                 ),
@@ -224,7 +220,11 @@ class HeroUiProgressBar extends StatelessWidget {
           const SizedBox(height: 4),
         ],
         isIndeterminate
-            ? _IndeterminateBar(height: trackH, color: fillColor, trackColor: trackColor)
+            ? _IndeterminateBar(
+                height: trackH,
+                color: fillColor,
+                trackColor: trackColor,
+              )
             : LayoutBuilder(
                 builder: (_, c) => Stack(
                   children: [
@@ -349,7 +349,9 @@ class HeroUiProgressCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final labelColor = isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B);
+    final labelColor = isDark
+        ? const Color(0xFFFCFCFC)
+        : const Color(0xFF18181B);
 
     final (diameter, strokeW) = switch (size) {
       HeroUiProgressCircleSize.sm => (20.0, 2.0),
@@ -359,7 +361,9 @@ class HeroUiProgressCircle extends StatelessWidget {
 
     final fraction = value.clamp(0.0, 1.0);
     final fillColor = _typeColor(type);
-    final trackColor = isDark ? const Color(0xFF3F3F46) : const Color(0xFFEBEBEC);
+    final trackColor = isDark
+        ? const Color(0xFF3F3F46)
+        : const Color(0xFFEBEBEC);
 
     final circle = SizedBox(
       width: diameter,
@@ -383,12 +387,7 @@ class HeroUiProgressCircle extends StatelessWidget {
         const SizedBox(width: 12),
         Text(
           label!,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            height: 1.43,
-            color: labelColor,
-          ),
+          style: HeroUiTypography.bodySmMedium.copyWith(color: labelColor),
         ),
       ],
     );
@@ -490,8 +489,12 @@ class HeroUiAlert extends StatelessWidget {
     final titleColor = type == HeroUiComponentType.defaultType
         ? (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B))
         : typeColor;
-    final descColor = isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
-    final borderColor = isDark ? const Color(0xFF27272A) : const Color(0xFFF4F4F5);
+    final descColor = isDark
+        ? const Color(0xFFA1A1AA)
+        : const Color(0xFF71717A);
+    final borderColor = isDark
+        ? const Color(0xFF27272A)
+        : const Color(0xFFF4F4F5);
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -526,10 +529,7 @@ class HeroUiAlert extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 1.43,
+                    style: HeroUiTypography.bodySmMedium.copyWith(
                       color: titleColor,
                     ),
                   ),
@@ -537,12 +537,7 @@ class HeroUiAlert extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       description!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        height: 1.43,
-                        color: descColor,
-                      ),
+                      style: HeroUiTypography.bodySm.copyWith(color: descColor),
                     ),
                   ],
                 ],
@@ -567,18 +562,19 @@ class HeroUiAlert extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           color: type == HeroUiComponentType.defaultType
-                              ? (isDark ? const Color(0xFF27272A) : const Color(0xFFEBEBEC))
+                              ? (isDark
+                                    ? const Color(0xFF27272A)
+                                    : const Color(0xFFEBEBEC))
                               : typeColor,
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: Text(
                           actionLabel!,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            height: 1.43,
+                          style: HeroUiTypography.buttonSm.copyWith(
                             color: type == HeroUiComponentType.defaultType
-                                ? (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B))
+                                ? (isDark
+                                      ? const Color(0xFFFCFCFC)
+                                      : const Color(0xFF18181B))
                                 : const Color(0xFFFFFFFF),
                           ),
                         ),
@@ -636,8 +632,12 @@ class HeroUiToast extends StatelessWidget {
     final typeColor = _typeColor(type);
 
     final bg = isDark ? const Color(0xFF1E1E1E) : const Color(0xFFFFFFFF);
-    final titleColor = isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B);
-    final descColor = isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
+    final titleColor = isDark
+        ? const Color(0xFFFCFCFC)
+        : const Color(0xFF18181B);
+    final descColor = isDark
+        ? const Color(0xFFA1A1AA)
+        : const Color(0xFF71717A);
 
     return Container(
       constraints: const BoxConstraints(maxWidth: 360),
@@ -665,13 +665,16 @@ class HeroUiToast extends StatelessWidget {
             padding: const EdgeInsets.only(top: 12),
             child: Icon(
               switch (type) {
-                HeroUiComponentType.success => Icons.check_circle_outline_rounded,
+                HeroUiComponentType.success =>
+                  Icons.check_circle_outline_rounded,
                 HeroUiComponentType.warning => Icons.warning_amber_rounded,
                 HeroUiComponentType.danger => Icons.error_outline_rounded,
                 _ => Icons.info_outline_rounded,
               },
               size: 18,
-              color: type == HeroUiComponentType.defaultType ? descColor : typeColor,
+              color: type == HeroUiComponentType.defaultType
+                  ? descColor
+                  : typeColor,
             ),
           ),
           const SizedBox(width: 8),
@@ -684,10 +687,7 @@ class HeroUiToast extends StatelessWidget {
                 children: [
                   Text(
                     message,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 1.43,
+                    style: HeroUiTypography.bodySmMedium.copyWith(
                       color: titleColor,
                     ),
                   ),
@@ -695,12 +695,7 @@ class HeroUiToast extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       description!,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        height: 1.34,
-                        color: descColor,
-                      ),
+                      style: HeroUiTypography.bodyXs.copyWith(color: descColor),
                     ),
                   ],
                   if (actionLabel != null) ...[
@@ -709,10 +704,7 @@ class HeroUiToast extends StatelessWidget {
                       onTap: onAction,
                       child: Text(
                         actionLabel!,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          height: 1.34,
+                        style: HeroUiTypography.bodyXsMedium.copyWith(
                           color: typeColor == const Color(0xFF18181B)
                               ? const Color(0xFF0485F7)
                               : typeColor,

@@ -172,8 +172,7 @@ class _RangeCalendarDayCell extends StatelessWidget {
     final indicator = !isEndpoint && !isInRange && isToday && !isOutOfMonth;
     final showRangeFill = isInRange || isRangeStart || isRangeEnd;
     final fillLeft = isInRange || isRangeEnd || (isRangeStart && isRangeEnd);
-    final fillRight =
-        isInRange || isRangeStart || (isRangeStart && isRangeEnd);
+    final fillRight = isInRange || isRangeStart || (isRangeStart && isRangeEnd);
 
     return Opacity(
       opacity: opacity,

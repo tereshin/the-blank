@@ -29,49 +29,34 @@ class _Size {
 }
 
 _Size _size(HeroUiButtonSize s) => switch (s) {
-  HeroUiButtonSize.sm => const _Size(
+  HeroUiButtonSize.sm => _Size(
     32,
     16,
     20,
     5,
-    EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-    EdgeInsets.all(8),
-    TextStyle(
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w500,
-      fontSize: 13,
-      height: 1,
-    ),
+    const EdgeInsets.symmetric(horizontal: 12, vertical: 6).copyWith(bottom: 6),
+    const EdgeInsets.all(8),
+    HeroUiTypography.buttonSm,
     16,
   ),
-  HeroUiButtonSize.md => const _Size(
-    36,
+  HeroUiButtonSize.md => _Size(
+    38,
     12,
-    20,
+    22,
     8,
-    EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    EdgeInsets.all(10),
-    TextStyle(
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w500,
-      fontSize: 13,
-      height: 1,
-    ),
+    const EdgeInsets.symmetric(horizontal: 16, vertical: 7).copyWith(bottom: 8),
+    const EdgeInsets.all(10),
+    HeroUiTypography.buttonBase,
     18,
   ),
-  HeroUiButtonSize.lg => const _Size(
-    40,
+  HeroUiButtonSize.lg => _Size(
+    44,
     12,
-    24,
+    22,
     8,
-    EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    EdgeInsets.all(12),
-    TextStyle(
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w500,
-      fontSize: 15,
-      height: 1,
-    ),
+    const EdgeInsets.symmetric(horizontal: 16, vertical: 7).copyWith(bottom: 8),
+    const EdgeInsets.all(12),
+    HeroUiTypography.buttonBase,
     20,
   ),
 };

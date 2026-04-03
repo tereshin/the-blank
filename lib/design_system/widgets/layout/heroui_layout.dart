@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // SURFACE
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -162,10 +164,7 @@ class _HeroUiDisclosureState extends State<HeroUiDisclosure>
                 Expanded(
                   child: Text(
                     widget.title,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 1.43,
+                    style: HeroUiTypography.bodySmMedium.copyWith(
                       color: titleColor,
                     ),
                   ),

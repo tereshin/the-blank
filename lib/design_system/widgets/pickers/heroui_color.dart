@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ─── Design Tokens ────────────────────────────────────────────────────────────
 const Color _kForeground = Color(0xFF18181B);
 const Color _kMuted = Color(0xFF71717A);
@@ -37,12 +39,12 @@ class HeroUiColorSwatch extends StatelessWidget {
   final VoidCallback? onTap;
 
   double get _dimension => switch (size) {
-        HeroUiColorSwatchSize.xs => 16,
-        HeroUiColorSwatchSize.sm => 24,
-        HeroUiColorSwatchSize.md => 32,
-        HeroUiColorSwatchSize.lg => 36,
-        HeroUiColorSwatchSize.xl => 40,
-      };
+    HeroUiColorSwatchSize.xs => 16,
+    HeroUiColorSwatchSize.sm => 24,
+    HeroUiColorSwatchSize.md => 32,
+    HeroUiColorSwatchSize.lg => 36,
+    HeroUiColorSwatchSize.xl => 40,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -150,11 +152,7 @@ class _HeroUiColorSwatchPickerState extends State<HeroUiColorSwatchPicker> {
         children: [
           Text(
             widget.label!,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: _kForeground,
-            ),
+            style: HeroUiTypography.bodyXsMedium.copyWith(color: _kForeground),
           ),
           const SizedBox(height: 8),
           grid,
@@ -214,31 +212,28 @@ class _HeroUiColorSliderState extends State<HeroUiColorSlider> {
   LinearGradient get _gradient {
     return switch (widget.type) {
       HeroUiColorSliderType.hue => const LinearGradient(
-          colors: [
-            Color(0xFFFF0000),
-            Color(0xFFFF8A00),
-            Color(0xFFFFE600),
-            Color(0xFF14FF00),
-            Color(0xFF00A3FF),
-            Color(0xFF0500FF),
-            Color(0xFFAD00FF),
-            Color(0xFFFFC7FF),
-            Color(0xFFFF0000),
-          ],
-        ),
+        colors: [
+          Color(0xFFFF0000),
+          Color(0xFFFF8A00),
+          Color(0xFFFFE600),
+          Color(0xFF14FF00),
+          Color(0xFF00A3FF),
+          Color(0xFF0500FF),
+          Color(0xFFAD00FF),
+          Color(0xFFFFC7FF),
+          Color(0xFFFF0000),
+        ],
+      ),
       HeroUiColorSliderType.saturation => LinearGradient(
-          colors: [Colors.grey, widget.baseColor],
-        ),
+        colors: [Colors.grey, widget.baseColor],
+      ),
       HeroUiColorSliderType.lightness => LinearGradient(
-          colors: [Colors.black, widget.baseColor, Colors.white],
-          stops: const [0, 0.5, 1],
-        ),
+        colors: [Colors.black, widget.baseColor, Colors.white],
+        stops: const [0, 0.5, 1],
+      ),
       HeroUiColorSliderType.alpha => LinearGradient(
-          colors: [
-            widget.baseColor.withValues(alpha: 0),
-            widget.baseColor,
-          ],
-        ),
+        colors: [widget.baseColor.withValues(alpha: 0), widget.baseColor],
+      ),
     };
   }
 
@@ -330,20 +325,14 @@ class _HeroUiColorSliderState extends State<HeroUiColorSlider> {
                 if (widget.label != null)
                   Text(
                     widget.label!,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
+                    style: HeroUiTypography.bodyXsMedium.copyWith(
                       color: _kForeground,
                     ),
                   ),
                 if (widget.showValue)
                   Text(
                     _formatValue(),
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: _kMuted,
-                    ),
+                    style: HeroUiTypography.bodyXs.copyWith(color: _kMuted),
                   ),
               ],
             ),
@@ -367,8 +356,7 @@ class _HeroUiColorSliderState extends State<HeroUiColorSlider> {
   String _formatValue() {
     return switch (widget.type) {
       HeroUiColorSliderType.hue => '${(_value * 360).round()}°',
-      HeroUiColorSliderType.alpha =>
-        '${(_value * 100).round()}%',
+      HeroUiColorSliderType.alpha => '${(_value * 100).round()}%',
       _ => (_value * 100).round().toString(),
     };
   }
@@ -428,7 +416,9 @@ class _HeroUiColorAreaState extends State<HeroUiColorArea> {
       opacity: widget.enabled ? 1.0 : 0.5,
       child: GestureDetector(
         onTapDown: widget.enabled ? (d) => _handleDrag(d.localPosition) : null,
-        onPanUpdate: widget.enabled ? (d) => _handleDrag(d.localPosition) : null,
+        onPanUpdate: widget.enabled
+            ? (d) => _handleDrag(d.localPosition)
+            : null,
         child: SizedBox(
           width: widget.size,
           height: widget.size,
@@ -570,11 +560,7 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
         if (widget.label != null) ...[
           Text(
             widget.label!,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: _kForeground,
-            ),
+            style: HeroUiTypography.bodyXsMedium.copyWith(color: _kForeground),
           ),
           const SizedBox(height: 4),
         ],
@@ -615,21 +601,16 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
                   enabled: widget.enabled,
                   onChanged: _onChanged,
                   inputFormatters: [
-                    FilteringTextInputFormatter.allow(
-                      RegExp(r'[#0-9a-fA-F]'),
-                    ),
+                    FilteringTextInputFormatter.allow(RegExp(r'[#0-9a-fA-F]')),
                     LengthLimitingTextInputFormatter(7),
                   ],
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
+                  style: HeroUiTypography.textFieldSm.copyWith(
                     color: _kForeground,
                   ),
                   decoration: InputDecoration(
                     hintText: '#000000',
-                    hintStyle: const TextStyle(
-                      fontSize: 14,
-                      color: Color(0xFF71717A),
+                    hintStyle: HeroUiTypography.textFieldSm.copyWith(
+                      color: const Color(0xFF71717A),
                     ),
                     isDense: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 8),
@@ -649,9 +630,8 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Text(
               errorMsg,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Color(0xFFFF383C),
+              style: HeroUiTypography.bodyXs.copyWith(
+                color: const Color(0xFFFF383C),
               ),
             ),
           ),
@@ -662,7 +642,9 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
             padding: const EdgeInsets.symmetric(horizontal: 4),
             child: Text(
               widget.description!,
-              style: const TextStyle(fontSize: 12, color: Color(0xFF71717A)),
+              style: HeroUiTypography.bodyXs.copyWith(
+                color: const Color(0xFF71717A),
+              ),
             ),
           ),
         ],

@@ -103,19 +103,25 @@ class _HeroUiCarouselState extends State<HeroUiCarousel> {
                     left: 12,
                     top: 0,
                     bottom: 0,
-                    child: Center(child: _NavButton(
-                      icon: Icons.chevron_left_rounded,
-                      onTap: _currentIndex > 0 ? _prev : null,
-                    )),
+                    child: Center(
+                      child: _NavButton(
+                        icon: Icons.chevron_left_rounded,
+                        onTap: _currentIndex > 0 ? _prev : null,
+                      ),
+                    ),
                   ),
                   Positioned(
                     right: 12,
                     top: 0,
                     bottom: 0,
-                    child: Center(child: _NavButton(
-                      icon: Icons.chevron_right_rounded,
-                      onTap: _currentIndex < widget.items.length - 1 ? _next : null,
-                    )),
+                    child: Center(
+                      child: _NavButton(
+                        icon: Icons.chevron_right_rounded,
+                        onTap: _currentIndex < widget.items.length - 1
+                            ? _next
+                            : null,
+                      ),
+                    ),
                   ),
                   // Dot indicators
                   Positioned(
@@ -148,10 +154,7 @@ class _HeroUiCarouselState extends State<HeroUiCarousel> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: SizedBox(
-              height: widget.height,
-              child: _buildPageView(),
-            ),
+            child: SizedBox(height: widget.height, child: _buildPageView()),
           ),
           const SizedBox(height: 12),
           Row(
@@ -210,10 +213,7 @@ class _HeroUiCarouselState extends State<HeroUiCarousel> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
-            child: SizedBox(
-              height: widget.height,
-              child: _buildPageView(),
-            ),
+            child: SizedBox(height: widget.height, child: _buildPageView()),
           ),
           // Close button
           if (widget.onClose != null)
@@ -302,9 +302,7 @@ class _NavButtonState extends State<_NavButton> {
           height: 40,
           decoration: BoxDecoration(
             color: enabled
-                ? (_hovering
-                    ? const Color(0xFFEBEBEC)
-                    : _kSurface)
+                ? (_hovering ? const Color(0xFFEBEBEC) : _kSurface)
                 : _kSurface.withValues(alpha: 0.5),
             shape: BoxShape.circle,
             boxShadow: const [

@@ -130,10 +130,7 @@ class _HeroUiListBoxState<T> extends State<HeroUiListBox<T>> {
         if (widget.label != null) ...[
           Text(
             widget.label!,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              fontWeight: FontWeight.w500,
-              color: titleColor,
-            ),
+            style: HeroUiTypography.bodySmMedium.copyWith(color: titleColor),
           ),
           const SizedBox(height: 6),
         ],
@@ -359,8 +356,7 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
                     children: [
                       Text(
                         item.label,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
+                        style: HeroUiTypography.bodySmMedium.copyWith(
                           color: titleColor,
                         ),
                       ),

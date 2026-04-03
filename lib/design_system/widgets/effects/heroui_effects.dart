@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 //   gradient: transparent at top → solid at 40% → solid at bottom (bottom-to-top fade)
 enum HeroUiProgressiveBlurColor { dark, light }
 
-enum HeroUiProgressiveBlurDirection { topToBottom, bottomToTop, leftToRight, rightToLeft }
+enum HeroUiProgressiveBlurDirection {
+  topToBottom,
+  bottomToTop,
+  leftToRight,
+  rightToLeft,
+}
 
 class HeroUiProgressiveBlur extends StatelessWidget {
   const HeroUiProgressiveBlur({
@@ -32,10 +37,22 @@ class HeroUiProgressiveBlur extends StatelessWidget {
 
   (AlignmentGeometry, AlignmentGeometry) get _gradientAlignment {
     return switch (direction) {
-      HeroUiProgressiveBlurDirection.bottomToTop => (Alignment.bottomCenter, Alignment.topCenter),
-      HeroUiProgressiveBlurDirection.topToBottom => (Alignment.topCenter, Alignment.bottomCenter),
-      HeroUiProgressiveBlurDirection.leftToRight => (Alignment.centerLeft, Alignment.centerRight),
-      HeroUiProgressiveBlurDirection.rightToLeft => (Alignment.centerRight, Alignment.centerLeft),
+      HeroUiProgressiveBlurDirection.bottomToTop => (
+        Alignment.bottomCenter,
+        Alignment.topCenter,
+      ),
+      HeroUiProgressiveBlurDirection.topToBottom => (
+        Alignment.topCenter,
+        Alignment.bottomCenter,
+      ),
+      HeroUiProgressiveBlurDirection.leftToRight => (
+        Alignment.centerLeft,
+        Alignment.centerRight,
+      ),
+      HeroUiProgressiveBlurDirection.rightToLeft => (
+        Alignment.centerRight,
+        Alignment.centerLeft,
+      ),
     };
   }
 
@@ -62,10 +79,7 @@ class HeroUiProgressiveBlur extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: begin,
                   end: end,
-                  colors: [
-                    Colors.transparent,
-                    _overlayColor,
-                  ],
+                  colors: [Colors.transparent, _overlayColor],
                   stops: const [0.0, 0.4],
                 ),
               ),
@@ -112,12 +126,13 @@ class _HeroUiResizableState extends State<HeroUiResizable> {
   bool _hovering = false;
 
   Color get _color => switch (widget.variant) {
-        HeroUiResizableVariant.primary => const Color(0xFFE4E4E7),
-        HeroUiResizableVariant.secondary => const Color(0xFFD7D7D7),
-        HeroUiResizableVariant.tertiary => const Color(0xFFCDCDCE),
-      };
+    HeroUiResizableVariant.primary => const Color(0xFFE4E4E7),
+    HeroUiResizableVariant.secondary => const Color(0xFFD7D7D7),
+    HeroUiResizableVariant.tertiary => const Color(0xFFCDCDCE),
+  };
 
-  bool get _isVertical => widget.orientation == HeroUiResizableOrientation.vertical;
+  bool get _isVertical =>
+      widget.orientation == HeroUiResizableOrientation.vertical;
 
   @override
   Widget build(BuildContext context) {
@@ -209,33 +224,27 @@ class _HeroUiResizableState extends State<HeroUiResizable> {
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            _dot(c), const SizedBox(width: 3), _dot(c),
-          ],
+          children: [_dot(c), const SizedBox(width: 3), _dot(c)],
         ),
         const SizedBox(height: 3),
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            _dot(c), const SizedBox(width: 3), _dot(c),
-          ],
+          children: [_dot(c), const SizedBox(width: 3), _dot(c)],
         ),
         const SizedBox(height: 3),
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            _dot(c), const SizedBox(width: 3), _dot(c),
-          ],
+          children: [_dot(c), const SizedBox(width: 3), _dot(c)],
         ),
       ],
     );
   }
 
   Widget _dot(Color c) => Container(
-        width: 2,
-        height: 2,
-        decoration: BoxDecoration(color: c, shape: BoxShape.circle),
-      );
+    width: 2,
+    height: 2,
+    decoration: BoxDecoration(color: c, shape: BoxShape.circle),
+  );
 }
 
 // ─── ResizablePanel ───────────────────────────────────────────────────────────

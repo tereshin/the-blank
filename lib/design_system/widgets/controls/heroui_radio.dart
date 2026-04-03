@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ─── Public enums ─────────────────────────────────────────────────────────────
 
 enum HeroUiRadioGroupOrientation { vertical, horizontal }
@@ -189,8 +191,9 @@ class HeroUiRadio extends StatelessWidget {
     final labelColor = isInvalid
         ? const Color(0xFFFF383C)
         : (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B));
-    final descColor =
-        isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
+    final descColor = isDark
+        ? const Color(0xFFA1A1AA)
+        : const Color(0xFF71717A);
 
     final hasLabel = label != null;
     final hasDesc = description != null;
@@ -210,10 +213,7 @@ class HeroUiRadio extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 1),
-          child: control,
-        ),
+        Padding(padding: const EdgeInsets.only(top: 1), child: control),
         const SizedBox(width: 12),
         Flexible(
           child: GestureDetector(
@@ -229,10 +229,7 @@ class HeroUiRadio extends StatelessWidget {
                   if (hasLabel)
                     Text(
                       label!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        height: 1.43,
+                      style: HeroUiTypography.bodySmMedium.copyWith(
                         color: labelColor,
                       ),
                     ),
@@ -240,23 +237,15 @@ class HeroUiRadio extends StatelessWidget {
                     if (hasLabel) const SizedBox(height: 2),
                     Text(
                       description!,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        height: 1.34,
-                        color: descColor,
-                      ),
+                      style: HeroUiTypography.bodyXs.copyWith(color: descColor),
                     ),
                   ],
                   if (hasError) ...[
                     const SizedBox(height: 2),
                     Text(
                       errorMessage!,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        height: 1.34,
-                        color: Color(0xFFFF383C),
+                      style: HeroUiTypography.bodyXs.copyWith(
+                        color: const Color(0xFFFF383C),
                       ),
                     ),
                   ],
@@ -334,8 +323,9 @@ class HeroUiRadioGroup extends StatelessWidget {
     final labelColor = isInvalid
         ? const Color(0xFFFF383C)
         : (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B));
-    final descColor =
-        isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
+    final descColor = isDark
+        ? const Color(0xFFA1A1AA)
+        : const Color(0xFF71717A);
 
     // ── Header ────────────────────────────────────────────────────────────────
     final header = <Widget>[];
@@ -344,12 +334,7 @@ class HeroUiRadioGroup extends StatelessWidget {
       header.add(
         Text(
           label!,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            height: 1.43,
-            color: labelColor,
-          ),
+          style: HeroUiTypography.bodySmMedium.copyWith(color: labelColor),
         ),
       );
     }
@@ -358,12 +343,7 @@ class HeroUiRadioGroup extends StatelessWidget {
       header.add(
         Text(
           description!,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            height: 1.34,
-            color: descColor,
-          ),
+          style: HeroUiTypography.bodyXs.copyWith(color: descColor),
         ),
       );
     }
@@ -402,10 +382,7 @@ class HeroUiRadioGroup extends StatelessWidget {
     if (isInvalid && errorMessage != null) {
       footer = Text(
         errorMessage!,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-          height: 1.34,
+        style: HeroUiTypography.bodyXs.copyWith(
           color: isDark ? const Color(0xFFFF6166) : const Color(0xFFFF383C),
         ),
       );
@@ -468,12 +445,8 @@ _RadioTokens _resolveTokens({
   // ── Disabled ──────────────────────────────────────────────────────────────
   if (state == _VisualState.disabled) {
     return _RadioTokens(
-      trackColor: isSelected
-          ? const Color(0xFF0485F7)
-          : _unselectedBg(isDark),
-      borderColor: isSelected
-          ? const Color(0xFF3592F9)
-          : _borderColor(isDark),
+      trackColor: isSelected ? const Color(0xFF0485F7) : _unselectedBg(isDark),
+      borderColor: isSelected ? const Color(0xFF3592F9) : _borderColor(isDark),
       borderWidth: 1,
       opacity: 0.5,
       showFocusRing: false,
@@ -590,31 +563,15 @@ class _RadioDot extends StatelessWidget {
   Widget build(BuildContext context) {
     final shadows = tokens.showFocusRing
         ? const <BoxShadow>[
-            BoxShadow(
-              color: Color(0xFF0485F7),
-              blurRadius: 0,
-              spreadRadius: 4,
-            ),
-            BoxShadow(
-              color: Color(0xFFF5F5F5),
-              blurRadius: 0,
-              spreadRadius: 2,
-            ),
+            BoxShadow(color: Color(0xFF0485F7), blurRadius: 0, spreadRadius: 4),
+            BoxShadow(color: Color(0xFFF5F5F5), blurRadius: 0, spreadRadius: 2),
           ]
         : const <BoxShadow>[
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.06),
-              blurRadius: 1,
-            ),
+            BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.06), blurRadius: 1),
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.06),
               offset: Offset(0, 1),
               blurRadius: 2,
-            ),
-            BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.04),
-              offset: Offset(0, 2),
-              blurRadius: 4,
             ),
           ];
 
@@ -637,8 +594,8 @@ class _RadioDot extends StatelessWidget {
             ? Center(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 120),
-                  width: 4 * dotProgress,
-                  height: 4 * dotProgress,
+                  width: 7 * dotProgress,
+                  height: 7 * dotProgress,
                   decoration: BoxDecoration(
                     color: tokens.dotColor,
                     shape: BoxShape.circle,

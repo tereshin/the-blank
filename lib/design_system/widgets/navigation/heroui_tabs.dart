@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../core/icons/heroui_icon.dart';
+import '../../typography/heroui_typography.dart';
 
 /// Single tab in the list ([HeroUiTabs]), matching Figma **TabsElement**: label,
 /// interactive state, optional prefix ([leading]) / suffix ([trailing]) icons.
@@ -665,13 +666,11 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     final leading = item.leading;
     final isVertical =
         widget.tabContentOrientation == HeroUiTabContentOrientation.vertical;
-    final textStyle = TextStyle(
-      fontFamily: 'Inter',
-      fontWeight: FontWeight.w500,
-      fontSize: isVertical ? 12 : 14,
-      height: isVertical ? 1.34 : 1.43,
-      color: color,
-    );
+    final textStyle =
+        (isVertical
+                ? HeroUiTypography.bodyXsMedium
+                : HeroUiTypography.bodySmMedium)
+            .copyWith(color: color);
 
     if (isVertical) {
       return IconTheme.merge(

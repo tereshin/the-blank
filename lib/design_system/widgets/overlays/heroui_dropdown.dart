@@ -329,12 +329,8 @@ class _DropdownMenuOverlay extends StatelessWidget {
                                   ),
                                   child: Text(
                                     visibleSections[i].title!,
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.34,
-                                      color: sectionLabelColor,
-                                    ),
+                                    style: HeroUiTypography.bodyXsMedium
+                                        .copyWith(color: sectionLabelColor),
                                   ),
                                 ),
                               for (final item in visibleSections[i].items)
@@ -533,10 +529,7 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
                     children: [
                       Text(
                         item.label,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          height: 1.43,
+                        style: HeroUiTypography.bodySmMedium.copyWith(
                           color: titleColor,
                         ),
                       ),
@@ -544,10 +537,7 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
                         const SizedBox(height: 2),
                         Text(
                           item.description!,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            height: 1.34,
+                          style: HeroUiTypography.bodyXs.copyWith(
                             color: widget.descriptionColor,
                           ),
                         ),

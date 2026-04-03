@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../design_system/typography/heroui_typography.dart';
 import '../features/component_catalog/presentation/screens/categories_screen.dart';
 
 class TheBlankApp extends StatelessWidget {
@@ -7,14 +8,6 @@ class TheBlankApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lightTextTheme = _withoutLetterSpacing(
-      ThemeData.light().textTheme.apply(fontFamily: 'Inter'),
-    );
-    final darkTextTheme = _withoutLetterSpacing(
-      ThemeData(
-        brightness: Brightness.dark,
-      ).textTheme.apply(fontFamily: 'Inter'),
-    );
     const lightBackground = Color(0xFFF5F5F5);
     const darkBackground = Color(0xFF060607);
     final lightScheme = ColorScheme.fromSeed(
@@ -24,6 +17,14 @@ class TheBlankApp extends StatelessWidget {
     final darkScheme = ColorScheme.fromSeed(
       seedColor: Colors.indigo,
       brightness: Brightness.dark,
+    );
+    final lightTextTheme = HeroUiTypography.materialTextTheme.apply(
+      bodyColor: lightScheme.onSurface,
+      displayColor: lightScheme.onSurface,
+    );
+    final darkTextTheme = HeroUiTypography.materialTextTheme.apply(
+      bodyColor: darkScheme.onSurface,
+      displayColor: darkScheme.onSurface,
     );
 
     return MaterialApp(
@@ -57,28 +58,4 @@ class TheBlankApp extends StatelessWidget {
       home: const CategoriesScreen(),
     );
   }
-}
-
-TextTheme _withoutLetterSpacing(TextTheme textTheme) {
-  TextStyle? clearSpacing(TextStyle? style) {
-    return style?.copyWith(letterSpacing: 0);
-  }
-
-  return textTheme.copyWith(
-    displayLarge: clearSpacing(textTheme.displayLarge),
-    displayMedium: clearSpacing(textTheme.displayMedium),
-    displaySmall: clearSpacing(textTheme.displaySmall),
-    headlineLarge: clearSpacing(textTheme.headlineLarge),
-    headlineMedium: clearSpacing(textTheme.headlineMedium),
-    headlineSmall: clearSpacing(textTheme.headlineSmall),
-    titleLarge: clearSpacing(textTheme.titleLarge),
-    titleMedium: clearSpacing(textTheme.titleMedium),
-    titleSmall: clearSpacing(textTheme.titleSmall),
-    bodyLarge: clearSpacing(textTheme.bodyLarge),
-    bodyMedium: clearSpacing(textTheme.bodyMedium),
-    bodySmall: clearSpacing(textTheme.bodySmall),
-    labelLarge: clearSpacing(textTheme.labelLarge),
-    labelMedium: clearSpacing(textTheme.labelMedium),
-    labelSmall: clearSpacing(textTheme.labelSmall),
-  );
 }

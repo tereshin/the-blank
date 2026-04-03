@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../../../core/icons/heroui_icon.dart';
+import '../../typography/heroui_typography.dart';
 import '../buttons/heroui_buttons.dart';
 import '../pickers/heroui_pickers.dart';
 
@@ -162,11 +163,7 @@ class HeroUiPagination extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Text(
                 '...',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  height: 1.4286,
-                ).copyWith(color: muted),
+                style: HeroUiTypography.bodySmMedium.copyWith(color: muted),
               ),
             )
           else
@@ -216,14 +213,7 @@ class HeroUiPagination extends StatelessWidget {
           item.label.length > current.length ? item.label : current,
     );
     final textPainter = TextPainter(
-      text: TextSpan(
-        text: longestLabel,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          height: 1.43,
-        ),
-      ),
+      text: TextSpan(text: longestLabel, style: HeroUiTypography.textFieldSm),
       maxLines: 1,
       textDirection: Directionality.of(context),
     )..layout();
@@ -275,11 +265,7 @@ class HeroUiPagination extends StatelessWidget {
         showRangeSummary
             ? Text(
                 _rangeSummaryText(),
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  height: 1.43,
-                ).copyWith(color: muted),
+                style: HeroUiTypography.bodySm.copyWith(color: muted),
               )
             : const SizedBox.shrink(),
       HeroUiPaginationVariant.secondary => Wrap(
@@ -290,29 +276,17 @@ class HeroUiPagination extends StatelessWidget {
           if (_showPageSizeSelectorResolved) ...[
             Text(
               'Showing',
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                height: 1.43,
-              ).copyWith(color: muted),
+              style: HeroUiTypography.bodySm.copyWith(color: muted),
             ),
             _buildPageSizeSelector(context),
             Text(
               'of ${_resolvedTotalItems.toString()} $itemLabel',
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                height: 1.43,
-              ).copyWith(color: muted),
+              style: HeroUiTypography.bodySm.copyWith(color: muted),
             ),
           ] else if (showRangeSummary)
             Text(
               _rangeSummaryText(),
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                height: 1.43,
-              ).copyWith(color: muted),
+              style: HeroUiTypography.bodySm.copyWith(color: muted),
             ),
         ],
       ),

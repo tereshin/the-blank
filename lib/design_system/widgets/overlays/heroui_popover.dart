@@ -178,9 +178,7 @@ class _PopoverOverlay extends StatelessWidget {
                           boxShadow: _kOverlayShadow,
                         ),
                         child: DefaultTextStyle.merge(
-                          style: TextStyle(
-                            fontSize: 14,
-                            height: 1.5,
+                          style: HeroUiTypography.bodySm.copyWith(
                             color: textColor,
                           ),
                           child: IconTheme.merge(

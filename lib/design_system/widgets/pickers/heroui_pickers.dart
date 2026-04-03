@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../forms/heroui_forms.dart';
+import '../../typography/heroui_typography.dart';
 
 part 'heroui_picker_shared.dart';
 part 'heroui_select.dart';

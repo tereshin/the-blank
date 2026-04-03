@@ -72,10 +72,7 @@ class HeroUiModal {
                             Expanded(
                               child: Text(
                                 title,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  height: 1.4,
+                                style: HeroUiTypography.heading4.copyWith(
                                   color: titleColor,
                                 ),
                               ),

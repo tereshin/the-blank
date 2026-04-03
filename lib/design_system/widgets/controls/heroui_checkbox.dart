@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 // ─── Public enums ─────────────────────────────────────────────────────────────
 
 enum HeroUiCheckboxVariant { primary, secondary }
@@ -264,10 +266,7 @@ class _HeroUiCheckboxState extends State<HeroUiCheckbox> {
                   if (hasLabel)
                     Text(
                       widget.label!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        height: 1.43,
+                      style: HeroUiTypography.bodySmMedium.copyWith(
                         color: labelColor,
                       ),
                     ),
@@ -275,23 +274,15 @@ class _HeroUiCheckboxState extends State<HeroUiCheckbox> {
                     if (hasLabel) const SizedBox(height: 2),
                     Text(
                       widget.description!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        height: 1.43,
-                        color: descColor,
-                      ),
+                      style: HeroUiTypography.bodySm.copyWith(color: descColor),
                     ),
                   ],
                   if (hasError) ...[
                     const SizedBox(height: 2),
                     Text(
                       widget.errorMessage!,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        height: 1.43,
-                        color: Color(0xFFFF383C),
+                      style: HeroUiTypography.bodySm.copyWith(
+                        color: const Color(0xFFFF383C),
                       ),
                     ),
                   ],
@@ -651,12 +642,7 @@ class HeroUiCheckboxGroup extends StatelessWidget {
       header.add(
         Text(
           label!,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            height: 1.43,
-            color: labelColor,
-          ),
+          style: HeroUiTypography.bodySmMedium.copyWith(color: labelColor),
         ),
       );
     }
@@ -665,12 +651,7 @@ class HeroUiCheckboxGroup extends StatelessWidget {
       header.add(
         Text(
           description!,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            height: 1.34,
-            color: descColor,
-          ),
+          style: HeroUiTypography.bodyXs.copyWith(color: descColor),
         ),
       );
     }
@@ -712,10 +693,7 @@ class HeroUiCheckboxGroup extends StatelessWidget {
     if (isInvalid && errorMessage != null) {
       footer = Text(
         errorMessage!,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w400,
-          height: 1.34,
+        style: HeroUiTypography.bodyXs.copyWith(
           color: isDark ? const Color(0xFFFF6166) : const Color(0xFFFF383C),
         ),
       );

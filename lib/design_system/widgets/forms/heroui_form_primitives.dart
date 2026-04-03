@@ -70,13 +70,7 @@ class HeroUiLabel extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          text,
-          style: _kLabelStyle.copyWith(
-            color: textColor,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
+        Text(text, style: _kLabelStyle.copyWith(color: textColor)),
         if (requiredField) ...[
           const SizedBox(width: 4),
           Text('*', style: _kLabelStyle.copyWith(color: _kDanger)),

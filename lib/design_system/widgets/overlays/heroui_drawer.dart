@@ -97,10 +97,7 @@ class HeroUiDrawer {
                         children: [
                           Text(
                             title,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              height: 1.4,
+                            style: HeroUiTypography.heading4.copyWith(
                               color: titleColor,
                             ),
                           ),
@@ -108,10 +105,8 @@ class HeroUiDrawer {
                             const SizedBox(height: 4),
                             Text(
                               subtitle,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF71717A),
-                                height: 1.43,
+                              style: HeroUiTypography.bodySm.copyWith(
+                                color: const Color(0xFF71717A),
                               ),
                             ),
                           ],

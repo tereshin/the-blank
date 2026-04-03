@@ -23,43 +23,17 @@ const Color _kDarkMuted = Color(0xFFA1A1AA);
 const Color _kForeground = Color(0xFF18181B);
 const Color _kDarkForeground = Color(0xFFFCFCFC);
 
-const TextStyle _kLabelStyle = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w500,
-  height: 1.43,
-);
+const TextStyle _kLabelStyle = HeroUiTypography.bodySmMedium;
 
-const TextStyle _kBodyXsStyle = TextStyle(
-  fontSize: 12,
-  fontWeight: FontWeight.w400,
-  height: 1.34,
-);
+const TextStyle _kBodyXsStyle = HeroUiTypography.bodyXs;
 
-const TextStyle _kInputTextStyle = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w400,
-  height: 1.43,
-);
+const TextStyle _kInputTextStyle = HeroUiTypography.textFieldSm;
 
-const TextStyle _kLinkSmStyle = TextStyle(
-  fontSize: 14,
-  fontWeight: FontWeight.w500,
-  height: 1.286,
-);
+const TextStyle _kLinkSmStyle = HeroUiTypography.linkSm;
 
-const TextStyle _kOtpValueStyle = TextStyle(
-  fontSize: 13.5,
-  fontWeight: FontWeight.w600,
-  height: 1.333,
-  letterSpacing: -0.27,
-);
+const TextStyle _kOtpValueStyle = HeroUiTypography.bodySmMedium;
 
-const TextStyle _kOtpValueErrorStyle = TextStyle(
-  fontSize: 18,
-  fontWeight: FontWeight.w600,
-  height: 1.333,
-  letterSpacing: -0.36,
-);
+const TextStyle _kOtpValueErrorStyle = HeroUiTypography.heading4;
 
 const double _kOtpCellWidth = 38;
 

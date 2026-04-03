@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../typography/heroui_typography.dart';
+
 class HeroUiCard extends StatelessWidget {
   const HeroUiCard({
     super.key,
@@ -95,11 +97,8 @@ class HeroUiCardHeader extends StatelessWidget {
       heading.add(
         Text(
           tagline!,
-          style: TextStyle(
+          style: HeroUiTypography.bodyXsMedium.copyWith(
             color: tokens.secondaryText,
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            height: 1.34,
           ),
         ),
       );
@@ -108,11 +107,8 @@ class HeroUiCardHeader extends StatelessWidget {
       heading.add(
         Text(
           title!,
-          style: TextStyle(
+          style: HeroUiTypography.bodySmMedium.copyWith(
             color: tokens.primaryText,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            height: 1.43,
           ),
         ),
       );
@@ -141,12 +137,7 @@ class HeroUiCardHeader extends StatelessWidget {
       rows.add(
         Text(
           description!,
-          style: TextStyle(
-            color: tokens.secondaryText,
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            height: 1.34,
-          ),
+          style: HeroUiTypography.bodyXs.copyWith(color: tokens.secondaryText),
         ),
       );
     }
