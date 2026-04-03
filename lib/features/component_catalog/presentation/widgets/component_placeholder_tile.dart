@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/icons/heroui_icon.dart';
 import '../../../../design_system/design_system.dart';
 import '../../domain/catalog_component.dart';
 
@@ -20,21 +21,34 @@ class ComponentCatalogTile extends StatelessWidget {
     final statusColor = isImplemented
         ? Theme.of(context).colorScheme.primary
         : Theme.of(context).colorScheme.onSurfaceVariant;
+    final trailingColor = Theme.of(context).colorScheme.onSurfaceVariant;
+    final statusIcon = isImplemented
+        ? HeroUiIconManifest.checkRegular
+        : HeroUiIconManifest.clockRegular;
+    final trailingIcon = onTap == null
+        ? HeroUiIconManifest.lockRegular
+        : HeroUiIconManifest.chevronRightRegular;
 
     return HeroUiCard(
       padding: EdgeInsets.zero,
-      body: ListTile(
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: onTap,
-        title: Text(component.name),
-
-        leading: Icon(
-          isImplemented ? Icons.check_circle_rounded : Icons.schedule_rounded,
-          color: statusColor,
-        ),
-        trailing: Icon(
-          onTap == null
-              ? Icons.lock_outline_rounded
-              : Icons.chevron_right_rounded,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          child: Row(
+            children: [
+              HeroUiIcon(statusIcon, size: 16, color: statusColor),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  component.name,
+                  style: HeroUiTypography.bodySmMedium,
+                ),
+              ),
+              HeroUiIcon(trailingIcon, size: 16, color: trailingColor),
+            ],
+          ),
         ),
       ),
     );

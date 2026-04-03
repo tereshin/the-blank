@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../design_system/design_system.dart';
-import 'shared_demo_widgets.dart';
 
 Widget buildSpinnerDemo(BuildContext context) => _SpinnerDemoPage();
 
@@ -22,19 +21,7 @@ class _SectionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFE4E4E7)),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: children,
-      ),
-    );
+    return HeroUiDemoSection(children: children);
   }
 }
 
@@ -86,8 +73,8 @@ class _SpinnerDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -146,8 +133,12 @@ class _ProgressBarDemoPageState extends State<_ProgressBarDemoPage> {
                         ? HeroUiComponentType.warning
                         : HeroUiComponentType.accent,
               ),
-              Slider(
+              HeroUiSlider(
                 value: _progress,
+                min: 0,
+                max: 1,
+                label: 'Progress',
+                formatValue: (v) => '${(v * 100).round()}%',
                 onChanged: (v) => setState(() => _progress = v),
               ),
             ],
@@ -208,8 +199,8 @@ class _ProgressBarDemoPageState extends State<_ProgressBarDemoPage> {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -274,8 +265,12 @@ class _ProgressCircleDemoPageState extends State<_ProgressCircleDemoPage> {
                   HeroUiProgressCircle(value: _value, size: HeroUiProgressCircleSize.lg),
                 ],
               ),
-              Slider(
+              HeroUiSlider(
                 value: _value,
+                min: 0,
+                max: 1,
+                label: 'Progress',
+                formatValue: (v) => '${(v * 100).round()}%',
                 onChanged: (v) => setState(() => _value = v),
               ),
             ],
@@ -384,8 +379,8 @@ class _AlertDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -489,14 +484,16 @@ class _ToastDemoPage extends StatelessWidget {
                       ('Show warning', HeroUiComponentType.warning),
                       ('Show danger', HeroUiComponentType.danger),
                     ])
-                      ElevatedButton(
+                      HeroUiButton(
+                        label: entry.$1,
+                        variant: HeroUiButtonVariant.secondary,
+                        size: HeroUiButtonSize.sm,
                         onPressed: () => HeroUiToastService.show(
                           context,
                           message: 'Toast notification',
                           description: '${entry.$1} toast.',
                           type: entry.$2,
                         ),
-                        child: Text(entry.$1),
                       ),
                   ],
                 ),
@@ -506,8 +503,8 @@ class _ToastDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),

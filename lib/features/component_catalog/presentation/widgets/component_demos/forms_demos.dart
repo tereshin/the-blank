@@ -11,6 +11,9 @@ const String _kInputAffixEnvelopeIcon = 'heroui-v3-icon__envelope__regular';
 const String _kInputAffixEyeSlashIcon = 'heroui-v3-icon__eye-slash__regular';
 const String _kIconLock = 'heroui-v3-icon__lock__regular';
 const String _kIconKey = 'heroui-v3-icon__key__regular';
+const Color _kDemoIconColor = Color(0xFF71717A);
+const Color _kDemoOutlineBorder = Color(0xFFDEDEE0);
+const Color _kDemoOnPrimaryColor = Color(0xFFFFFFFF);
 
 // ─── Form ─────────────────────────────────────────────────────────────────────
 Widget buildFormDemo(BuildContext context) => const _SimpleFormDemo();
@@ -123,14 +126,14 @@ Widget buildInputDemo(BuildContext context) => SingleChildScrollView(
       const ComponentDemoSubtitle('With prefix icon'),
       const HeroUiInput(
         placeholder: 'Search...',
-        prefix: Icon(Icons.search_rounded, size: 16),
+        prefix: HeroUiIcon(HeroUiIconManifest.magnifierRegular, size: 16),
       ),
       const SizedBox(height: 12),
       const ComponentDemoSubtitle('With suffix icon'),
       const HeroUiInput(
         placeholder: 'Password',
         type: HeroUiInputType.password,
-        suffix: Icon(Icons.visibility_off_outlined, size: 16),
+        suffix: HeroUiIcon(_kInputAffixEyeSlashIcon, size: 16),
       ),
       const SizedBox(height: 12),
       const ComponentDemoSubtitle('With error'),
@@ -497,8 +500,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
   bool _newsletterProduct = false;
   String? _partySize;
 
-  Color _iconColor(BuildContext context) =>
-      Theme.of(context).colorScheme.onSurfaceVariant;
+  Color _iconColor() => _kDemoIconColor;
 
   @override
   void dispose() {
@@ -519,7 +521,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
     String placeholder = '••••••••',
     HeroUiInputVariant variant = HeroUiInputVariant.primary,
   }) {
-    final c = _iconColor(context);
+    final c = _iconColor();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -539,7 +541,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
 
   @override
   Widget build(BuildContext context) {
-    final icon = _iconColor(context);
+    final icon = _iconColor();
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -708,7 +710,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
           HeroUiCard(
             borderRadius: 16,
             showShadow: false,
-            borderColor: Theme.of(context).colorScheme.outlineVariant,
+            borderColor: _kDemoOutlineBorder,
             header: HeroUiCardHeader(
               tagline: 'Рассылка',
               title: 'Будьте в курсе',
@@ -839,7 +841,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                         leading: HeroUiIcon(
                           HeroUiIconManifest.calendarRegular,
                           size: 16,
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: _kDemoOnPrimaryColor,
                         ),
                         onPressed: _partySize == null
                             ? null

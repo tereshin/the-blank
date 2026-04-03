@@ -6,6 +6,11 @@ import '../features/component_catalog/presentation/screens/categories_screen.dar
 class TheBlankApp extends StatelessWidget {
   const TheBlankApp({super.key});
 
+  static final ButtonStyle _noRippleButtonStyle = ButtonStyle(
+    splashFactory: NoSplash.splashFactory,
+    overlayColor: WidgetStateProperty.all(Colors.transparent),
+  );
+
   @override
   Widget build(BuildContext context) {
     const lightBackground = Color(0xFFF5F5F5);
@@ -36,6 +41,16 @@ class TheBlankApp extends StatelessWidget {
         fontFamily: 'Inter',
         textTheme: lightTextTheme,
         primaryTextTheme: lightTextTheme,
+        splashFactory: NoSplash.splashFactory,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        elevatedButtonTheme: ElevatedButtonThemeData(style: _noRippleButtonStyle),
+        outlinedButtonTheme: OutlinedButtonThemeData(style: _noRippleButtonStyle),
+        textButtonTheme: TextButtonThemeData(style: _noRippleButtonStyle),
+        iconButtonTheme: IconButtonThemeData(style: _noRippleButtonStyle),
+        filledButtonTheme: FilledButtonThemeData(style: _noRippleButtonStyle),
         scaffoldBackgroundColor: lightBackground,
         canvasColor: lightBackground,
         appBarTheme: const AppBarTheme(
@@ -48,6 +63,16 @@ class TheBlankApp extends StatelessWidget {
         fontFamily: 'Inter',
         textTheme: darkTextTheme,
         primaryTextTheme: darkTextTheme,
+        splashFactory: NoSplash.splashFactory,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        elevatedButtonTheme: ElevatedButtonThemeData(style: _noRippleButtonStyle),
+        outlinedButtonTheme: OutlinedButtonThemeData(style: _noRippleButtonStyle),
+        textButtonTheme: TextButtonThemeData(style: _noRippleButtonStyle),
+        iconButtonTheme: IconButtonThemeData(style: _noRippleButtonStyle),
+        filledButtonTheme: FilledButtonThemeData(style: _noRippleButtonStyle),
         scaffoldBackgroundColor: darkBackground,
         canvasColor: darkBackground,
         appBarTheme: const AppBarTheme(

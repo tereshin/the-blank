@@ -10,6 +10,7 @@ export 'widgets/data_display/heroui_data_display.dart';
 export 'widgets/feedback/heroui_feedback.dart';
 export 'widgets/forms/heroui_forms.dart';
 export 'widgets/layout/heroui_layout.dart';
+export 'widgets/layout/heroui_demo_primitives.dart';
 export 'widgets/overlays/heroui_overlays.dart';
 export 'widgets/pickers/heroui_pickers.dart';
 export 'widgets/pickers/heroui_calendar.dart';

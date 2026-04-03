@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
-import 'shared_demo_widgets.dart';
 
 Widget buildButtonDemo(BuildContext context) => SingleChildScrollView(
   padding: const EdgeInsets.all(16),
@@ -267,19 +266,15 @@ class _ButtonThemePreviewSurface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final surfaceColor = dark
         ? const Color(0xFF060607)
         : const Color(0xFFF5F5F5);
     final borderColor = dark
         ? const Color(0xFF28282C)
         : const Color(0xFFDEDEE0);
-    final previewTheme = theme.copyWith(
-      brightness: dark ? Brightness.dark : Brightness.light,
-    );
 
-    return Theme(
-      data: previewTheme,
+    return HeroUiDemoThemeScope(
+      dark: dark,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: surfaceColor,
@@ -313,20 +308,16 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final surfaceColor = dark
         ? const Color(0xFF09090B)
         : const Color(0xFFFFFFFF);
     final borderColor = dark
         ? const Color(0xFF27272A)
         : const Color(0xFFE4E4E7);
-    final previewTheme = theme.copyWith(
-      brightness: dark ? Brightness.dark : Brightness.light,
-    );
     final exampleGroups = _examples();
 
-    return Theme(
-      data: previewTheme,
+    return HeroUiDemoThemeScope(
+      dark: dark,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: surfaceColor,
@@ -555,8 +546,7 @@ class _ButtonGroupIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final iconTheme = IconTheme.of(context);
-    return HeroUiIcon(name, size: iconTheme.size ?? 16, color: iconTheme.color);
+    return HeroUiIcon(name, size: 16);
   }
 }
 
@@ -610,7 +600,7 @@ class _ToggleButtonDemoState extends State<_ToggleButtonDemo> {
             label: _selected ? 'Selected' : 'Not selected',
             selected: _selected,
             onChanged: (next) => setState(() => _selected = next),
-            leading: const Icon(Icons.done_rounded),
+            leading: const HeroUiIcon(HeroUiIconManifest.checkRegular),
           ),
         ],
       ),

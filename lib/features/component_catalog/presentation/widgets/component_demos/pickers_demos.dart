@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../design_system/design_system.dart';
-import 'shared_demo_widgets.dart';
 
 Widget buildSelectDemo(BuildContext context) => _SelectDemoPage();
 
@@ -89,8 +88,8 @@ class _SelectDemoPageState extends State<_SelectDemoPage> {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -177,8 +176,8 @@ class _ComboBoxDemoPageState extends State<_ComboBoxDemoPage> {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -265,8 +264,8 @@ class _AutocompleteDemoPageState extends State<_AutocompleteDemoPage> {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),

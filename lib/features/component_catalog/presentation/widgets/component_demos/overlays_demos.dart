@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
-import 'shared_demo_widgets.dart';
 
 Widget buildTooltipDemo(BuildContext context) => _TooltipDemoPage();
 
@@ -19,66 +18,26 @@ Widget buildDrawerDemo(BuildContext context) => _DrawerDemoPage();
 // ─── Shared buttons ───────────────────────────────────────────────────────────
 
 Widget _demoButton(String label, {VoidCallback? onTap}) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
-        color: const Color(0xFF18181B),
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Color(0xFFFFFFFF),
-        ),
-      ),
-    ),
+  return HeroUiDemoActionTrigger(
+    label: label,
+    onPressed: onTap,
+    variant: HeroUiDemoActionTriggerVariant.primary,
   );
 }
 
 Widget _outlineButton(String label, {VoidCallback? onTap}) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFDEDEE0)),
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Color(0xFF18181B),
-        ),
-      ),
-    ),
+  return HeroUiDemoActionTrigger(
+    label: label,
+    onPressed: onTap,
+    variant: HeroUiDemoActionTriggerVariant.outline,
   );
 }
 
 Widget _dropdownTriggerButton(String label, {VoidCallback? onTap}) {
-  return GestureDetector(
-    onTap: onTap,
-    child: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: const Color(0xFFEBEBEC),
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          height: 1.43,
-          color: Color(0xFF0485F7),
-        ),
-      ),
-    ),
+  return HeroUiDemoActionTrigger(
+    label: label,
+    onPressed: onTap,
+    variant: HeroUiDemoActionTriggerVariant.secondary,
   );
 }
 
@@ -235,10 +194,10 @@ class _PopoverDemoPage extends StatelessWidget {
 class _ModalDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bodyText = const Text(
+    final bodyText = Text(
       'This is the modal body. You can put any content here, '
       'including forms, images, or other components.',
-      style: TextStyle(fontSize: 14, color: Color(0xFF71717A), height: 1.5),
+      style: HeroUiTypography.bodySm.copyWith(color: const Color(0xFF71717A)),
     );
 
     return SingleChildScrollView(
@@ -300,24 +259,16 @@ class _ModalDemoPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Name',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        isDense: true,
-                      ),
+                    const HeroUiTextField(
+                      label: 'Name',
+                      placeholder: 'Jane Doe',
+                      variant: HeroUiInputVariant.secondary,
                     ),
                     const SizedBox(height: 12),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        isDense: true,
-                      ),
+                    const HeroUiTextField(
+                      label: 'Email',
+                      placeholder: 'jane@company.com',
+                      variant: HeroUiInputVariant.secondary,
                     ),
                   ],
                 ),

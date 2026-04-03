@@ -63,6 +63,65 @@ class HeroUiDrawer {
         final showHandle =
             position == HeroUiDrawerPosition.bottom ||
             position == HeroUiDrawerPosition.top;
+        final viewPadding = MediaQuery.viewPaddingOf(ctx);
+        final panelPadding = EdgeInsets.fromLTRB(
+          24,
+          24 + (position == HeroUiDrawerPosition.top ? viewPadding.top : 0),
+          24,
+          24 +
+              (position == HeroUiDrawerPosition.bottom
+                  ? viewPadding.bottom
+                  : 0),
+        );
+
+        var accumulatedHandleDrag = 0.0;
+        var isHandleDismissInProgress = false;
+
+        void dismissFromHandleDrag() {
+          if (isHandleDismissInProgress) return;
+          isHandleDismissInProgress = true;
+          Navigator.of(ctx).maybePop();
+        }
+
+        Widget buildHandle({required EdgeInsets margin}) {
+          return GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onVerticalDragStart: (_) {
+              accumulatedHandleDrag = 0;
+            },
+            onVerticalDragUpdate: (details) {
+              accumulatedHandleDrag += details.primaryDelta ?? 0;
+              final shouldDismiss =
+                  (position == HeroUiDrawerPosition.bottom &&
+                      accumulatedHandleDrag > 28) ||
+                  (position == HeroUiDrawerPosition.top &&
+                      accumulatedHandleDrag < -28);
+              if (shouldDismiss) {
+                dismissFromHandleDrag();
+              }
+            },
+            onVerticalDragEnd: (details) {
+              final velocity = details.primaryVelocity ?? 0;
+              final shouldDismiss =
+                  (position == HeroUiDrawerPosition.bottom && velocity > 500) ||
+                  (position == HeroUiDrawerPosition.top && velocity < -500);
+              if (shouldDismiss) {
+                dismissFromHandleDrag();
+              }
+            },
+            child: Center(
+              child: Container(
+                width: 36,
+                height: 4,
+                margin: margin,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDEDEE0),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+            ),
+          );
+        }
 
         Widget panel = Container(
           decoration: BoxDecoration(
@@ -70,23 +129,13 @@ class HeroUiDrawer {
             borderRadius: borderRadius,
             boxShadow: _kOverlayShadow,
           ),
-          padding: const EdgeInsets.all(24),
+          padding: panelPadding,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (showHandle && position == HeroUiDrawerPosition.bottom)
-                Center(
-                  child: Container(
-                    width: 36,
-                    height: 4,
-                    margin: const EdgeInsets.only(bottom: 20),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFDEDEE0),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
-                ),
+                buildHandle(margin: const EdgeInsets.only(bottom: 20)),
               if (title != null)
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,17 +180,7 @@ class HeroUiDrawer {
                 ),
               ],
               if (showHandle && position == HeroUiDrawerPosition.top)
-                Center(
-                  child: Container(
-                    width: 36,
-                    height: 4,
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFDEDEE0),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
-                ),
+                buildHandle(margin: const EdgeInsets.only(top: 20)),
             ],
           ),
         );
@@ -156,6 +195,8 @@ class HeroUiDrawer {
             HeroUiDrawerPosition.top => Alignment.topCenter,
           },
           child: SafeArea(
+            top: position != HeroUiDrawerPosition.top,
+            bottom: position != HeroUiDrawerPosition.bottom,
             child: isVertical
                 ? SizedBox(width: resolvedSize, child: panel)
                 : SizedBox(width: double.infinity, child: panel),

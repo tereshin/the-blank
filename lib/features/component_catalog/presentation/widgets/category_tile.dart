@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/icons/heroui_icon.dart';
 import '../../../../design_system/design_system.dart';
 import '../../domain/component_category.dart';
 
@@ -19,13 +20,31 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mutedColor = Theme.of(context).colorScheme.onSurfaceVariant;
+
     return HeroUiCard(
       padding: EdgeInsets.zero,
-      body: ListTile(
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: onTap,
-        title: Text(category.title),
-
-        trailing: const Icon(Icons.chevron_right),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  category.title,
+                  style: HeroUiTypography.bodySmMedium,
+                ),
+              ),
+              HeroUiIcon(
+                HeroUiIconManifest.chevronRightRegular,
+                size: 16,
+                color: mutedColor,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

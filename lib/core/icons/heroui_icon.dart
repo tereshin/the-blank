@@ -65,6 +65,9 @@ class HeroUiIconManifest {
   static const String arrowDownRegular = 'heroui-v3-icon__arrow-down__regular';
   static const String circleInfoRegular =
       'heroui-v3-icon__circle-info__regular';
+  static const String checkRegular = 'heroui-v3-icon__check__regular';
+  static const String clockRegular = 'heroui-v3-icon__clock__regular';
+  static const String lockRegular = 'heroui-v3-icon__lock__regular';
   static const String barsUnalignedRegular =
       'heroui-v3-icon__bars-unaligned__regular';
   static const String eyeRegular = 'heroui-v3-icon__eye__regular';

@@ -384,30 +384,23 @@ class _TabsDemoState extends State<_TabsDemo> {
           const ComponentDemoSubtitle('Show Option 1-10 + Scroll shadow'),
           Text(
             'Visible options: $_visibleOptions',
-            style: Theme.of(context).textTheme.labelMedium,
+            style: HeroUiTypography.bodyXsMedium.copyWith(
+              color: const Color(0xFF71717A),
+            ),
           ),
-          Slider(
+          HeroUiSlider(
             value: _visibleOptions.toDouble(),
             min: 1,
             max: 10,
             divisions: 9,
-            label: '$_visibleOptions',
-            onChanged: (value) {
-              setState(() => _visibleOptions = value.round());
-            },
+            label: 'Visible options',
+            formatValue: (v) => v.round().toString(),
+            onChanged: (value) => setState(() => _visibleOptions = value.round()),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Switch(
-                value: _showScrollShadow,
-                onChanged: (value) {
-                  setState(() => _showScrollShadow = value);
-                },
-              ),
-              const SizedBox(width: 8),
-              const Text('Show Scroll Shadow'),
-            ],
+          HeroUiSwitch(
+            label: 'Show Scroll Shadow',
+            isSelected: _showScrollShadow,
+            onChanged: (value) => setState(() => _showScrollShadow = value),
           ),
           SizedBox(
             width: 260,

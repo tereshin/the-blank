@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
-import 'shared_demo_widgets.dart';
 
 Widget buildAccordionDemo(BuildContext context) => _AccordionDemoPage();
 Widget buildListBoxDemo(BuildContext context) => _ListBoxDemoPage();
@@ -17,15 +16,7 @@ class _SectionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: children,
-      ),
-    );
+    return HeroUiDemoSection(children: children);
   }
 }
 
@@ -109,8 +100,8 @@ class _AccordionDemoPage extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: _SectionBox(
               children: [
                 HeroUiAccordion(
@@ -180,8 +171,8 @@ class _ListBoxDemoPage extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: _SectionBox(
               children: [
                 HeroUiListBox<String>(
@@ -288,8 +279,8 @@ class _TagGroupDemoPage extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: _SectionBox(
               children: [
                 HeroUiTagGroup(
@@ -612,8 +603,8 @@ class _TableDemoPage extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: HeroUiTable(
               header: _leadingHeader,
               rows: leadingRows.take(2).toList(),
@@ -641,11 +632,6 @@ class _TableEmployeeInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final supportColor = isDark
-        ? const Color(0xFFA1A1AA)
-        : const Color(0xFF71717A);
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -654,7 +640,7 @@ class _TableEmployeeInfo extends StatelessWidget {
         const SizedBox(height: 2),
         Text(
           email,
-          style: HeroUiTypography.bodyXs.copyWith(color: supportColor),
+          style: HeroUiTypography.bodyXs.copyWith(color: const Color(0xFF71717A)),
         ),
       ],
     );

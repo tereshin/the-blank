@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
-import 'shared_demo_widgets.dart';
 
 Widget buildCardDemo(BuildContext context) => _CardDemoPage();
 
@@ -27,19 +27,7 @@ class _SectionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFE4E4E7)),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: children,
-      ),
-    );
+    return HeroUiDemoSection(children: children);
   }
 }
 
@@ -152,8 +140,8 @@ class _SeparatorDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -221,8 +209,8 @@ class _KbdDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -431,18 +419,18 @@ class _BadgeDemoPage extends StatelessWidget {
                   HeroUiBadge(
                     label: 'New',
                     type: HeroUiComponentType.success,
-                    startIcon: Icon(Icons.fiber_new_rounded),
+                    startIcon: HeroUiIcon(HeroUiIconManifest.plusRegular),
                   ),
                   HeroUiBadge(
                     label: 'Alert',
                     type: HeroUiComponentType.danger,
-                    startIcon: Icon(Icons.warning_amber_rounded),
+                    startIcon: HeroUiIcon(HeroUiIconManifest.circleInfoRegular),
                   ),
                   HeroUiBadge(
                     label: 'Beta',
                     type: HeroUiComponentType.warning,
                     variant: HeroUiBadgeVariant.soft,
-                    startIcon: Icon(Icons.science_outlined),
+                    startIcon: HeroUiIcon(HeroUiIconManifest.globeRegular),
                   ),
                 ],
               ),
@@ -451,8 +439,8 @@ class _BadgeDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -689,8 +677,8 @@ class _SkeletonDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
@@ -782,8 +770,12 @@ class _MeterDemoPageState extends State<_MeterDemoPage> {
                         : HeroUiComponentType.success,
               ),
               const SizedBox(height: 12),
-              Slider(
+              HeroUiSlider(
                 value: _storage,
+                min: 0,
+                max: 1,
+                label: 'Usage',
+                formatValue: (v) => '${(v * 100).round()}%',
                 onChanged: (v) => setState(() => _storage = v),
               ),
             ],
@@ -791,8 +783,8 @@ class _MeterDemoPageState extends State<_MeterDemoPage> {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),

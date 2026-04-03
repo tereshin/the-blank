@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/icons/heroui_icon.dart';
 import '../../../../../design_system/design_system.dart';
-import 'shared_demo_widgets.dart';
 
 Widget buildSurfaceDemo(BuildContext context) => _SurfaceDemoPage();
 
@@ -17,19 +17,7 @@ class _SectionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color(0xFFE4E4E7)),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: children,
-      ),
-    );
+    return HeroUiDemoSection(children: children);
   }
 }
 
@@ -116,8 +104,8 @@ class _SurfaceDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: Wrap(
               spacing: 12,
               runSpacing: 12,
@@ -183,8 +171,8 @@ class _DisclosureDemoPage extends StatelessWidget {
           const ComponentDemoTitle('Disclosure — with leading icon'),
           HeroUiDisclosure(
             title: 'Advanced settings',
-            leading: const Icon(
-              Icons.settings_outlined,
+            leading: const HeroUiIcon(
+              HeroUiIconManifest.gearRegular,
               size: 18,
               color: Color(0xFF71717A),
             ),
@@ -213,8 +201,8 @@ class _DisclosureDemoPage extends StatelessWidget {
               ),
               HeroUiDisclosureItem(
                 title: 'Configuration',
-                leading: const Icon(
-                  Icons.settings_outlined,
+                leading: const HeroUiIcon(
+                  HeroUiIconManifest.gearRegular,
                   size: 18,
                   color: Color(0xFF71717A),
                 ),
@@ -225,8 +213,8 @@ class _DisclosureDemoPage extends StatelessWidget {
           const SizedBox(height: 20),
 
           const ComponentDemoTitle('Dark mode preview'),
-          Theme(
-            data: ThemeData.dark(),
+          HeroUiDemoThemeScope(
+            dark: true,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: const Color(0xFF18181B),
