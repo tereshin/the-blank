@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../design_system/design_system.dart';
+import 'package:heroui_design_system/design_system.dart';
 
 Widget buildDateFieldDemo(BuildContext context) => _DateFieldDemoPage();
 
@@ -49,10 +49,7 @@ class _DateFieldDemoPageState extends State<_DateFieldDemoPage> {
           ),
           const SizedBox(height: 20),
           const ComponentDemoTitle('DateField — error state'),
-          const HeroUiDateField(
-            label: 'Date',
-            errorText: 'Invalid date',
-          ),
+          const HeroUiDateField(label: 'Date', errorText: 'Invalid date'),
           const SizedBox(height: 20),
           const ComponentDemoTitle('DateField — disabled'),
           HeroUiDateField(
@@ -85,10 +82,10 @@ class _TimeFieldDemoPageState extends State<_TimeFieldDemoPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ComponentDemoTitle('TimeField — 12hr format'),
+          const ComponentDemoTitle('TimeField — bottom sheet (12hr)'),
           HeroUiTimeField(
             label: 'Time',
-            description: 'Select a time',
+            description: 'Tap field to open bottom sheet',
             onChanged: (t) => setState(() => _time = t),
           ),
           const SizedBox(height: 8),
@@ -98,23 +95,14 @@ class _TimeFieldDemoPageState extends State<_TimeFieldDemoPage> {
               style: const TextStyle(fontSize: 13, color: Color(0xFF71717A)),
             ),
           const SizedBox(height: 20),
-          const ComponentDemoTitle('TimeField — 24hr format'),
-          const HeroUiTimeField(
-            label: 'Time',
-            show12hr: false,
-          ),
+          const ComponentDemoTitle('TimeField — bottom sheet (24hr)'),
+          const HeroUiTimeField(label: 'Time', show12hr: false),
           const SizedBox(height: 20),
-          const ComponentDemoTitle('TimeField — with seconds'),
-          const HeroUiTimeField(
-            label: 'Duration',
-            showSeconds: true,
-          ),
+          const ComponentDemoTitle('TimeField — bottom sheet with seconds'),
+          const HeroUiTimeField(label: 'Duration', showSeconds: true),
           const SizedBox(height: 20),
           const ComponentDemoTitle('TimeField — error'),
-          const HeroUiTimeField(
-            label: 'Time',
-            errorText: 'Time is required',
-          ),
+          const HeroUiTimeField(label: 'Time', errorText: 'Time is required'),
           const SizedBox(height: 24),
         ],
       ),

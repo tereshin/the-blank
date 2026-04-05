@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/icons/heroui_icon.dart';
-import '../../../../../design_system/design_system.dart';
+import 'package:heroui_design_system/design_system.dart';
 import 'shared_demo_widgets.dart';
 
 const String _kInputAffixGlobeIcon = 'heroui-v3-icon__globe__regular';
@@ -798,7 +797,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                     Expanded(
                       child: HeroUiTimeField(
                         label: 'Время',
-                        description: 'Интервал 30 мин',
+                        description: 'Bottom sheet, интервал 30 мин',
                         placeholder: 'ЧЧ:ММ',
                         variant: HeroUiInputVariant.secondary,
                       ),

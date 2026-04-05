@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/icons/heroui_icon.dart';
-import '../../../../design_system/design_system.dart';
+import 'package:heroui_design_system/design_system.dart';
 import '../../domain/catalog_component.dart';
 
 class ComponentCatalogTile extends StatelessWidget {

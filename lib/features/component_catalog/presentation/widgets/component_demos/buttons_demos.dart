@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/icons/heroui_icon.dart';
-import '../../../../../design_system/design_system.dart';
+import 'package:heroui_design_system/design_system.dart';
 
 Widget buildButtonDemo(BuildContext context) => SingleChildScrollView(
   padding: const EdgeInsets.all(16),
@@ -231,6 +230,8 @@ Widget buildToggleButtonDemo(BuildContext context) => const _ToggleButtonDemo();
 
 Widget buildToggleButtonGroupDemo(BuildContext context) =>
     const _ToggleButtonGroupDemo();
+
+Widget buildStarReviewDemo(BuildContext context) => const _StarReviewDemo();
 
 class _HorizontalButtonsRow extends StatelessWidget {
   const _HorizontalButtonsRow({required this.children});
@@ -617,6 +618,7 @@ class _ToggleButtonGroupDemo extends StatefulWidget {
 
 class _ToggleButtonGroupDemoState extends State<_ToggleButtonGroupDemo> {
   String _value = 'week';
+  int _rating = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -634,6 +636,71 @@ class _ToggleButtonGroupDemoState extends State<_ToggleButtonGroupDemo> {
               HeroUiToggleOption(value: 'month', label: 'Month'),
             ],
             onChanged: (next) => setState(() => _value = next),
+          ),
+          const SizedBox(height: 20),
+          const ComponentDemoTitle('StarReview — built with ToggleButtonGroup'),
+          HeroUiStarReview(
+            value: _rating,
+            description: 'Current rating: $_rating / 5',
+            onChanged: (next) => setState(() => _rating = next),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _StarReviewDemo extends StatefulWidget {
+  const _StarReviewDemo();
+
+  @override
+  State<_StarReviewDemo> createState() => _StarReviewDemoState();
+}
+
+class _StarReviewDemoState extends State<_StarReviewDemo> {
+  int _rating = 5;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const ComponentDemoTitle('StarReview — default'),
+          HeroUiStarReview(
+            value: _rating,
+            description: 'Tap to rate from 1 to 5',
+            onChanged: (next) => setState(() => _rating = next),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Selected: $_rating / 5',
+            style: const TextStyle(fontSize: 13, color: Color(0xFF71717A)),
+          ),
+          const SizedBox(height: 20),
+          const ComponentDemoTitle('StarReview — with label'),
+          HeroUiStarReview(
+            label: 'Rate your experience',
+            description:
+                'This input uses HeroUiToggleButtonGroup under the hood',
+            initialValue: 3,
+            onChanged: (_) {},
+          ),
+          const SizedBox(height: 20),
+          const ComponentDemoTitle('StarReview — disabled'),
+          const HeroUiStarReview(
+            value: 2,
+            label: 'Readonly rating',
+            description: 'Disabled state',
+            enabled: false,
+          ),
+          const SizedBox(height: 20),
+          const ComponentDemoTitle('StarReview — compact'),
+          HeroUiStarReview(
+            size: HeroUiButtonSize.sm,
+            value: 4,
+            onChanged: (_) {},
           ),
         ],
       ),

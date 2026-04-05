@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/icons/heroui_icon.dart';
-import '../../../../../design_system/design_system.dart';
+import 'package:heroui_design_system/design_system.dart';
 
 Widget buildAccordionDemo(BuildContext context) => _AccordionDemoPage();
 Widget buildListBoxDemo(BuildContext context) => _ListBoxDemoPage();

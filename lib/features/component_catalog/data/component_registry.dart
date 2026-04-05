@@ -66,6 +66,12 @@ final Map<ComponentCategory, List<CatalogComponent>> componentRegistry = {
       figmaNodeId: '15251:25651',
       demoBuilder: ComponentDemos.toggleButtonGroup,
     ),
+    _implemented(
+      'StarReview',
+      figmaNodeId: 'custom:star-review',
+      demoBuilder: ComponentDemos.starReview,
+      notes: 'Built from ToggleButtonGroup as a 5-point rating input.',
+    ),
   ],
   ComponentCategory.colors: [
     _implemented(

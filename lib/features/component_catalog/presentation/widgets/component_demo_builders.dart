@@ -30,14 +30,16 @@ class ComponentDemos {
   static Widget toggleButtonGroup(BuildContext context) =>
       buttons.buildToggleButtonGroupDemo(context);
 
+  static Widget starReview(BuildContext context) =>
+      buttons.buildStarReviewDemo(context);
+
   static Widget checkbox(BuildContext context) =>
       controls.buildCheckboxDemo(context);
 
   static Widget checkboxGroup(BuildContext context) =>
       controls.buildCheckboxGroupDemo(context);
 
-  static Widget radio(BuildContext context) =>
-      controls.buildRadioDemo(context);
+  static Widget radio(BuildContext context) => controls.buildRadioDemo(context);
 
   static Widget radioGroup(BuildContext context) =>
       controls.buildRadioGroupDemo(context);
@@ -90,8 +92,7 @@ class ComponentDemos {
   static Widget separator(BuildContext context) =>
       data_display.buildSeparatorDemo(context);
 
-  static Widget kbd(BuildContext context) =>
-      data_display.buildKbdDemo(context);
+  static Widget kbd(BuildContext context) => data_display.buildKbdDemo(context);
 
   static Widget avatar(BuildContext context) =>
       data_display.buildAvatarDemo(context);
@@ -117,11 +118,9 @@ class ComponentDemos {
   static Widget progressCircle(BuildContext context) =>
       feedback.buildProgressCircleDemo(context);
 
-  static Widget alert(BuildContext context) =>
-      feedback.buildAlertDemo(context);
+  static Widget alert(BuildContext context) => feedback.buildAlertDemo(context);
 
-  static Widget toast(BuildContext context) =>
-      feedback.buildToastDemo(context);
+  static Widget toast(BuildContext context) => feedback.buildToastDemo(context);
 
   static Widget surface(BuildContext context) =>
       layout.buildSurfaceDemo(context);
@@ -192,8 +191,7 @@ class ComponentDemos {
   static Widget popover(BuildContext context) =>
       overlays.buildPopoverDemo(context);
 
-  static Widget modal(BuildContext context) =>
-      overlays.buildModalDemo(context);
+  static Widget modal(BuildContext context) => overlays.buildModalDemo(context);
 
   static Widget alertDialog(BuildContext context) =>
       overlays.buildAlertDialogDemo(context);

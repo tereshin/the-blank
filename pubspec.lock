@@ -91,6 +91,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  heroui_design_system:
+    dependency: "direct main"
+    description:
+      path: "packages/heroui_design_system"
+      relative: true
+    source: path
+    version: "0.1.0"
   http:
     dependency: transitive
     description:

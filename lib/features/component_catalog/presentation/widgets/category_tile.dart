@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/icons/heroui_icon.dart';
-import '../../../../design_system/design_system.dart';
+import 'package:heroui_design_system/design_system.dart';
 import '../../domain/component_category.dart';
 
 class CategoryTile extends StatelessWidget {

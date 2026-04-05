@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../design_system/design_system.dart';
+import 'package:heroui_design_system/design_system.dart';
 
 Widget buildCheckboxDemo(BuildContext context) => _CheckboxDemoPage();
 

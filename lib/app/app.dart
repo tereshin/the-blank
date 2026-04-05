@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../design_system/typography/heroui_typography.dart';
+import 'package:heroui_design_system/design_system.dart';
 import '../features/component_catalog/presentation/screens/categories_screen.dart';
 
 class TheBlankApp extends StatelessWidget {
