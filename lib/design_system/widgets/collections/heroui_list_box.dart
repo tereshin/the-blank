@@ -58,8 +58,8 @@ class HeroUiListBox<T> extends StatefulWidget {
     this.onSelectionChanged,
     this.label,
     this.description,
-    this.padding = const EdgeInsets.all(4),
-    this.itemSpacing = 2,
+    this.padding = EdgeInsets.zero,
+    this.itemSpacing = 0,
     this.borderRadius = const BorderRadius.all(Radius.circular(12)),
   });
 
@@ -119,10 +119,6 @@ class _HeroUiListBoxState<T> extends State<HeroUiListBox<T>> {
     final descriptionColor = isDark
         ? const Color(0xFFA1A1AA)
         : const Color(0xFF71717A);
-    final bgColor = isDark ? const Color(0xFF18181B) : const Color(0xFFFFFFFF);
-    final borderColor = isDark
-        ? const Color(0xFF27272A)
-        : const Color(0xFFE4E4E7);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,12 +131,7 @@ class _HeroUiListBoxState<T> extends State<HeroUiListBox<T>> {
           const SizedBox(height: 6),
         ],
         Container(
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: widget.borderRadius,
-            border: Border.all(color: borderColor),
-          ),
-          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(borderRadius: widget.borderRadius),
           child: Padding(
             padding: widget.padding,
             child: Column(
@@ -163,9 +154,7 @@ class _HeroUiListBoxState<T> extends State<HeroUiListBox<T>> {
           const SizedBox(height: 6),
           Text(
             widget.description!,
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall?.copyWith(color: descriptionColor),
+            style: HeroUiTypography.bodyXs.copyWith(color: descriptionColor),
           ),
         ],
       ],
@@ -212,22 +201,13 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
     final neutralHover = isDark
         ? const Color(0xFF27272A)
         : const Color(0xFFEBEBEC);
-    final dangerHover = isDark
-        ? const Color(0x26DB3B3E)
-        : const Color(0x1AFF383C);
-    final neutralSelected = isDark
-        ? const Color(0xFF3F3F46)
-        : const Color(0xFFDEDEE0);
-    final dangerSelected = isDark
-        ? const Color(0x33DB3B3E)
-        : const Color(0x2EFF383C);
 
     if (state == HeroUiListBoxItemState.hover ||
         state == HeroUiListBoxItemState.focus) {
-      return isDanger ? dangerHover : neutralHover;
+      return neutralHover;
     }
     if (state == HeroUiListBoxItemState.selected || isSelected) {
-      return isDanger ? dangerSelected : neutralSelected;
+      return Colors.transparent;
     }
     return Colors.transparent;
   }
@@ -245,6 +225,17 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
         blurRadius: 0,
       ),
     ];
+  }
+
+  Color? _stateBorder({
+    required HeroUiListBoxItemState state,
+    required bool isDark,
+    required bool isDanger,
+  }) {
+    if (state == HeroUiListBoxItemState.focus && isDanger) {
+      return isDark ? const Color(0xFFDB3B3E) : const Color(0xFFFF383C);
+    }
+    return null;
   }
 
   Widget _resolveSlotWidget(Widget child, Color fallbackColor) {
@@ -293,12 +284,17 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
         ? HeroUiIcon(
             'heroui-v3-icon__check__regular',
             size: 16,
-            color: titleColor,
+            color: const Color(0xFF0485F7),
           )
         : null;
     final suffix = item.effectiveSuffix == null
         ? fallbackSuffix
         : _resolveSlotWidget(item.effectiveSuffix!, descriptionColor);
+    final stateBorderColor = _stateBorder(
+      state: visualState,
+      isDark: isDark,
+      isDanger: isDanger,
+    );
 
     return FocusableActionDetector(
       enabled: !isDisabled,
@@ -322,10 +318,7 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 120),
             curve: Curves.easeOut,
-            padding: EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: item.description == null ? 8 : 10,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
               color: _stateBackground(
                 state: visualState,
@@ -333,23 +326,16 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
                 isDanger: isDanger,
                 isSelected: isSelected,
               ),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(20),
               boxShadow: _focusRing(isDark: isDark, state: visualState),
+              border: stateBorderColor == null
+                  ? null
+                  : Border.all(color: stateBorderColor, width: 1),
             ),
             child: Row(
-              crossAxisAlignment: item.description == null
-                  ? CrossAxisAlignment.center
-                  : CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                if (prefix != null) ...[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: item.description == null ? 0 : 1,
-                    ),
-                    child: prefix,
-                  ),
-                  const SizedBox(width: 12),
-                ],
+                if (prefix != null) ...[prefix, const SizedBox(width: 12)],
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -364,22 +350,15 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
                         const SizedBox(height: 2),
                         Text(
                           item.description!,
-                          style: Theme.of(context).textTheme.bodySmall
-                              ?.copyWith(color: descriptionColor),
+                          style: HeroUiTypography.bodyXs.copyWith(
+                            color: descriptionColor,
+                          ),
                         ),
                       ],
                     ],
                   ),
                 ),
-                if (suffix != null) ...[
-                  const SizedBox(width: 8),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: item.description == null ? 0 : 1,
-                    ),
-                    child: suffix,
-                  ),
-                ],
+                if (suffix != null) ...[const SizedBox(width: 8), suffix],
               ],
             ),
           ),

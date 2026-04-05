@@ -98,19 +98,6 @@ class _AccordionDemoPage extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          const ComponentDemoTitle('Dark mode preview'),
-          HeroUiDemoThemeScope(
-            dark: true,
-            child: _SectionBox(
-              children: [
-                HeroUiAccordion(
-                  variant: HeroUiAccordionVariant.secondary,
-                  items: _items.take(3).toList(),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -121,22 +108,115 @@ class _AccordionDemoPage extends StatelessWidget {
 
 class _ListBoxDemoPage extends StatelessWidget {
   static const _frameworkItems = [
-    HeroUiListBoxItem(value: 'react', label: 'React'),
     HeroUiListBoxItem(
-      value: 'vue',
-      label: 'Vue',
-      description: 'Progressive JavaScript framework',
+      value: 'bob',
+      label: 'Bob',
+      description: 'bob@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'B',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.warning,
+      ),
+      suffix: HeroUiIcon('heroui-v3-icon__comment__regular', size: 16),
     ),
-    HeroUiListBoxItem(value: 'angular', label: 'Angular'),
-    HeroUiListBoxItem(value: 'svelte', label: 'Svelte', isDisabled: true),
-    HeroUiListBoxItem<String>(value: 'delete', label: 'Delete', isDanger: true),
+    HeroUiListBoxItem(
+      value: 'fred',
+      label: 'Fred',
+      description: 'fred@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'F',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.success,
+      ),
+      suffix: HeroUiIcon('heroui-v3-icon__comment__regular', size: 16),
+    ),
+    HeroUiListBoxItem(
+      value: 'martha',
+      label: 'Martha',
+      description: 'martha@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'M',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.danger,
+      ),
+      suffix: HeroUiIcon('heroui-v3-icon__comment__regular', size: 16),
+    ),
+    HeroUiListBoxItem(
+      value: 'anna',
+      label: 'Anna',
+      description: 'anna@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'A',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.defaultType,
+      ),
+      suffix: HeroUiIcon('heroui-v3-icon__comment__regular', size: 16),
+      isDisabled: true,
+    ),
+    HeroUiListBoxItem<String>(
+      value: 'delete',
+      label: 'Delete',
+      description: 'Remove user permanently',
+      prefix: HeroUiAvatar(
+        initials: 'D',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.danger,
+      ),
+      suffix: HeroUiIcon('heroui-v3-icon__comment__regular', size: 16),
+      type: HeroUiListBoxItemType.danger,
+    ),
   ];
 
   static const _petItems = [
-    HeroUiListBoxItem(value: 'cat', label: 'Cat'),
-    HeroUiListBoxItem(value: 'dog', label: 'Dog'),
-    HeroUiListBoxItem(value: 'rabbit', label: 'Rabbit'),
-    HeroUiListBoxItem(value: 'fish', label: 'Fish'),
+    HeroUiListBoxItem(
+      value: 'bob',
+      label: 'Bob',
+      description: 'bob@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'B',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.warning,
+      ),
+    ),
+    HeroUiListBoxItem(
+      value: 'fred',
+      label: 'Fred',
+      description: 'fred@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'F',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.success,
+      ),
+    ),
+    HeroUiListBoxItem(
+      value: 'martha',
+      label: 'Martha',
+      description: 'martha@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'M',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.danger,
+      ),
+    ),
+    HeroUiListBoxItem(
+      value: 'alice',
+      label: 'Alice',
+      description: 'alice@email.com',
+      prefix: HeroUiAvatar(
+        initials: 'A',
+        size: 36,
+        variant: HeroUiAvatarVariant.letterSoft,
+        type: HeroUiComponentType.accent,
+      ),
+    ),
   ];
 
   @override
@@ -149,10 +229,9 @@ class _ListBoxDemoPage extends StatelessWidget {
           const ComponentDemoTitle('ListBox — single selection'),
           _SectionBox(
             children: [
-              HeroUiListBox<String>(
-                label: 'Choose a framework',
-                items: _frameworkItems,
-                selectedValues: const {'vue'},
+              SizedBox(
+                width: 220,
+                child: HeroUiListBox<String>(items: _frameworkItems),
               ),
             ],
           ),
@@ -160,29 +239,17 @@ class _ListBoxDemoPage extends StatelessWidget {
           const ComponentDemoTitle('ListBox — multiple selection'),
           _SectionBox(
             children: [
-              HeroUiListBox<String>(
-                label: 'Choose your pets',
-                description: 'You can select multiple options.',
-                items: _petItems,
-                selectionMode: HeroUiListBoxSelectionMode.multiple,
-                selectedValues: const {'cat', 'dog'},
+              SizedBox(
+                width: 220,
+                child: HeroUiListBox<String>(
+                  items: _petItems,
+                  selectionMode: HeroUiListBoxSelectionMode.multiple,
+                  selectedValues: const {'bob', 'martha'},
+                ),
               ),
             ],
           ),
           const SizedBox(height: 24),
-          const ComponentDemoTitle('Dark mode preview'),
-          HeroUiDemoThemeScope(
-            dark: true,
-            child: _SectionBox(
-              children: [
-                HeroUiListBox<String>(
-                  label: 'Choose a framework',
-                  items: _frameworkItems.take(4).toList(),
-                  selectedValues: const {'react'},
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -278,19 +345,6 @@ class _TagGroupDemoPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 24),
-          const ComponentDemoTitle('Dark mode preview'),
-          HeroUiDemoThemeScope(
-            dark: true,
-            child: _SectionBox(
-              children: [
-                HeroUiTagGroup(
-                  label: 'Technologies',
-                  items: _techTags,
-                  selectedValues: const {'angular'},
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -601,23 +655,6 @@ class _TableDemoPage extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 24),
-          const ComponentDemoTitle('Dark mode preview'),
-          HeroUiDemoThemeScope(
-            dark: true,
-            child: HeroUiTable(
-              header: _leadingHeader,
-              rows: leadingRows.take(2).toList(),
-              footer: const HeroUiTableFooter(
-                type: HeroUiTableFooterType.data,
-                leading: Text('Total quarterly revenue'),
-                trailing: Text(
-                  '\$33,250',
-                  style: TextStyle(fontWeight: FontWeight.w600),
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -640,7 +677,9 @@ class _TableEmployeeInfo extends StatelessWidget {
         const SizedBox(height: 2),
         Text(
           email,
-          style: HeroUiTypography.bodyXs.copyWith(color: const Color(0xFF71717A)),
+          style: HeroUiTypography.bodyXs.copyWith(
+            color: const Color(0xFF71717A),
+          ),
         ),
       ],
     );

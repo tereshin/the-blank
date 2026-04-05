@@ -84,12 +84,10 @@ class HeroUiDemoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HeroUiCard(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: children,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: children,
     );
   }
 }
