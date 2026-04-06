@@ -332,6 +332,11 @@ final Map<ComponentCategory, List<CatalogComponent>> componentRegistry = {
       figmaNodeId: '5375:73776',
       demoBuilder: ComponentDemos.scrollShadow,
     ),
+    _implemented(
+      'HeroUiShell',
+      figmaNodeId: '17294:53001',
+      demoBuilder: ComponentDemos.shell,
+    ),
   ],
   ComponentCategory.media: [
     _implemented(

@@ -131,6 +131,8 @@ class ComponentDemos {
   static Widget scrollShadow(BuildContext context) =>
       layout.buildScrollShadowDemo(context);
 
+  static Widget shell(BuildContext context) => layout.buildShellDemo(context);
+
   static Widget select(BuildContext context) =>
       pickers.buildSelectDemo(context);
 

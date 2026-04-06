@@ -8,6 +8,8 @@ Widget buildDisclosureDemo(BuildContext context) => _DisclosureDemoPage();
 
 Widget buildScrollShadowDemo(BuildContext context) => _ScrollShadowDemoPage();
 
+Widget buildShellDemo(BuildContext context) => _ShellDemoPage();
+
 // ─── Shared helpers ───────────────────────────────────────────────────────────
 
 class _SectionBox extends StatelessWidget {
@@ -354,6 +356,120 @@ class _ScrollShadowDemoPage extends StatelessWidget {
                         ),
                       ),
                   ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+        ],
+      ),
+    );
+  }
+}
+
+// ─── Shell demo ───────────────────────────────────────────────────────────────
+
+class _ShellDemoPage extends StatelessWidget {
+  static const double _floatingMargin = 12;
+  static const double _navBarHeight = 64;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const ComponentDemoTitle('HeroUiShell — floating chrome'),
+          const Text(
+            'The app bar and bottom bar are stacked above the body with margins '
+            'and rounded corners. Add padding to scrollable content so it clears '
+            'the floating chrome.',
+            style: TextStyle(
+              fontSize: 13,
+              color: Color(0xFF71717A),
+              height: 1.45,
+            ),
+          ),
+          const SizedBox(height: 16),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: SizedBox(
+              height: 460,
+              child: HeroUiShell(
+                appBar: AppBar(
+                  title: const Text('Title'),
+                  elevation: 0,
+                  scrolledUnderElevation: 0,
+                  backgroundColor: Colors.transparent,
+                ),
+                bottomNavigationBar: SizedBox(
+                  height: _navBarHeight,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Icon(
+                        Icons.home_outlined,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      Icon(
+                        Icons.search,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                      Icon(
+                        Icons.person_outline,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                    ],
+                  ),
+                ),
+                body: ColoredBox(
+                  color: const Color(0xFFE4E4E7),
+                  child: Builder(
+                    builder: (context) {
+                      final m = MediaQuery.of(context);
+                      final topPad =
+                          m.padding.top +
+                          _floatingMargin +
+                          kToolbarHeight +
+                          _floatingMargin +
+                          8;
+                      final bottomPad =
+                          m.padding.bottom +
+                          _floatingMargin +
+                          _navBarHeight +
+                          _floatingMargin +
+                          24;
+                      return ListView.builder(
+                        padding: EdgeInsets.fromLTRB(
+                          16,
+                          topPad,
+                          16,
+                          bottomPad,
+                        ),
+                        itemCount: 18,
+                        itemBuilder: (_, i) => Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Container(
+                            height: 48,
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFFFFFF),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              'List row ${i + 1}',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF18181B),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

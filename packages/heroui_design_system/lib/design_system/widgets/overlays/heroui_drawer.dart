@@ -16,12 +16,17 @@ class HeroUiDrawer {
     List<Widget>? footerActions,
     bool barrierDismissible = true,
     double? size,
+
+    /// Max height of the panel as a fraction of the logical window height (0–1).
+    /// When null, height follows content (subject to screen bounds).
+    double? maxHeight,
   }) {
     final isVertical =
         position == HeroUiDrawerPosition.left ||
         position == HeroUiDrawerPosition.right;
     final defaultSize = isVertical ? 393.0 : 360.0;
     final resolvedSize = size ?? defaultSize;
+    final maxHeightFraction = maxHeight?.clamp(0.0, 1.0);
 
     return showGeneralDialog<T>(
       context: context,
@@ -48,16 +53,16 @@ class HeroUiDrawer {
 
         final borderRadius = switch (position) {
           HeroUiDrawerPosition.right => const BorderRadius.horizontal(
-            left: Radius.circular(22),
+            left: Radius.circular(28),
           ),
           HeroUiDrawerPosition.left => const BorderRadius.horizontal(
-            right: Radius.circular(22),
+            right: Radius.circular(28),
           ),
           HeroUiDrawerPosition.bottom => const BorderRadius.vertical(
-            top: Radius.circular(22),
+            top: Radius.circular(28),
           ),
           HeroUiDrawerPosition.top => const BorderRadius.vertical(
-            bottom: Radius.circular(22),
+            bottom: Radius.circular(28),
           ),
         };
 
@@ -65,15 +70,15 @@ class HeroUiDrawer {
             position == HeroUiDrawerPosition.bottom ||
             position == HeroUiDrawerPosition.top;
         final viewPadding = MediaQuery.viewPaddingOf(ctx);
+        final footerWidgets = footerActions;
+        final hasFooter = footerWidgets != null && footerWidgets.isNotEmpty;
         final double topInset =
             (showHandle && position == HeroUiDrawerPosition.bottom
                 ? 0.0
                 : 24.0) +
             (position == HeroUiDrawerPosition.top ? viewPadding.top : 0.0);
         final double bottomInset =
-            (showHandle && position == HeroUiDrawerPosition.top
-                ? 0.0
-                : 24.0) +
+            (showHandle && position == HeroUiDrawerPosition.top ? 0.0 : 24.0) +
             (position == HeroUiDrawerPosition.bottom
                 ? viewPadding.bottom
                 : 0.0);
@@ -95,6 +100,7 @@ class HeroUiDrawer {
             Widget buildHandle({required EdgeInsets margin}) {
               return GestureDetector(
                 behavior: HitTestBehavior.opaque,
+                onTap: () => Navigator.of(ctx).pop(),
                 onVerticalDragStart: (_) {
                   setPanelState(() {
                     isHandleDragging = true;
@@ -199,28 +205,39 @@ class HeroUiDrawer {
                             ],
                           ),
                         ),
-                        _CloseIconButton(onTap: () => Navigator.of(ctx).pop()),
+                        if (!showHandle)
+                          _CloseIconButton(
+                            onTap: () => Navigator.of(ctx).pop(),
+                          ),
                       ],
                     ),
                   )
                 else if (topInset > 0)
                   SizedBox(height: topInset),
-                Flexible(child: SingleChildScrollView(child: body)),
-                if (footerActions != null && footerActions.isNotEmpty)
+                Flexible(
+                  child: SingleChildScrollView(
+                    padding: EdgeInsets.only(
+                      bottom:
+                          !hasFooter && position == HeroUiDrawerPosition.bottom
+                          ? viewPadding.bottom
+                          : 0,
+                    ),
+                    child: body,
+                  ),
+                ),
+                if (hasFooter)
                   Padding(
                     padding: footerPadding,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        for (var i = 0; i < footerActions.length; i++) ...[
+                        for (var i = 0; i < footerWidgets.length; i++) ...[
                           if (i > 0) const SizedBox(width: 8),
-                          footerActions[i],
+                          footerWidgets[i],
                         ],
                       ],
                     ),
-                  )
-                else if (bottomInset > 0)
-                  SizedBox(height: bottomInset),
+                  ),
               ],
             );
 
@@ -244,7 +261,8 @@ class HeroUiDrawer {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        if (showHandle && position == HeroUiDrawerPosition.bottom)
+                        if (showHandle &&
+                            position == HeroUiDrawerPosition.bottom)
                           buildHandle(margin: const EdgeInsets.only(top: 8)),
                         Flexible(fit: FlexFit.loose, child: panelContent),
                         if (showHandle && position == HeroUiDrawerPosition.top)
@@ -255,6 +273,16 @@ class HeroUiDrawer {
                 ),
               ),
             );
+
+            final mh = maxHeightFraction;
+            if (mh != null) {
+              panel = ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * mh,
+                ),
+                child: panel,
+              );
+            }
 
             panel = SlideTransition(position: slideAnim, child: panel);
 

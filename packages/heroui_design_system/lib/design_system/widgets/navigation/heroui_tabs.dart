@@ -277,7 +277,17 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     final stripOffset = stripRenderObject.localToGlobal(Offset.zero);
     final tabOffset = tabRenderObject.localToGlobal(Offset.zero);
     final localOffset = tabOffset - stripOffset;
-    return localOffset & tabRenderObject.size;
+    final rect = localOffset & tabRenderObject.size;
+    if (!_isFiniteIndicatorRect(rect)) return null;
+    return rect;
+  }
+
+  /// Rejects rects that would feed NaN/Inf into [Stack] [Positioned] children.
+  static bool _isFiniteIndicatorRect(Rect rect) {
+    return rect.left.isFinite &&
+        rect.top.isFinite &&
+        rect.width.isFinite &&
+        rect.height.isFinite;
   }
 
   bool _sameRect(Rect? lhs, Rect? rhs) {
@@ -353,7 +363,9 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
   Widget _buildActiveIndicator(_HeroUiTabsTokens tokens) {
     final rect = _selectedIndicatorRect;
-    if (rect == null) return const SizedBox.shrink();
+    if (rect == null || !_isFiniteIndicatorRect(rect)) {
+      return const SizedBox.shrink();
+    }
 
     if (widget.variant == HeroUiTabsVariant.primary) {
       final radius =

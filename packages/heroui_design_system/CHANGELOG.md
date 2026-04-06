@@ -2,7 +2,22 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.6
+
+- `HeroUiTabs`: validate the tab strip indicator `Rect` from layout (`localToGlobal` / `RenderBox.size`) so only finite `left`, `top`, `width`, and `height` are passed into `AnimatedPositioned`. This prevents `Stack` layout assertions (`height.isNaN`) when transient or invalid geometry would otherwise reach the positioned child.
+
 ## 0.1.5
+
+- Added `HeroUiShell`: shell similar to `Scaffold` where the app bar and bottom navigation sit in a `Stack` above the body with margins and rounded `Material` surfaces (floating / iOS-style chrome). Body is full-bleed; optional `resizeToAvoidBottomInset` shifts content when the keyboard opens.
+- `HeroUiDrawer`: added optional `maxHeight` (0–1, fraction of logical window height) to cap panel height; when there are no `footerActions`, removed the extra bottom spacer and applied bottom `viewPadding` as `SingleChildScrollView` padding so content scrolls clear of the home indicator on bottom sheets.
+- `HeroUiDrawer` (bottom/top handle): header no longer shows the close icon when the drag handle is present; tapping the handle dismisses the drawer; swipe-to-close by dragging the handle is unchanged.
+- Added `HeroUiMenuCard` and `HeroUiMenuItem` (collections): grouped rows inside `HeroUiCard` with iOS Settings–style inset separators (`HeroUiSeparator`), optional leading, subtitle, trailing, and optional `onTap`. Interactive rows use hover (`HeroUiSurfaceVariant.secondary`) and pressed (`HeroUiSurfaceVariant.tertiary`) fills via `HeroUiSurface` (no extra shadow); non-tappable rows stay visual-only.
+- Added `HeroUiSurface.fillColor` to resolve the same default fill colors as `HeroUiSurface` for a given `HeroUiSurfaceVariant` and theme brightness (single source of truth with the widget’s `build` method).
+- Expanded `HeroUiIconManifest` with a constant for every icon under `assets/icons` (camelCase names map to SVG stems). Removed the `Regular` suffix from manifest entries; update call sites accordingly. Chevron navigation icons that map to `arrow-chevron-left` / `arrow-chevron-right` assets are now `arrowChevronLeft` and `arrowChevronRight`.
+- Added `HeroUiTypography.textOTPFieldBase` (16px, weight 600) and wired `HeroUiInputOtp` value text to use it instead of `bodySmMedium`.
+- Improved `HeroUiInputOtp` layout: wider cells, symmetric padding, full-width `TextField` so digits stay centered and are not clipped.
+- Added dark-theme styling for `HeroUiCloseButton` (surface, icon, and focus inner ring colors).
+- Applied a light press feedback (`AnimatedScale` to 0.97) to the whole control for `HeroUiButton` and `HeroUiCloseButton`, including background and borders, not only the label or icon.
 
 ## 0.1.4
 

@@ -493,6 +493,25 @@ class _DropdownDemoPage extends StatelessWidget {
 class _DrawerDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final longScrollBody = Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (var i = 1; i <= 22; i++)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Text(
+              'Item $i — scroll to the end; content stays above the home indicator.',
+              style: const TextStyle(
+                fontSize: 14,
+                color: Color(0xFF18181B),
+                height: 1.4,
+              ),
+            ),
+          ),
+      ],
+    );
+
     final bodyContent = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -558,6 +577,35 @@ class _DrawerDemoPage extends StatelessWidget {
               'Open minimal',
               onTap: () =>
                   HeroUiDrawer.show(context: context, body: bodyContent),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          const ComponentDemoTitle('Drawer — no footer, scroll + safe area'),
+          _demoCardSection(
+            child: _demoButton(
+              'Bottom, long list',
+              onTap: () => HeroUiDrawer.show(
+                context: context,
+                position: HeroUiDrawerPosition.bottom,
+                title: 'No footer',
+                body: longScrollBody,
+              ),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          const ComponentDemoTitle('Drawer — maxHeight'),
+          _demoCardSection(
+            child: _demoButton(
+              'Bottom, maxHeight 0.45',
+              onTap: () => HeroUiDrawer.show(
+                context: context,
+                position: HeroUiDrawerPosition.bottom,
+                title: 'Tall content',
+                maxHeight: 0.45,
+                body: longScrollBody,
+              ),
             ),
           ),
           const SizedBox(height: 24),
