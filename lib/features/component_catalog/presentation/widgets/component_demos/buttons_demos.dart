@@ -353,7 +353,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__chevron-down__regular',
+            'chevron-down',
           ),
         ),
       ],
@@ -364,7 +364,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
         HeroUiButtonGroupItem(
           label: 'Fork',
           onPressed: () {},
-          leading: const _ButtonGroupIcon('heroui-v3-icon__code-fork__regular'),
+          leading: const _ButtonGroupIcon('code-fork'),
           trailing: const _ButtonGroupCounterBadge('4'),
         ),
         HeroUiButtonGroupItem(
@@ -372,7 +372,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__chevron-down__regular',
+            'chevron-down',
           ),
         ),
       ],
@@ -384,7 +384,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           label: 'Scan',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon('heroui-v3-icon__qr-code__regular'),
+          leading: const _ButtonGroupIcon('qr-code'),
         ),
         HeroUiButtonGroupItem(label: 'Scan to pay', onPressed: () {}),
       ],
@@ -395,7 +395,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
         HeroUiButtonGroupItem(
           label: 'Like',
           onPressed: () {},
-          leading: const _ButtonGroupIcon('heroui-v3-icon__thumbs-up__regular'),
+          leading: const _ButtonGroupIcon('thumbs-up'),
         ),
         HeroUiButtonGroupItem(label: '43', onPressed: () {}),
       ],
@@ -406,7 +406,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
         HeroUiButtonGroupItem(
           label: 'Star',
           onPressed: () {},
-          leading: const _ButtonGroupIcon('heroui-v3-icon__star__regular'),
+          leading: const _ButtonGroupIcon('star'),
         ),
         HeroUiButtonGroupItem(label: '104', onPressed: () {}),
       ],
@@ -417,14 +417,14 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
         HeroUiButtonGroupItem(
           label: 'Pinned',
           onPressed: () {},
-          leading: const _ButtonGroupIcon('heroui-v3-icon__pin__regular'),
+          leading: const _ButtonGroupIcon('pin'),
         ),
         HeroUiButtonGroupItem(
           label: 'Menu',
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__chevron-down__regular',
+            'chevron-down',
           ),
         ),
       ],
@@ -437,7 +437,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__chevron-left__regular',
+            'chevron-left',
           ),
         ),
         HeroUiButtonGroupItem(label: 'Previous', onPressed: () {}),
@@ -452,7 +452,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__chevron-right__regular',
+            'chevron-right',
           ),
         ),
       ],
@@ -463,18 +463,18 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
         HeroUiButtonGroupItem(
           label: 'Photos',
           onPressed: () {},
-          leading: const _ButtonGroupIcon('heroui-v3-icon__picture__regular'),
+          leading: const _ButtonGroupIcon('picture'),
         ),
         HeroUiButtonGroupItem(
           label: 'Videos',
           onPressed: () {},
-          leading: const _ButtonGroupIcon('heroui-v3-icon__video__regular'),
+          leading: const _ButtonGroupIcon('video'),
         ),
         HeroUiButtonGroupItem(
           label: 'More',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon('heroui-v3-icon__ellipsis__regular'),
+          leading: const _ButtonGroupIcon('ellipsis'),
         ),
       ],
     ),
@@ -495,7 +495,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__text-align-left__regular',
+            'text-align-left',
           ),
         ),
         HeroUiButtonGroupItem(
@@ -503,7 +503,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__text-align-center__regular',
+            'text-align-center',
           ),
         ),
         HeroUiButtonGroupItem(
@@ -511,7 +511,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__text-align-right__regular',
+            'text-align-right',
           ),
         ),
         HeroUiButtonGroupItem(
@@ -519,7 +519,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           onPressed: () {},
           iconOnly: true,
           leading: const _ButtonGroupIcon(
-            'heroui-v3-icon__text-align-justify__regular',
+            'text-align-justify',
           ),
         ),
       ],

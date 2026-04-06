@@ -1,41 +1,14 @@
 part of 'heroui_overlays.dart';
 
-class _CloseIconButton extends StatefulWidget {
+class _CloseIconButton extends StatelessWidget {
   const _CloseIconButton({required this.onTap});
   final VoidCallback onTap;
 
   @override
-  State<_CloseIconButton> createState() => _CloseIconButtonState();
-}
-
-class _CloseIconButtonState extends State<_CloseIconButton> {
-  bool _hover = false;
-
-  @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg = isDark ? const Color(0xFF27272A) : const Color(0xFFEBEBEC);
-
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hover = true),
-      onExit: (_) => setState(() => _hover = false),
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
-          width: 28,
-          height: 28,
-          decoration: BoxDecoration(
-            color: _hover ? bg.withValues(alpha: 0.8) : bg,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(
-            Icons.close_rounded,
-            size: 16,
-            color: isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A),
-          ),
-        ),
-      ),
+    return HeroUiCloseButton(
+      onPressed: onTap,
+      state: HeroUiCloseButtonState.defaultState,
     );
   }
 }

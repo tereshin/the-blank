@@ -79,6 +79,24 @@ class HeroUiTypography {
     letterSpacing: 0,
   );
 
+  static const TextStyle bodyXxs = TextStyle(
+    fontFamily: fontFamily,
+    package: packageName,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    height: 1.34,
+    letterSpacing: 0,
+  );
+
+  static const TextStyle bodyXxsMedium = TextStyle(
+    fontFamily: fontFamily,
+    package: packageName,
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    height: 1.34,
+    letterSpacing: 0,
+  );
+
   static const TextStyle bodyXs = TextStyle(
     fontFamily: fontFamily,
     package: packageName,

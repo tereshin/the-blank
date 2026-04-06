@@ -21,6 +21,7 @@ Widget _demoButton(String label, {VoidCallback? onTap}) {
     label: label,
     onPressed: onTap,
     variant: HeroUiDemoActionTriggerVariant.primary,
+    size: HeroUiButtonSize.lg,
   );
 }
 
@@ -351,7 +352,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Copy link',
                       description: 'Copy the file link',
                       leading: _dropdownItemIcon(
-                        'heroui-v3-icon__link__regular',
+                        'link',
                       ),
                       trailing: _dropdownShortcut(const ['⌘', 'L']),
                     ),
@@ -359,7 +360,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Edit file',
                       description: 'Make changes',
                       leading: _dropdownItemIcon(
-                        'heroui-v3-icon__pencil__regular',
+                        'pencil',
                       ),
                       trailing: _dropdownShortcut(const ['⌘', 'E']),
                     ),
@@ -397,7 +398,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Default',
                       description: 'state=default',
                       leading: _dropdownItemIcon(
-                        'heroui-v3-icon__circle-dashed__regular',
+                        'circle-dashed',
                       ),
                       trailing: _dropdownShortcut(const ['⌘', 'D']),
                       state: HeroUiDropdownItemState.defaultState,
@@ -406,7 +407,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Hover',
                       description: 'state=hover',
                       leading: _dropdownItemIcon(
-                        'heroui-v3-icon__circle-dashed__regular',
+                        'circle-dashed',
                       ),
                       trailing: _dropdownShortcut(const ['⌘', 'H']),
                       state: HeroUiDropdownItemState.hover,
@@ -415,7 +416,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Focus',
                       description: 'state=focus',
                       leading: _dropdownItemIcon(
-                        'heroui-v3-icon__circle-dashed__regular',
+                        'circle-dashed',
                       ),
                       trailing: _dropdownShortcut(const ['⌘', 'F']),
                       state: HeroUiDropdownItemState.focus,
@@ -424,7 +425,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Pressed',
                       description: 'state=pressed',
                       leading: _dropdownItemIcon(
-                        'heroui-v3-icon__circle-dashed__regular',
+                        'circle-dashed',
                       ),
                       trailing: _dropdownShortcut(const ['⌘', 'P']),
                       state: HeroUiDropdownItemState.pressed,
@@ -439,7 +440,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Disabled',
                       description: 'state=disabled',
                       leading: _dropdownItemIcon(
-                        'heroui-v3-icon__square-exclamation__regular',
+                        'square-exclamation',
                       ),
                       trailing: _dropdownShortcut(const ['⌘', 'X']),
                       state: HeroUiDropdownItemState.disabled,
@@ -557,10 +558,6 @@ class _DrawerDemoPage extends StatelessWidget {
                       subtitle: 'Drawer content example',
                       body: bodyContent,
                       footerActions: [
-                        _outlineButton(
-                          'Cancel',
-                          onTap: () => Navigator.of(context).pop(),
-                        ),
                         _demoButton(
                           'Save',
                           onTap: () => Navigator.of(context).pop(),

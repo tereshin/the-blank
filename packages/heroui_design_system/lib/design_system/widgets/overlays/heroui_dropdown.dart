@@ -465,7 +465,7 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
         item.leading ??
         (visualState == HeroUiDropdownItemState.selected
             ? HeroUiIcon(
-                'heroui-v3-icon__check__regular',
+                'check',
                 size: 16,
                 color: titleColor,
               )

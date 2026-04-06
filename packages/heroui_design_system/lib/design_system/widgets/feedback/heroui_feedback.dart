@@ -617,6 +617,12 @@ class HeroUiToast extends StatelessWidget {
   final VoidCallback? onAction;
   final VoidCallback? onClose;
 
+  static const TextStyle _toastTextResetStyle = TextStyle(
+    decoration: TextDecoration.none,
+    decorationColor: Colors.transparent,
+    decorationStyle: TextDecorationStyle.solid,
+  );
+
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -630,94 +636,102 @@ class HeroUiToast extends StatelessWidget {
         ? const Color(0xFFA1A1AA)
         : const Color(0xFF71717A);
 
-    return Container(
-      constraints: const BoxConstraints(maxWidth: 360),
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.08),
-            blurRadius: 16,
-            offset: Offset(0, 4),
-          ),
-          BoxShadow(
-            color: Color.fromRGBO(0, 0, 0, 0.04),
-            blurRadius: 4,
-            offset: Offset(0, 1),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 12),
-            child: Icon(
-              switch (type) {
-                HeroUiComponentType.success =>
-                  Icons.check_circle_outline_rounded,
-                HeroUiComponentType.warning => Icons.warning_amber_rounded,
-                HeroUiComponentType.danger => Icons.error_outline_rounded,
-                _ => Icons.info_outline_rounded,
-              },
-              size: 18,
-              color: type == HeroUiComponentType.defaultType
-                  ? descColor
-                  : typeColor,
+    return DefaultTextStyle.merge(
+      style: _toastTextResetStyle,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 360),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.08),
+              blurRadius: 16,
+              offset: Offset(0, 4),
             ),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    message,
-                    style: HeroUiTypography.bodySmMedium.copyWith(
-                      color: titleColor,
-                    ),
-                  ),
-                  if (description != null) ...[
-                    const SizedBox(height: 2),
-                    Text(
-                      description!,
-                      style: HeroUiTypography.bodyXs.copyWith(color: descColor),
-                    ),
-                  ],
-                  if (actionLabel != null) ...[
-                    const SizedBox(height: 8),
-                    GestureDetector(
-                      onTap: onAction,
-                      child: Text(
-                        actionLabel!,
-                        style: HeroUiTypography.bodyXsMedium.copyWith(
-                          color: typeColor == const Color(0xFF18181B)
-                              ? const Color(0xFF0485F7)
-                              : typeColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ),
-          if (onClose != null) ...[
-            const SizedBox(width: 8),
-            Padding(
-              padding: const EdgeInsets.only(top: 12),
-              child: GestureDetector(
-                onTap: onClose,
-                child: Icon(Icons.close_rounded, size: 16, color: descColor),
-              ),
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.04),
+              blurRadius: 4,
+              offset: Offset(0, 1),
             ),
           ],
-        ],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 12),
+              child: Icon(
+                switch (type) {
+                  HeroUiComponentType.success =>
+                    Icons.check_circle_outline_rounded,
+                  HeroUiComponentType.warning => Icons.warning_amber_rounded,
+                  HeroUiComponentType.danger => Icons.error_outline_rounded,
+                  _ => Icons.info_outline_rounded,
+                },
+                size: 18,
+                color: type == HeroUiComponentType.defaultType
+                    ? descColor
+                    : typeColor,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      message,
+                      style: HeroUiTypography.bodySmMedium.copyWith(
+                        color: titleColor,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                    if (description != null) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        description!,
+                        style: HeroUiTypography.bodyXs.copyWith(
+                          color: descColor,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ],
+                    if (actionLabel != null) ...[
+                      const SizedBox(height: 8),
+                      GestureDetector(
+                        onTap: onAction,
+                        child: Text(
+                          actionLabel!,
+                          style: HeroUiTypography.bodyXsMedium.copyWith(
+                            color: typeColor == const Color(0xFF18181B)
+                                ? const Color(0xFF0485F7)
+                                : typeColor,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+            if (onClose != null) ...[
+              const SizedBox(width: 8),
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: GestureDetector(
+                  onTap: onClose,
+                  child: Icon(Icons.close_rounded, size: 16, color: descColor),
+                ),
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }

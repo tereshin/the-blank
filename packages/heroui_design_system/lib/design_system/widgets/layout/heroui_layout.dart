@@ -21,29 +21,35 @@ class HeroUiSurface extends StatelessWidget {
     this.variant = HeroUiSurfaceVariant.defaultVariant,
     this.borderRadius = 24,
     this.padding,
+    this.showShadow = true,
+    this.backgroundColor,
     required this.child,
   });
 
   final HeroUiSurfaceVariant variant;
   final double borderRadius;
   final EdgeInsetsGeometry? padding;
+  final bool showShadow;
+  final Color? backgroundColor;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    final Color? bg = switch (variant) {
-      HeroUiSurfaceVariant.transparent => Colors.transparent,
-      HeroUiSurfaceVariant.defaultVariant =>
-        isDark ? const Color(0xFF18181B) : const Color(0xFFFFFFFF),
-      HeroUiSurfaceVariant.secondary =>
-        isDark ? const Color(0xFF27272A) : const Color(0xFFEFEFF0),
-      HeroUiSurfaceVariant.tertiary =>
-        isDark ? const Color(0xFF3F3F46) : const Color(0xFFEAEAEB),
-    };
+    final bg = backgroundColor ??
+        switch (variant) {
+          HeroUiSurfaceVariant.transparent => Colors.transparent,
+          HeroUiSurfaceVariant.defaultVariant =>
+            isDark ? const Color(0xFF18181B) : const Color(0xFFFFFFFF),
+          HeroUiSurfaceVariant.secondary =>
+            isDark ? const Color(0xFF27272A) : const Color(0xFFEFEFF0),
+          HeroUiSurfaceVariant.tertiary =>
+            isDark ? const Color(0xFF3F3F46) : const Color(0xFFEAEAEB),
+        };
 
-    final List<BoxShadow> shadows = variant == HeroUiSurfaceVariant.transparent
+    final List<BoxShadow> shadows =
+        !showShadow || variant == HeroUiSurfaceVariant.transparent
         ? const []
         : const [
             BoxShadow(

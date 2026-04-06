@@ -358,7 +358,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     if (widget.variant == HeroUiTabsVariant.primary) {
       final radius =
           widget.tabContentOrientation == HeroUiTabContentOrientation.vertical
-          ? 20.0
+          ? 24.0
           : 24.0;
       return AnimatedPositioned(
         duration: _kAnimationDuration,
@@ -629,7 +629,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
       (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.horizontal) =>
         const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.vertical) =>
-        const EdgeInsets.all(12),
+        const EdgeInsets.all(6),
       (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.horizontal) =>
         const EdgeInsets.fromLTRB(12, 4, 12, 6),
       (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.vertical) =>
@@ -649,7 +649,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
           key: _tabKeys[index],
           duration: _kAnimationDuration,
           curve: Curves.easeOutCubic,
-          constraints: BoxConstraints(minHeight: isVertical ? 78 : 32),
+          constraints: BoxConstraints(minHeight: isVertical ? 32 : 32),
           alignment: Alignment.center,
           padding: padding,
           decoration: decoration,
@@ -668,7 +668,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
         widget.tabContentOrientation == HeroUiTabContentOrientation.vertical;
     final textStyle =
         (isVertical
-                ? HeroUiTypography.bodyXsMedium
+                ? HeroUiTypography.bodyXxsMedium
                 : HeroUiTypography.bodySmMedium)
             .copyWith(color: color);
 
@@ -680,7 +680,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (leading != null) ...[leading, const SizedBox(height: 6)],
+              if (leading != null) ...[leading, const SizedBox(height: 2)],
               Text(
                 item.label,
                 maxLines: 2,

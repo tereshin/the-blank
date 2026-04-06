@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../layout/heroui_layout.dart';
 import '../../typography/heroui_typography.dart';
 
 class HeroUiCard extends StatelessWidget {
@@ -11,9 +12,10 @@ class HeroUiCard extends StatelessWidget {
     this.padding = const EdgeInsets.all(16),
     this.sectionGap = 12,
     this.borderRadius = 24,
-    this.showShadow = true,
+    this.showShadow = false,
     this.onTap,
     this.backgroundColor,
+    this.surfaceVariant = HeroUiSurfaceVariant.defaultVariant,
     this.borderColor,
   });
 
@@ -26,6 +28,7 @@ class HeroUiCard extends StatelessWidget {
   final bool showShadow;
   final VoidCallback? onTap;
   final Color? backgroundColor;
+  final HeroUiSurfaceVariant surfaceVariant;
   final Color? borderColor;
 
   @override
@@ -46,28 +49,33 @@ class HeroUiCard extends StatelessWidget {
     );
 
     final radius = BorderRadius.circular(borderRadius);
-    final card = DecoratedBox(
-      decoration: BoxDecoration(
-        color: backgroundColor ?? tokens.surface,
-        borderRadius: radius,
-        border: (borderColor ?? tokens.border) == null
-            ? null
-            : Border.all(color: borderColor ?? tokens.border!),
-        boxShadow: showShadow ? tokens.shadows : null,
-      ),
-      child: Material(
-        type: MaterialType.transparency,
-        child: onTap == null
-            ? content
-            : InkWell(
-                borderRadius: radius,
-                splashFactory: NoSplash.splashFactory,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                onTap: onTap,
-                child: content,
-              ),
+    final resolvedBorderColor = borderColor ?? tokens.border;
+    final card = HeroUiSurface(
+      variant: surfaceVariant,
+      borderRadius: borderRadius,
+      showShadow: showShadow,
+      backgroundColor: backgroundColor,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: radius,
+          border: resolvedBorderColor == null
+              ? null
+              : Border.all(color: resolvedBorderColor),
+        ),
+        child: Material(
+          type: MaterialType.transparency,
+          child: onTap == null
+              ? content
+              : InkWell(
+                  borderRadius: radius,
+                  splashFactory: NoSplash.splashFactory,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  onTap: onTap,
+                  child: content,
+                ),
+        ),
       ),
     );
 
@@ -184,49 +192,30 @@ class HeroUiCardMedia extends StatelessWidget {
 
 class _HeroUiCardTokens {
   const _HeroUiCardTokens({
-    required this.surface,
     required this.primaryText,
     required this.secondaryText,
     required this.border,
-    required this.shadows,
   });
 
-  final Color surface;
   final Color primaryText;
   final Color secondaryText;
   final Color? border;
-  final List<BoxShadow>? shadows;
 }
 
 _HeroUiCardTokens _cardTokens(BuildContext context) {
   final isDark = Theme.of(context).brightness == Brightness.dark;
   if (isDark) {
     return const _HeroUiCardTokens(
-      surface: Color(0xFF18181B),
       primaryText: Color(0xFFFCFCFC),
       secondaryText: Color(0xFFA1A1AA),
-      border: Color(0xFF27272A),
-      shadows: null,
+      border: null,
     );
   }
 
   return const _HeroUiCardTokens(
-    surface: Color(0xFFFFFFFF),
     primaryText: Color(0xFF18181B),
     secondaryText: Color(0xFF71717A),
     border: null,
-    shadows: [
-      BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.02),
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-      BoxShadow(
-        color: Color.fromRGBO(0, 0, 0, 0.04),
-        offset: Offset(0, 1),
-        blurRadius: 2,
-      ),
-    ],
   );
 }
 

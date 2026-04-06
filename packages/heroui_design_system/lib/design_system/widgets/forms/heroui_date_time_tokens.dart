@@ -9,8 +9,8 @@ const Color _kMutedDark = Color(0xFFA1A1AA);
 const Color _kPopoverLight = Color(0xFFFFFFFF);
 const Color _kPopoverDark = Color(0xFF18181B);
 const Color _kRangeHighlight = Color.fromRGBO(4, 133, 247, 0.15);
-const String _kChevronLeftIcon = 'heroui-v3-icon__chevron-left__regular';
-const String _kChevronRightIcon = 'heroui-v3-icon__chevron-right__regular';
+const String _kChevronLeftIcon = 'chevron-left';
+const String _kChevronRightIcon = 'chevron-right';
 const double _kCalendarModalBreakpoint = 720;
 
 const List<BoxShadow> _kFieldShadow = [

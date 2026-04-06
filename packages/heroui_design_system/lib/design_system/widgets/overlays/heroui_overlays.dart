@@ -5,6 +5,8 @@ import 'dart:ui' show PointerDeviceKind;
 import 'package:flutter/material.dart';
 
 import '../../../icons/heroui_icon.dart';
+import '../buttons/heroui_buttons.dart';
+import '../layout/heroui_layout.dart';
 import '../../typography/heroui_typography.dart';
 
 part 'heroui_overlays_shared.dart';
