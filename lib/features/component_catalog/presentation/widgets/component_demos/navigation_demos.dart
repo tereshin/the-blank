@@ -79,7 +79,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Undo',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(HeroUiIconManifest.arrowLeftRegular),
+            leading: const HeroUiIcon(HeroUiIconManifest.arrowLeft),
             onPressed: () => showComponentDemoMessage(context, 'Undo clicked'),
           ),
           const HeroUiToolbarDivider(),
@@ -87,7 +87,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Redo',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(HeroUiIconManifest.chevronRightRegular),
+            leading: const HeroUiIcon(HeroUiIconManifest.chevronRight),
             onPressed: () => showComponentDemoMessage(context, 'Redo clicked'),
           ),
         ],
@@ -101,7 +101,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Copy',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(HeroUiIconManifest.houseRegular),
+            leading: const HeroUiIcon(HeroUiIconManifest.house),
             onPressed: () => showComponentDemoMessage(context, 'Copy clicked'),
           ),
           const HeroUiToolbarDivider(),
@@ -109,7 +109,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Paste',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(HeroUiIconManifest.plusRegular),
+            leading: const HeroUiIcon(HeroUiIconManifest.plus),
             onPressed: () => showComponentDemoMessage(context, 'Paste clicked'),
           ),
         ],
@@ -123,7 +123,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Save',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(HeroUiIconManifest.bellRegular),
+            leading: const HeroUiIcon(HeroUiIconManifest.bell),
             onPressed: () => showComponentDemoMessage(context, 'Save clicked'),
           ),
           const HeroUiToolbarDivider(
@@ -133,7 +133,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Delete',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(HeroUiIconManifest.trashBinRegular),
+            leading: const HeroUiIcon(HeroUiIconManifest.trashBin),
             onPressed: () =>
                 showComponentDemoMessage(context, 'Delete clicked'),
           ),
@@ -149,7 +149,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Settings',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(HeroUiIconManifest.gearRegular),
+            leading: const HeroUiIcon(HeroUiIconManifest.gear),
             onPressed: () =>
                 showComponentDemoMessage(context, 'Settings clicked'),
           ),
@@ -160,9 +160,7 @@ Widget buildToolbarDemo(BuildContext context) => SingleChildScrollView(
             label: 'Archive',
             variant: HeroUiButtonVariant.tertiary,
             size: HeroUiButtonSize.md,
-            leading: const HeroUiIcon(
-              HeroUiIconManifest.envelopeOpenXmarkRegular,
-            ),
+            leading: const HeroUiIcon(HeroUiIconManifest.envelopeOpenXmark),
             onPressed: () =>
                 showComponentDemoMessage(context, 'Archive clicked'),
           ),
@@ -203,7 +201,7 @@ class _TabsDemoState extends State<_TabsDemo> {
     ),
     HeroUiTabItem(
       label: 'Emails',
-      leading: HeroUiIcon(HeroUiIconManifest.envelopeRegular, size: 16),
+      leading: HeroUiIcon(HeroUiIconManifest.envelope, size: 16),
       child: Text('Emails content'),
     ),
   ];
@@ -211,25 +209,22 @@ class _TabsDemoState extends State<_TabsDemo> {
   List<HeroUiTabItem> get _verticalTabs => const [
     HeroUiTabItem(
       label: 'Contacts',
-      leading: HeroUiIcon('square-dashed', size: 16),
+      leading: HeroUiIcon('square-dashed', size: 20),
       child: Text('Contacts content'),
     ),
     HeroUiTabItem(
       label: 'Calls',
-      leading: HeroUiIcon('persons', size: 16),
+      leading: HeroUiIcon('persons', size: 20),
       child: Text('Calls content'),
     ),
     HeroUiTabItem(
       label: 'Messages',
-      leading: HeroUiIcon(
-        'square-dashed-circle',
-        size: 16,
-      ),
+      leading: HeroUiIcon('square-dashed-circle', size: 20),
       child: Text('Messages content'),
     ),
     HeroUiTabItem(
       label: 'Settings',
-      leading: HeroUiIcon(HeroUiIconManifest.personRegular, size: 16),
+      leading: HeroUiIcon(HeroUiIconManifest.person, size: 20),
       child: Text('Settings content'),
     ),
   ];

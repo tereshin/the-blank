@@ -514,7 +514,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
               left: 4,
               child: Center(
                 child: _HeroUiTabsScrollButton(
-                  iconName: HeroUiIconManifest.chevronLeftRegular,
+                  iconName: HeroUiIconManifest.chevronLeft,
                   color: tokens.scrollIcon,
                   onTap: () => _scrollBy(-120),
                 ),
@@ -527,7 +527,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
               right: 4,
               child: Center(
                 child: _HeroUiTabsScrollButton(
-                  iconName: HeroUiIconManifest.chevronRightRegular,
+                  iconName: HeroUiIconManifest.chevronRight,
                   color: tokens.scrollIcon,
                   onTap: () => _scrollBy(120),
                 ),
@@ -700,7 +700,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     final text = Text(item.label, maxLines: 1, overflow: TextOverflow.ellipsis);
 
     return IconTheme.merge(
-      data: IconThemeData(size: 16, color: color),
+      data: IconThemeData(size: 20, color: color),
       child: DefaultTextStyle(
         style: textStyle,
         child: Row(

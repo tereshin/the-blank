@@ -125,7 +125,7 @@ class _DateTimeFieldFrame extends StatelessWidget {
 class _FieldSuffix extends StatelessWidget {
   const _FieldSuffix({
     required this.isOpen,
-    this.iconName = HeroUiIconManifest.calendarRegular,
+    this.iconName = HeroUiIconManifest.calendar,
   });
 
   final bool isOpen;

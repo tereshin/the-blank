@@ -182,7 +182,7 @@ class _DisclosureDemoPage extends StatelessWidget {
           HeroUiDisclosure(
             title: 'Advanced settings',
             leading: const HeroUiIcon(
-              HeroUiIconManifest.gearRegular,
+              HeroUiIconManifest.gear,
               size: 18,
               color: Color(0xFF71717A),
             ),
@@ -209,7 +209,7 @@ class _DisclosureDemoPage extends StatelessWidget {
               HeroUiDisclosureItem(
                 title: 'Configuration',
                 leading: const HeroUiIcon(
-                  HeroUiIconManifest.gearRegular,
+                  HeroUiIconManifest.gear,
                   size: 18,
                   color: Color(0xFF71717A),
                 ),

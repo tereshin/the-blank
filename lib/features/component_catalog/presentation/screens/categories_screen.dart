@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:heroui_design_system/design_system.dart';
 
 import '../../data/component_registry.dart';
 import '../../domain/catalog_component.dart';
 import '../../domain/component_category.dart';
-import '../widgets/category_tile.dart';
+import '../widgets/catalog_category_leading.dart';
 import 'category_detail_screen.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -12,40 +13,49 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = ComponentCategory.values;
+    final menuItems = <HeroUiMenuItem>[
+      for (final category in categories) _categoryMenuItem(context, category),
+    ];
 
     return Scaffold(
       appBar: AppBar(title: const Text('Component Categories')),
-      body: ListView.separated(
+      body: ListView(
         padding: const EdgeInsets.all(16),
-        itemCount: categories.length,
-        separatorBuilder: (_, _) => const SizedBox(height: 16),
-        itemBuilder: (context, index) {
-          final category = categories[index];
-          final components = componentsFor(category);
-          final totalComponents = components.length;
-          final implementedComponents = components
-              .where(
-                (component) =>
-                    component.status ==
-                    ComponentImplementationStatus.implemented,
-              )
-              .length;
-
-          return CategoryTile(
-            category: category,
-            totalComponents: totalComponents,
-            implementedComponents: implementedComponents,
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute<void>(
-                  builder: (context) =>
-                      CategoryDetailScreen(category: category),
-                ),
-              );
-            },
-          );
-        },
+        children: [HeroUiMenuCard(showShadow: false, items: menuItems)],
       ),
     );
   }
+}
+
+HeroUiMenuItem _categoryMenuItem(
+  BuildContext context,
+  ComponentCategory category,
+) {
+  final components = componentsFor(category);
+  final totalComponents = components.length;
+  final implementedComponents = components
+      .where(
+        (component) =>
+            component.status == ComponentImplementationStatus.implemented,
+      )
+      .length;
+  final mutedColor = Theme.of(context).colorScheme.onSurfaceVariant;
+
+  return HeroUiMenuItem(
+    title: category.title,
+    subtitle: '$implementedComponents / $totalComponents implemented',
+    leading: CatalogCategoryLeadingIcon(category: category),
+    trailing: HeroUiIcon(
+      HeroUiIconManifest.chevronRight,
+      size: 16,
+      color: mutedColor,
+    ),
+    onTap: () {
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (context) => CategoryDetailScreen(category: category),
+        ),
+      );
+    },
+  );
 }

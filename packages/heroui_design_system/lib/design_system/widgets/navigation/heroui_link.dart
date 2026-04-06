@@ -103,7 +103,7 @@ class _HeroUiLinkState extends State<HeroUiLink> {
     final legacyTrailing = !widget.showIcon ? widget.trailing : null;
     final trailingIcon = widget.showIcon
         ? (widget.icon ??
-              const HeroUiIcon(HeroUiIconManifest.externalRegular, size: 14))
+              const HeroUiIcon(HeroUiIconManifest.external, size: 14))
         : legacyTrailing;
     final onTap = current == HeroUiLinkState.disabled ? null : widget.onTap;
 

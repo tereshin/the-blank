@@ -328,33 +328,37 @@ class _OtpCell extends StatelessWidget {
       enabled: enabled,
       child: Focus(
         onKeyEvent: (_, event) => onKeyEvent(event),
-        child: TextField(
-          controller: controller,
-          focusNode: focusNode,
-          enabled: enabled,
-          autofocus: autofocus,
-          textAlign: TextAlign.center,
-          keyboardType: TextInputType.number,
-          textInputAction: TextInputAction.next,
-          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-          style: valueStyle,
-          decoration: const InputDecoration(
-            counterText: '',
-            isDense: true,
-            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            filled: false,
-            border: InputBorder.none,
-            enabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            disabledBorder: InputBorder.none,
+        child: SizedBox(
+          width: double.infinity,
+          child: TextField(
+            controller: controller,
+            focusNode: focusNode,
+            enabled: enabled,
+            autofocus: autofocus,
+            textAlign: TextAlign.center,
+            textAlignVertical: TextAlignVertical.center,
+            keyboardType: TextInputType.number,
+            textInputAction: TextInputAction.next,
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            style: valueStyle,
+            decoration: const InputDecoration(
+              counterText: '',
+              isDense: true,
+              contentPadding: EdgeInsets.fromLTRB(3, 8, 0, 8),
+              filled: false,
+              border: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+            ),
+            onTap: () {
+              controller.selection = TextSelection(
+                baseOffset: 0,
+                extentOffset: controller.text.length,
+              );
+            },
+            onChanged: onChanged,
           ),
-          onTap: () {
-            controller.selection = TextSelection(
-              baseOffset: 0,
-              extentOffset: controller.text.length,
-            );
-          },
-          onChanged: onChanged,
         ),
       ),
     );

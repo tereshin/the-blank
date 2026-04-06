@@ -418,18 +418,18 @@ class _BadgeDemoPage extends StatelessWidget {
                   HeroUiBadge(
                     label: 'New',
                     type: HeroUiComponentType.success,
-                    startIcon: HeroUiIcon(HeroUiIconManifest.plusRegular),
+                    startIcon: HeroUiIcon(HeroUiIconManifest.plus),
                   ),
                   HeroUiBadge(
                     label: 'Alert',
                     type: HeroUiComponentType.danger,
-                    startIcon: HeroUiIcon(HeroUiIconManifest.circleInfoRegular),
+                    startIcon: HeroUiIcon(HeroUiIconManifest.circleInfo),
                   ),
                   HeroUiBadge(
                     label: 'Beta',
                     type: HeroUiComponentType.warning,
                     variant: HeroUiBadgeVariant.soft,
-                    startIcon: HeroUiIcon(HeroUiIconManifest.globeRegular),
+                    startIcon: HeroUiIcon(HeroUiIconManifest.globe),
                   ),
                 ],
               ),

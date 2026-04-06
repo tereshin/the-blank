@@ -36,7 +36,7 @@ class HeroUiInputAffix extends StatelessWidget {
           Text(content!, style: _kInputTextStyle.copyWith(color: toneColor)),
         if (showArrow)
           HeroUiIcon(
-            HeroUiIconManifest.chevronDownRegular,
+            HeroUiIconManifest.chevronDown,
             size: 12,
             color: toneColor,
           ),

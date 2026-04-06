@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:heroui_design_system/design_system.dart';
 
 import '../../data/component_registry.dart';
 import '../../domain/catalog_component.dart';
 import '../../domain/component_category.dart';
-import '../widgets/component_placeholder_tile.dart';
+import '../widgets/catalog_category_leading.dart';
 import 'component_demo_screen.dart';
 
 class CategoryDetailScreen extends StatelessWidget {
@@ -21,47 +22,60 @@ class CategoryDetailScreen extends StatelessWidget {
         )
         .length;
 
+    final menuItems = <HeroUiMenuItem>[
+      for (final component in components)
+        _componentMenuItem(context, category, component),
+    ];
+
     return Scaffold(
       appBar: AppBar(title: Text(category.title)),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              components.isEmpty
-                  ? 'No components yet'
-                  : '$implementedCount/${components.length} implemented',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            const SizedBox(height: 12),
-            Expanded(
-              child: components.isEmpty
-                  ? const Center(child: Text('No components yet'))
-                  : ListView.separated(
-                      itemCount: components.length,
-                      separatorBuilder: (_, _) => const SizedBox(height: 8),
-                      itemBuilder: (context, index) {
-                        final component = components[index];
-                        return ComponentCatalogTile(
-                          component: component,
-                          onTap: component.hasDemo
-                              ? () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute<void>(
-                                      builder: (_) =>
-                                          ComponentDemoScreen(component: component),
-                                    ),
-                                  );
-                                }
-                              : null,
-                        );
-                      },
-                    ),
-            ),
-          ],
-        ),
+        children: [
+          Text(
+            components.isEmpty
+                ? 'No components yet'
+                : '$implementedCount/${components.length} implemented',
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          const SizedBox(height: 12),
+          if (components.isNotEmpty)
+            HeroUiMenuCard(showShadow: false, items: menuItems),
+        ],
       ),
     );
   }
+}
+
+HeroUiMenuItem _componentMenuItem(
+  BuildContext context,
+  ComponentCategory category,
+  CatalogComponent component,
+) {
+  final mutedColor = Theme.of(context).colorScheme.onSurfaceVariant;
+
+  return HeroUiMenuItem(
+    title: component.name,
+    subtitle: component.status.title,
+    leading: CatalogComponentLeadingIcon(
+      category: category,
+      component: component,
+    ),
+    trailing: HeroUiIcon(
+      component.hasDemo
+          ? HeroUiIconManifest.chevronRight
+          : HeroUiIconManifest.lock,
+      size: 16,
+      color: mutedColor,
+    ),
+    onTap: component.hasDemo
+        ? () {
+            Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => ComponentDemoScreen(component: component),
+              ),
+            );
+          }
+        : null,
+  );
 }

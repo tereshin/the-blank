@@ -118,11 +118,11 @@ class HeroUiPagination extends StatelessWidget {
       variant: HeroUiButtonVariant.ghost,
       size: HeroUiButtonSize.sm,
       leading: isPrevious
-          ? const HeroUiIcon(HeroUiIconManifest.chevronLeftRegular, size: 16)
+          ? const HeroUiIcon(HeroUiIconManifest.chevronLeft, size: 16)
           : null,
       trailing: isPrevious
           ? null
-          : const HeroUiIcon(HeroUiIconManifest.chevronRightRegular, size: 16),
+          : const HeroUiIcon(HeroUiIconManifest.chevronRight, size: 16),
       onPressed: enabled ? onPressed : null,
     );
   }

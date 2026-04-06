@@ -12,7 +12,7 @@ class HeroUiCard extends StatelessWidget {
     this.padding = const EdgeInsets.all(16),
     this.sectionGap = 12,
     this.borderRadius = 24,
-    this.showShadow = false,
+    this.showShadow = true,
     this.onTap,
     this.backgroundColor,
     this.surfaceVariant = HeroUiSurfaceVariant.defaultVariant,

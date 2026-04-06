@@ -100,51 +100,61 @@ class _HeroUiButtonState extends State<HeroUiButton> {
             ),
           );
 
+    final pressScale = current == HeroUiButtonVisualState.disabled
+        ? 1.0
+        : (current == HeroUiButtonVisualState.pressed ? 0.97 : 1.0);
+
     return Opacity(
       opacity: current == HeroUiButtonVisualState.disabled ? 0.5 : 1,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: t.bg,
-          borderRadius: radius,
-          border: t.border == null ? null : Border.all(color: t.border!),
-          boxShadow: current == HeroUiButtonVisualState.focus
-              ? const [
-                  BoxShadow(color: Color(0xFF0485F7), spreadRadius: 4),
-                  BoxShadow(color: Color(0xFFF5F5F5), spreadRadius: 2),
-                ]
-              : null,
-        ),
-        child: Material(
-          type: MaterialType.transparency,
-          child: InkWell(
-            splashFactory: NoSplash.splashFactory,
-            hoverColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            focusColor: Colors.transparent,
-            onHover: (value) {
-              if (!_autoStateEnabled || _hovered == value) return;
-              setState(() => _hovered = value);
-            },
-            onHighlightChanged: (value) {
-              if (!_autoStateEnabled || _pressed == value) return;
-              setState(() => _pressed = value);
-            },
-            onFocusChange: (value) {
-              if (!_autoStateEnabled || _focused == value) return;
-              setState(() => _focused = value);
-            },
-            borderRadius: radius.resolve(Directionality.of(context)),
-            onTap: current == HeroUiButtonVisualState.disabled
-                ? null
-                : widget.onPressed,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: s.height,
-                minWidth: widget.iconOnly ? s.height : 0,
-              ),
-              child: Padding(
-                padding: widget.iconOnly ? s.iconPadding : s.padding,
-                child: Center(child: content),
+      child: AnimatedScale(
+        scale: pressScale,
+        duration: const Duration(milliseconds: 120),
+        curve: Curves.easeOut,
+        alignment: Alignment.center,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: t.bg,
+            borderRadius: radius,
+            border: t.border == null ? null : Border.all(color: t.border!),
+            boxShadow: current == HeroUiButtonVisualState.focus
+                ? const [
+                    BoxShadow(color: Color(0xFF0485F7), spreadRadius: 4),
+                    BoxShadow(color: Color(0xFFF5F5F5), spreadRadius: 2),
+                  ]
+                : null,
+          ),
+          child: Material(
+            type: MaterialType.transparency,
+            child: InkWell(
+              splashFactory: NoSplash.splashFactory,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              onHover: (value) {
+                if (!_autoStateEnabled || _hovered == value) return;
+                setState(() => _hovered = value);
+              },
+              onHighlightChanged: (value) {
+                if (!_autoStateEnabled || _pressed == value) return;
+                setState(() => _pressed = value);
+              },
+              onFocusChange: (value) {
+                if (!_autoStateEnabled || _focused == value) return;
+                setState(() => _focused = value);
+              },
+              borderRadius: radius.resolve(Directionality.of(context)),
+              onTap: current == HeroUiButtonVisualState.disabled
+                  ? null
+                  : widget.onPressed,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: s.height,
+                  minWidth: widget.iconOnly ? s.height : 0,
+                ),
+                child: Padding(
+                  padding: widget.iconOnly ? s.iconPadding : s.padding,
+                  child: Center(child: content),
+                ),
               ),
             ),
           ),

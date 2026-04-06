@@ -33,20 +33,23 @@ class HeroUiSurface extends StatelessWidget {
   final Color? backgroundColor;
   final Widget child;
 
+  /// Default fill for [variant] at the current theme brightness — same values as [HeroUiSurface].
+  static Color fillColor(BuildContext context, HeroUiSurfaceVariant variant) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return switch (variant) {
+      HeroUiSurfaceVariant.transparent => Colors.transparent,
+      HeroUiSurfaceVariant.defaultVariant =>
+        isDark ? const Color(0xFF18181B) : const Color(0xFFFFFFFF),
+      HeroUiSurfaceVariant.secondary =>
+        isDark ? const Color(0xFF27272A) : const Color(0xFFEFEFF0),
+      HeroUiSurfaceVariant.tertiary =>
+        isDark ? const Color(0xFF3F3F46) : const Color(0xFFEAEAEB),
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    final bg = backgroundColor ??
-        switch (variant) {
-          HeroUiSurfaceVariant.transparent => Colors.transparent,
-          HeroUiSurfaceVariant.defaultVariant =>
-            isDark ? const Color(0xFF18181B) : const Color(0xFFFFFFFF),
-          HeroUiSurfaceVariant.secondary =>
-            isDark ? const Color(0xFF27272A) : const Color(0xFFEFEFF0),
-          HeroUiSurfaceVariant.tertiary =>
-            isDark ? const Color(0xFF3F3F46) : const Color(0xFFEAEAEB),
-        };
+    final bg = backgroundColor ?? fillColor(context, variant);
 
     final List<BoxShadow> shadows =
         !showShadow || variant == HeroUiSurfaceVariant.transparent
@@ -54,13 +57,13 @@ class HeroUiSurface extends StatelessWidget {
         : const [
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.02),
-              offset: Offset(0, 2),
-              blurRadius: 2,
+              offset: Offset(0, 1),
+              blurRadius: 1,
             ),
             BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.04),
+              color: Color.fromRGBO(0, 0, 0, 0.08),
               offset: Offset(0, 1),
-              blurRadius: 2,
+              blurRadius: 1,
             ),
           ];
 

@@ -449,7 +449,7 @@ class _AccordionTileState extends State<_AccordionTile>
                         RotationTransition(
                           turns: _rotateTurns,
                           child: HeroUiIcon(
-                            HeroUiIconManifest.chevronDownRegular,
+                            HeroUiIconManifest.chevronDown,
                             size: 16,
                             color: descriptionColor,
                           ),

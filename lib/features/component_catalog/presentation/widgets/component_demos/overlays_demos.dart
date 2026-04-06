@@ -343,25 +343,19 @@ class _DropdownDemoPage extends StatelessWidget {
                     HeroUiDropdownItem(
                       label: 'New file',
                       description: 'Create a new file',
-                      leading: _dropdownItemIcon(
-                        HeroUiIconManifest.plusRegular,
-                      ),
+                      leading: _dropdownItemIcon(HeroUiIconManifest.plus),
                       trailing: _dropdownShortcut(const ['⌘', 'N']),
                     ),
                     HeroUiDropdownItem(
                       label: 'Copy link',
                       description: 'Copy the file link',
-                      leading: _dropdownItemIcon(
-                        'link',
-                      ),
+                      leading: _dropdownItemIcon('link'),
                       trailing: _dropdownShortcut(const ['⌘', 'L']),
                     ),
                     HeroUiDropdownItem(
                       label: 'Edit file',
                       description: 'Make changes',
-                      leading: _dropdownItemIcon(
-                        'pencil',
-                      ),
+                      leading: _dropdownItemIcon('pencil'),
                       trailing: _dropdownShortcut(const ['⌘', 'E']),
                     ),
                   ],
@@ -373,7 +367,7 @@ class _DropdownDemoPage extends StatelessWidget {
                       label: 'Delete file',
                       description: 'Move to trash',
                       leading: _dropdownItemIcon(
-                        HeroUiIconManifest.trashBinRegular,
+                        HeroUiIconManifest.trashBin,
                         color: const Color(0xFFFF383C),
                       ),
                       trailing: _dropdownShortcut(const ['⌘⇧', 'K']),
@@ -397,36 +391,28 @@ class _DropdownDemoPage extends StatelessWidget {
                     HeroUiDropdownItem(
                       label: 'Default',
                       description: 'state=default',
-                      leading: _dropdownItemIcon(
-                        'circle-dashed',
-                      ),
+                      leading: _dropdownItemIcon('circle-dashed'),
                       trailing: _dropdownShortcut(const ['⌘', 'D']),
                       state: HeroUiDropdownItemState.defaultState,
                     ),
                     HeroUiDropdownItem(
                       label: 'Hover',
                       description: 'state=hover',
-                      leading: _dropdownItemIcon(
-                        'circle-dashed',
-                      ),
+                      leading: _dropdownItemIcon('circle-dashed'),
                       trailing: _dropdownShortcut(const ['⌘', 'H']),
                       state: HeroUiDropdownItemState.hover,
                     ),
                     HeroUiDropdownItem(
                       label: 'Focus',
                       description: 'state=focus',
-                      leading: _dropdownItemIcon(
-                        'circle-dashed',
-                      ),
+                      leading: _dropdownItemIcon('circle-dashed'),
                       trailing: _dropdownShortcut(const ['⌘', 'F']),
                       state: HeroUiDropdownItemState.focus,
                     ),
                     HeroUiDropdownItem(
                       label: 'Pressed',
                       description: 'state=pressed',
-                      leading: _dropdownItemIcon(
-                        'circle-dashed',
-                      ),
+                      leading: _dropdownItemIcon('circle-dashed'),
                       trailing: _dropdownShortcut(const ['⌘', 'P']),
                       state: HeroUiDropdownItemState.pressed,
                     ),
@@ -439,9 +425,7 @@ class _DropdownDemoPage extends StatelessWidget {
                     HeroUiDropdownItem(
                       label: 'Disabled',
                       description: 'state=disabled',
-                      leading: _dropdownItemIcon(
-                        'square-exclamation',
-                      ),
+                      leading: _dropdownItemIcon('square-exclamation'),
                       trailing: _dropdownShortcut(const ['⌘', 'X']),
                       state: HeroUiDropdownItemState.disabled,
                     ),
@@ -453,9 +437,7 @@ class _DropdownDemoPage extends StatelessWidget {
                     HeroUiDropdownItem(
                       label: 'Delete file',
                       description: 'type=danger',
-                      leading: _dropdownItemIcon(
-                        HeroUiIconManifest.trashBinRegular,
-                      ),
+                      leading: _dropdownItemIcon(HeroUiIconManifest.trashBin),
                       trailing: _dropdownShortcut(const ['⌘⇧', 'K']),
                       isDanger: true,
                     ),
@@ -479,19 +461,19 @@ class _DropdownDemoPage extends StatelessWidget {
                     HeroUiDropdownItem(
                       label: 'WhatsApp',
                       trailing: _dropdownItemIcon(
-                        HeroUiIconManifest.chevronRightRegular,
+                        HeroUiIconManifest.chevronRight,
                       ),
                     ),
                     HeroUiDropdownItem(
                       label: 'Slack',
                       trailing: _dropdownItemIcon(
-                        HeroUiIconManifest.chevronRightRegular,
+                        HeroUiIconManifest.chevronRight,
                       ),
                     ),
                     HeroUiDropdownItem(
                       label: 'Discord',
                       trailing: _dropdownItemIcon(
-                        HeroUiIconManifest.chevronRightRegular,
+                        HeroUiIconManifest.chevronRight,
                       ),
                     ),
                   ],

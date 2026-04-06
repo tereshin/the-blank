@@ -101,7 +101,7 @@ class _HeroUiTimeFieldState extends State<HeroUiTimeField> {
       onTap: _pickTime,
       suffix: _FieldSuffix(
         isOpen: _isPicking,
-        iconName: HeroUiIconManifest.clockRegular,
+        iconName: HeroUiIconManifest.clock,
       ),
     );
   }

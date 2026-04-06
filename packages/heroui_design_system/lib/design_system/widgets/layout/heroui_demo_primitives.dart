@@ -58,7 +58,7 @@ class ThemePreviewChip extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            HeroUiIcon(HeroUiIconManifest.gearRegular, size: 14, color: fg),
+            HeroUiIcon(HeroUiIconManifest.gear, size: 14, color: fg),
             const SizedBox(width: 6),
             Text(
               label,

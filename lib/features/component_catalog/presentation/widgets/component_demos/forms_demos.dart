@@ -125,7 +125,7 @@ Widget buildInputDemo(BuildContext context) => SingleChildScrollView(
       const ComponentDemoSubtitle('With prefix icon'),
       const HeroUiInput(
         placeholder: 'Search...',
-        prefix: HeroUiIcon(HeroUiIconManifest.magnifierRegular, size: 16),
+        prefix: HeroUiIcon(HeroUiIconManifest.magnifier, size: 16),
       ),
       const SizedBox(height: 12),
       const ComponentDemoSubtitle('With suffix icon'),
@@ -614,10 +614,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                 Center(
                   child: HeroUiLink(
                     label: 'Создать аккаунт',
-                    leading: HeroUiIcon(
-                      HeroUiIconManifest.plusRegular,
-                      size: 16,
-                    ),
+                    leading: HeroUiIcon(HeroUiIconManifest.plus, size: 16),
                     onTap: () =>
                         showComponentDemoMessage(context, 'Регистрация'),
                   ),
@@ -633,7 +630,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
           HeroUiSurface(
             variant: HeroUiSurfaceVariant.secondary,
             borderRadius: 16,
-            padding: const EdgeInsets.all(4),
+            showShadow: false,
             child: HeroUiFieldset(
               legend: 'Новый аккаунт',
               description:
@@ -645,7 +642,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                   controller: _regName,
                   placeholder: 'Алексей Иванов',
                   prefix: HeroUiIcon(
-                    HeroUiIconManifest.personRegular,
+                    HeroUiIconManifest.person,
                     size: 16,
                     color: icon,
                   ),
@@ -715,7 +712,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
               title: 'Будьте в курсе',
               description: 'Советы, релизы и подборки — без спама.',
               trailing: HeroUiIcon(
-                HeroUiIconManifest.bellRegular,
+                HeroUiIconManifest.bell,
                 size: 26,
                 color: icon,
               ),
@@ -729,7 +726,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                   placeholder: 'hello@example.com',
                   variant: HeroUiInputVariant.secondary,
                   prefix: HeroUiIcon(
-                    HeroUiIconManifest.envelopeOpenXmarkRegular,
+                    HeroUiIconManifest.envelopeOpenXmark,
                     size: 16,
                     color: icon,
                   ),
@@ -772,7 +769,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
             header: HeroUiCardHeader(
               title: 'Забронировать визит',
               trailing: HeroUiIcon(
-                HeroUiIconManifest.calendarRegular,
+                HeroUiIconManifest.calendar,
                 size: 26,
                 color: icon,
               ),
@@ -838,7 +835,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                         label: 'Отправить заявку',
                         expand: true,
                         leading: HeroUiIcon(
-                          HeroUiIconManifest.calendarRegular,
+                          HeroUiIconManifest.calendar,
                           size: 16,
                           color: _kDemoOnPrimaryColor,
                         ),
@@ -855,10 +852,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                       label: '',
                       iconOnly: true,
                       variant: HeroUiButtonVariant.outline,
-                      leading: HeroUiIcon(
-                        HeroUiIconManifest.gearRegular,
-                        size: 18,
-                      ),
+                      leading: HeroUiIcon(HeroUiIconManifest.gear, size: 18),
                       onPressed: () => showComponentDemoMessage(
                         context,
                         'Настройки бронирования',

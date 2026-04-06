@@ -15,7 +15,7 @@ class HeroUiBreadcrumbs extends StatelessWidget {
     required this.items,
     super.key,
     this.separator = const HeroUiIcon(
-      HeroUiIconManifest.chevronRightRegular,
+      HeroUiIconManifest.chevronRight,
       size: 16,
     ),
   });

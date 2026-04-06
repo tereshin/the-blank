@@ -258,7 +258,7 @@ class HeroUiTable extends StatelessWidget {
               width: controlColumnWidth,
               dividerColor: tokens.divider,
               child: HeroUiIcon(
-                HeroUiIconManifest.barsUnalignedRegular,
+                HeroUiIconManifest.barsUnaligned,
                 size: 16,
                 color: tokens.mutedText,
               ),
@@ -293,9 +293,9 @@ class HeroUiTable extends StatelessWidget {
     final sortIcon = switch (cell.variant) {
       HeroUiTableHeaderCellVariant.defaultVariant => null,
       HeroUiTableHeaderCellVariant.sortingHighest =>
-        HeroUiIconManifest.arrowDownRegular,
+        HeroUiIconManifest.arrowDown,
       HeroUiTableHeaderCellVariant.sortingLowest =>
-        HeroUiIconManifest.arrowUpRegular,
+        HeroUiIconManifest.arrowUp,
     };
 
     return SizedBox(
@@ -322,7 +322,7 @@ class HeroUiTable extends StatelessWidget {
                 Tooltip(
                   message: cell.tooltipMessage ?? cell.label,
                   child: HeroUiIcon(
-                    HeroUiIconManifest.circleInfoRegular,
+                    HeroUiIconManifest.circleInfo,
                     size: 14,
                     color: iconColor,
                   ),
@@ -372,7 +372,7 @@ class HeroUiTable extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               HeroUiIcon(
-                HeroUiIconManifest.squareListUlRegular,
+                HeroUiIconManifest.squareListUl,
                 size: 40,
                 color: tokens.mutedText,
               ),
@@ -588,7 +588,7 @@ class _HeroUiTableDataRowState extends State<_HeroUiTableDataRow> {
               dividerColor: widget.tokens.divider,
               child: showDrag
                   ? HeroUiIcon(
-                      HeroUiIconManifest.barsUnalignedRegular,
+                      HeroUiIconManifest.barsUnaligned,
                       size: 16,
                       color: _isDisabled
                           ? widget.tokens.disabledText

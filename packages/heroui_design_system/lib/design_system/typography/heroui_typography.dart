@@ -144,6 +144,15 @@ class HeroUiTypography {
     letterSpacing: 0,
   );
 
+  static const TextStyle textOTPFieldBase = TextStyle(
+    fontFamily: fontFamily,
+    package: packageName,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 1.25,
+    letterSpacing: 0,
+  );
+
   static const TextStyle textFieldSm = TextStyle(
     fontFamily: fontFamily,
     package: packageName,

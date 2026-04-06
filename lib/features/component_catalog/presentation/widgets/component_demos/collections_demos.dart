@@ -551,8 +551,8 @@ class _TableDemoPage extends StatelessWidget {
       alignment: Alignment.centerRight,
       prefix: HeroUiIcon(
         isPositive
-            ? HeroUiIconManifest.arrowUpRegular
-            : HeroUiIconManifest.arrowDownRegular,
+            ? HeroUiIconManifest.arrowUp
+            : HeroUiIconManifest.arrowDown,
         size: 14,
       ),
       child: Text(value),
@@ -642,7 +642,7 @@ class _TableDemoPage extends StatelessWidget {
             emptyWidget: Column(
               children: const [
                 HeroUiIcon(
-                  HeroUiIconManifest.squareListUlRegular,
+                  HeroUiIconManifest.squareListUl,
                   size: 48,
                   color: Color(0xFFD4D4D8),
                 ),
@@ -694,17 +694,17 @@ class _TableRowActions extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         _TableActionIconButton(
-          iconName: HeroUiIconManifest.eyeRegular,
+          iconName: HeroUiIconManifest.eye,
           label: 'View',
         ),
         SizedBox(width: 4),
         _TableActionIconButton(
-          iconName: HeroUiIconManifest.pencilRegular,
+          iconName: HeroUiIconManifest.pencil,
           label: 'Edit',
         ),
         SizedBox(width: 4),
         _TableActionIconButton(
-          iconName: HeroUiIconManifest.deleteRegular,
+          iconName: HeroUiIconManifest.delete,
           label: 'Delete',
           isDanger: true,
         ),

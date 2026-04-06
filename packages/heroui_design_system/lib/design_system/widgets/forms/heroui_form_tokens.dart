@@ -31,11 +31,11 @@ const TextStyle _kInputTextStyle = HeroUiTypography.textFieldSm;
 
 const TextStyle _kLinkSmStyle = HeroUiTypography.linkSm;
 
-const TextStyle _kOtpValueStyle = HeroUiTypography.bodySmMedium;
+const TextStyle _kOtpValueStyle = HeroUiTypography.textOTPFieldBase;
 
 const TextStyle _kOtpValueErrorStyle = HeroUiTypography.heading4;
 
-const double _kOtpCellWidth = 38;
+const double _kOtpCellWidth = 40;
 
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
