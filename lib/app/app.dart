@@ -46,8 +46,12 @@ class TheBlankApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
         focusColor: Colors.transparent,
-        elevatedButtonTheme: ElevatedButtonThemeData(style: _noRippleButtonStyle),
-        outlinedButtonTheme: OutlinedButtonThemeData(style: _noRippleButtonStyle),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: _noRippleButtonStyle,
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: _noRippleButtonStyle,
+        ),
         textButtonTheme: TextButtonThemeData(style: _noRippleButtonStyle),
         iconButtonTheme: IconButtonThemeData(style: _noRippleButtonStyle),
         filledButtonTheme: FilledButtonThemeData(style: _noRippleButtonStyle),
@@ -68,8 +72,12 @@ class TheBlankApp extends StatelessWidget {
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
         focusColor: Colors.transparent,
-        elevatedButtonTheme: ElevatedButtonThemeData(style: _noRippleButtonStyle),
-        outlinedButtonTheme: OutlinedButtonThemeData(style: _noRippleButtonStyle),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: _noRippleButtonStyle,
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: _noRippleButtonStyle,
+        ),
         textButtonTheme: TextButtonThemeData(style: _noRippleButtonStyle),
         iconButtonTheme: IconButtonThemeData(style: _noRippleButtonStyle),
         filledButtonTheme: FilledButtonThemeData(style: _noRippleButtonStyle),

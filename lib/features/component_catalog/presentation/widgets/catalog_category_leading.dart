@@ -52,8 +52,8 @@ class _CategoryLeadingSquircle extends StatelessWidget {
   final LinearGradient gradient;
   final String iconName;
 
-  static const double _size = 28;
-  static const double _radius = 8;
+  static const double _size = 32;
+  static const double _radius = 10;
 
   @override
   Widget build(BuildContext context) {

@@ -39,7 +39,7 @@ class HeroUiMenuCard extends StatelessWidget {
 
   static const double _horizontalPadding = 16;
   static const double _verticalPadding = 14;
-  static const double _leadingSize = 28;
+  static const double _leadingSize = 32;
   static const double _leadingGap = 12;
 
   @override
@@ -172,20 +172,22 @@ class _HeroUiMenuRowContent extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
+
               children: [
                 Text(
                   item.title,
-                  style: HeroUiTypography.bodySmMedium.copyWith(
+                  style: HeroUiTypography.bodyXsMedium.copyWith(
+                    height: 1,
                     color: primaryText,
                   ),
                 ),
                 if (item.subtitle != null && item.subtitle!.isNotEmpty) ...[
-                  const SizedBox(height: 2),
+                  const SizedBox(height: 6),
                   Text(
                     item.subtitle!,
-                    style: HeroUiTypography.bodyXs.copyWith(
+                    style: HeroUiTypography.bodyXxs.copyWith(
                       color: secondaryText,
+                      height: 1,
                     ),
                   ),
                 ],

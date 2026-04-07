@@ -2,6 +2,8 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.7
+
 ## 0.1.6
 
 - `HeroUiTabs`: validate the tab strip indicator `Rect` from layout (`localToGlobal` / `RenderBox.size`) so only finite `left`, `top`, `width`, and `height` are passed into `AnimatedPositioned`. This prevents `Stack` layout assertions (`height.isNaN`) when transient or invalid geometry would otherwise reach the positioned child.

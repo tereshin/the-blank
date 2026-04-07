@@ -10,7 +10,7 @@ class HeroUiTypography {
   static const TextStyle heading1 = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 36,
+    fontSize: 46.8,
     fontWeight: FontWeight.w800,
     height: 1.12,
     letterSpacing: 0,
@@ -19,7 +19,7 @@ class HeroUiTypography {
   static const TextStyle heading2 = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 24,
+    fontSize: 31.2,
     fontWeight: FontWeight.w700,
     height: 1.34,
     letterSpacing: 0,
@@ -28,7 +28,7 @@ class HeroUiTypography {
   static const TextStyle heading3 = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 20,
+    fontSize: 26,
     fontWeight: FontWeight.w600,
     height: 1.6,
     letterSpacing: 0,
@@ -37,7 +37,7 @@ class HeroUiTypography {
   static const TextStyle heading4 = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 16,
+    fontSize: 20.8,
     fontWeight: FontWeight.w600,
     height: 1.5,
     letterSpacing: 0,
@@ -46,7 +46,7 @@ class HeroUiTypography {
   static const TextStyle bodyBase = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 16,
+    fontSize: 20.8,
     fontWeight: FontWeight.w400,
     height: 1.5,
     letterSpacing: 0,
@@ -55,7 +55,7 @@ class HeroUiTypography {
   static const TextStyle bodyBaseMedium = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 16,
+    fontSize: 20.8,
     fontWeight: FontWeight.w500,
     height: 1.5,
     letterSpacing: 0,
@@ -64,7 +64,7 @@ class HeroUiTypography {
   static const TextStyle bodySm = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 14,
+    fontSize: 18.2,
     fontWeight: FontWeight.w400,
     height: 1.43,
     letterSpacing: 0,
@@ -73,7 +73,7 @@ class HeroUiTypography {
   static const TextStyle bodySmMedium = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 14,
+    fontSize: 18.2,
     fontWeight: FontWeight.w500,
     height: 1.43,
     letterSpacing: 0,
@@ -82,7 +82,7 @@ class HeroUiTypography {
   static const TextStyle bodyXxs = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: FontWeight.w400,
     height: 1.34,
     letterSpacing: 0,
@@ -91,7 +91,7 @@ class HeroUiTypography {
   static const TextStyle bodyXxsMedium = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 10,
+    fontSize: 13,
     fontWeight: FontWeight.w500,
     height: 1.34,
     letterSpacing: 0,
@@ -100,7 +100,7 @@ class HeroUiTypography {
   static const TextStyle bodyXs = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: FontWeight.w400,
     height: 1.34,
     letterSpacing: 0,
@@ -109,7 +109,7 @@ class HeroUiTypography {
   static const TextStyle bodyXsMedium = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: FontWeight.w500,
     height: 1.34,
     letterSpacing: 0,
@@ -118,7 +118,7 @@ class HeroUiTypography {
   static const TextStyle linkBase = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 16,
+    fontSize: 20.8,
     fontWeight: FontWeight.w500,
     height: 1.25,
     letterSpacing: 0,
@@ -128,7 +128,7 @@ class HeroUiTypography {
   static const TextStyle linkSm = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 14,
+    fontSize: 18.2,
     fontWeight: FontWeight.w500,
     height: 18 / 14,
     letterSpacing: 0,
@@ -138,7 +138,7 @@ class HeroUiTypography {
   static const TextStyle textFieldBase = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 16,
+    fontSize: 20.8,
     fontWeight: FontWeight.w400,
     height: 1.25,
     letterSpacing: 0,
@@ -147,7 +147,7 @@ class HeroUiTypography {
   static const TextStyle textOTPFieldBase = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 16,
+    fontSize: 20.8,
     fontWeight: FontWeight.w600,
     height: 1.25,
     letterSpacing: 0,
@@ -156,7 +156,7 @@ class HeroUiTypography {
   static const TextStyle textFieldSm = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 14,
+    fontSize: 18.2,
     fontWeight: FontWeight.w400,
     height: 20 / 14,
     letterSpacing: 0,
@@ -165,7 +165,7 @@ class HeroUiTypography {
   static const TextStyle buttonBase = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 16,
+    fontSize: 20.8,
     fontWeight: FontWeight.w500,
     height: 22 / 16,
     letterSpacing: 0,
@@ -174,7 +174,7 @@ class HeroUiTypography {
   static const TextStyle buttonSm = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 14,
+    fontSize: 18.2,
     fontWeight: FontWeight.w500,
     height: 20 / 14,
     letterSpacing: 0,
