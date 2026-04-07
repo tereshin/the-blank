@@ -16,7 +16,7 @@ class HeroUiBreadcrumbs extends StatelessWidget {
     super.key,
     this.separator = const HeroUiIcon(
       HeroUiIconManifest.chevronRight,
-      size: 16,
+      size: 21,
     ),
   });
 
@@ -27,7 +27,7 @@ class HeroUiBreadcrumbs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: 6,
+      spacing: 8,
       children: [
         for (var index = 0; index < items.length; index++) ...[
           if (index > 0) separator,

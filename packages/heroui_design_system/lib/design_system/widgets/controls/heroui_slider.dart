@@ -34,12 +34,12 @@ class _Tokens {
   final double thumbW;
   final double thumbH;
 
-  double get totalH => thumbH + 4;
+  double get totalH => thumbH + 5;
 
   static _Tokens of(HeroUiSliderSize s) => switch (s) {
-    HeroUiSliderSize.sm => const _Tokens(trackH: 2, thumbW: 20, thumbH: 12),
-    HeroUiSliderSize.md => const _Tokens(trackH: 4, thumbW: 24, thumbH: 16),
-    HeroUiSliderSize.lg => const _Tokens(trackH: 6, thumbW: 28, thumbH: 20),
+    HeroUiSliderSize.sm => const _Tokens(trackH: 3, thumbW: 26, thumbH: 16),
+    HeroUiSliderSize.md => const _Tokens(trackH: 5, thumbW: 31, thumbH: 21),
+    HeroUiSliderSize.lg => const _Tokens(trackH: 8, thumbW: 36, thumbH: 26),
   };
 }
 
@@ -198,7 +198,7 @@ class _HeroUiSliderState extends State<HeroUiSlider> {
                   ),
               ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 10),
           ],
           // ── Track ────────────────────────────────────────────────────────────
           _SliderTrack(
@@ -219,7 +219,7 @@ class _HeroUiSliderState extends State<HeroUiSlider> {
           ),
           // ── Marks ────────────────────────────────────────────────────────────
           if (widget.marks != null && widget.marks!.isNotEmpty) ...[
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
             _MarksRow(
               marks: widget.marks!,
               min: widget.min,
@@ -339,8 +339,8 @@ class _SliderTrackState extends State<_SliderTrack> {
         ? const Color(0xFF3F3F46)
         : const Color(0xFFEBEBEC);
 
-    // When tooltip is on, reserve 40 px of space above the track area.
-    const tooltipAreaH = 40.0;
+    // When tooltip is on, reserve space above the track area (scaled with DS type).
+    const tooltipAreaH = 52.0;
     final stackH = widget.showTooltip ? tooltipAreaH + t.totalH : t.totalH;
 
     return LayoutBuilder(
@@ -515,9 +515,9 @@ class _Thumb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Pressed: shrink by 2 px on each axis (matches Figma state=pressed 22×14).
-    final w = isPressed ? width - 2 : width;
-    final h = isPressed ? height - 2 : height;
+    // Pressed: shrink slightly on each axis (matches Figma pressed state).
+    final w = isPressed ? width - 3 : width;
+    final h = isPressed ? height - 3 : height;
 
     return SizedBox(
       width: width,
@@ -569,10 +569,10 @@ class _Tooltip extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           decoration: BoxDecoration(
             color: bg,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.08),
@@ -598,7 +598,7 @@ class _Tooltip extends StatelessWidget {
         ),
         // Arrow (downward pointing)
         CustomPaint(
-          size: const Size(10, 6),
+          size: const Size(13, 8),
           painter: _ArrowPainter(color: bg),
         ),
       ],
@@ -656,7 +656,7 @@ class _MarksRow extends StatelessWidget {
 
         return SizedBox(
           width: constraints.maxWidth,
-          height: 18,
+          height: 23,
           child: Stack(
             clipBehavior: Clip.none,
             children: [

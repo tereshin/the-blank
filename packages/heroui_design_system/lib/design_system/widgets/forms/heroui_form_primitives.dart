@@ -24,7 +24,7 @@ class HeroUiFieldset extends StatelessWidget {
     super.key,
     this.legend,
     this.description,
-    this.padding = const EdgeInsets.all(16),
+    this.padding = const EdgeInsets.all(21),
   });
 
   final String? legend;
@@ -36,20 +36,20 @@ class HeroUiFieldset extends StatelessWidget {
   Widget build(BuildContext context) {
     return HeroUiSurface(
       variant: HeroUiSurfaceVariant.secondary,
-      borderRadius: 16,
+      borderRadius: 21,
       padding: padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (legend != null) HeroUiLabel(legend!),
           if (description != null) ...[
-            const SizedBox(height: 4),
+            const SizedBox(height: 5),
             HeroUiDescription(description!),
           ],
           if (children.isNotEmpty) ...[
             if (legend != null || description != null)
-              const SizedBox(height: 12),
-            ..._withVerticalSpacing(children, 12),
+              const SizedBox(height: 16),
+            ..._withVerticalSpacing(children, 16),
           ],
         ],
       ),
@@ -72,7 +72,7 @@ class HeroUiLabel extends StatelessWidget {
       children: [
         Text(text, style: _kLabelStyle.copyWith(color: textColor)),
         if (requiredField) ...[
-          const SizedBox(width: 4),
+          const SizedBox(width: 5),
           Text('*', style: _kLabelStyle.copyWith(color: _kDanger)),
         ],
       ],
@@ -116,9 +116,9 @@ class HeroUiFieldError extends StatelessWidget {
       children: [
         child,
         if (errorText != null && errorText!.trim().isNotEmpty) ...[
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: HeroUiErrorMessage(errorText!),
           ),
         ],

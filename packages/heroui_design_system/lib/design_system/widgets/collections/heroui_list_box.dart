@@ -281,11 +281,7 @@ class _ListBoxItemTileState<T> extends State<_ListBoxItemTile<T>> {
         ? null
         : _resolveSlotWidget(item.effectivePrefix!, titleColor);
     final fallbackSuffix = isSelected
-        ? HeroUiIcon(
-            'check',
-            size: 16,
-            color: const Color(0xFF0485F7),
-          )
+        ? HeroUiIcon('check', size: 20, color: const Color(0xFF0485F7))
         : null;
     final suffix = item.effectiveSuffix == null
         ? fallbackSuffix

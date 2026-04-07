@@ -16,7 +16,7 @@ class HeroUiSelect<T> extends StatefulWidget {
     this.variant = HeroUiInputVariant.primary,
     this.enabled = true,
     this.errorText,
-    this.maxListHeight = 240.0,
+    this.maxListHeight = 312.0,
   });
 
   final List<HeroUiPickerItem<T>> items;
@@ -58,7 +58,7 @@ class _HeroUiSelectState<T> extends State<HeroUiSelect<T>> {
 
   @override
   void dispose() {
-    _closeDropdown();
+    _closeDropdown(updateState: false);
     super.dispose();
   }
 
@@ -80,7 +80,8 @@ class _HeroUiSelectState<T> extends State<HeroUiSelect<T>> {
         (offset.dy + size.height);
     final availableAbove = offset.dy - media.padding.top;
     final openAbove =
-        availableBelow < estimatedHeight + 8 && availableAbove > availableBelow;
+        availableBelow < estimatedHeight + 10 &&
+        availableAbove > availableBelow;
 
     _triggerOffset = offset;
     _triggerSize = size;
@@ -113,10 +114,10 @@ class _HeroUiSelectState<T> extends State<HeroUiSelect<T>> {
     setState(() => _isOpen = true);
   }
 
-  void _closeDropdown() {
+  void _closeDropdown({bool updateState = true}) {
     _overlay?.remove();
     _overlay = null;
-    if (mounted) setState(() => _isOpen = false);
+    if (updateState && mounted) setState(() => _isOpen = false);
   }
 
   String? get _selectedLabel {
@@ -175,15 +176,15 @@ class _SelectOverlay<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
     final desiredTop = openAbove
-        ? triggerOffset.dy - estimatedHeight - 8
-        : triggerOffset.dy + triggerSize.height + 8;
-    final minTop = media.padding.top + 8;
+        ? triggerOffset.dy - estimatedHeight - 10
+        : triggerOffset.dy + triggerSize.height + 10;
+    final minTop = media.padding.top + 10;
     final maxTop =
         media.size.height -
         media.viewInsets.bottom -
         media.padding.bottom -
         estimatedHeight -
-        8;
+        10;
     final top = maxTop > minTop
         ? desiredTop.clamp(minTop, maxTop).toDouble()
         : desiredTop;

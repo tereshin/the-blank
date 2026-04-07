@@ -3,18 +3,18 @@ part of 'heroui_pickers.dart';
 const _kDropdownShadow = [
   BoxShadow(
     color: Color.fromRGBO(0, 0, 0, 0.08),
-    offset: Offset(0, 14),
-    blurRadius: 28,
+    offset: Offset(0, 18),
+    blurRadius: 36,
   ),
   BoxShadow(
     color: Color.fromRGBO(0, 0, 0, 0.03),
-    offset: Offset(0, -6),
-    blurRadius: 12,
+    offset: Offset(0, -8),
+    blurRadius: 16,
   ),
   BoxShadow(
     color: Color.fromRGBO(0, 0, 0, 0.06),
-    offset: Offset(0, 2),
-    blurRadius: 8,
+    offset: Offset(0, 3),
+    blurRadius: 10,
   ),
 ];
 
@@ -56,7 +56,7 @@ double _estimateDropdownHeight({
   required double maxListHeight,
 }) {
   final rows = itemCount <= 0 ? 1 : itemCount;
-  final estimated = (rows * 40.0) + 8.0;
+  final estimated = (rows * 52.0) + 10.0;
   return math.min(maxListHeight, estimated);
 }
 
@@ -85,10 +85,10 @@ class _DropdownPanel extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(31),
         boxShadow: _kDropdownShadow,
       ),
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.all(5),
       child: Column(mainAxisSize: MainAxisSize.min, children: children),
     );
   }
@@ -132,20 +132,20 @@ class _DropdownItemState extends State<_DropdownItem> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 120),
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
           decoration: BoxDecoration(
             color: widget.isSelected
                 ? selectedColor
                 : _hover
                 ? hoverColor
                 : Colors.transparent,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(26),
           ),
           child: Row(
             children: [
               if (widget.leading != null) ...[
                 widget.leading!,
-                const SizedBox(width: 8),
+                const SizedBox(width: 10),
               ],
               Expanded(
                 child: Text(
@@ -158,7 +158,7 @@ class _DropdownItemState extends State<_DropdownItem> {
                 ),
               ),
               if (widget.isSelected)
-                Icon(Icons.check_rounded, size: 16, color: _kFocusRingColor),
+                Icon(Icons.check_rounded, size: 21, color: _kFocusRingColor),
             ],
           ),
         ),
@@ -201,7 +201,7 @@ Widget _buildTriggerField({
               style: HeroUiTypography.bodySmMedium.copyWith(color: textColor),
             ),
             if (requiredField) ...[
-              const SizedBox(width: 4),
+              const SizedBox(width: 5),
               Text(
                 '*',
                 style: HeroUiTypography.bodySmMedium.copyWith(
@@ -211,7 +211,7 @@ Widget _buildTriggerField({
             ],
           ],
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 5),
       ],
       GestureDetector(
         onTap: enabled ? onTap : null,
@@ -221,9 +221,9 @@ Widget _buildTriggerField({
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 150),
             curve: Curves.easeInOut,
-            padding: const EdgeInsets.all(2),
+            padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(18),
               boxShadow: isOpen
                   ? const [
                       BoxShadow(
@@ -238,7 +238,7 @@ Widget _buildTriggerField({
               key: triggerKey,
               decoration: BoxDecoration(
                 color: heroUiInputFillColor(context, variant),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: hasError ? _kDangerColor : Colors.transparent,
                 ),
@@ -252,12 +252,12 @@ Widget _buildTriggerField({
               ),
               child: Row(
                 children: [
-                  if (prefix != null) ...[prefix, const SizedBox(width: 8)],
+                  if (prefix != null) ...[prefix, const SizedBox(width: 10)],
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
+                        horizontal: 16,
+                        vertical: 10,
                       ),
                       child: Text(
                         value ?? placeholder,
@@ -270,8 +270,8 @@ Widget _buildTriggerField({
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
+                      horizontal: 16,
+                      vertical: 10,
                     ),
                     child: AnimatedRotation(
                       turns: isOpen ? 0.5 : 0,
@@ -279,7 +279,7 @@ Widget _buildTriggerField({
                       curve: Curves.easeInOut,
                       child: Icon(
                         Icons.keyboard_arrow_down_rounded,
-                        size: 16,
+                        size: 21,
                         color: mutedColor,
                       ),
                     ),
@@ -291,7 +291,7 @@ Widget _buildTriggerField({
         ),
       ),
       if (helperText?.isNotEmpty == true) ...[
-        const SizedBox(height: 4),
+        const SizedBox(height: 5),
         Text(
           helperText!,
           style: HeroUiTypography.bodyXs.copyWith(
@@ -316,7 +316,7 @@ class _DropdownOpenAnimation extends StatelessWidget {
       duration: const Duration(milliseconds: 180),
       curve: Curves.easeOutCubic,
       builder: (context, value, animatedChild) {
-        final translateY = (1 - value) * (openAbove ? 8 : -8);
+        final translateY = (1 - value) * (openAbove ? 10 : -10);
         return Opacity(
           opacity: value,
           child: Transform.translate(

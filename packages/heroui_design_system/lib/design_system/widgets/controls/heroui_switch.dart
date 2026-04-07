@@ -10,10 +10,10 @@ enum HeroUiSwitchSize { sm, md, lg }
 
 /// A toggle switch with an optional label.
 ///
-/// Sizes follow the Figma spec:
-/// - sm: 32×16 track, 12 px thumb
-/// - md: 40×20 track, 16 px thumb  (default)
-/// - lg: 48×24 track, 20 px thumb
+/// Sizes scaled ~+30% with design-system typography:
+/// - sm: 42×21 track, 16 px thumb
+/// - md: 52×26 track, 21 px thumb  (default)
+/// - lg: 62×31 track, 26 px thumb
 class HeroUiSwitch extends StatefulWidget {
   const HeroUiSwitch({
     super.key,
@@ -123,7 +123,7 @@ class _HeroUiSwitchState extends State<HeroUiSwitch>
                   isHovered: _hovered,
                 ),
                 if (widget.label != null) ...[
-                  const SizedBox(width: 16),
+                  const SizedBox(width: 21),
                   Text(
                     widget.label!,
                     style: labelStyle.copyWith(color: labelColor),
@@ -156,22 +156,22 @@ class _SizeSpec {
 
 _SizeSpec _sizeSpec(HeroUiSwitchSize size) => switch (size) {
   HeroUiSwitchSize.sm => const _SizeSpec(
-    trackWidth: 32,
-    trackHeight: 16,
-    thumbSize: 12,
-    thumbPadding: 2,
+    trackWidth: 42,
+    trackHeight: 22,
+    thumbSize: 16,
+    thumbPadding: 3,
   ),
   HeroUiSwitchSize.md => const _SizeSpec(
-    trackWidth: 40,
-    trackHeight: 20,
-    thumbSize: 16,
-    thumbPadding: 2,
+    trackWidth: 52,
+    trackHeight: 27,
+    thumbSize: 21,
+    thumbPadding: 3,
   ),
   HeroUiSwitchSize.lg => const _SizeSpec(
-    trackWidth: 48,
-    trackHeight: 24,
-    thumbSize: 20,
-    thumbPadding: 2,
+    trackWidth: 62,
+    trackHeight: 32,
+    thumbSize: 26,
+    thumbPadding: 3,
   ),
 };
 

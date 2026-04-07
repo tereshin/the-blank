@@ -50,11 +50,11 @@ class _CalendarMonthGrid extends StatelessWidget {
       }
 
       rows.add(Row(children: cells));
-      if (row < 5) rows.add(const SizedBox(height: 2));
+      if (row < 5) rows.add(const SizedBox(height: 3));
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(mainAxisSize: MainAxisSize.min, children: rows),
     );
   }
@@ -118,11 +118,11 @@ class _RangeCalendarMonthGrid extends StatelessWidget {
         );
       }
       rows.add(Row(children: cells));
-      if (row < 5) rows.add(const SizedBox(height: 2));
+      if (row < 5) rows.add(const SizedBox(height: 3));
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(mainAxisSize: MainAxisSize.min, children: rows),
     );
   }
@@ -180,7 +180,7 @@ class _RangeCalendarDayCell extends StatelessWidget {
         onTap: onTap,
         behavior: HitTestBehavior.opaque,
         child: SizedBox(
-          height: 32,
+          height: 42,
           child: Stack(
             fit: StackFit.expand,
             children: [
@@ -194,7 +194,7 @@ class _RangeCalendarDayCell extends StatelessWidget {
                               ? _kRangeHighlight
                               : Colors.transparent,
                           borderRadius: const BorderRadius.horizontal(
-                            left: Radius.circular(8),
+                            left: Radius.circular(10),
                           ),
                         ),
                       ),
@@ -206,7 +206,7 @@ class _RangeCalendarDayCell extends StatelessWidget {
                               ? _kRangeHighlight
                               : Colors.transparent,
                           borderRadius: const BorderRadius.horizontal(
-                            right: Radius.circular(8),
+                            right: Radius.circular(10),
                           ),
                         ),
                       ),
@@ -216,11 +216,11 @@ class _RangeCalendarDayCell extends StatelessWidget {
               Center(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 120),
-                  width: 32,
-                  height: 32,
+                  width: 42,
+                  height: 42,
                   decoration: BoxDecoration(
                     color: isEndpoint ? _kPrimary : Colors.transparent,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(31),
                   ),
                   child: Stack(
                     alignment: Alignment.center,
@@ -231,13 +231,13 @@ class _RangeCalendarDayCell extends StatelessWidget {
                       ),
                       if (indicator)
                         Positioned(
-                          bottom: 4,
+                          bottom: 5,
                           child: Container(
-                            width: 3,
-                            height: 3,
+                            width: 4,
+                            height: 4,
                             decoration: BoxDecoration(
                               color: mutedColor,
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(16),
                             ),
                           ),
                         ),
@@ -298,15 +298,15 @@ class _CalendarDayCell extends StatelessWidget {
         onTap: onTap,
         behavior: HitTestBehavior.opaque,
         child: SizedBox(
-          height: 32,
+          height: 42,
           child: Center(
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 120),
-              width: 32,
-              height: 32,
+              width: 42,
+              height: 42,
               decoration: BoxDecoration(
                 color: isSelected ? _kPrimary : Colors.transparent,
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: BorderRadius.circular(31),
               ),
               child: Stack(
                 alignment: Alignment.center,
@@ -317,13 +317,13 @@ class _CalendarDayCell extends StatelessWidget {
                   ),
                   if (indicator)
                     Positioned(
-                      bottom: 4,
+                      bottom: 5,
                       child: Container(
-                        width: 3,
-                        height: 3,
+                        width: 4,
+                        height: 4,
                         decoration: BoxDecoration(
                           color: mutedColor,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                       ),
                     ),
@@ -357,8 +357,8 @@ class _NavButton extends StatelessWidget {
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
       child: Padding(
-        padding: const EdgeInsets.all(4),
-        child: HeroUiIcon(iconName, size: 12, color: iconColor),
+        padding: const EdgeInsets.all(5),
+        child: HeroUiIcon(iconName, size: 20, color: iconColor),
       ),
     );
   }

@@ -77,7 +77,10 @@ class HeroUiSeparator extends StatelessWidget {
             VerticalDivider(width: 1, thickness: 1, color: color),
             if (label != null) ...[
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10.4,
+                  horizontal: 5.2,
+                ),
                 child: Text(
                   label!,
                   style: HeroUiTypography.bodyXsMedium.copyWith(
@@ -100,7 +103,7 @@ class HeroUiSeparator extends StatelessWidget {
       children: [
         Expanded(child: Divider(thickness: 1, color: color)),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 15.6),
           child: Text(
             label!,
             style: HeroUiTypography.bodyXsMedium.copyWith(color: textColor),
@@ -143,10 +146,10 @@ class HeroUiKbd extends StatelessWidget {
         : const Color(0xFF71717A);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 7.8, vertical: 1.3),
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10.4),
         border: variant == HeroUiKbdVariant.light
             ? Border.all(
                 color: isDark
@@ -155,11 +158,14 @@ class HeroUiKbd extends StatelessWidget {
               )
             : null,
         boxShadow: [
-          BoxShadow(color: const Color.fromRGBO(0, 0, 0, 0.06), blurRadius: 1),
+          BoxShadow(
+            color: const Color.fromRGBO(0, 0, 0, 0.06),
+            blurRadius: 1.3,
+          ),
           BoxShadow(
             color: const Color.fromRGBO(0, 0, 0, 0.04),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+            blurRadius: 5.2,
+            offset: const Offset(0, 2.6),
           ),
         ],
       ),
@@ -167,7 +173,7 @@ class HeroUiKbd extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           for (int i = 0; i < keys.length; i++) ...[
-            if (i > 0) const SizedBox(width: 2),
+            if (i > 0) const SizedBox(width: 2.6),
             Text(
               keys[i],
               style: HeroUiTypography.bodySmMedium.copyWith(color: textColor),
@@ -186,8 +192,8 @@ class HeroUiKbd extends StatelessWidget {
 enum HeroUiAvatarVariant { letter, letterSoft, icon, iconSoft, img }
 
 TextStyle _avatarLabelStyle(double size) {
-  if (size <= 24) return HeroUiTypography.bodyXsMedium;
-  if (size <= 36) return HeroUiTypography.bodySmMedium;
+  if (size <= 31.2) return HeroUiTypography.bodyXsMedium;
+  if (size <= 46.8) return HeroUiTypography.bodySmMedium;
   return HeroUiTypography.bodyBaseMedium;
 }
 
@@ -201,7 +207,7 @@ class HeroUiAvatar extends StatelessWidget {
     this.icon,
     this.type = HeroUiComponentType.defaultType,
     this.variant = HeroUiAvatarVariant.letter,
-    this.size = 36,
+    this.size = 46.8,
   });
 
   /// 1–2 character initials. Used for [HeroUiAvatarVariant.letter] /
@@ -221,7 +227,7 @@ class HeroUiAvatar extends StatelessWidget {
   final HeroUiComponentType type;
   final HeroUiAvatarVariant variant;
 
-  /// Diameter in logical pixels. Default: 36.
+  /// Diameter in logical pixels. Default: 46.8.
   final double size;
 
   Color _bg() => switch (variant) {
@@ -380,21 +386,21 @@ class HeroUiBadge extends StatelessWidget {
     final (textStyle, iconSize, padding, radius) = switch (size) {
       HeroUiBadgeSize.sm => (
         HeroUiTypography.bodyXsMedium,
-        8.0,
-        const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-        12.0,
+        10.4,
+        const EdgeInsets.symmetric(horizontal: 5.2, vertical: 1.3),
+        15.6,
       ),
       HeroUiBadgeSize.md => (
         HeroUiTypography.bodyXsMedium,
-        10.0,
-        const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-        24.0,
+        13.0,
+        const EdgeInsets.symmetric(horizontal: 10.4, vertical: 7.8),
+        31.2,
       ),
       HeroUiBadgeSize.lg => (
         HeroUiTypography.bodySmMedium,
-        12.0,
-        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-        16.0,
+        15.6,
+        const EdgeInsets.symmetric(horizontal: 13.0, vertical: 7.8),
+        20.8,
       ),
     };
 
@@ -415,11 +421,11 @@ class HeroUiBadge extends StatelessWidget {
               data: IconThemeData(size: iconSize, color: tokens.text),
               child: startIcon!,
             ),
-            const SizedBox(width: 2),
+            const SizedBox(width: 2.6),
           ],
           Text(label, style: textStyle.copyWith(color: tokens.text)),
           if (endIcon != null) ...[
-            const SizedBox(width: 2),
+            const SizedBox(width: 2.6),
             IconTheme(
               data: IconThemeData(size: iconSize, color: tokens.text),
               child: endIcon!,
@@ -542,24 +548,24 @@ class _HeroUiChipState extends State<HeroUiChip> {
     ) = switch (widget.size) {
       HeroUiChipSize.sm => (
         HeroUiTypography.bodyXsMedium,
-        8.0,
-        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-        10.0,
-        12.0,
+        10.4,
+        const EdgeInsets.symmetric(horizontal: 7.8, vertical: 2.6),
+        13.0,
+        15.6,
       ),
       HeroUiChipSize.md => (
         HeroUiTypography.bodyXsMedium,
-        12.0,
-        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        24.0,
-        14.0,
+        15.6,
+        const EdgeInsets.symmetric(horizontal: 10.4, vertical: 5.2),
+        31.2,
+        18.2,
       ),
       HeroUiChipSize.lg => (
         HeroUiTypography.bodySmMedium,
-        14.0,
-        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-        16.0,
-        16.0,
+        18.2,
+        const EdgeInsets.symmetric(horizontal: 13.0, vertical: 7.8),
+        20.8,
+        20.8,
       ),
     };
 
@@ -604,14 +610,14 @@ class _HeroUiChipState extends State<HeroUiChip> {
                     data: IconThemeData(size: iconSize, color: tokens.text),
                     child: widget.startIcon!,
                   ),
-                  const SizedBox(width: 4),
+                  const SizedBox(width: 5.2),
                 ],
                 Text(
                   widget.label,
                   style: textStyle.copyWith(color: tokens.text),
                 ),
                 if (widget.isCloseable) ...[
-                  const SizedBox(width: 4),
+                  const SizedBox(width: 5.2),
                   GestureDetector(
                     onTap: widget.isDisabled ? null : widget.onClose,
                     child: Icon(
@@ -646,15 +652,15 @@ class HeroUiSkeleton extends StatefulWidget {
   const HeroUiSkeleton({
     super.key,
     this.width,
-    this.height = 16,
+    this.height = 20.8,
     this.borderRadius,
     this.isCircle = false,
   });
 
   const HeroUiSkeleton.circle({
     super.key,
-    this.width = 40,
-    this.height = 40,
+    this.width = 52,
+    this.height = 52,
     this.borderRadius,
   }) : isCircle = true;
 
@@ -694,7 +700,7 @@ class _HeroUiSkeletonState extends State<HeroUiSkeleton>
 
     final br = widget.isCircle
         ? BorderRadius.circular(1000)
-        : BorderRadius.circular(widget.borderRadius ?? 8);
+        : BorderRadius.circular(widget.borderRadius ?? 10.4);
 
     return AnimatedBuilder(
       animation: _ctrl,
@@ -778,26 +784,26 @@ class HeroUiMeter extends StatelessWidget {
                 ),
             ],
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10.4),
         ],
         LayoutBuilder(
           builder: (context, constraints) {
             return Stack(
               children: [
                 Container(
-                  height: 8,
+                  height: 10.4,
                   decoration: BoxDecoration(
                     color: trackColor,
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(5.2),
                   ),
                 ),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  height: 8,
+                  height: 10.4,
                   width: constraints.maxWidth * fraction,
                   decoration: BoxDecoration(
                     color: fillColor,
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(5.2),
                   ),
                 ),
               ],

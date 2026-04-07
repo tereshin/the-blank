@@ -128,15 +128,15 @@ class _PopoverOverlay extends StatelessWidget {
     final textColor = isDark
         ? const Color(0xFFFCFCFC)
         : const Color(0xFF18181B);
-    const viewportPadding = 12.0;
+    const viewportPadding = 16.0;
     final safeRect = Rect.fromLTRB(
       mediaQuery.padding.left + viewportPadding,
       mediaQuery.padding.top + viewportPadding,
       mediaQuery.size.width - mediaQuery.padding.right - viewportPadding,
       mediaQuery.size.height - mediaQuery.padding.bottom - viewportPadding,
     );
-    final maxWidth = math.max(120.0, math.min(320.0, safeRect.width));
-    final minWidth = math.min(200.0, maxWidth);
+    final maxWidth = math.max(156.0, math.min(416.0, safeRect.width));
+    final minWidth = math.min(260.0, maxWidth);
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
@@ -148,7 +148,7 @@ class _PopoverOverlay extends StatelessWidget {
               triggerRect: triggerRect,
               safeRect: safeRect,
               preferBelow: preferBelow,
-              gap: 8,
+              gap: 10,
             ),
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
@@ -166,12 +166,12 @@ class _PopoverOverlay extends StatelessWidget {
                       ),
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                          vertical: 16,
+                          horizontal: 31,
+                          vertical: 21,
                         ),
                         decoration: BoxDecoration(
                           color: bg,
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(31),
                           border: isDark
                               ? Border.all(color: const Color(0xFF28282C))
                               : null,

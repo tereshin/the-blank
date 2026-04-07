@@ -61,7 +61,7 @@ class _HeroUiDateFieldState extends State<HeroUiDateField> {
     final date = await _showAdaptiveCalendarSurface<DateTime>(
       context: context,
       title: 'Select date',
-      dialogWidth: 312,
+      dialogWidth: 406,
       builder: (modalContext) => _SingleDateCalendarPicker(
         initialDate: _dateOnly(initialDate),
         selectedDate: _value == null ? null : _dateOnly(_value!),

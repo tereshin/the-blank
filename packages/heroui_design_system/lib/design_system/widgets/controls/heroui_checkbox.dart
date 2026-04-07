@@ -11,7 +11,7 @@ enum HeroUiCheckboxValue { unselected, selected, indeterminate }
 
 // ─── HeroUiCheckboxControl ────────────────────────────────────────────────────
 
-/// Raw 16×16 animated checkbox indicator.
+/// Raw ~21×21 animated checkbox indicator (scaled with DS typography).
 ///
 /// Manages hover, press and focus interaction states internally.
 /// Use [HeroUiCheckbox] for the full component with label and description.
@@ -250,8 +250,8 @@ class _HeroUiCheckboxState extends State<HeroUiCheckbox> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(padding: const EdgeInsets.only(top: 2), child: control),
-        const SizedBox(width: 8),
+        Padding(padding: const EdgeInsets.only(top: 3), child: control),
+        const SizedBox(width: 10),
         Flexible(
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
@@ -313,8 +313,8 @@ class _CheckboxBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final shadows = tokens.showFocusRing
         ? const <BoxShadow>[
-            BoxShadow(color: Color(0xFF0485F7), blurRadius: 0, spreadRadius: 4),
-            BoxShadow(color: Color(0xFFF5F5F5), blurRadius: 0, spreadRadius: 2),
+            BoxShadow(color: Color(0xFF0485F7), blurRadius: 0, spreadRadius: 5),
+            BoxShadow(color: Color(0xFFF5F5F5), blurRadius: 0, spreadRadius: 3),
           ]
         : const <BoxShadow>[
             BoxShadow(
@@ -326,11 +326,11 @@ class _CheckboxBox extends StatelessWidget {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 120),
-      width: 16,
-      height: 16,
+      width: 21,
+      height: 21,
       decoration: BoxDecoration(
         color: tokens.bg,
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(8),
         border: tokens.borderColor != Colors.transparent
             ? Border.all(color: tokens.borderColor, width: tokens.borderWidth)
             : null,
@@ -338,7 +338,7 @@ class _CheckboxBox extends StatelessWidget {
       ),
       child: checkProgress > 0
           ? ClipRRect(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(8),
               child: CustomPaint(
                 painter: _IconPainter(value: value, progress: checkProgress),
               ),
@@ -363,7 +363,7 @@ class _IconPainter extends CustomPainter {
     final paint = Paint()
       ..color = const Color(0xFFFCFCFC)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.6
+      ..strokeWidth = 2.0
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round;
 
@@ -377,7 +377,7 @@ class _IconPainter extends CustomPainter {
       final xEnd = x1 + (x2 - x1) * progress;
       canvas.drawLine(Offset(x1, y), Offset(xEnd, y), paint);
     } else {
-      // Checkmark path in 16×16 space:
+      // Checkmark path in original 16×16 logical space, normalized to box size.
       // left (3.9, 8.0) → bottom (6.5, 11.0) → top-right (12.1, 5.0)
       final path = Path()
         ..moveTo(3.9 * w / 16, 8.0 * h / 16)

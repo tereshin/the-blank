@@ -15,9 +15,9 @@ class HeroUiToolbar extends StatelessWidget {
     this.children = const <Widget>[],
     this.isAttached = false,
     this.orientation = HeroUiToolbarOrientation.horizontal,
-    this.spacing = 8,
+    this.spacing = 10,
     this.padding,
-    this.borderRadius = 16,
+    this.borderRadius = 21,
   });
 
   final Widget? slot;
@@ -92,9 +92,9 @@ class HeroUiToolbar extends StatelessWidget {
       child: ClipRRect(
         borderRadius: radius,
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+          filter: ImageFilter.blur(sigmaX: 26, sigmaY: 26),
           child: Padding(
-            padding: padding ?? const EdgeInsets.all(4),
+            padding: padding ?? const EdgeInsets.all(5),
             child: slotContainer,
           ),
         ),
@@ -108,7 +108,7 @@ class HeroUiToolbarDivider extends StatelessWidget {
   const HeroUiToolbarDivider({
     super.key,
     this.toolbarOrientation = HeroUiToolbarOrientation.horizontal,
-    this.length = 18,
+    this.length = 23,
     this.thickness = 1,
   });
 
@@ -144,18 +144,18 @@ _HeroUiToolbarTokens _toolbarTokens({required bool isDark}) =>
       shadow: const [
         BoxShadow(
           color: Color.fromRGBO(0, 0, 0, 0.08),
-          blurRadius: 28,
-          offset: Offset(0, 14),
+          blurRadius: 36,
+          offset: Offset(0, 18),
         ),
         BoxShadow(
           color: Color.fromRGBO(0, 0, 0, 0.03),
-          blurRadius: 12,
-          offset: Offset(0, -6),
+          blurRadius: 16,
+          offset: Offset(0, -8),
         ),
         BoxShadow(
           color: Color.fromRGBO(0, 0, 0, 0.06),
-          blurRadius: 8,
-          offset: Offset(0, 2),
+          blurRadius: 10,
+          offset: Offset(0, 3),
         ),
       ],
     );

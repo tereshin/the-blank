@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## 0.1.7
 
+- `HeroUiButtonGroup` (attached, horizontal, `width: hug`): when the parent supplies a finite max width, segments now share the row with `Expanded` and `HeroUiButton.expand` so the group no longer overflows narrow layouts (e.g. catalog cards).
+- `HeroUiSelect`: closing the dropdown from `dispose()` removes the overlay only and skips `setState`, avoiding lifecycle assertions and follow-on errors during widget teardown.
+- Tuned layout metrics on core controls (buttons, button groups, checkbox, radio, slider, switch, star review, close button, and key data-display surfaces) so padding, min sizes, radii, and icon sizes stay consistent with the updated visual scale.
+
 ## 0.1.6
 
 - `HeroUiTabs`: validate the tab strip indicator `Rect` from layout (`localToGlobal` / `RenderBox.size`) so only finite `left`, `top`, `width`, and `height` are passed into `AnimatedPositioned`. This prevents `Stack` layout assertions (`height.isNaN`) when transient or invalid geometry would otherwise reach the positioned child.

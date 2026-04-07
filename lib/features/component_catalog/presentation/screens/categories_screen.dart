@@ -47,7 +47,7 @@ HeroUiMenuItem _categoryMenuItem(
     leading: CatalogCategoryLeadingIcon(category: category),
     trailing: HeroUiIcon(
       HeroUiIconManifest.chevronRight,
-      size: 16,
+      size: 20,
       color: mutedColor,
     ),
     onTap: () {

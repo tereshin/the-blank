@@ -24,7 +24,7 @@ class HeroUiDrawer {
     final isVertical =
         position == HeroUiDrawerPosition.left ||
         position == HeroUiDrawerPosition.right;
-    final defaultSize = isVertical ? 393.0 : 360.0;
+    final defaultSize = isVertical ? 511.0 : 468.0;
     final resolvedSize = size ?? defaultSize;
     final maxHeightFraction = maxHeight?.clamp(0.0, 1.0);
 
@@ -53,16 +53,16 @@ class HeroUiDrawer {
 
         final borderRadius = switch (position) {
           HeroUiDrawerPosition.right => const BorderRadius.horizontal(
-            left: Radius.circular(28),
+            left: Radius.circular(36),
           ),
           HeroUiDrawerPosition.left => const BorderRadius.horizontal(
-            right: Radius.circular(28),
+            right: Radius.circular(36),
           ),
           HeroUiDrawerPosition.bottom => const BorderRadius.vertical(
-            top: Radius.circular(28),
+            top: Radius.circular(36),
           ),
           HeroUiDrawerPosition.top => const BorderRadius.vertical(
-            bottom: Radius.circular(28),
+            bottom: Radius.circular(36),
           ),
         };
 
@@ -75,15 +75,17 @@ class HeroUiDrawer {
         final double topInset =
             (showHandle && position == HeroUiDrawerPosition.bottom
                 ? 0.0
-                : 24.0) +
+                : 31.0) +
             (position == HeroUiDrawerPosition.top ? viewPadding.top : 0.0);
         final double bottomInset =
-            (showHandle && position == HeroUiDrawerPosition.top ? 0.0 : 24.0) +
+            (showHandle && position == HeroUiDrawerPosition.top ? 0.0 : 31.0) +
             (position == HeroUiDrawerPosition.bottom
                 ? viewPadding.bottom
                 : 0.0);
-        final headerPadding = EdgeInsets.fromLTRB(24, topInset, 24, 16);
-        final footerPadding = EdgeInsets.fromLTRB(24, 20, 24, bottomInset);
+        final headerPadding = EdgeInsets.fromLTRB(16, topInset, 16, 16);
+        // Reserve space so scroll content clears the floating footer bar.
+        final floatingFooterScrollBottomPad =
+            16 + 12 + 48 + 12 + 16 + bottomInset;
 
         var panelDragOffset = 0.0;
         var isHandleDragging = false;
@@ -125,9 +127,9 @@ class HeroUiDrawer {
                   final velocity = details.primaryVelocity ?? 0;
                   final passedDistanceThreshold =
                       (position == HeroUiDrawerPosition.bottom &&
-                          panelDragOffset >= 72) ||
+                          panelDragOffset >= 94) ||
                       (position == HeroUiDrawerPosition.top &&
-                          panelDragOffset <= -72);
+                          panelDragOffset <= -94);
                   final passedVelocityThreshold =
                       (position == HeroUiDrawerPosition.bottom &&
                           velocity > 500) ||
@@ -154,15 +156,15 @@ class HeroUiDrawer {
                 },
                 child: Container(
                   width: double.infinity,
-                  height: 44,
+                  height: 57,
                   margin: margin,
                   alignment: Alignment.center,
                   child: Container(
-                    width: 40,
-                    height: 4,
+                    width: 52,
+                    height: 5,
                     decoration: BoxDecoration(
                       color: const Color(0xFFDEDEE0),
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                   ),
                 ),
@@ -192,7 +194,7 @@ class HeroUiDrawer {
                                 ),
                               ),
                               if (subtitle != null) ...[
-                                const SizedBox(height: 4),
+                                const SizedBox(height: 5),
                                 Text(
                                   subtitle,
                                   style: HeroUiTypography.bodySm.copyWith(
@@ -215,29 +217,45 @@ class HeroUiDrawer {
                 else if (topInset > 0)
                   SizedBox(height: topInset),
                 Flexible(
-                  child: SingleChildScrollView(
-                    padding: EdgeInsets.only(
-                      bottom:
-                          !hasFooter && position == HeroUiDrawerPosition.bottom
-                          ? viewPadding.bottom
-                          : 0,
-                    ),
-                    child: body,
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned.fill(
+                        child: SingleChildScrollView(
+                          padding: EdgeInsets.only(
+                            bottom: hasFooter
+                                ? floatingFooterScrollBottomPad
+                                : (!hasFooter &&
+                                          position ==
+                                              HeroUiDrawerPosition.bottom
+                                      ? viewPadding.bottom
+                                      : 0),
+                          ),
+                          child: body,
+                        ),
+                      ),
+                      if (hasFooter)
+                        Positioned(
+                          left: 20,
+                          right: 20,
+                          bottom: 16,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              for (
+                                var i = 0;
+                                i < footerWidgets.length;
+                                i++
+                              ) ...[
+                                if (i > 0) const SizedBox(width: 10),
+                                footerWidgets[i],
+                              ],
+                            ],
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-                if (hasFooter)
-                  Padding(
-                    padding: footerPadding,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        for (var i = 0; i < footerWidgets.length; i++) ...[
-                          if (i > 0) const SizedBox(width: 8),
-                          footerWidgets[i],
-                        ],
-                      ],
-                    ),
-                  ),
               ],
             );
 
@@ -263,10 +281,12 @@ class HeroUiDrawer {
                       children: [
                         if (showHandle &&
                             position == HeroUiDrawerPosition.bottom)
-                          buildHandle(margin: const EdgeInsets.only(top: 8)),
+                          buildHandle(margin: const EdgeInsets.only(top: 1)),
                         Flexible(fit: FlexFit.loose, child: panelContent),
                         if (showHandle && position == HeroUiDrawerPosition.top)
-                          buildHandle(margin: const EdgeInsets.only(bottom: 8)),
+                          buildHandle(
+                            margin: const EdgeInsets.only(bottom: 10),
+                          ),
                       ],
                     ),
                   ),
@@ -275,10 +295,13 @@ class HeroUiDrawer {
             );
 
             final mh = maxHeightFraction;
+            final keyboardBottomInset = MediaQuery.viewInsetsOf(context).bottom;
             if (mh != null) {
+              final availableHeight =
+                  MediaQuery.sizeOf(context).height - keyboardBottomInset;
               panel = ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxHeight: MediaQuery.sizeOf(context).height * mh,
+                  maxHeight: math.max(0, availableHeight) * mh,
                 ),
                 child: panel,
               );
@@ -297,19 +320,27 @@ class HeroUiDrawer {
               );
             }
 
-            return Align(
-              alignment: switch (position) {
-                HeroUiDrawerPosition.right => Alignment.centerRight,
-                HeroUiDrawerPosition.left => Alignment.centerLeft,
-                HeroUiDrawerPosition.bottom => Alignment.bottomCenter,
-                HeroUiDrawerPosition.top => Alignment.topCenter,
-              },
-              child: SafeArea(
-                top: position != HeroUiDrawerPosition.top,
-                bottom: position != HeroUiDrawerPosition.bottom,
-                child: isVertical
-                    ? SizedBox(width: resolvedSize, child: panel)
-                    : SizedBox(width: double.infinity, child: panel),
+            // showGeneralDialog does not insert Material; TextField and other
+            // material widgets require a Material ancestor.
+            return Material(
+              type: MaterialType.transparency,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: keyboardBottomInset),
+                child: Align(
+                  alignment: switch (position) {
+                    HeroUiDrawerPosition.right => Alignment.centerRight,
+                    HeroUiDrawerPosition.left => Alignment.centerLeft,
+                    HeroUiDrawerPosition.bottom => Alignment.bottomCenter,
+                    HeroUiDrawerPosition.top => Alignment.topCenter,
+                  },
+                  child: SafeArea(
+                    top: position != HeroUiDrawerPosition.top,
+                    bottom: position != HeroUiDrawerPosition.bottom,
+                    child: isVertical
+                        ? SizedBox(width: resolvedSize, child: panel)
+                        : SizedBox(width: double.infinity, child: panel),
+                  ),
+                ),
               ),
             );
           },

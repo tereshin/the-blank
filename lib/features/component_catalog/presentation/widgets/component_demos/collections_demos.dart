@@ -56,7 +56,7 @@ class _AccordionDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -117,7 +117,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.warning,
       ),
-      suffix: HeroUiIcon('comment', size: 16),
+      suffix: HeroUiIcon('comment', size: 20),
     ),
     HeroUiListBoxItem(
       value: 'fred',
@@ -129,7 +129,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.success,
       ),
-      suffix: HeroUiIcon('comment', size: 16),
+      suffix: HeroUiIcon('comment', size: 20),
     ),
     HeroUiListBoxItem(
       value: 'martha',
@@ -141,7 +141,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.danger,
       ),
-      suffix: HeroUiIcon('comment', size: 16),
+      suffix: HeroUiIcon('comment', size: 20),
     ),
     HeroUiListBoxItem(
       value: 'anna',
@@ -153,7 +153,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.defaultType,
       ),
-      suffix: HeroUiIcon('comment', size: 16),
+      suffix: HeroUiIcon('comment', size: 20),
       isDisabled: true,
     ),
     HeroUiListBoxItem<String>(
@@ -166,7 +166,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.danger,
       ),
-      suffix: HeroUiIcon('comment', size: 16),
+      suffix: HeroUiIcon('comment', size: 20),
       type: HeroUiListBoxItemType.danger,
     ),
   ];
@@ -221,7 +221,7 @@ class _ListBoxDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -269,7 +269,7 @@ class _TagGroupDemoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -309,7 +309,7 @@ class _TagGroupDemoPage extends StatelessWidget {
                 items: _techTags.take(4).toList(),
                 size: HeroUiTagSize.sm,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               const Text(
                 'Medium (default)',
                 style: TextStyle(fontSize: 12, color: Color(0xFF71717A)),
@@ -319,7 +319,7 @@ class _TagGroupDemoPage extends StatelessWidget {
                 items: _techTags.take(4).toList(),
                 size: HeroUiTagSize.md,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               const Text(
                 'Large',
                 style: TextStyle(fontSize: 12, color: Color(0xFF71717A)),
@@ -376,7 +376,7 @@ class _TableDemoPage extends StatelessWidget {
       HeroUiTableHeaderCell(
         label: 'Actions',
         alignment: Alignment.centerRight,
-        minWidth: 140,
+        minWidth: 168,
       ),
     ],
   );
@@ -550,9 +550,7 @@ class _TableDemoPage extends StatelessWidget {
       type: HeroUiTableRowCellType.compare,
       alignment: Alignment.centerRight,
       prefix: HeroUiIcon(
-        isPositive
-            ? HeroUiIconManifest.arrowUp
-            : HeroUiIconManifest.arrowDown,
+        isPositive ? HeroUiIconManifest.arrowUp : HeroUiIconManifest.arrowDown,
         size: 14,
       ),
       child: Text(value),
@@ -588,7 +586,7 @@ class _TableDemoPage extends StatelessWidget {
     final equalRows = _buildEqualRows();
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -693,10 +691,7 @@ class _TableRowActions extends StatelessWidget {
     return const Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _TableActionIconButton(
-          iconName: HeroUiIconManifest.eye,
-          label: 'View',
-        ),
+        _TableActionIconButton(iconName: HeroUiIconManifest.eye, label: 'View'),
         SizedBox(width: 4),
         _TableActionIconButton(
           iconName: HeroUiIconManifest.pencil,
@@ -733,7 +728,7 @@ class _TableActionIconButton extends StatelessWidget {
       variant: isDanger
           ? HeroUiButtonVariant.dangerSoft
           : HeroUiButtonVariant.ghost,
-      leading: HeroUiIcon(iconName, size: 16),
+      leading: HeroUiIcon(iconName, size: 20),
       onPressed: () {},
     );
   }

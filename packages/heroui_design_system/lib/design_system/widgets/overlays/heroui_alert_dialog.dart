@@ -42,16 +42,16 @@ class HeroUiAlertDialog {
             child: Dialog(
               backgroundColor: Colors.transparent,
               insetPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 24,
+                horizontal: 21,
+                vertical: 31,
               ),
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 400),
+                constraints: const BoxConstraints(maxWidth: 520),
                 child: Container(
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(31),
                   decoration: BoxDecoration(
                     color: bg,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(31),
                     boxShadow: _kOverlayShadow,
                   ),
                   child: Column(
@@ -59,25 +59,25 @@ class HeroUiAlertDialog {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 40,
-                        height: 40,
+                        width: 52,
+                        height: 52,
                         decoration: BoxDecoration(
                           color: isDanger
                               ? const Color(0x1AFF383C)
                               : const Color(0x1A0485F7),
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                         child: Icon(
                           isDanger
                               ? Icons.warning_amber_rounded
                               : Icons.info_outline_rounded,
-                          size: 20,
+                          size: 26,
                           color: isDanger
                               ? const Color(0xFFFF383C)
                               : const Color(0xFF0485F7),
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 21),
                       Text(
                         title,
                         style: HeroUiTypography.heading4.copyWith(
@@ -85,7 +85,7 @@ class HeroUiAlertDialog {
                         ),
                       ),
                       if (description != null) ...[
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 10),
                         Text(
                           description,
                           style: HeroUiTypography.bodySm.copyWith(
@@ -93,8 +93,8 @@ class HeroUiAlertDialog {
                           ),
                         ),
                       ],
-                      if (body != null) ...[const SizedBox(height: 12), body],
-                      const SizedBox(height: 24),
+                      if (body != null) ...[const SizedBox(height: 16), body],
+                      const SizedBox(height: 31),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -105,7 +105,7 @@ class HeroUiAlertDialog {
                               onCancel?.call();
                             },
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 10),
                           _FilledButton(
                             label: confirmLabel,
                             isDanger: isDanger,

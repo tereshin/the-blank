@@ -20,7 +20,7 @@ class HeroUiCalendar extends StatefulWidget {
     this.onDateSelected,
     this.minDate,
     this.maxDate,
-    this.width = 252.0,
+    this.width = 328.0,
   });
 
   final DateTime? initialDate;
@@ -78,9 +78,9 @@ class _HeroUiCalendarState extends State<HeroUiCalendar> {
             onPrev: _prevMonth,
             onNext: _nextMonth,
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           _WeekHeader(),
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           _DayGrid(
             viewMonth: _viewMonth,
             selected: _selected,
@@ -108,7 +108,7 @@ class HeroUiRangeCalendar extends StatefulWidget {
     this.onRangeSelected,
     this.minDate,
     this.maxDate,
-    this.width = 252.0,
+    this.width = 328.0,
   });
 
   final DateTime? initialDate;
@@ -178,9 +178,9 @@ class _HeroUiRangeCalendarState extends State<HeroUiRangeCalendar> {
             onPrev: _prevMonth,
             onNext: _nextMonth,
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           _WeekHeader(),
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           _RangeDayGrid(
             viewMonth: _viewMonth,
             start: _start,
@@ -212,7 +212,7 @@ class _CalendarNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 21),
       child: Row(
         children: [
           _NavButton(icon: Icons.chevron_left_rounded, onTap: onPrev),
@@ -243,8 +243,8 @@ class _NavButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.all(4),
-        child: Icon(icon, size: 16, color: _kPrimary),
+        padding: const EdgeInsets.all(5),
+        child: Icon(icon, size: 21, color: _kPrimary),
       ),
     );
   }
@@ -260,7 +260,7 @@ class _WeekHeader extends StatelessWidget {
           .map(
             (d) => Expanded(
               child: SizedBox(
-                height: 32,
+                height: 42,
                 child: Center(
                   child: Text(
                     d,
@@ -489,11 +489,11 @@ class _DayCell extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: 32,
+        height: 42,
         child: Center(
           child: Container(
-            width: 28,
-            height: 28,
+            width: 36,
+            height: 36,
             decoration: isSelected
                 ? const BoxDecoration(color: _kPrimary, shape: BoxShape.circle)
                 : isToday && !isSelected
@@ -556,7 +556,7 @@ class _RangeDayCell extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: 32,
+        height: 42,
         child: Stack(
           children: [
             // Range highlight background (strip behind cell)
@@ -587,8 +587,8 @@ class _RangeDayCell extends StatelessWidget {
               ),
             Center(
               child: Container(
-                width: 28,
-                height: 28,
+                width: 36,
+                height: 36,
                 decoration: isEndpoint
                     ? const BoxDecoration(
                         color: _kPrimary,

@@ -47,8 +47,8 @@ class HeroUiTabs extends StatefulWidget {
     this.showScrollButtons = false,
     this.showOptions,
     this.showPanel = true,
-    this.panelHeight = 200,
-    this.panelPadding = const EdgeInsets.all(12),
+    this.panelHeight = 260,
+    this.panelPadding = const EdgeInsets.all(16),
     this.enableSwipeSelection = true,
     this.onChanged,
   }) : assert(tabs.length > 0, 'tabs cannot be empty');
@@ -81,9 +81,9 @@ class HeroUiTabs extends StatefulWidget {
 
 class _HeroUiTabsState extends State<HeroUiTabs> {
   static const Duration _kAnimationDuration = Duration(milliseconds: 180);
-  static const double _kIndicatorHeight = 2;
+  static const double _kIndicatorHeight = 3;
   static const double _kRectEpsilon = 0.5;
-  static const double _kSwipeTouchSlop = 18;
+  static const double _kSwipeTouchSlop = 23;
 
   late int _selectedIndex;
   late final ScrollController _scrollController;
@@ -370,8 +370,8 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     if (widget.variant == HeroUiTabsVariant.primary) {
       final radius =
           widget.tabContentOrientation == HeroUiTabContentOrientation.vertical
-          ? 24.0
-          : 24.0;
+          ? 31.0
+          : 31.0;
       return AnimatedPositioned(
         duration: _kAnimationDuration,
         curve: Curves.easeOutCubic,
@@ -387,8 +387,8 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
               boxShadow: const [
                 BoxShadow(
                   color: Color.fromRGBO(0, 0, 0, 0.06),
-                  blurRadius: 8,
-                  offset: Offset(0, 2),
+                  blurRadius: 10,
+                  offset: Offset(0, 3),
                 ),
               ],
             ),
@@ -441,7 +441,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
         panel = SizedBox(width: double.infinity, child: panel);
       }
       children
-        ..add(const SizedBox(height: 12))
+        ..add(const SizedBox(height: 16))
         ..add(panel);
     }
 
@@ -490,7 +490,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
               left: 0,
               child: IgnorePointer(
                 child: Container(
-                  width: 64,
+                  width: 83,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
@@ -508,7 +508,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
               right: 0,
               child: IgnorePointer(
                 child: Container(
-                  width: 64,
+                  width: 83,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
@@ -523,12 +523,12 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
             Positioned(
               top: 0,
               bottom: 0,
-              left: 4,
+              left: 5,
               child: Center(
                 child: _HeroUiTabsScrollButton(
                   iconName: HeroUiIconManifest.chevronLeft,
                   color: tokens.scrollIcon,
-                  onTap: () => _scrollBy(-120),
+                  onTap: () => _scrollBy(-156),
                 ),
               ),
             ),
@@ -536,12 +536,12 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
             Positioned(
               top: 0,
               bottom: 0,
-              right: 4,
+              right: 5,
               child: Center(
                 child: _HeroUiTabsScrollButton(
                   iconName: HeroUiIconManifest.chevronRight,
                   color: tokens.scrollIcon,
-                  onTap: () => _scrollBy(120),
+                  onTap: () => _scrollBy(156),
                 ),
               ),
             ),
@@ -551,14 +551,14 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
     Widget header = switch (widget.variant) {
       HeroUiTabsVariant.primary => ClipRRect(
-        borderRadius: BorderRadius.circular(28),
+        borderRadius: BorderRadius.circular(36),
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: tokens.stripBackground,
-            borderRadius: BorderRadius.circular(28),
+            borderRadius: BorderRadius.circular(36),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             child: tabStrip,
           ),
         ),
@@ -584,7 +584,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     for (var i = 0; i < visibleIndices.length; i++) {
       final sourceIndex = visibleIndices[i];
       if (i > 0 && widget.variant == HeroUiTabsVariant.primary) {
-        tabButtons.add(const SizedBox(width: 2));
+        tabButtons.add(const SizedBox(width: 3));
       }
       tabButtons.add(_buildTabButton(sourceIndex, tokens));
     }
@@ -630,7 +630,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
     final textColor = selected ? tokens.selectedText : tokens.text;
     final borderRadius = isPrimary
-        ? BorderRadius.circular(20)
+        ? BorderRadius.circular(26)
         : BorderRadius.zero;
     final decoration = BoxDecoration(
       color: Colors.transparent,
@@ -639,13 +639,13 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
     final padding = switch ((widget.variant, widget.tabContentOrientation)) {
       (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.horizontal) =>
-        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.vertical) =>
-        const EdgeInsets.all(6),
+        const EdgeInsets.all(8),
       (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.horizontal) =>
-        const EdgeInsets.fromLTRB(12, 4, 12, 6),
+        const EdgeInsets.fromLTRB(16, 5, 16, 8),
       (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.vertical) =>
-        const EdgeInsets.fromLTRB(12, 8, 12, 12),
+        const EdgeInsets.fromLTRB(16, 10, 16, 16),
     };
 
     Widget button = Material(
@@ -661,7 +661,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
           key: _tabKeys[index],
           duration: _kAnimationDuration,
           curve: Curves.easeOutCubic,
-          constraints: BoxConstraints(minHeight: isVertical ? 32 : 32),
+          constraints: BoxConstraints(minHeight: isVertical ? 42 : 42),
           alignment: Alignment.center,
           padding: padding,
           decoration: decoration,
@@ -686,13 +686,13 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
     if (isVertical) {
       return IconTheme.merge(
-        data: IconThemeData(size: 16, color: color),
+        data: IconThemeData(size: 21, color: color),
         child: DefaultTextStyle(
           style: textStyle,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (leading != null) ...[leading, const SizedBox(height: 2)],
+              if (leading != null) ...[leading, const SizedBox(height: 3)],
               Text(
                 item.label,
                 maxLines: 2,
@@ -700,7 +700,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
                 textAlign: TextAlign.center,
               ),
               if (item.trailing != null) ...[
-                const SizedBox(height: 6),
+                const SizedBox(height: 8),
                 item.trailing!,
               ],
             ],
@@ -712,17 +712,17 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     final text = Text(item.label, maxLines: 1, overflow: TextOverflow.ellipsis);
 
     return IconTheme.merge(
-      data: IconThemeData(size: 20, color: color),
+      data: IconThemeData(size: 26, color: color),
       child: DefaultTextStyle(
         style: textStyle,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (leading != null) ...[leading, const SizedBox(width: 6)],
+            if (leading != null) ...[leading, const SizedBox(width: 8)],
             text,
             if (item.trailing != null) ...[
-              const SizedBox(width: 6),
+              const SizedBox(width: 8),
               item.trailing!,
             ],
           ],
@@ -830,9 +830,9 @@ class _HeroUiTabsScrollButton extends StatelessWidget {
         highlightColor: Colors.transparent,
         focusColor: Colors.transparent,
         child: SizedBox(
-          width: 24,
-          height: 24,
-          child: Center(child: HeroUiIcon(iconName, size: 16, color: color)),
+          width: 31,
+          height: 31,
+          child: Center(child: HeroUiIcon(iconName, size: 21, color: color)),
         ),
       ),
     );

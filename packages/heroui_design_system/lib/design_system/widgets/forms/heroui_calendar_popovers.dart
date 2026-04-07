@@ -33,14 +33,14 @@ class _CalendarPopover extends StatelessWidget {
     final muted = isDark ? _kMutedDark : _kMutedLight;
 
     final content = SizedBox(
-      width: 280,
+      width: 364,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        padding: const EdgeInsets.fromLTRB(21, 0, 21, 21),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 21),
               child: Row(
                 children: [
                   _NavButton(
@@ -64,7 +64,7 @@ class _CalendarPopover extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
                 children: const [
                   _WeekdayLabel('Sun'),
@@ -115,7 +115,7 @@ class _CalendarPopover extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? _kPopoverDark : _kPopoverLight,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(31),
         boxShadow: _kPopoverShadow,
       ),
       child: content,
@@ -158,14 +158,14 @@ class _RangeCalendarPopover extends StatelessWidget {
     final muted = isDark ? _kMutedDark : _kMutedLight;
 
     final content = SizedBox(
-      width: 280,
+      width: 364,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        padding: const EdgeInsets.fromLTRB(21, 0, 21, 0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 21),
               child: Row(
                 children: [
                   _NavButton(
@@ -189,7 +189,7 @@ class _RangeCalendarPopover extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
                 children: const [
                   _WeekdayLabel('Sun'),
@@ -243,10 +243,10 @@ class _RangeCalendarPopover extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: isDark ? _kPopoverDark : _kPopoverLight,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(31),
         boxShadow: _kPopoverShadow,
       ),
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 21),
       child: content,
     );
   }

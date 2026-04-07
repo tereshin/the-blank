@@ -35,7 +35,7 @@ const TextStyle _kOtpValueStyle = HeroUiTypography.textOTPFieldBase;
 
 const TextStyle _kOtpValueErrorStyle = HeroUiTypography.heading4;
 
-const double _kOtpCellWidth = 40;
+const double _kOtpCellWidth = 52;
 
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
@@ -79,7 +79,7 @@ BoxDecoration _inputDecoration({
 
   return BoxDecoration(
     color: fill,
-    borderRadius: BorderRadius.circular(12),
+    borderRadius: BorderRadius.circular(16),
     border: hasError
         ? Border.all(color: _kDanger)
         : Border.all(color: Colors.transparent),
@@ -118,9 +118,9 @@ class _AnimatedFieldSurface extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 150),
       curve: Curves.easeInOut,
-      padding: const EdgeInsets.all(2),
+      padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(18),
         boxShadow: isFocused
             ? [
                 BoxShadow(

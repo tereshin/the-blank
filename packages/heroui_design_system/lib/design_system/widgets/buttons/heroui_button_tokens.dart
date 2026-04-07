@@ -17,6 +17,7 @@ class _Size {
     this.iconPadding,
     this.textStyle,
     this.divider,
+    this.iconSize,
   );
   final double height;
   final double radius;
@@ -26,38 +27,48 @@ class _Size {
   final EdgeInsets iconPadding;
   final TextStyle textStyle;
   final double divider;
+  final double iconSize;
 }
 
 _Size _size(HeroUiButtonSize s) => switch (s) {
   HeroUiButtonSize.sm => _Size(
-    32,
-    16,
-    20,
-    5,
-    const EdgeInsets.symmetric(horizontal: 12, vertical: 6).copyWith(bottom: 6),
-    const EdgeInsets.all(8),
+    42,
+    21,
+    22,
+    7,
+    const EdgeInsets.symmetric(horizontal: 16, vertical: 8).copyWith(bottom: 8),
+    const EdgeInsets.all(11),
     HeroUiTypography.buttonSm,
-    16,
+    21,
+    21,
   ),
   HeroUiButtonSize.md => _Size(
-    38,
-    12,
-    22,
-    8,
-    const EdgeInsets.symmetric(horizontal: 16, vertical: 7).copyWith(bottom: 8),
-    const EdgeInsets.all(10),
+    49,
+    16,
+    25,
+    10,
+    const EdgeInsets.symmetric(
+      horizontal: 21,
+      vertical: 9,
+    ).copyWith(bottom: 10),
+    const EdgeInsets.all(13),
     HeroUiTypography.buttonBase,
-    18,
+    23,
+    21,
   ),
   HeroUiButtonSize.lg => _Size(
-    44,
-    12,
-    22,
-    8,
-    const EdgeInsets.symmetric(horizontal: 16, vertical: 7).copyWith(bottom: 8),
-    const EdgeInsets.all(12),
+    57,
+    16,
+    25,
+    10,
+    const EdgeInsets.symmetric(
+      horizontal: 21,
+      vertical: 9,
+    ).copyWith(bottom: 10),
+    const EdgeInsets.all(16),
     HeroUiTypography.buttonBase,
-    20,
+    26,
+    21,
   ),
 };
 

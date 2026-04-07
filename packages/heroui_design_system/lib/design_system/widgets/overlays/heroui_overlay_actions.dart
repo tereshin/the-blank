@@ -45,10 +45,10 @@ class _OutlineButtonState extends State<_OutlineButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
           decoration: BoxDecoration(
             color: _hover ? hoverColor : Colors.transparent,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(31),
             border: Border.all(color: borderColor),
           ),
           child: Text(
@@ -92,10 +92,10 @@ class _FilledButtonState extends State<_FilledButton> {
         onTap: widget.onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 100),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 10),
           decoration: BoxDecoration(
             color: _hover ? bg.withValues(alpha: 0.85) : bg,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(31),
           ),
           child: Text(
             widget.label,

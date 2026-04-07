@@ -59,7 +59,7 @@ class HeroUiToggleButtonGroup<T> extends StatelessWidget {
     this.orientation = HeroUiButtonGroupOrientation.horizontal,
     this.width = HeroUiButtonGroupWidth.hug,
     this.isAttached = true,
-    this.spacing = 4,
+    this.spacing = 5,
   });
   final List<HeroUiToggleOption<T>> options;
   final T? value;

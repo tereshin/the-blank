@@ -65,7 +65,7 @@ HeroUiMenuItem _componentMenuItem(
       component.hasDemo
           ? HeroUiIconManifest.chevronRight
           : HeroUiIconManifest.lock,
-      size: 16,
+      size: 20,
       color: mutedColor,
     ),
     onTap: component.hasDemo

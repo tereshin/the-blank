@@ -125,14 +125,14 @@ Widget buildInputDemo(BuildContext context) => SingleChildScrollView(
       const ComponentDemoSubtitle('With prefix icon'),
       const HeroUiInput(
         placeholder: 'Search...',
-        prefix: HeroUiIcon(HeroUiIconManifest.magnifier, size: 16),
+        prefix: HeroUiIcon(HeroUiIconManifest.magnifier, size: 20),
       ),
       const SizedBox(height: 12),
       const ComponentDemoSubtitle('With suffix icon'),
       const HeroUiInput(
         placeholder: 'Password',
         type: HeroUiInputType.password,
-        suffix: HeroUiIcon(_kInputAffixEyeSlashIcon, size: 16),
+        suffix: HeroUiIcon(_kInputAffixEyeSlashIcon, size: 20),
       ),
       const SizedBox(height: 12),
       const ComponentDemoSubtitle('With error'),
@@ -531,8 +531,8 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
           type: HeroUiInputType.password,
           variant: variant,
           placeholder: placeholder,
-          prefix: HeroUiIcon(_kIconLock, size: 16, color: c),
-          suffix: HeroUiIcon(_kInputAffixEyeSlashIcon, size: 16, color: c),
+          prefix: HeroUiIcon(_kIconLock, size: 20, color: c),
+          suffix: HeroUiIcon(_kInputAffixEyeSlashIcon, size: 20, color: c),
         ),
       ],
     );
@@ -570,7 +570,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                   variant: HeroUiInputVariant.secondary,
                   prefix: HeroUiIcon(
                     _kInputAffixEnvelopeIcon,
-                    size: 16,
+                    size: 20,
                     color: icon,
                   ),
                 ),
@@ -603,7 +603,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                 Center(
                   child: HeroUiLink(
                     label: 'Забыли пароль?',
-                    leading: HeroUiIcon(_kIconKey, size: 16),
+                    leading: HeroUiIcon(_kIconKey, size: 20),
                     onTap: () => showComponentDemoMessage(
                       context,
                       'Восстановление пароля (демо)',
@@ -614,7 +614,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                 Center(
                   child: HeroUiLink(
                     label: 'Создать аккаунт',
-                    leading: HeroUiIcon(HeroUiIconManifest.plus, size: 16),
+                    leading: HeroUiIcon(HeroUiIconManifest.plus, size: 20),
                     onTap: () =>
                         showComponentDemoMessage(context, 'Регистрация'),
                   ),
@@ -643,7 +643,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                   placeholder: 'Алексей Иванов',
                   prefix: HeroUiIcon(
                     HeroUiIconManifest.person,
-                    size: 16,
+                    size: 20,
                     color: icon,
                   ),
                 ),
@@ -655,7 +655,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                   description: 'Рабочая почта предпочтительнее.',
                   prefix: HeroUiIcon(
                     _kInputAffixEnvelopeIcon,
-                    size: 16,
+                    size: 20,
                     color: icon,
                   ),
                 ),
@@ -727,7 +727,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                   variant: HeroUiInputVariant.secondary,
                   prefix: HeroUiIcon(
                     HeroUiIconManifest.envelopeOpenXmark,
-                    size: 16,
+                    size: 20,
                     color: icon,
                   ),
                 ),
@@ -750,7 +750,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                   label: 'Подписаться',
                   variant: HeroUiButtonVariant.secondary,
                   expand: true,
-                  leading: HeroUiIcon(_kInputAffixEnvelopeIcon, size: 16),
+                  leading: HeroUiIcon(_kInputAffixEnvelopeIcon, size: 20),
                   onPressed: () => showComponentDemoMessage(
                     context,
                     'Подписка: дайджест ${_newsletterWeekly ? "да" : "нет"}, продукт ${_newsletterProduct ? "да" : "нет"}',
@@ -836,7 +836,7 @@ class _SimpleFormDemoState extends State<_SimpleFormDemo> {
                         expand: true,
                         leading: HeroUiIcon(
                           HeroUiIconManifest.calendar,
-                          size: 16,
+                          size: 20,
                           color: _kDemoOnPrimaryColor,
                         ),
                         onPressed: _partySize == null

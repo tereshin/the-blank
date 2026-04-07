@@ -72,15 +72,15 @@ class _HeroUiNumberFieldState extends State<HeroUiNumberField> {
       onTap: widget.enabled ? onTap : null,
       behavior: HitTestBehavior.opaque,
       child: SizedBox(
-        width: 40,
-        height: 36,
-        child: Icon(icon, size: 16, color: iconColor),
+        width: 52,
+        height: 47,
+        child: Icon(icon, size: 21, color: iconColor),
       ),
     );
   }
 
   Widget _divider(BuildContext context) =>
-      Container(width: 1, height: 36, color: _inputAffixDividerColor(context));
+      Container(width: 1, height: 47, color: _inputAffixDividerColor(context));
 
   @override
   Widget build(BuildContext context) {
@@ -112,8 +112,8 @@ class _HeroUiNumberFieldState extends State<HeroUiNumberField> {
               decoration: InputDecoration(
                 isDense: true,
                 contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 8,
+                  horizontal: 10,
+                  vertical: 10,
                 ),
                 hintStyle: _kInputTextStyle.copyWith(
                   color: _mutedColor(context),
@@ -145,7 +145,7 @@ class _HeroUiNumberFieldState extends State<HeroUiNumberField> {
       container,
       if (widget.description?.isNotEmpty == true)
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: HeroUiDescription(widget.description!),
         ),
     ];
@@ -153,7 +153,7 @@ class _HeroUiNumberFieldState extends State<HeroUiNumberField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: _withVerticalSpacing(items, 4),
+      children: _withVerticalSpacing(items, 5),
     );
   }
 }

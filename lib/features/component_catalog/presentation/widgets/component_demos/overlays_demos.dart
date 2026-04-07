@@ -42,7 +42,7 @@ Widget _dropdownTriggerButton(String label, {VoidCallback? onTap}) {
 }
 
 Widget _dropdownItemIcon(String name, {Color? color}) {
-  return HeroUiIcon(name, size: 16, color: color);
+  return HeroUiIcon(name, size: 20, color: color);
 }
 
 Widget _dropdownShortcut(List<String> keys) {
@@ -577,6 +577,100 @@ class _DrawerDemoPage extends StatelessWidget {
               'Open minimal',
               onTap: () =>
                   HeroUiDrawer.show(context: context, body: bodyContent),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          const ComponentDemoTitle('Drawer — with form'),
+          _demoCardSection(
+            child: Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                _demoButton(
+                  'Bottom + form',
+                  onTap: () => HeroUiDrawer.show(
+                    context: context,
+                    position: HeroUiDrawerPosition.bottom,
+                    title: 'Contact',
+                    subtitle: 'Keyboard lifts the panel on small screens',
+                    maxHeight: 0.65,
+                    body: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: const [
+                          HeroUiTextField(
+                            label: 'Name',
+                            placeholder: 'Jane Doe',
+                            variant: HeroUiInputVariant.secondary,
+                          ),
+                          SizedBox(height: 12),
+                          HeroUiTextField(
+                            label: 'Email',
+                            placeholder: 'jane@company.com',
+                            variant: HeroUiInputVariant.secondary,
+                          ),
+                          SizedBox(height: 12),
+                          HeroUiTextArea(
+                            label: 'Message',
+                            placeholder: 'How can we help?',
+                            variant: HeroUiInputVariant.secondary,
+                            minLines: 3,
+                            maxLines: 5,
+                          ),
+                        ],
+                      ),
+                    ),
+                    footerActions: [
+                      Expanded(
+                        child: HeroUiButton(
+                          label: 'Send',
+                          onPressed: () => Navigator.of(context).pop(),
+                          variant: HeroUiButtonVariant.primary,
+                          size: HeroUiButtonSize.lg,
+                          expand: true,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                _demoButton(
+                  'Right + form',
+                  onTap: () => HeroUiDrawer.show(
+                    context: context,
+                    position: HeroUiDrawerPosition.right,
+                    title: 'Edit profile',
+                    subtitle: 'Side drawer with inputs',
+                    body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        HeroUiTextField(
+                          label: 'Display name',
+                          placeholder: 'Your name',
+                          variant: HeroUiInputVariant.secondary,
+                        ),
+                        SizedBox(height: 12),
+                        HeroUiTextArea(
+                          label: 'Bio',
+                          placeholder: 'Short bio',
+                          variant: HeroUiInputVariant.secondary,
+                          minLines: 3,
+                          maxLines: 6,
+                        ),
+                      ],
+                    ),
+                    footerActions: [
+                      _demoButton(
+                        'Save',
+                        onTap: () => Navigator.of(context).pop(),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 20),

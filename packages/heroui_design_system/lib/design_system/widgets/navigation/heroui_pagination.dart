@@ -118,19 +118,19 @@ class HeroUiPagination extends StatelessWidget {
       variant: HeroUiButtonVariant.ghost,
       size: HeroUiButtonSize.sm,
       leading: isPrevious
-          ? const HeroUiIcon(HeroUiIconManifest.chevronLeft, size: 16)
+          ? const HeroUiIcon(HeroUiIconManifest.chevronLeft, size: 21)
           : null,
       trailing: isPrevious
           ? null
-          : const HeroUiIcon(HeroUiIconManifest.chevronRight, size: 16),
+          : const HeroUiIcon(HeroUiIconManifest.chevronRight, size: 21),
       onPressed: enabled ? onPressed : null,
     );
   }
 
   Widget _buildPrimaryNavigation() {
     return Wrap(
-      spacing: 8,
-      runSpacing: 8,
+      spacing: 10,
+      runSpacing: 10,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         _buildArrowButton(
@@ -153,14 +153,14 @@ class HeroUiPagination extends StatelessWidget {
         : const Color(0xFF71717A);
     final pages = _buildVisiblePages();
     return Wrap(
-      spacing: 2,
-      runSpacing: 4,
+      spacing: 3,
+      runSpacing: 5,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         for (final page in pages)
           if (page == null)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
                 '...',
                 style: HeroUiTypography.bodySmMedium.copyWith(color: muted),
@@ -168,7 +168,7 @@ class HeroUiPagination extends StatelessWidget {
             )
           else
             ConstrainedBox(
-              constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+              constraints: const BoxConstraints(minWidth: 42, minHeight: 42),
               child: HeroUiButton(
                 label: '$page',
                 variant: page == _clampedCurrentPage
@@ -217,8 +217,8 @@ class HeroUiPagination extends StatelessWidget {
       maxLines: 1,
       textDirection: Directionality.of(context),
     )..layout();
-    final selectorWidth = (textPainter.width + 64)
-        .clamp(96.0, 132.0)
+    final selectorWidth = (textPainter.width + 83)
+        .clamp(125.0, 172.0)
         .toDouble();
 
     return SizedBox(
@@ -229,15 +229,15 @@ class HeroUiPagination extends StatelessWidget {
         placeholder: '${_rangeStart.toString()}-${_rangeEnd.toString()}',
         onChanged: onPageSizeChanged,
         enabled: onPageSizeChanged != null,
-        maxListHeight: 220,
+        maxListHeight: 286,
       ),
     );
   }
 
   Widget _buildSecondaryNavigation(BuildContext context) {
     return Wrap(
-      spacing: 8,
-      runSpacing: 8,
+      spacing: 10,
+      runSpacing: 10,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         _buildArrowButton(
@@ -269,8 +269,8 @@ class HeroUiPagination extends StatelessWidget {
               )
             : const SizedBox.shrink(),
       HeroUiPaginationVariant.secondary => Wrap(
-        spacing: 12,
-        runSpacing: 8,
+        spacing: 16,
+        runSpacing: 10,
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           if (_showPageSizeSelectorResolved) ...[
@@ -300,8 +300,8 @@ class HeroUiPagination extends StatelessWidget {
       alignment: WrapAlignment.spaceBetween,
       runAlignment: WrapAlignment.spaceBetween,
       crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: 16,
-      runSpacing: 16,
+      spacing: 21,
+      runSpacing: 21,
       children: [left, right],
     );
   }

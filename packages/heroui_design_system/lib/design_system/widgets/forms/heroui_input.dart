@@ -69,10 +69,10 @@ class _HeroUiInputState extends State<HeroUiInput> {
     final Color fg = _textColor(context);
 
     final contentPadding = EdgeInsetsDirectional.fromSTEB(
-      widget.prefix == null ? 12.0 : 0.0,
-      8.0,
-      widget.suffix == null ? 12.0 : 0.0,
-      8.0,
+      widget.prefix == null ? 16.0 : 0.0,
+      10.0,
+      widget.suffix == null ? 16.0 : 0.0,
+      10.0,
     );
 
     final Widget tf = TextField(
@@ -95,22 +95,22 @@ class _HeroUiInputState extends State<HeroUiInput> {
         prefixIcon: widget.prefix == null
             ? null
             : Padding(
-                padding: const EdgeInsetsDirectional.only(start: 12, end: 6),
+                padding: const EdgeInsetsDirectional.only(start: 16, end: 8),
                 child: widget.prefix,
               ),
         prefixIconConstraints: const BoxConstraints(
-          minHeight: 20,
-          minWidth: 20,
+          minHeight: 26,
+          minWidth: 26,
         ),
         suffixIcon: widget.suffix == null
             ? null
             : Padding(
-                padding: const EdgeInsetsDirectional.only(start: 6, end: 12),
+                padding: const EdgeInsetsDirectional.only(start: 8, end: 16),
                 child: widget.suffix,
               ),
         suffixIconConstraints: const BoxConstraints(
-          minHeight: 20,
-          minWidth: 20,
+          minHeight: 26,
+          minWidth: 26,
         ),
         contentPadding: contentPadding,
         filled: false,
@@ -137,9 +137,9 @@ class _HeroUiInputState extends State<HeroUiInput> {
         mainAxisSize: MainAxisSize.min,
         children: [
           inputWidget,
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: hasError
                 ? HeroUiErrorMessage(widget.errorText!)
                 : HeroUiDescription(widget.description!),

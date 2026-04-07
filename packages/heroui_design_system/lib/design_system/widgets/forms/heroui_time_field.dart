@@ -247,7 +247,7 @@ class _TimePickerBottomSheetState extends State<_TimePickerBottomSheet> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HeroUiLabel(label),
-        const SizedBox(height: 4),
+        const SizedBox(height: 5),
         HeroUiInput(
           controller: controller,
           placeholder: placeholder,
@@ -265,7 +265,7 @@ class _TimePickerBottomSheetState extends State<_TimePickerBottomSheet> {
     final periodValue = widget.show12hr ? _period : null;
 
     return SizedBox(
-      width: 360,
+      width: 468,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -281,7 +281,7 @@ class _TimePickerBottomSheetState extends State<_TimePickerBottomSheet> {
                   placeholder: widget.show12hr ? '12' : '23',
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 10),
               Expanded(
                 child: _numericInput(
                   label: 'Minute',
@@ -291,7 +291,7 @@ class _TimePickerBottomSheetState extends State<_TimePickerBottomSheet> {
                 ),
               ),
               if (widget.showSeconds) ...[
-                const SizedBox(width: 8),
+                const SizedBox(width: 10),
                 Expanded(
                   child: _numericInput(
                     label: 'Second',
@@ -304,7 +304,7 @@ class _TimePickerBottomSheetState extends State<_TimePickerBottomSheet> {
             ],
           ),
           if (widget.show12hr) ...[
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             HeroUiToggleButtonGroup<DayPeriod>(
               value: periodValue,
               options: const [
@@ -317,7 +317,7 @@ class _TimePickerBottomSheetState extends State<_TimePickerBottomSheet> {
               onChanged: (value) => setState(() => _period = value),
             ),
           ],
-          const SizedBox(height: 16),
+          const SizedBox(height: 21),
           HeroUiButton(
             label: 'Apply',
             variant: HeroUiButtonVariant.primary,

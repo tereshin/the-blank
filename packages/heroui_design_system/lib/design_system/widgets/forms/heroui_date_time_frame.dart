@@ -35,7 +35,7 @@ class _DateTimeFieldFrame extends StatelessWidget {
 
     final fieldDecoration = BoxDecoration(
       color: heroUiInputFillColor(context, variant),
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(16),
       border: hasError
           ? Border.all(color: _kDanger)
           : Border.all(color: Colors.transparent),
@@ -51,9 +51,9 @@ class _DateTimeFieldFrame extends StatelessWidget {
     final field = AnimatedContainer(
       duration: const Duration(milliseconds: 150),
       curve: Curves.easeInOut,
-      padding: const EdgeInsets.all(2),
+      padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(18),
         boxShadow: isFocused
             ? [
                 BoxShadow(
@@ -72,13 +72,13 @@ class _DateTimeFieldFrame extends StatelessWidget {
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 150),
             curve: Curves.easeInOut,
-            constraints: const BoxConstraints(minHeight: 36),
+            constraints: const BoxConstraints(minHeight: 47),
             decoration: fieldDecoration,
             child: Row(
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 12),
+                    padding: const EdgeInsetsDirectional.only(start: 16),
                     child: Text(
                       valueText ?? placeholder,
                       maxLines: 1,
@@ -102,7 +102,7 @@ class _DateTimeFieldFrame extends StatelessWidget {
       field,
       if (hasError || hasDescription)
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: hasError
               ? HeroUiErrorMessage(errorText!)
               : HeroUiDescription(description!),
@@ -114,7 +114,7 @@ class _DateTimeFieldFrame extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         for (var i = 0; i < children.length; i++) ...[
-          if (i > 0) const SizedBox(height: 4),
+          if (i > 0) const SizedBox(height: 5),
           children[i],
         ],
       ],
@@ -135,10 +135,10 @@ class _FieldSuffix extends StatelessWidget {
   Widget build(BuildContext context) {
     final muted = _isDark(context) ? _kMutedDark : _kMutedLight;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: [HeroUiIcon(iconName, size: 16, color: muted)],
+        children: [HeroUiIcon(iconName, size: 21, color: muted)],
       ),
     );
   }

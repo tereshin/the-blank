@@ -169,9 +169,7 @@ List<Widget> _buttonIconVariants() => [
     label: 'Cancel',
     onPressed: () {},
     variant: HeroUiButtonVariant.dangerSoft,
-    leading: const _ButtonGroupIcon(
-      HeroUiIconManifest.envelopeOpenXmark,
-    ),
+    leading: const _ButtonGroupIcon(HeroUiIconManifest.envelopeOpenXmark),
   ),
   HeroUiButton(
     label: 'Icon only',
@@ -352,9 +350,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           label: 'Menu',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'chevron-down',
-          ),
+          leading: const _ButtonGroupIcon('chevron-down'),
         ),
       ],
     ),
@@ -371,9 +367,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           label: 'Menu',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'chevron-down',
-          ),
+          leading: const _ButtonGroupIcon('chevron-down'),
         ),
       ],
     ),
@@ -423,9 +417,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           label: 'Menu',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'chevron-down',
-          ),
+          leading: const _ButtonGroupIcon('chevron-down'),
         ),
       ],
     ),
@@ -436,9 +428,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           label: 'Previous',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'chevron-left',
-          ),
+          leading: const _ButtonGroupIcon('chevron-left'),
         ),
         HeroUiButtonGroupItem(label: 'Previous', onPressed: () {}),
       ],
@@ -451,9 +441,7 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           label: 'Next',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'chevron-right',
-          ),
+          leading: const _ButtonGroupIcon('chevron-right'),
         ),
       ],
     ),
@@ -494,33 +482,25 @@ class _ButtonGroupExamplesSurface extends StatelessWidget {
           label: 'Align left',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'text-align-left',
-          ),
+          leading: const _ButtonGroupIcon('text-align-left'),
         ),
         HeroUiButtonGroupItem(
           label: 'Align center',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'text-align-center',
-          ),
+          leading: const _ButtonGroupIcon('text-align-center'),
         ),
         HeroUiButtonGroupItem(
           label: 'Align right',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'text-align-right',
-          ),
+          leading: const _ButtonGroupIcon('text-align-right'),
         ),
         HeroUiButtonGroupItem(
           label: 'Align justify',
           onPressed: () {},
           iconOnly: true,
-          leading: const _ButtonGroupIcon(
-            'text-align-justify',
-          ),
+          leading: const _ButtonGroupIcon('text-align-justify'),
         ),
       ],
     ),
@@ -547,7 +527,7 @@ class _ButtonGroupIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HeroUiIcon(name, size: 16);
+    return HeroUiIcon(name, size: 22);
   }
 }
 

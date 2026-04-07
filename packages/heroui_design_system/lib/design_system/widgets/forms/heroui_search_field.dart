@@ -55,9 +55,9 @@ class _HeroUiSearchFieldState extends State<HeroUiSearchField> {
         ? GestureDetector(
             onTap: _clear,
             child: const SizedBox(
-              width: 20,
-              height: 20,
-              child: Icon(Icons.close_rounded, size: 14, color: _kMuted),
+              width: 26,
+              height: 26,
+              child: Icon(Icons.close_rounded, size: 18, color: _kMuted),
             ),
           )
         : null;
@@ -69,7 +69,7 @@ class _HeroUiSearchFieldState extends State<HeroUiSearchField> {
       variant: widget.variant,
       enabled: widget.enabled,
       description: widget.description,
-      prefix: const Icon(Icons.search_rounded, size: 16, color: _kMuted),
+      prefix: const Icon(Icons.search_rounded, size: 21, color: _kMuted),
       suffix: clearBtn,
       onChanged: (v) {
         widget.onChanged?.call(v);
@@ -84,7 +84,7 @@ class _HeroUiSearchFieldState extends State<HeroUiSearchField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: _withVerticalSpacing(items, 4),
+      children: _withVerticalSpacing(items, 5),
     );
   }
 }

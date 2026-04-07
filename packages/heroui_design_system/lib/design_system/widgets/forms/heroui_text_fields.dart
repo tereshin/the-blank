@@ -47,7 +47,7 @@ class HeroUiTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: _withVerticalSpacing(items, 4),
+      children: _withVerticalSpacing(items, 5),
     );
   }
 }
@@ -100,7 +100,7 @@ class HeroUiTextArea extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: _withVerticalSpacing(items, 4),
+      children: _withVerticalSpacing(items, 5),
     );
   }
 }

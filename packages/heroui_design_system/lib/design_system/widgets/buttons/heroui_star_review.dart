@@ -78,7 +78,7 @@ class _HeroUiStarReviewState extends State<HeroUiStarReview> {
           iconOnly: true,
           icon: HeroUiIcon(
             rating <= selected ? _kStarFillIcon : _kStarRegularIcon,
-            size: 16,
+            size: 21,
             color: rating <= selected ? _kStarFillColor : muted,
           ),
         ),

@@ -8,15 +8,15 @@ const Color _kForeground = Color(0xFF18181B);
 const Color _kMuted = Color(0xFF71717A);
 const Color _kDivider = Color(0xFFE4E4E7);
 const List<BoxShadow> _kOverlayShadow = [
-  BoxShadow(color: Color(0x14000000), blurRadius: 28, offset: Offset(0, 14)),
-  BoxShadow(color: Color(0x08000000), blurRadius: 12, offset: Offset(0, -6)),
-  BoxShadow(color: Color(0x0F000000), blurRadius: 8, offset: Offset(0, 2)),
+  BoxShadow(color: Color(0x14000000), blurRadius: 36, offset: Offset(0, 18)),
+  BoxShadow(color: Color(0x08000000), blurRadius: 16, offset: Offset(0, -8)),
+  BoxShadow(color: Color(0x0F000000), blurRadius: 10, offset: Offset(0, 3)),
 ];
 
 // ─── ColorSwatch ─────────────────────────────────────────────────────────────
 // Figma ColorSwatch: circle or square colored dot
-//   sizes: xs=16, sm=24, md=32, lg=36, xl=40
-//   variants: circle (border-radius 9999), square (border-radius 6)
+//   sizes: xs=21, sm=31, md=42, lg=47, xl=52
+//   variants: circle (border-radius 9999), square (border-radius 8)
 //   white container + inner shadow inset 0 0 1px rgba(0,0,0,0.3)
 enum HeroUiColorSwatchVariant { circle, square }
 
@@ -39,18 +39,18 @@ class HeroUiColorSwatch extends StatelessWidget {
   final VoidCallback? onTap;
 
   double get _dimension => switch (size) {
-    HeroUiColorSwatchSize.xs => 16,
-    HeroUiColorSwatchSize.sm => 24,
-    HeroUiColorSwatchSize.md => 32,
-    HeroUiColorSwatchSize.lg => 36,
-    HeroUiColorSwatchSize.xl => 40,
+    HeroUiColorSwatchSize.xs => 21,
+    HeroUiColorSwatchSize.sm => 31,
+    HeroUiColorSwatchSize.md => 42,
+    HeroUiColorSwatchSize.lg => 47,
+    HeroUiColorSwatchSize.xl => 52,
   };
 
   @override
   Widget build(BuildContext context) {
     final d = _dimension;
     final isCircle = variant == HeroUiColorSwatchVariant.circle;
-    final radius = isCircle ? d / 2 : 6.0;
+    final radius = isCircle ? d / 2 : 8.0;
 
     Widget swatch = Container(
       width: d,
@@ -71,10 +71,10 @@ class HeroUiColorSwatch extends StatelessWidget {
 
     if (selected) {
       swatch = Container(
-        width: d + 4,
-        height: d + 4,
+        width: d + 5,
+        height: d + 5,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius + 2),
+          borderRadius: BorderRadius.circular(radius + 3),
           border: Border.all(color: color, width: 2),
         ),
         child: Center(child: swatch),
@@ -99,7 +99,7 @@ class HeroUiColorSwatchPicker extends StatefulWidget {
     this.swatchVariant = HeroUiColorSwatchVariant.circle,
     this.swatchSize = HeroUiColorSwatchSize.md,
     this.columns = 6,
-    this.gap = 8.0,
+    this.gap = 10.0,
     this.label,
   });
 
@@ -154,7 +154,7 @@ class _HeroUiColorSwatchPickerState extends State<HeroUiColorSwatchPicker> {
             widget.label!,
             style: HeroUiTypography.bodyXsMedium.copyWith(color: _kForeground),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           grid,
         ],
       );
@@ -251,16 +251,16 @@ class _HeroUiColorSliderState extends State<HeroUiColorSlider> {
   Widget build(BuildContext context) {
     final isHorizontal =
         widget.orientation == HeroUiColorSliderOrientation.horizontal;
-    final trackWidth = isHorizontal ? double.infinity : 20.0;
-    final trackHeight = isHorizontal ? 20.0 : double.infinity;
+    final trackWidth = isHorizontal ? double.infinity : 26.0;
+    final trackHeight = isHorizontal ? 26.0 : double.infinity;
     final trackConstraints = isHorizontal
-        ? const BoxConstraints(minWidth: 80, minHeight: 20, maxHeight: 20)
-        : const BoxConstraints(minHeight: 80, minWidth: 20, maxWidth: 20);
+        ? const BoxConstraints(minWidth: 104, minHeight: 26, maxHeight: 26)
+        : const BoxConstraints(minHeight: 104, minWidth: 26, maxWidth: 26);
 
     final track = LayoutBuilder(
       builder: (context, constraints) {
-        final trackW = isHorizontal ? constraints.maxWidth : 20.0;
-        final trackH = isHorizontal ? 20.0 : constraints.maxHeight;
+        final trackW = isHorizontal ? constraints.maxWidth : 26.0;
+        final trackH = isHorizontal ? 26.0 : constraints.maxHeight;
 
         return GestureDetector(
           onTapDown: widget.enabled
@@ -292,11 +292,11 @@ class _HeroUiColorSliderState extends State<HeroUiColorSlider> {
                 ),
                 // Thumb
                 Positioned(
-                  left: isHorizontal ? trackW * _value - 8 : 2,
-                  top: isHorizontal ? 2 : trackH * _value - 8,
+                  left: isHorizontal ? trackW * _value - 10 : 3,
+                  top: isHorizontal ? 3 : trackH * _value - 10,
                   child: Container(
-                    width: 16,
-                    height: 16,
+                    width: 21,
+                    height: 21,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
@@ -336,7 +336,7 @@ class _HeroUiColorSliderState extends State<HeroUiColorSlider> {
                   ),
               ],
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 5),
           ],
           ConstrainedBox(
             constraints: trackConstraints,
@@ -372,7 +372,7 @@ class HeroUiColorArea extends StatefulWidget {
     this.saturation = 1.0, // 0..1
     this.lightness = 0.5, // 0..1
     this.onChanged,
-    this.size = 200.0,
+    this.size = 260.0,
     this.enabled = true,
   });
 
@@ -429,7 +429,7 @@ class _HeroUiColorAreaState extends State<HeroUiColorArea> {
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: hueColor,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),
@@ -440,7 +440,7 @@ class _HeroUiColorAreaState extends State<HeroUiColorArea> {
                     gradient: const LinearGradient(
                       colors: [Colors.white, Colors.transparent],
                     ),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),
@@ -453,17 +453,17 @@ class _HeroUiColorAreaState extends State<HeroUiColorArea> {
                       end: Alignment.bottomCenter,
                       colors: [Colors.transparent, Colors.black],
                     ),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),
               // Thumb
               Positioned(
-                left: _sat * widget.size - 8,
-                top: (1 - _lig) * widget.size - 8,
+                left: _sat * widget.size - 10,
+                top: (1 - _lig) * widget.size - 10,
                 child: Container(
-                  width: 16,
-                  height: 16,
+                  width: 21,
+                  height: 21,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(color: Colors.white, width: 2),
@@ -562,12 +562,12 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
             widget.label!,
             style: HeroUiTypography.bodyXsMedium.copyWith(color: _kForeground),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
         ],
         DecoratedBox(
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             border: hasError
                 ? Border.all(color: const Color(0xFFFF383C))
                 : null,
@@ -582,18 +582,18 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
           ),
           child: Row(
             children: [
-              const SizedBox(width: 12),
+              const SizedBox(width: 16),
               if (_currentColor != null) ...[
                 Container(
-                  width: 20,
-                  height: 20,
+                  width: 26,
+                  height: 26,
                   decoration: BoxDecoration(
                     color: _currentColor,
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(5),
                     border: Border.all(color: _kDivider),
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 10),
               ],
               Expanded(
                 child: TextField(
@@ -613,21 +613,21 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
                       color: const Color(0xFF71717A),
                     ),
                     isDense: true,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 10),
                     border: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 16),
             ],
           ),
         ),
         if (errorMsg != null) ...[
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Text(
               errorMsg,
               style: HeroUiTypography.bodyXs.copyWith(
@@ -637,9 +637,9 @@ class _HeroUiColorFieldState extends State<HeroUiColorField> {
           ),
         ],
         if (widget.description != null && errorMsg == null) ...[
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Text(
               widget.description!,
               style: HeroUiTypography.bodyXs.copyWith(
@@ -661,7 +661,7 @@ class HeroUiColorPicker extends StatefulWidget {
     super.key,
     this.initialColor = Colors.blue,
     this.onColorChanged,
-    this.size = 200.0,
+    this.size = 260.0,
     this.showAlpha = true,
     this.showHexField = true,
   });
@@ -735,19 +735,19 @@ class _HeroUiColorPickerState extends State<HeroUiColorPicker> {
             _notify();
           },
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         Row(
           children: [
             Container(
-              width: 32,
-              height: 32,
+              width: 42,
+              height: 42,
               decoration: BoxDecoration(
                 color: _currentColor,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: _kDivider),
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 children: [
@@ -761,7 +761,7 @@ class _HeroUiColorPickerState extends State<HeroUiColorPicker> {
                     },
                   ),
                   if (widget.showAlpha) ...[
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 10),
                     HeroUiColorSlider(
                       label: 'Alpha',
                       value: _alpha,
@@ -779,7 +779,7 @@ class _HeroUiColorPickerState extends State<HeroUiColorPicker> {
           ],
         ),
         if (widget.showHexField) ...[
-          const SizedBox(height: 12),
+          const SizedBox(height: 16),
           HeroUiColorField(
             initialColor: _currentColor,
             onColorChanged: (c) {

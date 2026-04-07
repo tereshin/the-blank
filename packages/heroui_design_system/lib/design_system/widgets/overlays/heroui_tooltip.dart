@@ -223,8 +223,8 @@ class _TooltipOverlay extends StatelessWidget {
   final Rect triggerRect;
   final Animation<double> fade;
 
-  static const _gap = 8.0;
-  static const _padding = EdgeInsets.symmetric(horizontal: 12, vertical: 8);
+  static const _gap = 10.0;
+  static const _padding = EdgeInsets.symmetric(horizontal: 16, vertical: 10);
 
   @override
   Widget build(BuildContext context) {
@@ -233,24 +233,24 @@ class _TooltipOverlay extends StatelessWidget {
     final textColor = inverse
         ? const Color(0xFFFCFCFC)
         : const Color(0xFF18181B);
-    const viewportPadding = 8.0;
+    const viewportPadding = 10.0;
     final safeRect = Rect.fromLTRB(
       mediaQuery.padding.left + viewportPadding,
       mediaQuery.padding.top + viewportPadding,
       mediaQuery.size.width - mediaQuery.padding.right - viewportPadding,
       mediaQuery.size.height - mediaQuery.padding.bottom - viewportPadding,
     );
-    final maxBubbleWidth = math.max(120.0, math.min(280.0, safeRect.width));
+    final maxBubbleWidth = math.max(156.0, math.min(364.0, safeRect.width));
 
     final content = Container(
       padding: _padding,
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(13),
         boxShadow: const [
           BoxShadow(
             color: Color.fromRGBO(0, 0, 0, 0.2),
-            blurRadius: 8,
+            blurRadius: 10,
             offset: Offset(0, 1),
           ),
         ],
@@ -304,7 +304,7 @@ class _TooltipPositioner extends StatelessWidget {
   final Widget child;
   final Color arrowColor;
 
-  static const _arrowH = 6.0;
+  static const _arrowH = 8.0;
   static const _arrowAlignStart = -0.72;
   static const _arrowAlignCenter = 0.0;
   static const _arrowAlignEnd = 0.72;
@@ -537,7 +537,7 @@ class _ArrowUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CustomPaint(
-    size: const Size(12, 6),
+    size: const Size(16, 8),
     painter: _TrianglePainter(color: color, direction: _TriDir.up),
   );
 }
@@ -548,7 +548,7 @@ class _ArrowDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CustomPaint(
-    size: const Size(12, 6),
+    size: const Size(16, 8),
     painter: _TrianglePainter(color: color, direction: _TriDir.down),
   );
 }
@@ -559,7 +559,7 @@ class _ArrowLeft extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CustomPaint(
-    size: const Size(6, 12),
+    size: const Size(8, 16),
     painter: _TrianglePainter(color: color, direction: _TriDir.left),
   );
 }
@@ -570,7 +570,7 @@ class _ArrowRight extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CustomPaint(
-    size: const Size(6, 12),
+    size: const Size(8, 16),
     painter: _TrianglePainter(color: color, direction: _TriDir.right),
   );
 }

@@ -196,12 +196,12 @@ class _TabsDemoState extends State<_TabsDemo> {
   List<HeroUiTabItem> get _iconTabs => const [
     HeroUiTabItem(
       label: 'Chats',
-      leading: HeroUiIcon('comment', size: 16),
+      leading: HeroUiIcon('comment', size: 20),
       child: Text('Chats content'),
     ),
     HeroUiTabItem(
       label: 'Emails',
-      leading: HeroUiIcon(HeroUiIconManifest.envelope, size: 16),
+      leading: HeroUiIcon(HeroUiIconManifest.envelope, size: 20),
       child: Text('Emails content'),
     ),
   ];

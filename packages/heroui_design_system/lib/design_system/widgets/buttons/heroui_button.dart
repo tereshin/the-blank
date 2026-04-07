@@ -55,7 +55,7 @@ class _HeroUiButtonState extends State<HeroUiButton> {
     final t = _tokens(widget.variant, current, isDark: isDark);
     final radius =
         widget.borderRadiusOverride ?? BorderRadius.circular(s.radius);
-    final iconTheme = IconThemeData(size: 16, color: t.fg);
+    final iconTheme = IconThemeData(size: s.iconSize, color: t.fg);
 
     final content = widget.iconOnly
         ? IconTheme.merge(

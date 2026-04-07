@@ -50,10 +50,10 @@ class _HeroUiSpinnerState extends State<HeroUiSpinner>
   @override
   Widget build(BuildContext context) {
     final (diameter, strokeW) = switch (widget.size) {
-      HeroUiSpinnerSize.sm => (16.0, 2.0),
-      HeroUiSpinnerSize.md => (24.0, 3.0),
-      HeroUiSpinnerSize.lg => (32.0, 4.0),
-      HeroUiSpinnerSize.xl => (40.0, 5.0),
+      HeroUiSpinnerSize.sm => (21.0, 3.0),
+      HeroUiSpinnerSize.md => (31.0, 4.0),
+      HeroUiSpinnerSize.lg => (42.0, 5.0),
+      HeroUiSpinnerSize.xl => (52.0, 7.0),
     };
 
     final activeColor = _typeColor(widget.type);
@@ -145,7 +145,7 @@ enum HeroUiProgressBarSize { sm, md, lg }
 
 /// A horizontal progress bar with an optional label and value text.
 ///
-/// Track heights: sm = 4 px, md = 8 px, lg = 12 px.
+/// Track heights: sm = 5 px, md = 10 px, lg = 16 px.
 class HeroUiProgressBar extends StatelessWidget {
   const HeroUiProgressBar({
     super.key,
@@ -174,9 +174,9 @@ class HeroUiProgressBar extends StatelessWidget {
         ? const Color(0xFFFCFCFC)
         : const Color(0xFF18181B);
     final trackH = switch (size) {
-      HeroUiProgressBarSize.sm => 4.0,
-      HeroUiProgressBarSize.md => 8.0,
-      HeroUiProgressBarSize.lg => 12.0,
+      HeroUiProgressBarSize.sm => 5.0,
+      HeroUiProgressBarSize.md => 10.0,
+      HeroUiProgressBarSize.lg => 16.0,
     };
     final fraction = value.clamp(0.0, 1.0);
     final fillColor = _typeColor(type);
@@ -208,7 +208,7 @@ class HeroUiProgressBar extends StatelessWidget {
                 ),
             ],
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
         ],
         isIndeterminate
             ? _IndeterminateBar(
@@ -223,7 +223,7 @@ class HeroUiProgressBar extends StatelessWidget {
                       height: trackH,
                       decoration: BoxDecoration(
                         color: trackColor,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                     AnimatedContainer(
@@ -232,7 +232,7 @@ class HeroUiProgressBar extends StatelessWidget {
                       width: c.maxWidth * fraction,
                       decoration: BoxDecoration(
                         color: fillColor,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                   ],
@@ -287,7 +287,7 @@ class _IndeterminateBarState extends State<_IndeterminateBar>
           final barW = c.maxWidth * 0.4;
           final pos = (c.maxWidth + barW) * t - barW;
           return ClipRRect(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             child: Stack(
               children: [
                 Container(height: widget.height, color: widget.trackColor),
@@ -298,7 +298,7 @@ class _IndeterminateBarState extends State<_IndeterminateBar>
                     height: widget.height,
                     decoration: BoxDecoration(
                       color: widget.color,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                 ),
@@ -319,9 +319,9 @@ enum HeroUiProgressCircleSize { sm, md, lg }
 
 /// A circular progress indicator with optional label.
 ///
-/// - sm: 20 × 20, 2 px stroke
-/// - md: 28 × 28, 3 px stroke
-/// - lg: 36 × 36, 4 px stroke
+/// - sm: 26 × 26, 3 px stroke
+/// - md: 36 × 36, 4 px stroke
+/// - lg: 47 × 47, 5 px stroke
 class HeroUiProgressCircle extends StatelessWidget {
   const HeroUiProgressCircle({
     super.key,
@@ -345,9 +345,9 @@ class HeroUiProgressCircle extends StatelessWidget {
         : const Color(0xFF18181B);
 
     final (diameter, strokeW) = switch (size) {
-      HeroUiProgressCircleSize.sm => (20.0, 2.0),
-      HeroUiProgressCircleSize.md => (28.0, 3.0),
-      HeroUiProgressCircleSize.lg => (36.0, 4.0),
+      HeroUiProgressCircleSize.sm => (26.0, 3.0),
+      HeroUiProgressCircleSize.md => (36.0, 4.0),
+      HeroUiProgressCircleSize.lg => (47.0, 5.0),
     };
 
     final fraction = value.clamp(0.0, 1.0);
@@ -375,7 +375,7 @@ class HeroUiProgressCircle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         circle,
-        const SizedBox(width: 12),
+        const SizedBox(width: 16),
         Text(
           label!,
           style: HeroUiTypography.bodySmMedium.copyWith(color: labelColor),
@@ -488,16 +488,16 @@ class HeroUiAlert extends StatelessWidget {
         : const Color(0xFFF4F4F5);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(31),
         border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
             color: const Color.fromRGBO(0, 0, 0, 0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -506,14 +506,14 @@ class HeroUiAlert extends StatelessWidget {
         children: [
           // Icon
           Padding(
-            padding: const EdgeInsets.only(top: 14),
-            child: Icon(_icon(), size: 20, color: typeColor),
+            padding: const EdgeInsets.only(top: 18),
+            child: Icon(_icon(), size: 26, color: typeColor),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 10),
           // Content
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -525,7 +525,7 @@ class HeroUiAlert extends StatelessWidget {
                     ),
                   ),
                   if (description != null) ...[
-                    const SizedBox(height: 2),
+                    const SizedBox(height: 3),
                     Text(
                       description!,
                       style: HeroUiTypography.bodySm.copyWith(color: descColor),
@@ -537,9 +537,9 @@ class HeroUiAlert extends StatelessWidget {
           ),
           // Action + close
           if (actionLabel != null || onClose != null) ...[
-            const SizedBox(width: 8),
+            const SizedBox(width: 10),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -548,8 +548,8 @@ class HeroUiAlert extends StatelessWidget {
                       onTap: onAction,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
+                          horizontal: 21,
+                          vertical: 10,
                         ),
                         decoration: BoxDecoration(
                           color: type == HeroUiComponentType.defaultType
@@ -557,7 +557,7 @@ class HeroUiAlert extends StatelessWidget {
                                     ? const Color(0xFF27272A)
                                     : const Color(0xFFEBEBEC))
                               : typeColor,
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(31),
                         ),
                         child: Text(
                           actionLabel!,
@@ -572,12 +572,12 @@ class HeroUiAlert extends StatelessWidget {
                       ),
                     ),
                   if (onClose != null) ...[
-                    if (actionLabel != null) const SizedBox(width: 8),
+                    if (actionLabel != null) const SizedBox(width: 10),
                     GestureDetector(
                       onTap: onClose,
                       child: Icon(
                         Icons.close_rounded,
-                        size: 16,
+                        size: 21,
                         color: descColor,
                       ),
                     ),
@@ -639,20 +639,20 @@ class HeroUiToast extends StatelessWidget {
     return DefaultTextStyle.merge(
       style: _toastTextResetStyle,
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 360),
-        padding: const EdgeInsets.symmetric(horizontal: 12),
+        constraints: const BoxConstraints(maxWidth: 468),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         decoration: BoxDecoration(
           color: bg,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(21),
           boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.08),
-              blurRadius: 16,
-              offset: Offset(0, 4),
+              blurRadius: 21,
+              offset: Offset(0, 5),
             ),
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.04),
-              blurRadius: 4,
+              blurRadius: 5,
               offset: Offset(0, 1),
             ),
           ],
@@ -661,7 +661,7 @@ class HeroUiToast extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 12),
+              padding: const EdgeInsets.only(top: 16),
               child: Icon(
                 switch (type) {
                   HeroUiComponentType.success =>
@@ -670,16 +670,16 @@ class HeroUiToast extends StatelessWidget {
                   HeroUiComponentType.danger => Icons.error_outline_rounded,
                   _ => Icons.info_outline_rounded,
                 },
-                size: 18,
+                size: 23,
                 color: type == HeroUiComponentType.defaultType
                     ? descColor
                     : typeColor,
               ),
             ),
-            const SizedBox(width: 8),
+            const SizedBox(width: 10),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
@@ -692,7 +692,7 @@ class HeroUiToast extends StatelessWidget {
                       ),
                     ),
                     if (description != null) ...[
-                      const SizedBox(height: 2),
+                      const SizedBox(height: 3),
                       Text(
                         description!,
                         style: HeroUiTypography.bodyXs.copyWith(
@@ -702,7 +702,7 @@ class HeroUiToast extends StatelessWidget {
                       ),
                     ],
                     if (actionLabel != null) ...[
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 10),
                       GestureDetector(
                         onTap: onAction,
                         child: Text(
@@ -721,12 +721,12 @@ class HeroUiToast extends StatelessWidget {
               ),
             ),
             if (onClose != null) ...[
-              const SizedBox(width: 8),
+              const SizedBox(width: 10),
               Padding(
-                padding: const EdgeInsets.only(top: 12),
+                padding: const EdgeInsets.only(top: 16),
                 child: GestureDetector(
                   onTap: onClose,
-                  child: Icon(Icons.close_rounded, size: 16, color: descColor),
+                  child: Icon(Icons.close_rounded, size: 21, color: descColor),
                 ),
               ),
             ],
@@ -754,7 +754,7 @@ class HeroUiToastService {
 
     _entry = OverlayEntry(
       builder: (_) => Positioned(
-        bottom: 24,
+        bottom: 31,
         left: 0,
         right: 0,
         child: Center(

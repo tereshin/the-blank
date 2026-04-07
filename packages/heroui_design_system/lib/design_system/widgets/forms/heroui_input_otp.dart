@@ -205,11 +205,11 @@ class _HeroUiInputOtpState extends State<HeroUiInputOtp> {
     final cells = <Widget>[];
     for (var i = 0; i < widget.length; i++) {
       if (i > 0) {
-        cells.add(const SizedBox(width: 8));
+        cells.add(const SizedBox(width: 10));
       }
       if (_shouldShowSeparator && i == _effectiveSeparatorIndex) {
         cells.add(_OtpSeparator(color: muted));
-        cells.add(const SizedBox(width: 8));
+        cells.add(const SizedBox(width: 10));
       }
       cells.add(
         SizedBox(
@@ -239,7 +239,7 @@ class _HeroUiInputOtpState extends State<HeroUiInputOtp> {
               HeroUiLabel(widget.label!, requiredField: widget.requiredField),
             if (hasTopDescription)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   widget.description!,
                   style: _kInputTextStyle.copyWith(color: muted),
@@ -253,10 +253,10 @@ class _HeroUiInputOtpState extends State<HeroUiInputOtp> {
       ),
       if (hasHelper || showLink)
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
           child: Wrap(
-            spacing: 5,
-            runSpacing: 4,
+            spacing: 7,
+            runSpacing: 5,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               if (hasHelper)
@@ -288,7 +288,7 @@ class _HeroUiInputOtpState extends State<HeroUiInputOtp> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: _withVerticalSpacing(items, 4),
+      children: _withVerticalSpacing(items, 5),
     );
   }
 }
@@ -344,7 +344,7 @@ class _OtpCell extends StatelessWidget {
             decoration: const InputDecoration(
               counterText: '',
               isDense: true,
-              contentPadding: EdgeInsets.fromLTRB(3, 8, 0, 8),
+              contentPadding: EdgeInsets.fromLTRB(4, 10, 0, 10),
               filled: false,
               border: InputBorder.none,
               enabledBorder: InputBorder.none,
@@ -375,9 +375,9 @@ class _OtpSeparator extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(5),
       ),
-      child: const SizedBox(width: 6, height: 2),
+      child: const SizedBox(width: 8, height: 3),
     );
   }
 }

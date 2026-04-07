@@ -15,7 +15,7 @@ class HeroUiComboBox<T> extends StatefulWidget {
     this.placeholder = 'Type to search…',
     this.enabled = true,
     this.errorText,
-    this.maxListHeight = 240.0,
+    this.maxListHeight = 312.0,
   });
 
   final List<HeroUiPickerItem<T>> items;
@@ -124,7 +124,7 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
         (offset.dy + size.height);
     final availableAbove = offset.dy - media.padding.top;
     final openAbove =
-        availableBelow < estimatedHeight + 8 && availableAbove > availableBelow;
+        availableBelow < estimatedHeight + 10 && availableAbove > availableBelow;
 
     _triggerOffset = offset;
     _triggerSize = size;
@@ -186,7 +186,7 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
                 style: HeroUiTypography.bodySmMedium.copyWith(color: textColor),
               ),
               if (widget.requiredField) ...[
-                const SizedBox(width: 4),
+                const SizedBox(width: 5),
                 Text(
                   '*',
                   style: HeroUiTypography.bodySmMedium.copyWith(
@@ -196,16 +196,16 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
               ],
             ],
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
         ],
         Opacity(
           opacity: widget.enabled ? 1.0 : 0.5,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 150),
             curve: Curves.easeInOut,
-            padding: const EdgeInsets.all(2),
+            padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(18),
               boxShadow: isFocused
                   ? const [
                       BoxShadow(
@@ -220,7 +220,7 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
               key: _triggerKey,
               decoration: BoxDecoration(
                 color: _pickerFieldBg(context),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: hasError ? _kDangerColor : Colors.transparent,
                 ),
@@ -250,8 +250,8 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
                         ),
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
+                          horizontal: 16,
+                          vertical: 10,
                         ),
                         border: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -262,8 +262,8 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
+                      horizontal: 16,
+                      vertical: 10,
                     ),
                     child: AnimatedRotation(
                       turns: _isOpen ? 0.5 : 0,
@@ -271,7 +271,7 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
                       curve: Curves.easeInOut,
                       child: Icon(
                         Icons.keyboard_arrow_down_rounded,
-                        size: 16,
+                        size: 21,
                         color: mutedColor,
                       ),
                     ),
@@ -282,7 +282,7 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
           ),
         ),
         if (helperText?.trim().isNotEmpty == true) ...[
-          const SizedBox(height: 4),
+          const SizedBox(height: 5),
           Text(
             helperText!,
             style: HeroUiTypography.bodyXs.copyWith(
@@ -324,15 +324,15 @@ class _ComboBoxOverlay<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
     final desiredTop = openAbove
-        ? triggerOffset.dy - estimatedHeight - 8
-        : triggerOffset.dy + triggerSize.height + 8;
-    final minTop = media.padding.top + 8;
+        ? triggerOffset.dy - estimatedHeight - 10
+        : triggerOffset.dy + triggerSize.height + 10;
+    final minTop = media.padding.top + 10;
     final maxTop =
         media.size.height -
         media.viewInsets.bottom -
         media.padding.bottom -
         estimatedHeight -
-        8;
+        10;
     final top = maxTop > minTop
         ? desiredTop.clamp(minTop, maxTop).toDouble()
         : desiredTop;
@@ -349,7 +349,7 @@ class _ComboBoxOverlay<T> extends StatelessWidget {
             children: items.isEmpty
                 ? [
                     Padding(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(16),
                       child: Text(
                         'No results',
                         style: HeroUiTypography.bodySm.copyWith(

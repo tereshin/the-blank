@@ -37,7 +37,7 @@ class HeroUiInputAffix extends StatelessWidget {
         if (showArrow)
           HeroUiIcon(
             HeroUiIconManifest.chevronDown,
-            size: 12,
+            size: 20,
             color: toneColor,
           ),
       ],
@@ -45,22 +45,22 @@ class HeroUiInputAffix extends StatelessWidget {
 
     final affixChildren = <Widget>[
       if (showIcon && iconName != null)
-        HeroUiIcon(iconName!, size: 16, color: toneColor),
+        HeroUiIcon(iconName!, size: 21, color: toneColor),
       if (hasGroupContent)
         if (showContainerGroup && child == null)
           Row(
             mainAxisSize: MainAxisSize.min,
-            children: _withHorizontalSpacing(groupChildren, 4),
+            children: _withHorizontalSpacing(groupChildren, 5),
           )
         else
           ...groupChildren,
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: _withHorizontalSpacing(affixChildren, 4),
+        children: _withHorizontalSpacing(affixChildren, 5),
       ),
     );
   }
@@ -124,12 +124,12 @@ class _HeroUiInputGroupState extends State<HeroUiInputGroup> {
   void _onFocusChange() => setState(() => _isFocused = _focusNode.hasFocus);
 
   Widget _divider(BuildContext context) =>
-      Container(width: 1, height: 36, color: _inputAffixDividerColor(context));
+      Container(width: 1, height: 47, color: _inputAffixDividerColor(context));
 
   Widget _affixShell(Widget affix) {
     if (affix is HeroUiInputAffix) return affix;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: affix,
     );
   }
@@ -142,15 +142,15 @@ class _HeroUiInputGroupState extends State<HeroUiInputGroup> {
     final showDividers = widget.gapSpace ?? widget.showDividers;
 
     final double textStart = widget.prefixAffix == null
-        ? 12
+        ? 16
         : showDividers
-        ? 12
-        : 6;
+        ? 16
+        : 8;
     final double textEnd = widget.suffixAffix == null
-        ? 12
+        ? 16
         : showDividers
-        ? 12
-        : 6;
+        ? 16
+        : 8;
 
     final container = _AnimatedFieldSurface(
       variant: widget.variant,
@@ -180,9 +180,9 @@ class _HeroUiInputGroupState extends State<HeroUiInputGroup> {
                 isDense: true,
                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                   textStart,
-                  8,
+                  10,
                   textEnd,
-                  8,
+                  10,
                 ),
                 filled: false,
                 border: InputBorder.none,
@@ -206,7 +206,7 @@ class _HeroUiInputGroupState extends State<HeroUiInputGroup> {
       container,
       if (hasError || hasDescription)
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: hasError
               ? HeroUiErrorMessage(widget.errorText!)
               : HeroUiDescription(widget.description!),
@@ -216,7 +216,7 @@ class _HeroUiInputGroupState extends State<HeroUiInputGroup> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
-      children: _withVerticalSpacing(items, 4),
+      children: _withVerticalSpacing(items, 5),
     );
   }
 }

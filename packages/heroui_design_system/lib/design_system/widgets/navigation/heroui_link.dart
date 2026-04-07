@@ -65,7 +65,7 @@ class _HeroUiLinkState extends State<HeroUiLink> {
       );
     }
     return IconTheme.merge(
-      data: IconThemeData(color: fallbackColor, size: 14),
+      data: IconThemeData(color: fallbackColor, size: 18),
       child: child,
     );
   }
@@ -103,7 +103,7 @@ class _HeroUiLinkState extends State<HeroUiLink> {
     final legacyTrailing = !widget.showIcon ? widget.trailing : null;
     final trailingIcon = widget.showIcon
         ? (widget.icon ??
-              const HeroUiIcon(HeroUiIconManifest.external, size: 14))
+              const HeroUiIcon(HeroUiIconManifest.external, size: 18))
         : legacyTrailing;
     final onTap = current == HeroUiLinkState.disabled ? null : widget.onTap;
 
@@ -114,18 +114,18 @@ class _HeroUiLinkState extends State<HeroUiLink> {
           color: current == HeroUiLinkState.focus
               ? focusFill
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: current == HeroUiLinkState.focus
               ? [
                   const BoxShadow(
                     color: Color(0xFF0485F7),
                     blurRadius: 0,
-                    spreadRadius: 4,
+                    spreadRadius: 5,
                   ),
                   BoxShadow(
                     color: focusRingInset,
                     blurRadius: 0,
-                    spreadRadius: 2,
+                    spreadRadius: 3,
                   ),
                 ]
               : null,
@@ -137,7 +137,7 @@ class _HeroUiLinkState extends State<HeroUiLink> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             focusColor: Colors.transparent,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             onHover: (value) {
               if (!_autoStateEnabled || _hovered == value) return;
               setState(() => _hovered = value);
@@ -152,7 +152,7 @@ class _HeroUiLinkState extends State<HeroUiLink> {
             },
             onTap: onTap,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 2),
+              padding: const EdgeInsets.symmetric(horizontal: 3),
               child: DefaultTextStyle(
                 style: _kLinkSmStyle.copyWith(
                   color: foreground,
@@ -164,16 +164,16 @@ class _HeroUiLinkState extends State<HeroUiLink> {
                   children: [
                     if (legacyLeading != null) ...[
                       Padding(
-                        padding: const EdgeInsets.only(top: 2),
+                        padding: const EdgeInsets.only(top: 3),
                         child: Opacity(
                           opacity: iconOpacity,
                           child: _resolveIconSlot(legacyLeading, foreground),
                         ),
                       ),
-                      const SizedBox(width: 2),
+                      const SizedBox(width: 3),
                     ],
                     SizedBox(
-                      height: 18,
+                      height: 23,
                       child: Center(
                         child: Text(
                           widget.label,
@@ -185,9 +185,9 @@ class _HeroUiLinkState extends State<HeroUiLink> {
                       ),
                     ),
                     if (trailingIcon != null) ...[
-                      const SizedBox(width: 2),
+                      const SizedBox(width: 3),
                       Padding(
-                        padding: const EdgeInsets.only(top: 2),
+                        padding: const EdgeInsets.only(top: 3),
                         child: Opacity(
                           opacity: iconOpacity,
                           child: _resolveIconSlot(trailingIcon, foreground),

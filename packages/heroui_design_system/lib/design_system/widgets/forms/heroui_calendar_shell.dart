@@ -26,7 +26,7 @@ Future<T?> _showAdaptiveCalendarSurface<T>({
     builder: (dialogContext) => Dialog(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      insetPadding: const EdgeInsets.symmetric(horizontal: 31, vertical: 31),
       child: _CalendarDialogShell(
         title: title,
         width: dialogWidth,
@@ -55,10 +55,10 @@ class _CalendarDialogShell extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: dark ? _kPopoverDark : _kPopoverLight,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(31),
           boxShadow: _kPopoverShadow,
         ),
-        padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -88,7 +88,7 @@ class _CalendarBottomSheetShell extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: dark ? _kPopoverDark : _kPopoverLight,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(31)),
           boxShadow: _kPopoverShadow,
         ),
         child: Padding(
@@ -97,19 +97,19 @@ class _CalendarBottomSheetShell extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 4),
+                padding: const EdgeInsets.only(top: 10, bottom: 5),
                 child: Container(
-                  width: 36,
-                  height: 4,
+                  width: 47,
+                  height: 5,
                   decoration: BoxDecoration(
                     color: muted.withValues(alpha: 0.45),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
               _CalendarModalHeader(title: title),
               Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
                 child: Align(alignment: Alignment.center, child: child),
               ),
             ],
@@ -132,10 +132,10 @@ class _CalendarModalHeader extends StatelessWidget {
     final titleStyle = Theme.of(context).textTheme.titleSmall;
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 10),
       child: Row(
         children: [
-          SizedBox(width: 28, height: 28, child: Center()),
+          SizedBox(width: 36, height: 36, child: Center()),
           Expanded(
             child: Text(
               title,
@@ -148,8 +148,8 @@ class _CalendarModalHeader extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 28,
-            height: 28,
+            width: 36,
+            height: 36,
             child: Center(
               child: HeroUiCloseButton(
                 onPressed: () => Navigator.of(context).pop(),

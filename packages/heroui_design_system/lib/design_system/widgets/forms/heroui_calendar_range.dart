@@ -86,7 +86,7 @@ class _RangeDateCalendarPickerState extends State<_RangeDateCalendarPicker> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 280,
+      width: 364,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -104,7 +104,7 @@ class _RangeDateCalendarPickerState extends State<_RangeDateCalendarPicker> {
             onDayTap: _selectRangeDate,
             showFrame: false,
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 16),
           Row(
             children: [
               Expanded(
@@ -114,7 +114,7 @@ class _RangeDateCalendarPickerState extends State<_RangeDateCalendarPicker> {
                   onTap: widget.onCancel,
                 ),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 10),
               Expanded(
                 child: _CalendarActionButton(
                   label: 'Apply',
@@ -167,10 +167,10 @@ class _CalendarActionButton extends StatelessWidget {
         onTap: enabled ? onTap : null,
         behavior: HitTestBehavior.opaque,
         child: Container(
-          height: 36,
+          height: 47,
           decoration: BoxDecoration(
             color: background,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: BorderRadius.circular(31),
             border: isPrimary ? null : Border.all(color: borderColor),
           ),
           alignment: Alignment.center,

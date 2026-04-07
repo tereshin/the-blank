@@ -57,12 +57,12 @@ class HeroUiDropdown extends StatefulWidget {
     super.key,
     required this.trigger,
     required this.sections,
-    this.width = 240.0,
+    this.width = 312.0,
     this.matchTriggerWidth = false,
     this.showGroups = true,
     this.showDividers = true,
-    this.menuMaxHeight = 320.0,
-    this.offset = const Offset(0, 8),
+    this.menuMaxHeight = 416.0,
+    this.offset = const Offset(0, 10),
   });
 
   final Widget trigger;
@@ -225,7 +225,7 @@ class _DropdownMenuOverlay extends StatelessWidget {
     final dangerHoverColor = isDark
         ? const Color(0x26DB3B3E)
         : const Color(0x1AFF383C);
-    const viewportPadding = 8.0;
+    const viewportPadding = 10.0;
     final viewportWidth = mediaQuery.size.width;
     final viewportHeight = mediaQuery.size.height;
     final baseWidth = matchTriggerWidth
@@ -233,7 +233,7 @@ class _DropdownMenuOverlay extends StatelessWidget {
         : width;
     final resolvedWidth = math.min(
       baseWidth,
-      math.max(120.0, viewportWidth - (viewportPadding * 2)),
+      math.max(156.0, viewportWidth - (viewportPadding * 2)),
     );
     final safeTop = mediaQuery.padding.top + viewportPadding;
     final safeBottom =
@@ -242,13 +242,13 @@ class _DropdownMenuOverlay extends StatelessWidget {
     final anchorAbove = triggerRect.top - offset.dy;
     final availableBelow = safeBottom - anchorBelow;
     final availableAbove = anchorAbove - safeTop;
-    final openBelow = availableBelow >= 160 || availableBelow >= availableAbove;
+    final openBelow = availableBelow >= 208 || availableBelow >= availableAbove;
 
     final maxHeightBySide = openBelow ? availableBelow : availableAbove;
-    final maxPossibleHeight = math.max(40.0, safeBottom - safeTop);
+    final maxPossibleHeight = math.max(52.0, safeBottom - safeTop);
     final panelMaxHeight = math.min(
       maxPossibleHeight,
-      math.max(80.0, math.min(menuMaxHeight, math.max(0.0, maxHeightBySide))),
+      math.max(104.0, math.min(menuMaxHeight, math.max(0.0, maxHeightBySide))),
     );
     final desiredTop = openBelow ? anchorBelow : anchorAbove - panelMaxHeight;
     final clampedTop = desiredTop
@@ -288,14 +288,14 @@ class _DropdownMenuOverlay extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           color: bg,
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(31),
                           border: isDark
                               ? Border.all(color: const Color(0xFF28282C))
                               : null,
                           boxShadow: _kOverlayShadow,
                         ),
                         child: ListView(
-                          padding: const EdgeInsets.all(4),
+                          padding: const EdgeInsets.all(5),
                           shrinkWrap: true,
                           primary: false,
                           children: [
@@ -309,8 +309,8 @@ class _DropdownMenuOverlay extends StatelessWidget {
                                   visibleSections[i - 1].showDivider)
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
-                                    horizontal: 12,
-                                    vertical: 2,
+                                    horizontal: 16,
+                                    vertical: 3,
                                   ),
                                   child: Container(
                                     height: 1,
@@ -322,10 +322,10 @@ class _DropdownMenuOverlay extends StatelessWidget {
                                   visibleSections[i].title!.trim().isNotEmpty)
                                 Padding(
                                   padding: const EdgeInsets.fromLTRB(
-                                    12,
-                                    10,
-                                    12,
-                                    4,
+                                    16,
+                                    13,
+                                    16,
+                                    5,
                                   ),
                                   child: Text(
                                     visibleSections[i].title!,
@@ -422,10 +422,10 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
   List<BoxShadow>? _focusRing(bool isDark, HeroUiDropdownItemState state) {
     if (state != HeroUiDropdownItemState.focus) return null;
     return [
-      const BoxShadow(color: Color(0xFF0485F7), spreadRadius: 4, blurRadius: 0),
+      const BoxShadow(color: Color(0xFF0485F7), spreadRadius: 5, blurRadius: 0),
       BoxShadow(
         color: isDark ? const Color(0xFF060607) : const Color(0xFFF5F5F5),
-        spreadRadius: 2,
+        spreadRadius: 3,
         blurRadius: 0,
       ),
     ];
@@ -466,7 +466,7 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
         (visualState == HeroUiDropdownItemState.selected
             ? HeroUiIcon(
                 'check',
-                size: 16,
+                size: 21,
                 color: titleColor,
               )
             : null);
@@ -498,14 +498,14 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
           opacity: isDisabled ? 0.5 : 1.0,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 120),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               color: _stateBackground(
                 state: visualState,
                 isDark: isDark,
                 isDanger: item.isDanger,
               ),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(26),
               boxShadow: _focusRing(isDark, visualState),
             ),
             child: Row(
@@ -516,11 +516,11 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
                 if (leadingWidget != null) ...[
                   Padding(
                     padding: EdgeInsets.only(
-                      top: item.description == null ? 0 : 3,
+                      top: item.description == null ? 0 : 4,
                     ),
                     child: leadingWidget,
                   ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 16),
                 ],
                 Expanded(
                   child: Column(
@@ -534,7 +534,7 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
                         ),
                       ),
                       if (item.description != null) ...[
-                        const SizedBox(height: 2),
+                        const SizedBox(height: 3),
                         Text(
                           item.description!,
                           style: HeroUiTypography.bodyXs.copyWith(
@@ -546,7 +546,7 @@ class _DropdownMenuItemTileState extends State<_DropdownMenuItemTile> {
                   ),
                 ),
                 if (trailingWidget != null) ...[
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 16),
                   trailingWidget,
                 ],
               ],

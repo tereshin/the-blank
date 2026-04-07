@@ -259,7 +259,7 @@ class HeroUiTable extends StatelessWidget {
               dividerColor: tokens.divider,
               child: HeroUiIcon(
                 HeroUiIconManifest.barsUnaligned,
-                size: 16,
+                size: 20,
                 color: tokens.mutedText,
               ),
             ),
@@ -294,8 +294,7 @@ class HeroUiTable extends StatelessWidget {
       HeroUiTableHeaderCellVariant.defaultVariant => null,
       HeroUiTableHeaderCellVariant.sortingHighest =>
         HeroUiIconManifest.arrowDown,
-      HeroUiTableHeaderCellVariant.sortingLowest =>
-        HeroUiIconManifest.arrowUp,
+      HeroUiTableHeaderCellVariant.sortingLowest => HeroUiIconManifest.arrowUp,
     };
 
     return SizedBox(
@@ -589,7 +588,7 @@ class _HeroUiTableDataRowState extends State<_HeroUiTableDataRow> {
               child: showDrag
                   ? HeroUiIcon(
                       HeroUiIconManifest.barsUnaligned,
-                      size: 16,
+                      size: 20,
                       color: _isDisabled
                           ? widget.tokens.disabledText
                           : widget.tokens.mutedText,
@@ -672,7 +671,7 @@ class _HeroUiTableDataRowState extends State<_HeroUiTableDataRow> {
           child: DefaultTextStyle(
             style: HeroUiTypography.bodySm.copyWith(color: textColor),
             child: IconTheme(
-              data: IconThemeData(color: textColor, size: 16),
+              data: IconThemeData(color: textColor, size: 20),
               child: _buildCellContent(cell, textColor),
             ),
           ),

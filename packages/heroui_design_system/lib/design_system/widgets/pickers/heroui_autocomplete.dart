@@ -14,7 +14,7 @@ class HeroUiAutocomplete<T> extends StatefulWidget {
     this.placeholder = 'Type to search…',
     this.enabled = true,
     this.errorText,
-    this.maxListHeight = 240.0,
+    this.maxListHeight = 312.0,
   });
 
   final List<HeroUiPickerItem<T>> items;
@@ -100,7 +100,8 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
         (offset.dy + size.height);
     final availableAbove = offset.dy - media.padding.top;
     final openAbove =
-        availableBelow < estimatedHeight + 8 && availableAbove > availableBelow;
+        availableBelow < estimatedHeight + 10 &&
+        availableAbove > availableBelow;
 
     _triggerOffset = offset;
     _triggerSize = size;
@@ -192,15 +193,15 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
               widget.label!,
               style: HeroUiTypography.bodySmMedium.copyWith(color: labelColor),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 5),
           ],
           Opacity(
             opacity: widget.enabled ? 1.0 : 0.5,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               decoration: BoxDecoration(
                 color: bg,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(16),
                 border: Border.all(
                   color: borderColor,
                   width: _isOpen ? 1.5 : 1.0,
@@ -208,8 +209,8 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
                 boxShadow: widget.enabled ? _kFieldShadow : const [],
               ),
               child: Wrap(
-                spacing: 4,
-                runSpacing: 4,
+                spacing: 5,
+                runSpacing: 5,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   for (final v in _selected)
@@ -239,14 +240,14 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
                         ),
                         isDense: true,
                         contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                          vertical: 4,
+                          horizontal: 5,
+                          vertical: 5,
                         ),
                         border: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
-                        constraints: const BoxConstraints(minWidth: 80),
+                        constraints: const BoxConstraints(minWidth: 104),
                       ),
                     ),
                   ),
@@ -255,7 +256,7 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
             ),
           ),
           if (widget.errorText != null) ...[
-            const SizedBox(height: 4),
+            const SizedBox(height: 5),
             Text(
               widget.errorText!,
               style: HeroUiTypography.bodyXs.copyWith(
@@ -285,10 +286,10 @@ class _AutocompleteTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -298,12 +299,12 @@ class _AutocompleteTag extends StatelessWidget {
             style: HeroUiTypography.bodyXsMedium.copyWith(color: textColor),
           ),
           if (onRemove != null) ...[
-            const SizedBox(width: 4),
+            const SizedBox(width: 5),
             GestureDetector(
               onTap: onRemove,
               child: Icon(
                 Icons.close_rounded,
-                size: 12,
+                size: 20,
                 color: textColor.withValues(alpha: 0.7),
               ),
             ),

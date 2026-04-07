@@ -107,10 +107,10 @@ class _HeroUiCloseButtonState extends State<HeroUiCloseButton> {
                   ? null
                   : widget.onPressed,
               child: Padding(
-                padding: const EdgeInsets.all(4),
+                padding: const EdgeInsets.all(5),
                 child: HeroUiIcon(
                   HeroUiIconManifest.xmark,
-                  size: 16,
+                  size: 21,
                   color: iconColor,
                 ),
               ),

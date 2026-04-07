@@ -29,7 +29,7 @@ class HeroUiButtonGroup extends StatelessWidget {
     this.state = HeroUiButtonVisualState.defaultState,
     this.orientation = HeroUiButtonGroupOrientation.horizontal,
     this.width = HeroUiButtonGroupWidth.hug,
-    this.spacing = 8,
+    this.spacing = 10,
     this.attached = true,
     this.hiddenDividerIndices = const <int>{},
   }) : assert(items != null || children != null);

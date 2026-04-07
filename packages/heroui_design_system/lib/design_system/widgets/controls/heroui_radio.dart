@@ -8,7 +8,7 @@ enum HeroUiRadioGroupOrientation { vertical, horizontal }
 
 // ─── HeroUiRadioControl ───────────────────────────────────────────────────────
 
-/// Raw 16×16 animated radio-button indicator.
+/// Raw ~21×21 animated radio-button indicator (scaled with DS typography).
 ///
 /// Manages hover, press and focus states internally.
 /// Use [HeroUiRadio] for the full component with label and description.
@@ -213,8 +213,8 @@ class HeroUiRadio extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(padding: const EdgeInsets.only(top: 1), child: control),
-        const SizedBox(width: 12),
+        Padding(padding: const EdgeInsets.only(top: 2), child: control),
+        const SizedBox(width: 16),
         Flexible(
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
@@ -563,8 +563,8 @@ class _RadioDot extends StatelessWidget {
   Widget build(BuildContext context) {
     final shadows = tokens.showFocusRing
         ? const <BoxShadow>[
-            BoxShadow(color: Color(0xFF0485F7), blurRadius: 0, spreadRadius: 4),
-            BoxShadow(color: Color(0xFFF5F5F5), blurRadius: 0, spreadRadius: 2),
+            BoxShadow(color: Color(0xFF0485F7), blurRadius: 0, spreadRadius: 5),
+            BoxShadow(color: Color(0xFFF5F5F5), blurRadius: 0, spreadRadius: 3),
           ]
         : const <BoxShadow>[
             BoxShadow(color: Color.fromRGBO(0, 0, 0, 0.06), blurRadius: 1),
@@ -579,8 +579,8 @@ class _RadioDot extends StatelessWidget {
       opacity: tokens.opacity,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 120),
-        width: 16,
-        height: 16,
+        width: 21,
+        height: 21,
         decoration: BoxDecoration(
           color: tokens.trackColor,
           shape: BoxShape.circle,
@@ -594,8 +594,8 @@ class _RadioDot extends StatelessWidget {
             ? Center(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 120),
-                  width: 7 * dotProgress,
-                  height: 7 * dotProgress,
+                  width: 9 * dotProgress,
+                  height: 9 * dotProgress,
                   decoration: BoxDecoration(
                     color: tokens.dotColor,
                     shape: BoxShape.circle,
