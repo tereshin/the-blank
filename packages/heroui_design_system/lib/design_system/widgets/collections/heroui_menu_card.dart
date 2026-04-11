@@ -176,7 +176,7 @@ class _HeroUiMenuRowContent extends StatelessWidget {
               children: [
                 Text(
                   item.title,
-                  style: HeroUiTypography.bodyXsMedium.copyWith(
+                  style: HeroUiTypography.bodyXs.copyWith(
                     height: 1,
                     color: primaryText,
                   ),

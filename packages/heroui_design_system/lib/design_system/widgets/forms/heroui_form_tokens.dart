@@ -37,6 +37,9 @@ const TextStyle _kOtpValueErrorStyle = HeroUiTypography.heading4;
 
 const double _kOtpCellWidth = 52;
 
+/// Outer focus chrome; inner field uses [HeroUiRadius.twoXl].
+const double _kInputFocusOuterRadius = HeroUiRadius.twoXl + 2;
+
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
 
@@ -79,7 +82,7 @@ BoxDecoration _inputDecoration({
 
   return BoxDecoration(
     color: fill,
-    borderRadius: BorderRadius.circular(16),
+    borderRadius: HeroUiRadius.borderCircular(HeroUiRadius.twoXl),
     border: hasError
         ? Border.all(color: _kDanger)
         : Border.all(color: Colors.transparent),
@@ -120,7 +123,7 @@ class _AnimatedFieldSurface extends StatelessWidget {
       curve: Curves.easeInOut,
       padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: HeroUiRadius.borderCircular(_kInputFocusOuterRadius),
         boxShadow: isFocused
             ? [
                 BoxShadow(

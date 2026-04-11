@@ -21,7 +21,6 @@ Widget _demoButton(String label, {VoidCallback? onTap}) {
     label: label,
     onPressed: onTap,
     variant: HeroUiDemoActionTriggerVariant.primary,
-    size: HeroUiButtonSize.lg,
   );
 }
 
@@ -29,7 +28,7 @@ Widget _outlineButton(String label, {VoidCallback? onTap}) {
   return HeroUiDemoActionTrigger(
     label: label,
     onPressed: onTap,
-    variant: HeroUiDemoActionTriggerVariant.outline,
+    variant: HeroUiDemoActionTriggerVariant.tertiary,
   );
 }
 

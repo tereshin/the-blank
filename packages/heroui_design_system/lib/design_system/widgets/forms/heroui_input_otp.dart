@@ -1,5 +1,9 @@
 part of 'heroui_forms.dart';
 
+const double _kOtpCellGap = 10;
+const double _kOtpSeparatorWidth = 8;
+const double _kOtpMinCellWidth = 32;
+
 class HeroUiInputOtp extends StatefulWidget {
   const HeroUiInputOtp({
     super.key,
@@ -202,33 +206,6 @@ class _HeroUiInputOtpState extends State<HeroUiInputOtp> {
     final muted = _mutedColor(context);
     final fg = _textColor(context);
 
-    final cells = <Widget>[];
-    for (var i = 0; i < widget.length; i++) {
-      if (i > 0) {
-        cells.add(const SizedBox(width: 10));
-      }
-      if (_shouldShowSeparator && i == _effectiveSeparatorIndex) {
-        cells.add(_OtpSeparator(color: muted));
-        cells.add(const SizedBox(width: 10));
-      }
-      cells.add(
-        SizedBox(
-          width: _kOtpCellWidth,
-          child: _OtpCell(
-            controller: _controllers[i],
-            focusNode: _focusNodes[i],
-            isFocused: _focused[i],
-            variant: widget.variant,
-            hasError: hasError,
-            enabled: widget.enabled,
-            autofocus: widget.autofocus && i == 0,
-            onChanged: (value) => _handleChanged(i, value),
-            onKeyEvent: (event) => _handleKeyEvent(i, event),
-          ),
-        ),
-      );
-    }
-
     final items = <Widget>[
       if (widget.label != null || hasTopDescription)
         Column(
@@ -247,9 +224,64 @@ class _HeroUiInputOtpState extends State<HeroUiInputOtp> {
               ),
           ],
         ),
-      Align(
-        alignment: Alignment.centerLeft,
-        child: Row(mainAxisSize: MainAxisSize.min, children: cells),
+      LayoutBuilder(
+        builder: (context, constraints) {
+          final gapCount = widget.length > 1 ? widget.length - 1 : 0;
+          final separatorExtraWidth = _shouldShowSeparator
+              ? (_kOtpSeparatorWidth + _kOtpCellGap)
+              : 0.0;
+          final fixedWidth = (gapCount * _kOtpCellGap) + separatorExtraWidth;
+          final maxWidth = constraints.maxWidth;
+          var cellWidth = _kOtpCellWidth;
+          if (maxWidth.isFinite && maxWidth > 0) {
+            final fittedWidth = ((maxWidth - fixedWidth) / widget.length)
+                .floorToDouble();
+            cellWidth = fittedWidth.clamp(_kOtpMinCellWidth, _kOtpCellWidth);
+          }
+
+          final rowWidth = (widget.length * cellWidth) + fixedWidth;
+          final needsScroll = maxWidth.isFinite && rowWidth > maxWidth + 0.5;
+
+          final cells = <Widget>[];
+          for (var i = 0; i < widget.length; i++) {
+            if (i > 0) {
+              cells.add(const SizedBox(width: _kOtpCellGap));
+            }
+            if (_shouldShowSeparator && i == _effectiveSeparatorIndex) {
+              cells.add(_OtpSeparator(color: muted));
+              cells.add(const SizedBox(width: _kOtpCellGap));
+            }
+            cells.add(
+              SizedBox(
+                width: cellWidth,
+                child: _OtpCell(
+                  controller: _controllers[i],
+                  focusNode: _focusNodes[i],
+                  isFocused: _focused[i],
+                  variant: widget.variant,
+                  hasError: hasError,
+                  enabled: widget.enabled,
+                  autofocus: widget.autofocus && i == 0,
+                  onChanged: (value) => _handleChanged(i, value),
+                  onKeyEvent: (event) => _handleKeyEvent(i, event),
+                ),
+              ),
+            );
+          }
+
+          final row = Row(mainAxisSize: MainAxisSize.min, children: cells);
+          if (!needsScroll) {
+            return Align(alignment: Alignment.centerLeft, child: row);
+          }
+          return Align(
+            alignment: Alignment.centerLeft,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              child: row,
+            ),
+          );
+        },
       ),
       if (hasHelper || showLink)
         Padding(
@@ -377,7 +409,7 @@ class _OtpSeparator extends StatelessWidget {
         color: color,
         borderRadius: BorderRadius.circular(5),
       ),
-      child: const SizedBox(width: 8, height: 3),
+      child: const SizedBox(width: _kOtpSeparatorWidth, height: 3),
     );
   }
 }

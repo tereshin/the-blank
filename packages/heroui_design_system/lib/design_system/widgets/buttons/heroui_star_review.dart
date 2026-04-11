@@ -1,7 +1,7 @@
 part of 'heroui_buttons.dart';
 
-const String _kStarRegularIcon = 'star';
-const String _kStarFillIcon = 'star__fill';
+const String _kStarRegularIcon = HeroUiIconManifest.starLine;
+const String _kStarFillIcon = HeroUiIconManifest.starFill;
 const Color _kStarFillColor = Color(0xFFF5A524);
 const Color _kStarMutedLight = Color(0xFF71717A);
 const Color _kStarMutedDark = Color(0xFFA1A1AA);

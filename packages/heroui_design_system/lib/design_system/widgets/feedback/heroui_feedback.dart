@@ -2,7 +2,9 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../../heroui_radius.dart';
 import '../../typography/heroui_typography.dart';
+import '../buttons/heroui_buttons.dart';
 import '../data_display/heroui_data_display.dart';
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -445,6 +447,10 @@ class _ProgressCirclePainter extends CustomPainter {
 /// An inline alert banner with title, optional description, and action button.
 ///
 /// Variants: default, accent, success, warning, danger.
+///
+/// The action uses [HeroUiButton]: pass [onAction] for a real handler. If
+/// [actionLabel] is set but [onAction] is null, the action still looks enabled
+/// (same as a label-only preview); taps are no-ops until you provide a callback.
 class HeroUiAlert extends StatelessWidget {
   const HeroUiAlert({
     super.key,
@@ -471,6 +477,14 @@ class HeroUiAlert extends StatelessWidget {
     HeroUiComponentType.danger => Icons.error_outline_rounded,
   };
 
+  HeroUiButtonVariant _actionButtonVariant() => switch (type) {
+    HeroUiComponentType.defaultType => HeroUiButtonVariant.tertiary,
+    HeroUiComponentType.accent => HeroUiButtonVariant.primary,
+    HeroUiComponentType.success => HeroUiButtonVariant.success,
+    HeroUiComponentType.warning => HeroUiButtonVariant.warning,
+    HeroUiComponentType.danger => HeroUiButtonVariant.danger,
+  };
+
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -487,107 +501,113 @@ class HeroUiAlert extends StatelessWidget {
         ? const Color(0xFF27272A)
         : const Color(0xFFF4F4F5);
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(31),
-        border: Border.all(color: borderColor),
-        boxShadow: [
-          BoxShadow(
-            color: const Color.fromRGBO(0, 0, 0, 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Icon
-          Padding(
-            padding: const EdgeInsets.only(top: 18),
-            child: Icon(_icon(), size: 26, color: typeColor),
-          ),
-          const SizedBox(width: 10),
-          // Content
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    title,
-                    style: HeroUiTypography.bodySmMedium.copyWith(
-                      color: titleColor,
-                    ),
-                  ),
-                  if (description != null) ...[
-                    const SizedBox(height: 3),
-                    Text(
-                      description!,
-                      style: HeroUiTypography.bodySm.copyWith(color: descColor),
-                    ),
-                  ],
-                ],
-              ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final stackActionBelowText = constraints.maxWidth < 520;
+        final hasTrailing = actionLabel != null || onClose != null;
+
+        Widget buildActionButton(String label) {
+          return HeroUiButton(
+            label: label,
+            onPressed: onAction ?? () {},
+            size: HeroUiButtonSize.sm,
+            variant: _actionButtonVariant(),
+            borderRadiusOverride: HeroUiRadius.borderCircular(
+              HeroUiRadius.full,
             ),
+          );
+        }
+
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: HeroUiRadius.borderCircular(HeroUiRadius.fourXl),
+            border: Border.all(color: borderColor),
+            boxShadow: [
+              BoxShadow(
+                color: const Color.fromRGBO(0, 0, 0, 0.05),
+                blurRadius: 10,
+                offset: const Offset(0, 3),
+              ),
+            ],
           ),
-          // Action + close
-          if (actionLabel != null || onClose != null) ...[
-            const SizedBox(width: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (actionLabel != null)
-                    GestureDetector(
-                      onTap: onAction,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 21,
-                          vertical: 10,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 18),
+                child: Icon(_icon(), size: 26, color: typeColor),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        title,
+                        style: HeroUiTypography.bodySmMedium.copyWith(
+                          color: titleColor,
+                          height: 1.25,
                         ),
-                        decoration: BoxDecoration(
-                          color: type == HeroUiComponentType.defaultType
-                              ? (isDark
-                                    ? const Color(0xFF27272A)
-                                    : const Color(0xFFEBEBEC))
-                              : typeColor,
-                          borderRadius: BorderRadius.circular(31),
-                        ),
-                        child: Text(
-                          actionLabel!,
-                          style: HeroUiTypography.buttonSm.copyWith(
-                            color: type == HeroUiComponentType.defaultType
-                                ? (isDark
-                                      ? const Color(0xFFFCFCFC)
-                                      : const Color(0xFF18181B))
-                                : const Color(0xFFFFFFFF),
+                      ),
+                      if (description != null) ...[
+                        const SizedBox(height: 3),
+                        Text(
+                          description!,
+                          style: HeroUiTypography.bodySm.copyWith(
+                            color: descColor,
                           ),
                         ),
-                      ),
-                    ),
-                  if (onClose != null) ...[
-                    if (actionLabel != null) const SizedBox(width: 10),
-                    GestureDetector(
-                      onTap: onClose,
-                      child: Icon(
-                        Icons.close_rounded,
-                        size: 21,
-                        color: descColor,
-                      ),
-                    ),
-                  ],
-                ],
+                      ],
+                      if (stackActionBelowText && actionLabel != null) ...[
+                        const SizedBox(height: 20),
+                        UnconstrainedBox(
+                          constrainedAxis: Axis.vertical,
+                          alignment: Alignment.centerLeft,
+                          clipBehavior: Clip.none,
+                          child: buildActionButton(actionLabel!),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ],
-        ],
-      ),
+              if (hasTrailing) ...[
+                if (!stackActionBelowText || onClose != null) ...[
+                  const SizedBox(width: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (!stackActionBelowText && actionLabel != null)
+                          buildActionButton(actionLabel!),
+                        if (!stackActionBelowText &&
+                            actionLabel != null &&
+                            onClose != null)
+                          const SizedBox(width: 10),
+                        if (onClose != null)
+                          GestureDetector(
+                            onTap: onClose,
+                            child: Icon(
+                              Icons.close_rounded,
+                              size: 21,
+                              color: descColor,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ],
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -661,7 +681,7 @@ class HeroUiToast extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.only(top: 17),
               child: Icon(
                 switch (type) {
                   HeroUiComponentType.success =>
@@ -679,7 +699,7 @@ class HeroUiToast extends StatelessWidget {
             const SizedBox(width: 10),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

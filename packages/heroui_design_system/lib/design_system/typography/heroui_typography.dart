@@ -13,7 +13,7 @@ class HeroUiTypography {
     fontSize: 46.8,
     fontWeight: FontWeight.w800,
     height: 1.12,
-    letterSpacing: 0,
+    letterSpacing: -0.5,
   );
 
   static const TextStyle heading2 = TextStyle(
@@ -22,7 +22,7 @@ class HeroUiTypography {
     fontSize: 31.2,
     fontWeight: FontWeight.w700,
     height: 1.34,
-    letterSpacing: 0,
+    letterSpacing: -0.5,
   );
 
   static const TextStyle heading3 = TextStyle(
@@ -31,7 +31,7 @@ class HeroUiTypography {
     fontSize: 26,
     fontWeight: FontWeight.w600,
     height: 1.6,
-    letterSpacing: 0,
+    letterSpacing: -0.5,
   );
 
   static const TextStyle heading4 = TextStyle(
@@ -40,7 +40,7 @@ class HeroUiTypography {
     fontSize: 20.8,
     fontWeight: FontWeight.w600,
     height: 1.5,
-    letterSpacing: 0,
+    letterSpacing: -0.5,
   );
 
   static const TextStyle bodyBase = TextStyle(
@@ -58,7 +58,7 @@ class HeroUiTypography {
     fontSize: 20.8,
     fontWeight: FontWeight.w500,
     height: 1.5,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle bodySm = TextStyle(
@@ -67,7 +67,7 @@ class HeroUiTypography {
     fontSize: 18.2,
     fontWeight: FontWeight.w400,
     height: 1.43,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle bodySmMedium = TextStyle(
@@ -76,6 +76,15 @@ class HeroUiTypography {
     fontSize: 18.2,
     fontWeight: FontWeight.w500,
     height: 1.43,
+    letterSpacing: -0.4,
+  );
+
+  static const TextStyle navLabel = TextStyle(
+    fontFamily: fontFamily,
+    package: packageName,
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    height: 1.34,
     letterSpacing: 0,
   );
 
@@ -85,7 +94,7 @@ class HeroUiTypography {
     fontSize: 12,
     fontWeight: FontWeight.w400,
     height: 1.34,
-    letterSpacing: 0,
+    letterSpacing: -0.1,
   );
 
   static const TextStyle bodyXxsMedium = TextStyle(
@@ -94,7 +103,7 @@ class HeroUiTypography {
     fontSize: 13,
     fontWeight: FontWeight.w500,
     height: 1.34,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle bodyXs = TextStyle(
@@ -103,7 +112,7 @@ class HeroUiTypography {
     fontSize: 16,
     fontWeight: FontWeight.w400,
     height: 1.34,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle bodyXsMedium = TextStyle(
@@ -112,7 +121,7 @@ class HeroUiTypography {
     fontSize: 16,
     fontWeight: FontWeight.w500,
     height: 1.34,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle linkBase = TextStyle(
@@ -121,7 +130,7 @@ class HeroUiTypography {
     fontSize: 20.8,
     fontWeight: FontWeight.w500,
     height: 1.25,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
     decoration: TextDecoration.underline,
   );
 
@@ -131,7 +140,7 @@ class HeroUiTypography {
     fontSize: 18.2,
     fontWeight: FontWeight.w500,
     height: 18 / 14,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
     decoration: TextDecoration.underline,
   );
 
@@ -141,7 +150,7 @@ class HeroUiTypography {
     fontSize: 20.8,
     fontWeight: FontWeight.w400,
     height: 1.25,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle textOTPFieldBase = TextStyle(
@@ -150,7 +159,7 @@ class HeroUiTypography {
     fontSize: 20.8,
     fontWeight: FontWeight.w600,
     height: 1.25,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle textFieldSm = TextStyle(
@@ -159,7 +168,7 @@ class HeroUiTypography {
     fontSize: 18.2,
     fontWeight: FontWeight.w400,
     height: 20 / 14,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextStyle buttonBase = TextStyle(
@@ -168,7 +177,7 @@ class HeroUiTypography {
     fontSize: 20.8,
     fontWeight: FontWeight.w500,
     height: 22 / 16,
-    letterSpacing: 0,
+    letterSpacing: -0.7,
   );
 
   static const TextStyle buttonSm = TextStyle(
@@ -177,7 +186,7 @@ class HeroUiTypography {
     fontSize: 18.2,
     fontWeight: FontWeight.w500,
     height: 20 / 14,
-    letterSpacing: 0,
+    letterSpacing: -0.4,
   );
 
   static const TextTheme materialTextTheme = TextTheme(

@@ -44,7 +44,7 @@ _Size _size(HeroUiButtonSize s) => switch (s) {
   ),
   HeroUiButtonSize.md => _Size(
     49,
-    16,
+    HeroUiRadius.twoXl,
     25,
     10,
     const EdgeInsets.symmetric(
@@ -58,7 +58,7 @@ _Size _size(HeroUiButtonSize s) => switch (s) {
   ),
   HeroUiButtonSize.lg => _Size(
     57,
-    16,
+    HeroUiRadius.twoXl,
     25,
     10,
     const EdgeInsets.symmetric(
@@ -104,6 +104,12 @@ _ButtonTokens _tokensLight(HeroUiButtonVariant v, HeroUiButtonVisualState s) {
   final toggleSelectedBg = interactive
       ? const Color.fromRGBO(4, 133, 247, 0.2)
       : const Color.fromRGBO(4, 133, 247, 0.15);
+  final successBg = interactive
+      ? const Color(0xFF1FDB7A)
+      : const Color(0xFF17C964);
+  final warningBg = interactive
+      ? const Color(0xFFF7B93D)
+      : const Color(0xFFF5A524);
   return switch (v) {
     HeroUiButtonVariant.primary => _ButtonTokens(
       primaryBg,
@@ -138,6 +144,14 @@ _ButtonTokens _tokensLight(HeroUiButtonVariant v, HeroUiButtonVisualState s) {
       toggleSelectedBg,
       const Color(0xFF0485F7),
     ),
+    HeroUiButtonVariant.success => _ButtonTokens(
+      successBg,
+      const Color(0xFFFCFCFC),
+    ),
+    HeroUiButtonVariant.warning => _ButtonTokens(
+      warningBg,
+      const Color(0xFFFCFCFC),
+    ),
   };
 }
 
@@ -170,6 +184,16 @@ _ButtonTokens _tokensDark(HeroUiButtonVariant v, HeroUiButtonVisualState s) {
       : interactive
       ? const Color.fromRGBO(4, 133, 247, 0.2)
       : const Color.fromRGBO(4, 133, 247, 0.15);
+  final successBg = pressed
+      ? const Color(0xFF129652)
+      : interactive
+      ? const Color(0xFF1BC46A)
+      : const Color(0xFF17C964);
+  final warningBg = pressed
+      ? const Color(0xFFDB9010)
+      : interactive
+      ? const Color(0xFFF6AE2E)
+      : const Color(0xFFF5A524);
 
   return switch (v) {
     HeroUiButtonVariant.primary => _ButtonTokens(
@@ -213,6 +237,14 @@ _ButtonTokens _tokensDark(HeroUiButtonVariant v, HeroUiButtonVisualState s) {
       toggleSelectedBg,
       const Color(0xFF0485F7),
     ),
+    HeroUiButtonVariant.success => _ButtonTokens(
+      successBg,
+      const Color(0xFFFCFCFC),
+    ),
+    HeroUiButtonVariant.warning => _ButtonTokens(
+      warningBg,
+      const Color(0xFFFCFCFC),
+    ),
   };
 }
 
@@ -232,6 +264,8 @@ Color _groupDivider(HeroUiButtonVariant v, {required bool isDark}) {
         247,
         0.5,
       ),
+      HeroUiButtonVariant.success => const Color(0x66FFFFFF),
+      HeroUiButtonVariant.warning => const Color(0x66FFFFFF),
     };
   }
   return switch (v) {
@@ -248,6 +282,8 @@ Color _groupDivider(HeroUiButtonVariant v, {required bool isDark}) {
       247,
       0.55,
     ),
+    HeroUiButtonVariant.success => const Color(0x66FFFFFF),
+    HeroUiButtonVariant.warning => const Color(0x66FFFFFF),
   };
 }
 

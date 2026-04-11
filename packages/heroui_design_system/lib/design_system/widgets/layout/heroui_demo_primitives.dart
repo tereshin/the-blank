@@ -137,7 +137,7 @@ class HeroUiDemoThemeScope extends StatelessWidget {
   }
 }
 
-enum HeroUiDemoActionTriggerVariant { primary, outline, secondary }
+enum HeroUiDemoActionTriggerVariant { primary, outline, secondary, tertiary }
 
 class HeroUiDemoActionTrigger extends StatelessWidget {
   const HeroUiDemoActionTrigger({
@@ -159,6 +159,7 @@ class HeroUiDemoActionTrigger extends StatelessWidget {
       HeroUiDemoActionTriggerVariant.primary => HeroUiButtonVariant.primary,
       HeroUiDemoActionTriggerVariant.outline => HeroUiButtonVariant.outline,
       HeroUiDemoActionTriggerVariant.secondary => HeroUiButtonVariant.secondary,
+      HeroUiDemoActionTriggerVariant.tertiary => HeroUiButtonVariant.tertiary,
     };
 
     return HeroUiButton(

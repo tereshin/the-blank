@@ -42,13 +42,13 @@ class HeroUiAlertDialog {
             child: Dialog(
               backgroundColor: Colors.transparent,
               insetPadding: const EdgeInsets.symmetric(
-                horizontal: 21,
-                vertical: 31,
+                horizontal: 10,
+                vertical: 20,
               ),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 520),
                 child: Container(
-                  padding: const EdgeInsets.all(31),
+                  padding: const EdgeInsets.all(22),
                   decoration: BoxDecoration(
                     color: bg,
                     borderRadius: BorderRadius.circular(31),

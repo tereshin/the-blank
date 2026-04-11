@@ -35,6 +35,8 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
   final _focus = FocusNode();
   final _key = GlobalKey();
   OverlayEntry? _overlay;
+  bool _isOverlayVisible = false;
+  int _overlayToken = 0;
   List<HeroUiPickerItem<T>> _filtered = [];
   late List<T> _selected;
   bool _isOpen = false;
@@ -47,15 +49,36 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
   void initState() {
     super.initState();
     _selected = List.from(widget.values);
-    _filtered = widget.items;
+    _refreshFiltered();
     _focus.addListener(_onFocusChange);
   }
 
   @override
+  void didUpdateWidget(covariant HeroUiAutocomplete<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.values != widget.values) {
+      _selected = List.from(widget.values);
+      _refreshFiltered();
+      _overlay?.markNeedsBuild();
+    }
+
+    if (oldWidget.items != widget.items) {
+      _refreshFiltered();
+      _overlay?.markNeedsBuild();
+    }
+
+    if (!widget.enabled && _isOpen) {
+      _closeDropdown(updateState: true);
+    }
+  }
+
+  @override
   void dispose() {
+    _focus.removeListener(_onFocusChange);
+    _closeDropdown(updateState: false, animate: false);
     _ctrl.dispose();
     _focus.dispose();
-    _closeDropdown();
     super.dispose();
   }
 
@@ -63,20 +86,27 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
     if (_focus.hasFocus) {
       _openDropdown();
     } else {
-      Future.delayed(const Duration(milliseconds: 150), _closeDropdown);
+      Future.delayed(const Duration(milliseconds: 150), () {
+        if (!mounted || _focus.hasFocus) return;
+        _closeDropdown();
+      });
     }
   }
 
+  void _refreshFiltered() {
+    final lower = _ctrl.text.toLowerCase();
+    _filtered = widget.items
+        .where(
+          (i) =>
+              !_selected.contains(i.value) &&
+              i.label.toLowerCase().contains(lower),
+        )
+        .toList();
+  }
+
   void _onTextChanged(String text) {
-    final lower = text.toLowerCase();
     setState(() {
-      _filtered = widget.items
-          .where(
-            (i) =>
-                !_selected.contains(i.value) &&
-                i.label.toLowerCase().contains(lower),
-          )
-          .toList();
+      _refreshFiltered();
     });
     _updateOverlayMetrics();
     _overlay?.markNeedsBuild();
@@ -110,8 +140,13 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
   }
 
   void _openDropdown() {
-    if (_isOpen) return;
+    if (!widget.enabled || _isOpen) return;
     _updateOverlayMetrics();
+
+    _overlayToken++;
+    _overlay?.remove();
+    _overlay = null;
+    _isOverlayVisible = true;
 
     _overlay = OverlayEntry(
       builder: (_) => _ComboBoxOverlay<T>(
@@ -119,40 +154,89 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
         triggerSize: _triggerSize,
         estimatedHeight: _estimatedHeight,
         openAbove: _openAbove,
+        isVisible: _isOverlayVisible,
         items: _filtered,
         selectedValue: null,
         maxListHeight: widget.maxListHeight,
+        barrierDismissible: true,
+        onDismiss: () {
+          _focus.unfocus();
+          _closeDropdown();
+        },
         onSelected: (v) {
           setState(() {
             if (!_selected.contains(v)) _selected = [..._selected, v];
             _ctrl.clear();
-            _filtered = widget.items
-                .where((i) => !_selected.contains(i.value))
-                .toList();
+            _refreshFiltered();
           });
           widget.onChanged?.call(List.unmodifiable(_selected));
-          _updateOverlayMetrics();
-          _overlay?.markNeedsBuild();
+          _focus.unfocus();
+          _closeDropdown();
         },
       ),
     );
 
     Overlay.of(context, rootOverlay: true).insert(_overlay!);
-    setState(() => _isOpen = true);
+    if (mounted) {
+      setState(() => _isOpen = true);
+    } else {
+      _isOpen = true;
+    }
   }
 
-  void _closeDropdown() {
-    _overlay?.remove();
-    _overlay = null;
-    if (mounted) setState(() => _isOpen = false);
+  void _closeDropdown({bool updateState = true, bool animate = true}) {
+    final currentOverlay = _overlay;
+    if (currentOverlay == null) {
+      if (updateState) {
+        if (mounted) {
+          setState(() => _isOpen = false);
+        } else {
+          _isOpen = false;
+        }
+      } else {
+        _isOpen = false;
+      }
+      return;
+    }
+
+    _overlayToken++;
+    final closeToken = _overlayToken;
+
+    if (updateState) {
+      if (mounted) {
+        setState(() => _isOpen = false);
+      } else {
+        _isOpen = false;
+      }
+    } else {
+      _isOpen = false;
+    }
+
+    if (!animate) {
+      _isOverlayVisible = false;
+      currentOverlay.remove();
+      if (identical(_overlay, currentOverlay)) {
+        _overlay = null;
+      }
+      return;
+    }
+
+    _isOverlayVisible = false;
+    currentOverlay.markNeedsBuild();
+
+    Future.delayed(_kDropdownAnimationDuration, () {
+      if (closeToken != _overlayToken) return;
+      if (identical(_overlay, currentOverlay)) {
+        currentOverlay.remove();
+        _overlay = null;
+      }
+    });
   }
 
   void _removeTag(T value) {
     setState(() {
       _selected = _selected.where((v) => v != value).toList();
-      _filtered = widget.items
-          .where((i) => !_selected.contains(i.value))
-          .toList();
+      _refreshFiltered();
     });
     widget.onChanged?.call(List.unmodifiable(_selected));
     _updateOverlayMetrics();
@@ -169,6 +253,7 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 768;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = isDark ? const Color(0xFF18181B) : const Color(0xFFFFFFFF);
     final labelColor = isDark
@@ -184,87 +269,109 @@ class _HeroUiAutocompleteState<T> extends State<HeroUiAutocomplete<T>> {
 
     return KeyedSubtree(
       key: _key,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (widget.label != null) ...[
-            Text(
-              widget.label!,
-              style: HeroUiTypography.bodySmMedium.copyWith(color: labelColor),
-            ),
-            const SizedBox(height: 5),
-          ],
-          Opacity(
-            opacity: widget.enabled ? 1.0 : 0.5,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-              decoration: BoxDecoration(
-                color: bg,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: borderColor,
-                  width: _isOpen ? 1.5 : 1.0,
-                ),
-                boxShadow: widget.enabled ? _kFieldShadow : const [],
-              ),
-              child: Wrap(
-                spacing: 5,
-                runSpacing: 5,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  for (final v in _selected)
-                    _AutocompleteTag(
-                      label: _labelFor(v),
-                      bg: chipBg,
-                      textColor: chipText,
-                      onRemove: widget.enabled ? () => _removeTag(v) : null,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final shouldFillWidth = isMobile && constraints.maxWidth.isFinite;
+          return SizedBox(
+            width: shouldFillWidth ? double.infinity : null,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (widget.label != null) ...[
+                  Text(
+                    widget.label!,
+                    style: HeroUiTypography.bodySmMedium.copyWith(
+                      color: labelColor,
                     ),
-                  IntrinsicWidth(
-                    child: TextField(
-                      controller: _ctrl,
-                      focusNode: _focus,
-                      enabled: widget.enabled,
-                      onChanged: _onTextChanged,
-                      style: HeroUiTypography.textFieldSm.copyWith(
-                        color: isDark
-                            ? const Color(0xFFFCFCFC)
-                            : const Color(0xFF18181B),
+                  ),
+                  const SizedBox(height: 5),
+                ],
+                Opacity(
+                  opacity: widget.enabled ? 1.0 : 0.5,
+                  child: Container(
+                    width: shouldFillWidth ? double.infinity : null,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: bg,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: borderColor,
+                        width: _isOpen ? 1.5 : 1.0,
                       ),
-                      decoration: InputDecoration(
-                        hintText: _selected.isEmpty ? widget.placeholder : '',
-                        hintStyle: HeroUiTypography.textFieldSm.copyWith(
-                          color: isDark
-                              ? const Color(0xFF52525B)
-                              : const Color(0xFFA1A1AA),
+                      boxShadow: widget.enabled ? _kFieldShadow : const [],
+                    ),
+                    child: Wrap(
+                      spacing: 5,
+                      runSpacing: 5,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        for (final v in _selected)
+                          _AutocompleteTag(
+                            label: _labelFor(v),
+                            bg: chipBg,
+                            textColor: chipText,
+                            onRemove: widget.enabled
+                                ? () => _removeTag(v)
+                                : null,
+                          ),
+                        IntrinsicWidth(
+                          child: TextField(
+                            controller: _ctrl,
+                            focusNode: _focus,
+                            enabled: widget.enabled,
+                            onChanged: _onTextChanged,
+                            onTapOutside: (_) {
+                              _focus.unfocus();
+                              _closeDropdown();
+                            },
+                            style: HeroUiTypography.textFieldSm.copyWith(
+                              color: isDark
+                                  ? const Color(0xFFFCFCFC)
+                                  : const Color(0xFF18181B),
+                            ),
+                            decoration: InputDecoration(
+                              hintText: _selected.isEmpty
+                                  ? widget.placeholder
+                                  : '',
+                              hintStyle: HeroUiTypography.textFieldSm.copyWith(
+                                color: isDark
+                                    ? const Color(0xFF52525B)
+                                    : const Color(0xFFA1A1AA),
+                              ),
+                              isDense: true,
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 5,
+                                vertical: 5,
+                              ),
+                              border: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              constraints: const BoxConstraints(minWidth: 104),
+                            ),
+                          ),
                         ),
-                        isDense: true,
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 5,
-                          vertical: 5,
-                        ),
-                        border: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        constraints: const BoxConstraints(minWidth: 104),
-                      ),
+                      ],
+                    ),
+                  ),
+                ),
+                if (widget.errorText != null) ...[
+                  const SizedBox(height: 5),
+                  Text(
+                    widget.errorText!,
+                    style: HeroUiTypography.bodyXs.copyWith(
+                      color: const Color(0xFFFF383C),
                     ),
                   ),
                 ],
-              ),
+              ],
             ),
-          ),
-          if (widget.errorText != null) ...[
-            const SizedBox(height: 5),
-            Text(
-              widget.errorText!,
-              style: HeroUiTypography.bodyXs.copyWith(
-                color: const Color(0xFFFF383C),
-              ),
-            ),
-          ],
-        ],
+          );
+        },
       ),
     );
   }

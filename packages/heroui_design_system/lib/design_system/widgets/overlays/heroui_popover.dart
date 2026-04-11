@@ -166,7 +166,7 @@ class _PopoverOverlay extends StatelessWidget {
                       ),
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 31,
+                          horizontal: 20,
                           vertical: 21,
                         ),
                         decoration: BoxDecoration(

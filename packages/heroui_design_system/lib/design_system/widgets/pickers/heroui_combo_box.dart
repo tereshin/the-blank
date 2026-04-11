@@ -38,6 +38,8 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
   final _focus = FocusNode();
   final _triggerKey = GlobalKey();
   OverlayEntry? _overlay;
+  bool _isOverlayVisible = false;
+  int _overlayToken = 0;
   List<HeroUiPickerItem<T>> _filtered = [];
   bool _isOpen = false;
   bool _openAbove = false;
@@ -72,9 +74,10 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
 
   @override
   void dispose() {
+    _focus.removeListener(_onFocusChange);
+    _closeDropdown(updateState: false, animate: false);
     _ctrl.dispose();
     _focus.dispose();
-    _closeDropdown();
     super.dispose();
   }
 
@@ -82,7 +85,10 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
     if (_focus.hasFocus) {
       _openDropdown();
     } else {
-      Future.delayed(const Duration(milliseconds: 150), _closeDropdown);
+      Future.delayed(const Duration(milliseconds: 150), () {
+        if (!mounted || _focus.hasFocus) return;
+        _closeDropdown();
+      });
     }
   }
 
@@ -124,7 +130,8 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
         (offset.dy + size.height);
     final availableAbove = offset.dy - media.padding.top;
     final openAbove =
-        availableBelow < estimatedHeight + 10 && availableAbove > availableBelow;
+        availableBelow < estimatedHeight + 10 &&
+        availableAbove > availableBelow;
 
     _triggerOffset = offset;
     _triggerSize = size;
@@ -136,12 +143,18 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
     if (!widget.enabled || _isOpen) return;
     _updateOverlayMetrics();
 
+    _overlayToken++;
+    _overlay?.remove();
+    _overlay = null;
+    _isOverlayVisible = true;
+
     _overlay = OverlayEntry(
       builder: (_) => _ComboBoxOverlay(
         triggerOffset: _triggerOffset,
         triggerSize: _triggerSize,
         estimatedHeight: _estimatedHeight,
         openAbove: _openAbove,
+        isVisible: _isOverlayVisible,
         items: _filtered,
         selectedValue: widget.value,
         maxListHeight: widget.maxListHeight,
@@ -156,13 +169,60 @@ class _HeroUiComboBoxState<T> extends State<HeroUiComboBox<T>> {
     );
 
     Overlay.of(context, rootOverlay: true).insert(_overlay!);
-    setState(() => _isOpen = true);
+    if (mounted) {
+      setState(() => _isOpen = true);
+    } else {
+      _isOpen = true;
+    }
   }
 
-  void _closeDropdown() {
-    _overlay?.remove();
-    _overlay = null;
-    if (mounted) setState(() => _isOpen = false);
+  void _closeDropdown({bool updateState = true, bool animate = true}) {
+    final currentOverlay = _overlay;
+    if (currentOverlay == null) {
+      if (updateState) {
+        if (mounted) {
+          setState(() => _isOpen = false);
+        } else {
+          _isOpen = false;
+        }
+      } else {
+        _isOpen = false;
+      }
+      return;
+    }
+
+    _overlayToken++;
+    final closeToken = _overlayToken;
+
+    if (updateState) {
+      if (mounted) {
+        setState(() => _isOpen = false);
+      } else {
+        _isOpen = false;
+      }
+    } else {
+      _isOpen = false;
+    }
+
+    if (!animate) {
+      _isOverlayVisible = false;
+      currentOverlay.remove();
+      if (identical(_overlay, currentOverlay)) {
+        _overlay = null;
+      }
+      return;
+    }
+
+    _isOverlayVisible = false;
+    currentOverlay.markNeedsBuild();
+
+    Future.delayed(_kDropdownAnimationDuration, () {
+      if (closeToken != _overlayToken) return;
+      if (identical(_overlay, currentOverlay)) {
+        currentOverlay.remove();
+        _overlay = null;
+      }
+    });
   }
 
   @override
@@ -301,6 +361,7 @@ class _ComboBoxOverlay<T> extends StatelessWidget {
     required this.triggerSize,
     required this.estimatedHeight,
     required this.openAbove,
+    required this.isVisible,
     required this.items,
     required this.selectedValue,
     required this.onSelected,
@@ -313,6 +374,7 @@ class _ComboBoxOverlay<T> extends StatelessWidget {
   final Size triggerSize;
   final double estimatedHeight;
   final bool openAbove;
+  final bool isVisible;
   final List<HeroUiPickerItem<T>> items;
   final T? selectedValue;
   final ValueChanged<T> onSelected;
@@ -345,6 +407,7 @@ class _ComboBoxOverlay<T> extends StatelessWidget {
         color: Colors.transparent,
         child: _DropdownOpenAnimation(
           openAbove: openAbove,
+          isVisible: isVisible,
           child: _DropdownPanel(
             children: items.isEmpty
                 ? [

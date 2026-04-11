@@ -38,6 +38,8 @@ class HeroUiSelect<T> extends StatefulWidget {
 class _HeroUiSelectState<T> extends State<HeroUiSelect<T>> {
   OverlayEntry? _overlay;
   final _triggerKey = GlobalKey();
+  bool _isOverlayVisible = false;
+  int _overlayToken = 0;
   bool _isOpen = false;
   bool _openAbove = false;
   Offset _triggerOffset = Offset.zero;
@@ -58,7 +60,7 @@ class _HeroUiSelectState<T> extends State<HeroUiSelect<T>> {
 
   @override
   void dispose() {
-    _closeDropdown(updateState: false);
+    _closeDropdown(updateState: false, animate: false);
     super.dispose();
   }
 
@@ -93,12 +95,18 @@ class _HeroUiSelectState<T> extends State<HeroUiSelect<T>> {
     if (!widget.enabled || _isOpen) return;
     _updateOverlayMetrics();
 
+    _overlayToken++;
+    _overlay?.remove();
+    _overlay = null;
+    _isOverlayVisible = true;
+
     _overlay = OverlayEntry(
       builder: (_) => _SelectOverlay(
         triggerOffset: _triggerOffset,
         triggerSize: _triggerSize,
         estimatedHeight: _estimatedHeight,
         openAbove: _openAbove,
+        isVisible: _isOverlayVisible,
         items: widget.items,
         selectedValue: widget.value,
         maxListHeight: widget.maxListHeight,
@@ -111,13 +119,60 @@ class _HeroUiSelectState<T> extends State<HeroUiSelect<T>> {
     );
 
     Overlay.of(context, rootOverlay: true).insert(_overlay!);
-    setState(() => _isOpen = true);
+    if (mounted) {
+      setState(() => _isOpen = true);
+    } else {
+      _isOpen = true;
+    }
   }
 
-  void _closeDropdown({bool updateState = true}) {
-    _overlay?.remove();
-    _overlay = null;
-    if (updateState && mounted) setState(() => _isOpen = false);
+  void _closeDropdown({bool updateState = true, bool animate = true}) {
+    final currentOverlay = _overlay;
+    if (currentOverlay == null) {
+      if (updateState) {
+        if (mounted) {
+          setState(() => _isOpen = false);
+        } else {
+          _isOpen = false;
+        }
+      } else {
+        _isOpen = false;
+      }
+      return;
+    }
+
+    _overlayToken++;
+    final closeToken = _overlayToken;
+
+    if (updateState) {
+      if (mounted) {
+        setState(() => _isOpen = false);
+      } else {
+        _isOpen = false;
+      }
+    } else {
+      _isOpen = false;
+    }
+
+    if (!animate) {
+      _isOverlayVisible = false;
+      currentOverlay.remove();
+      if (identical(_overlay, currentOverlay)) {
+        _overlay = null;
+      }
+      return;
+    }
+
+    _isOverlayVisible = false;
+    currentOverlay.markNeedsBuild();
+
+    Future.delayed(_kDropdownAnimationDuration, () {
+      if (closeToken != _overlayToken) return;
+      if (identical(_overlay, currentOverlay)) {
+        currentOverlay.remove();
+        _overlay = null;
+      }
+    });
   }
 
   String? get _selectedLabel {
@@ -155,6 +210,7 @@ class _SelectOverlay<T> extends StatelessWidget {
     required this.triggerSize,
     required this.estimatedHeight,
     required this.openAbove,
+    required this.isVisible,
     required this.items,
     required this.selectedValue,
     required this.onSelected,
@@ -166,6 +222,7 @@ class _SelectOverlay<T> extends StatelessWidget {
   final Size triggerSize;
   final double estimatedHeight;
   final bool openAbove;
+  final bool isVisible;
   final List<HeroUiPickerItem<T>> items;
   final T? selectedValue;
   final ValueChanged<T> onSelected;
@@ -204,6 +261,7 @@ class _SelectOverlay<T> extends StatelessWidget {
                 color: Colors.transparent,
                 child: _DropdownOpenAnimation(
                   openAbove: openAbove,
+                  isVisible: isVisible,
                   child: _DropdownPanel(
                     children: [
                       ConstrainedBox(

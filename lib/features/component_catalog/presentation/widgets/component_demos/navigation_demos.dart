@@ -196,12 +196,12 @@ class _TabsDemoState extends State<_TabsDemo> {
   List<HeroUiTabItem> get _iconTabs => const [
     HeroUiTabItem(
       label: 'Chats',
-      leading: HeroUiIcon('comment', size: 20),
+      leading: HeroUiIcon(HeroUiIconManifest.chat1Line, size: 22),
       child: Text('Chats content'),
     ),
     HeroUiTabItem(
       label: 'Emails',
-      leading: HeroUiIcon(HeroUiIconManifest.envelope, size: 20),
+      leading: HeroUiIcon(HeroUiIconManifest.envelope, size: 22),
       child: Text('Emails content'),
     ),
   ];
@@ -209,22 +209,22 @@ class _TabsDemoState extends State<_TabsDemo> {
   List<HeroUiTabItem> get _verticalTabs => const [
     HeroUiTabItem(
       label: 'Contacts',
-      leading: HeroUiIcon('square-dashed', size: 20),
+      leading: HeroUiIcon(HeroUiIconManifest.squareLine, size: 22),
       child: Text('Contacts content'),
     ),
     HeroUiTabItem(
       label: 'Calls',
-      leading: HeroUiIcon('persons', size: 20),
+      leading: HeroUiIcon(HeroUiIconManifest.user2Line, size: 22),
       child: Text('Calls content'),
     ),
     HeroUiTabItem(
       label: 'Messages',
-      leading: HeroUiIcon('square-dashed-circle', size: 20),
+      leading: HeroUiIcon(HeroUiIconManifest.checkCircleLine, size: 22),
       child: Text('Messages content'),
     ),
     HeroUiTabItem(
       label: 'Settings',
-      leading: HeroUiIcon(HeroUiIconManifest.person, size: 20),
+      leading: HeroUiIcon(HeroUiIconManifest.person, size: 22),
       child: Text('Settings content'),
     ),
   ];
@@ -268,7 +268,6 @@ class _TabsDemoState extends State<_TabsDemo> {
           const ComponentDemoSubtitle('Primary / Fill'),
           Center(
             child: SizedBox(
-              width: 253,
               child: HeroUiTabs(
                 tabs: _durationTabs,
                 variant: HeroUiTabsVariant.primary,
@@ -311,6 +310,7 @@ class _TabsDemoState extends State<_TabsDemo> {
             behavior: HeroUiTabsBehavior.fill,
             tabContentOrientation: HeroUiTabContentOrientation.vertical,
             showPanel: false,
+            showScrollShadow: false,
           ),
           const SizedBox(height: 14),
           const ComponentDemoSubtitle('Secondary / Hug'),
@@ -376,6 +376,7 @@ class _TabsDemoState extends State<_TabsDemo> {
               color: const Color(0xFF71717A),
             ),
           ),
+          const SizedBox(height: 24),
           HeroUiSlider(
             value: _visibleOptions.toDouble(),
             min: 1,
@@ -386,11 +387,13 @@ class _TabsDemoState extends State<_TabsDemo> {
             onChanged: (value) =>
                 setState(() => _visibleOptions = value.round()),
           ),
+          const SizedBox(height: 24),
           HeroUiSwitch(
             label: 'Show Scroll Shadow',
             isSelected: _showScrollShadow,
             onChanged: (value) => setState(() => _showScrollShadow = value),
           ),
+          const SizedBox(height: 24),
           SizedBox(
             width: 260,
             child: HeroUiTabs(

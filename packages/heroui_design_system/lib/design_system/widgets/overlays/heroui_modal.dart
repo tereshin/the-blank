@@ -48,7 +48,7 @@ class HeroUiModal {
               backgroundColor: Colors.transparent,
               insetPadding: size == HeroUiModalSize.full
                   ? EdgeInsets.zero
-                  : const EdgeInsets.symmetric(horizontal: 21, vertical: 31),
+                  : const EdgeInsets.symmetric(horizontal: 5, vertical: 31),
               child: ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: maxW, minWidth: 0),
                 child: Container(
@@ -66,7 +66,7 @@ class HeroUiModal {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(31, 26, 21, 0),
+                        padding: const EdgeInsets.fromLTRB(20, 26, 16, 0),
                         child: Row(
                           children: [
                             Expanded(
@@ -85,13 +85,13 @@ class HeroUiModal {
                       ),
                       Flexible(
                         child: SingleChildScrollView(
-                          padding: const EdgeInsets.fromLTRB(31, 21, 31, 0),
+                          padding: const EdgeInsets.fromLTRB(20, 21, 20, 0),
                           child: body,
                         ),
                       ),
                       if (actions != null && actions.isNotEmpty)
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(31, 21, 31, 26),
+                          padding: const EdgeInsets.fromLTRB(20, 21, 20, 20),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [

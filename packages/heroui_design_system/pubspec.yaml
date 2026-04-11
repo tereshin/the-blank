@@ -22,7 +22,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/icons/
+    - assets/icons/line/
+    - assets/icons/fill/
 
   fonts:
     - family: Inter

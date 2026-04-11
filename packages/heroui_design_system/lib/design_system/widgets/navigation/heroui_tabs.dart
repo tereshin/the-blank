@@ -84,6 +84,8 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   static const double _kIndicatorHeight = 3;
   static const double _kRectEpsilon = 0.5;
   static const double _kSwipeTouchSlop = 23;
+  static const double _kPrimaryDragScaleX = 1.3;
+  static const double _kPrimaryDragScaleY = 1.1;
 
   late int _selectedIndex;
   late final ScrollController _scrollController;
@@ -95,8 +97,13 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   int? _activeSwipePointer;
   Offset? _swipePointerDownPosition;
   bool _isSwipeSelectionActive = false;
+  bool _isPrimaryTouchDragActive = false;
+  bool _isPrimaryIndicatorScaled = false;
+  Rect? _primaryDragIndicatorRect;
+  int? _primaryDragTabIndex;
   bool _canScrollBack = false;
   bool _canScrollForward = false;
+  Timer? _primaryDragReleaseTimer;
 
   @override
   void initState() {
@@ -142,6 +149,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   @override
   void dispose() {
     _cancelSwipeSelection();
+    _primaryDragReleaseTimer?.cancel();
     _scrollController
       ..removeListener(_syncScrollState)
       ..dispose();
@@ -203,14 +211,31 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
         !_scrollController.hasClients) {
       return;
     }
-    final context = _tabKeys[_selectedIndex].currentContext;
-    if (context == null) return;
-    Scrollable.ensureVisible(
-      context,
-      duration: jump ? Duration.zero : _kAnimationDuration,
-      curve: Curves.easeOutCubic,
-      alignment: 0.5,
+    final tabRect = _measureTabRect(_selectedIndex);
+    if (tabRect == null) return;
+
+    final position = _scrollController.position;
+    final viewportWidth = position.viewportDimension;
+    final maxScroll = position.maxScrollExtent;
+    final tabCenterX = tabRect.center.dx;
+    final targetOffset = (tabCenterX - viewportWidth * 0.5).clamp(
+      0.0,
+      maxScroll,
     );
+
+    final duration = jump ? Duration.zero : _kAnimationDuration;
+    if (duration == Duration.zero) {
+      if ((position.pixels - targetOffset).abs() > 0.5) {
+        _scrollController.jumpTo(targetOffset);
+      }
+    } else {
+      if ((position.pixels - targetOffset).abs() < 0.5) return;
+      _scrollController.animateTo(
+        targetOffset,
+        duration: duration,
+        curve: Curves.easeOutCubic,
+      );
+    }
   }
 
   void _syncScrollState() {
@@ -262,10 +287,13 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     });
   }
 
-  Rect? _measureSelectedTabRect() {
+  Rect? _measureTabRect(int index) {
     final stripContext = _stripKey.currentContext;
-    final tabContext = _tabKeys[_selectedIndex].currentContext;
-    if (stripContext == null || tabContext == null) return null;
+    if (stripContext == null || index < 0 || index >= _tabKeys.length) {
+      return null;
+    }
+    final tabContext = _tabKeys[index].currentContext;
+    if (tabContext == null) return null;
 
     final stripRenderObject = stripContext.findRenderObject();
     final tabRenderObject = tabContext.findRenderObject();
@@ -280,6 +308,15 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     final rect = localOffset & tabRenderObject.size;
     if (!_isFiniteIndicatorRect(rect)) return null;
     return rect;
+  }
+
+  void _setPrimaryIndicatorScaled(bool value) {
+    if (_isPrimaryIndicatorScaled == value || !mounted) return;
+    setState(() => _isPrimaryIndicatorScaled = value);
+  }
+
+  Rect? _measureSelectedTabRect() {
+    return _measureTabRect(_selectedIndex);
   }
 
   /// Rejects rects that would feed NaN/Inf into [Stack] [Positioned] children.
@@ -320,19 +357,119 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     _onSelect(targetIndex);
   }
 
-  void _cancelSwipeSelection() {
+  int _nearestSelectableTabIndex(Offset globalPosition) {
+    int nearest = _selectedIndex;
+    var minDistance = double.infinity;
+
+    for (final index in _visibleTabIndices()) {
+      if (!_isOptionSelectable(index)) continue;
+      final rect = _measureTabRect(index);
+      if (rect == null) continue;
+
+      final context = _tabKeys[index].currentContext;
+      if (context == null) continue;
+      final renderObject = context.findRenderObject();
+      if (renderObject is! RenderBox || !renderObject.hasSize) continue;
+
+      final globalCenterX = renderObject
+          .localToGlobal(Offset(renderObject.size.width / 2, 0))
+          .dx;
+      final distance = (globalPosition.dx - globalCenterX).abs();
+      if (distance >= minDistance) continue;
+      minDistance = distance;
+      nearest = index;
+    }
+
+    return nearest;
+  }
+
+  void _updatePrimaryDragIndicator(Offset globalPosition) {
+    final dragRect = _primaryDragIndicatorRect ?? _measureSelectedTabRect();
+    if (dragRect == null) return;
+
+    final stripContext = _stripKey.currentContext;
+    final stripRenderObject = stripContext?.findRenderObject();
+    if (stripRenderObject is! RenderBox || !stripRenderObject.hasSize) return;
+
+    final localPosition = stripRenderObject.globalToLocal(globalPosition);
+    final nextRect = Rect.fromLTWH(
+      localPosition.dx - (dragRect.width / 2),
+      dragRect.top,
+      dragRect.width,
+      dragRect.height,
+    );
+    if (_sameRect(_primaryDragIndicatorRect, nextRect)) return;
+    setState(() => _primaryDragIndicatorRect = nextRect);
+  }
+
+  void _completePrimaryTouchDragSelection(int targetIndex) {
+    final targetRect = _measureTabRect(targetIndex);
+    _primaryDragReleaseTimer?.cancel();
+
+    if (targetRect != null &&
+        !_sameRect(_primaryDragIndicatorRect, targetRect)) {
+      setState(() => _primaryDragIndicatorRect = targetRect);
+    }
+
+    _primaryDragReleaseTimer = Timer(_kAnimationDuration, () {
+      if (!mounted) return;
+      final didChange = targetIndex != _selectedIndex;
+      setState(() {
+        if (targetRect != null) {
+          _selectedIndicatorRect = targetRect;
+        }
+        _selectedIndex = targetIndex;
+        _isPrimaryTouchDragActive = false;
+        _isPrimaryIndicatorScaled = false;
+        _primaryDragIndicatorRect = null;
+        _primaryDragTabIndex = null;
+      });
+      if (didChange) {
+        HapticFeedback.selectionClick();
+        widget.onChanged?.call(targetIndex);
+      }
+      _ensureSelectedTabVisible();
+      _scheduleIndicatorSync();
+    });
+  }
+
+  void _cancelSwipeSelection({bool preservePrimaryDrag = false}) {
     _swipeHoldTimer?.cancel();
     _swipeHoldTimer = null;
     _activeSwipePointer = null;
     _swipePointerDownPosition = null;
     _isSwipeSelectionActive = false;
+    if (preservePrimaryDrag) return;
+    _isPrimaryTouchDragActive = false;
+    _isPrimaryIndicatorScaled = false;
+    _primaryDragIndicatorRect = null;
+    _primaryDragTabIndex = null;
   }
 
   void _handleSwipePointerDown(PointerDownEvent event) {
     if (!widget.enableSwipeSelection) return;
     _cancelSwipeSelection();
+    _primaryDragReleaseTimer?.cancel();
     _activeSwipePointer = event.pointer;
     _swipePointerDownPosition = event.position;
+    final touchedTabIndex = _tabIndexAtGlobalPosition(event.position);
+    final shouldUseImmediatePrimaryDrag =
+        widget.variant == HeroUiTabsVariant.primary &&
+        !widget.showScrollShadow &&
+        touchedTabIndex == _selectedIndex;
+
+    if (shouldUseImmediatePrimaryDrag) {
+      final selectedRect = _measureSelectedTabRect();
+      if (selectedRect != null) {
+        _isSwipeSelectionActive = true;
+        _isPrimaryTouchDragActive = true;
+        _primaryDragIndicatorRect = selectedRect;
+        _primaryDragTabIndex = _selectedIndex;
+        _setPrimaryIndicatorScaled(true);
+        return;
+      }
+    }
+
     _swipeHoldTimer = Timer(kLongPressTimeout, () {
       if (!mounted || _activeSwipePointer != event.pointer) return;
       _isSwipeSelectionActive = true;
@@ -342,6 +479,15 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
   void _handleSwipePointerMove(PointerMoveEvent event) {
     if (_activeSwipePointer != event.pointer) return;
+
+    if (_isPrimaryTouchDragActive) {
+      _updatePrimaryDragIndicator(event.position);
+      final nearest = _nearestSelectableTabIndex(event.position);
+      if (nearest != _primaryDragTabIndex) {
+        setState(() => _primaryDragTabIndex = nearest);
+      }
+      return;
+    }
 
     if (!_isSwipeSelectionActive) {
       final downPosition = _swipePointerDownPosition;
@@ -358,20 +504,41 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
   void _handleSwipePointerUp(PointerEvent event) {
     if (_activeSwipePointer != event.pointer) return;
+    if (_isPrimaryTouchDragActive) {
+      _cancelSwipeSelection(preservePrimaryDrag: true);
+      final targetIndex =
+          _primaryDragTabIndex ?? _nearestSelectableTabIndex(event.position);
+      _completePrimaryTouchDragSelection(targetIndex);
+      return;
+    }
     _cancelSwipeSelection();
   }
 
+  EdgeInsets _tabButtonPadding() {
+    return switch ((widget.variant, widget.tabContentOrientation)) {
+      (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.horizontal) =>
+        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.vertical) =>
+        const EdgeInsets.all(8),
+      (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.horizontal) =>
+        const EdgeInsets.fromLTRB(16, 5, 16, 8),
+      (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.vertical) =>
+        const EdgeInsets.fromLTRB(16, 10, 16, 16),
+    };
+  }
+
   Widget _buildActiveIndicator(_HeroUiTabsTokens tokens) {
-    final rect = _selectedIndicatorRect;
+    final rect = _isPrimaryTouchDragActive
+        ? (_primaryDragIndicatorRect ?? _selectedIndicatorRect)
+        : _selectedIndicatorRect;
     if (rect == null || !_isFiniteIndicatorRect(rect)) {
       return const SizedBox.shrink();
     }
 
     if (widget.variant == HeroUiTabsVariant.primary) {
-      final radius =
-          widget.tabContentOrientation == HeroUiTabContentOrientation.vertical
-          ? 31.0
-          : 31.0;
+      final radius = rect.height / 2;
+      final scaleX = _isPrimaryIndicatorScaled ? _kPrimaryDragScaleX : 1.0;
+      final scaleY = _isPrimaryIndicatorScaled ? _kPrimaryDragScaleY : 1.0;
       return AnimatedPositioned(
         duration: _kAnimationDuration,
         curve: Curves.easeOutCubic,
@@ -380,17 +547,23 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
         width: rect.width,
         height: rect.height,
         child: IgnorePointer(
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: tokens.selectedBackground,
-              borderRadius: BorderRadius.circular(radius),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.06),
-                  blurRadius: 10,
-                  offset: Offset(0, 3),
-                ),
-              ],
+          child: AnimatedContainer(
+            duration: _kAnimationDuration,
+            curve: Curves.easeOutCubic,
+            transformAlignment: Alignment.center,
+            transform: Matrix4.diagonal3Values(scaleX, scaleY, 1),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: tokens.selectedBackground,
+                borderRadius: BorderRadius.circular(radius),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.06),
+                    blurRadius: 10,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -479,6 +652,22 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
           ? tokens.stripBackground
           : Theme.of(context).colorScheme.surface;
       final transparent = opaque.withValues(alpha: 0);
+      final scrollShadowRadius = switch (widget.variant) {
+        HeroUiTabsVariant.primary => 31.0,
+        HeroUiTabsVariant.secondary => 0.0,
+      };
+      final scrollShadowLeftRadius = scrollShadowRadius > 0
+          ? BorderRadius.only(
+              topLeft: Radius.circular(scrollShadowRadius),
+              bottomLeft: Radius.circular(scrollShadowRadius),
+            )
+          : null;
+      final scrollShadowRightRadius = scrollShadowRadius > 0
+          ? BorderRadius.only(
+              topRight: Radius.circular(scrollShadowRadius),
+              bottomRight: Radius.circular(scrollShadowRadius),
+            )
+          : null;
       tabStrip = Stack(
         clipBehavior: Clip.none,
         children: [
@@ -487,11 +676,12 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
             Positioned(
               top: 0,
               bottom: 0,
-              left: 0,
+              left: -4,
               child: IgnorePointer(
                 child: Container(
                   width: 83,
                   decoration: BoxDecoration(
+                    borderRadius: scrollShadowLeftRadius,
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -505,11 +695,12 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
             Positioned(
               top: 0,
               bottom: 0,
-              right: 0,
+              right: -4,
               child: IgnorePointer(
                 child: Container(
                   width: 83,
                   decoration: BoxDecoration(
+                    borderRadius: scrollShadowRightRadius,
                     gradient: LinearGradient(
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -550,17 +741,14 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     }
 
     Widget header = switch (widget.variant) {
-      HeroUiTabsVariant.primary => ClipRRect(
-        borderRadius: BorderRadius.circular(36),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: tokens.stripBackground,
-            borderRadius: BorderRadius.circular(36),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-            child: tabStrip,
-          ),
+      HeroUiTabsVariant.primary => DecoratedBox(
+        decoration: BoxDecoration(
+          color: tokens.stripBackground,
+          borderRadius: BorderRadius.circular(36),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          child: tabStrip,
         ),
       ),
       HeroUiTabsVariant.secondary => DecoratedBox(
@@ -601,11 +789,13 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
           )
         : Row(mainAxisSize: MainAxisSize.min, children: tabButtons);
 
+    final stripChildren = <Widget>[_buildActiveIndicator(tokens), tabRow];
+
     final stripContent = Stack(
       key: _stripKey,
       fit: StackFit.passthrough,
       clipBehavior: Clip.none,
-      children: [_buildActiveIndicator(tokens), tabRow],
+      children: stripChildren,
     );
 
     if (widget.behavior == HeroUiTabsBehavior.fill) {
@@ -622,7 +812,10 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
 
   Widget _buildTabButton(int index, _HeroUiTabsTokens tokens) {
     final item = widget.tabs[index];
-    final selected = _selectedIndex == index;
+    final dragTabIndex = _primaryDragTabIndex ?? _selectedIndex;
+    final selected = _isPrimaryTouchDragActive
+        ? dragTabIndex == index
+        : _selectedIndex == index;
     final disabled = item.isDisabled;
     final isPrimary = widget.variant == HeroUiTabsVariant.primary;
     final isVertical =
@@ -637,16 +830,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
       borderRadius: borderRadius,
     );
 
-    final padding = switch ((widget.variant, widget.tabContentOrientation)) {
-      (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.horizontal) =>
-        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      (HeroUiTabsVariant.primary, HeroUiTabContentOrientation.vertical) =>
-        const EdgeInsets.all(8),
-      (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.horizontal) =>
-        const EdgeInsets.fromLTRB(16, 5, 16, 8),
-      (HeroUiTabsVariant.secondary, HeroUiTabContentOrientation.vertical) =>
-        const EdgeInsets.fromLTRB(16, 10, 16, 16),
-    };
+    final padding = _tabButtonPadding();
 
     Widget button = Material(
       color: Colors.transparent,
@@ -679,10 +863,8 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     final isVertical =
         widget.tabContentOrientation == HeroUiTabContentOrientation.vertical;
     final textStyle =
-        (isVertical
-                ? HeroUiTypography.bodyXxsMedium
-                : HeroUiTypography.bodySmMedium)
-            .copyWith(color: color);
+        (isVertical ? HeroUiTypography.navLabel : HeroUiTypography.bodySmMedium)
+            .copyWith(color: color, height: 1.3);
 
     if (isVertical) {
       return IconTheme.merge(
@@ -715,17 +897,20 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
       data: IconThemeData(size: 26, color: color),
       child: DefaultTextStyle(
         style: textStyle,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (leading != null) ...[leading, const SizedBox(width: 8)],
-            text,
-            if (item.trailing != null) ...[
-              const SizedBox(width: 8),
-              item.trailing!,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (leading != null) ...[leading, const SizedBox(width: 8)],
+              text,
+              if (item.trailing != null) ...[
+                const SizedBox(width: 8),
+                item.trailing!,
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

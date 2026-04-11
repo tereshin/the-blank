@@ -9,6 +9,8 @@ enum HeroUiButtonVariant {
   tertiary,
   dangerSoft,
   toggleSelected,
+  success,
+  warning,
 }
 
 enum HeroUiButtonSize { sm, md, lg }

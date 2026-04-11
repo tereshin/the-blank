@@ -1,4 +1,5 @@
 export '../icons/heroui_icon.dart';
+export 'heroui_radius.dart';
 export 'typography/heroui_typography.dart';
 export 'widgets/buttons/heroui_buttons.dart';
 export 'widgets/collections/heroui_collections.dart';

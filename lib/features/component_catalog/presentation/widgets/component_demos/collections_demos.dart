@@ -117,7 +117,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.warning,
       ),
-      suffix: HeroUiIcon('comment', size: 20),
+      suffix: HeroUiIcon(HeroUiIconManifest.chat1Line, size: 20),
     ),
     HeroUiListBoxItem(
       value: 'fred',
@@ -129,7 +129,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.success,
       ),
-      suffix: HeroUiIcon('comment', size: 20),
+      suffix: HeroUiIcon(HeroUiIconManifest.chat1Line, size: 20),
     ),
     HeroUiListBoxItem(
       value: 'martha',
@@ -141,7 +141,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.danger,
       ),
-      suffix: HeroUiIcon('comment', size: 20),
+      suffix: HeroUiIcon(HeroUiIconManifest.chat1Line, size: 20),
     ),
     HeroUiListBoxItem(
       value: 'anna',
@@ -153,7 +153,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.defaultType,
       ),
-      suffix: HeroUiIcon('comment', size: 20),
+      suffix: HeroUiIcon(HeroUiIconManifest.chat1Line, size: 20),
       isDisabled: true,
     ),
     HeroUiListBoxItem<String>(
@@ -166,7 +166,7 @@ class _ListBoxDemoPage extends StatelessWidget {
         variant: HeroUiAvatarVariant.letterSoft,
         type: HeroUiComponentType.danger,
       ),
-      suffix: HeroUiIcon('comment', size: 20),
+      suffix: HeroUiIcon(HeroUiIconManifest.chat1Line, size: 20),
       type: HeroUiListBoxItemType.danger,
     ),
   ];

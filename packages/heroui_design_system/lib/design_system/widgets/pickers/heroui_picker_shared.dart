@@ -38,6 +38,7 @@ const _kFieldShadow = [
 
 const Color _kFocusRingColor = Color(0xFF0485F7);
 const Color _kDangerColor = Color(0xFFFF383C);
+const Duration _kDropdownAnimationDuration = Duration(milliseconds: 180);
 
 bool _isDark(BuildContext context) =>
     Theme.of(context).brightness == Brightness.dark;
@@ -303,27 +304,76 @@ Widget _buildTriggerField({
   );
 }
 
-class _DropdownOpenAnimation extends StatelessWidget {
-  const _DropdownOpenAnimation({required this.openAbove, required this.child});
+class _DropdownOpenAnimation extends StatefulWidget {
+  const _DropdownOpenAnimation({
+    required this.openAbove,
+    this.isVisible = true,
+    required this.child,
+  });
 
   final bool openAbove;
+  final bool isVisible;
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0, end: 1),
-      duration: const Duration(milliseconds: 180),
+  State<_DropdownOpenAnimation> createState() => _DropdownOpenAnimationState();
+}
+
+class _DropdownOpenAnimationState extends State<_DropdownOpenAnimation>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: _kDropdownAnimationDuration,
+      reverseDuration: _kDropdownAnimationDuration,
+      value: 0,
+    );
+    _animation = CurvedAnimation(
+      parent: _controller,
       curve: Curves.easeOutCubic,
-      builder: (context, value, animatedChild) {
-        final translateY = (1 - value) * (openAbove ? 10 : -10);
+    );
+    if (widget.isVisible) {
+      _controller.forward();
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant _DropdownOpenAnimation oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isVisible == oldWidget.isVisible) return;
+    if (widget.isVisible) {
+      _controller.forward();
+    } else {
+      _controller.reverse();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      child: widget.child,
+      builder: (context, animatedChild) {
+        final value = _animation.value;
+        final translateY = (1 - value) * (widget.openAbove ? 10 : -10);
         return Opacity(
           opacity: value,
           child: Transform.translate(
             offset: Offset(0, translateY),
             child: Transform.scale(
               scale: 0.96 + (0.04 * value),
-              alignment: openAbove
+              alignment: widget.openAbove
                   ? Alignment.bottomCenter
                   : Alignment.topCenter,
               child: animatedChild,
@@ -331,7 +381,6 @@ class _DropdownOpenAnimation extends StatelessWidget {
           ),
         );
       },
-      child: child,
     );
   }
 }
