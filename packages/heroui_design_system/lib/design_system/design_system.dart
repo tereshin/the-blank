@@ -25,4 +25,5 @@ export 'widgets/navigation/heroui_breadcrumbs.dart';
 export 'widgets/navigation/heroui_link.dart';
 export 'widgets/navigation/heroui_pagination.dart';
 export 'widgets/navigation/heroui_tabs.dart';
+export 'widgets/navigation/heroui_navigation.dart';
 export 'widgets/navigation/heroui_toolbar.dart';

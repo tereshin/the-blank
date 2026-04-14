@@ -97,7 +97,7 @@ packages:
       path: "packages/heroui_design_system"
       relative: true
     source: path
-    version: "0.1.7"
+    version: "0.1.8"
   http:
     dependency: transitive
     description:

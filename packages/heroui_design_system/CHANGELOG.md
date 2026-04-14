@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.8
+
+- `HeroUiSelect`, `HeroUiComboBox`, and `HeroUiAutocomplete`: added closing animation parity with opening by reversing the same dropdown overlay animation before removing the overlay.
+- `HeroUiComboBox` and `HeroUiAutocomplete`: hardened overlay lifecycle handling (including `dispose`) to avoid teardown assertions and focus-related race conditions when opening/closing rapidly.
+- `HeroUiAutocomplete`: dropdown now closes on outside tap and on item selection; filtering state is kept in sync when external `items`/`values` props change.
+- `HeroUiAutocomplete`: on mobile layouts, the field now expands to full available width.
+- `HeroUiInputOtp`: reworked cell row sizing to adapt to available width (with a narrow-width horizontal scroll fallback), preventing right-side `RenderFlex` overflows for compact screens.
+
 ## 0.1.7
 
 - `HeroUiButtonGroup` (attached, horizontal, `width: hug`): when the parent supplies a finite max width, segments now share the row with `Expanded` and `HeroUiButton.expand` so the group no longer overflows narrow layouts (e.g. catalog cards).

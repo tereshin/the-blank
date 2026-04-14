@@ -12,10 +12,15 @@ class HeroUiDrawer {
   static const double _kSideLayoutBreakpoint = 1024;
   static const double _kHandleHeight = 57;
   static const double _kScrollShadowSize = 56;
+  static const Duration _kScrollShadowFadeDuration = Duration(
+    milliseconds: 140,
+  );
   static const double _kFooterHorizontalInset = 20;
   static const double _kFooterBottomInset = 16;
   static const double _kFooterEstimatedHeight = 48;
   static const double _kFooterToContentGap = 12;
+  static const double _kDismissDragDistance = 94;
+  static const double _kDismissDragVelocity = 500;
 
   static Future<T?> show<T>({
     required BuildContext context,
@@ -41,6 +46,7 @@ class HeroUiDrawer {
         HeroUiDrawerScrollShadowVariant.visible,
   }) {
     final maxHeightFraction = maxHeight?.clamp(0.0, 1.0);
+    final scrollController = ScrollController();
 
     return showGeneralDialog<T>(
       context: context,
@@ -72,9 +78,12 @@ class HeroUiDrawer {
         final bodyMutedColor = isDark
             ? const Color(0xFFA1A1AA)
             : const Color(0xFF71717A);
-        final scrollShadowBase = isDark
-            ? const Color(0xFF18181B)
-            : const Color(0xFFFFFFFF);
+        final scrollShadowBase = HeroUiSurface.fillColor(
+          ctx,
+          surfaceVariant == HeroUiSurfaceVariant.transparent
+              ? HeroUiSurfaceVariant.defaultVariant
+              : surfaceVariant,
+        );
 
         final showHandle =
             resolvedPosition == HeroUiDrawerPosition.bottom ||
@@ -106,18 +115,29 @@ class HeroUiDrawer {
         };
 
         var panelDragOffset = 0.0;
-        var isHandleDragging = false;
-        var isHandleDismissInProgress = false;
+        var isPanelDragging = false;
+        var isDragDismissInProgress = false;
+        var isScrollEdgeDragging = false;
         var showTopShadow = false;
         var showBottomShadow = false;
+        var lastScrollEdgeDragDelta = 0.0;
+        var lastScrollEdgeDragAt = DateTime.fromMillisecondsSinceEpoch(0);
 
         final footerWidgets = footerActions;
         final hasFooter = footerWidgets != null && footerWidgets.isNotEmpty;
 
-        void dismissFromHandleDrag() {
-          if (isHandleDismissInProgress) return;
-          isHandleDismissInProgress = true;
+        void dismissFromDrag() {
+          if (isDragDismissInProgress) return;
+          isDragDismissInProgress = true;
           Navigator.of(ctx).maybePop();
+        }
+
+        double clampPanelDragOffset(double value) {
+          return switch (resolvedPosition) {
+            HeroUiDrawerPosition.bottom => math.max(value, 0),
+            HeroUiDrawerPosition.top => math.min(value, 0),
+            HeroUiDrawerPosition.left || HeroUiDrawerPosition.right => 0,
+          };
         }
 
         void syncShadowsFromMetrics(
@@ -136,6 +156,146 @@ class HeroUiDrawer {
             showTopShadow = nextTop;
             showBottomShadow = nextBottom;
           });
+        }
+
+        double resolvedEdgeContentOffset(ScrollPosition position) {
+          return switch (resolvedPosition) {
+            HeroUiDrawerPosition.bottom => 0,
+            HeroUiDrawerPosition.top => position.maxScrollExtent,
+            HeroUiDrawerPosition.left || HeroUiDrawerPosition.right => 0,
+          };
+        }
+
+        void stickContentToDismissEdge() {
+          if (!scrollController.hasClients) return;
+          final position = scrollController.position;
+          final edgeOffset = resolvedEdgeContentOffset(position);
+          if ((position.pixels - edgeOffset).abs() <= 0.5) {
+            return;
+          }
+          scrollController.jumpTo(edgeOffset);
+        }
+
+        void rememberScrollEdgeDragSample(double delta) {
+          if (delta == 0) return;
+          lastScrollEdgeDragDelta = delta;
+          lastScrollEdgeDragAt = DateTime.now();
+        }
+
+        double estimateScrollEdgeDragVelocity() {
+          if (lastScrollEdgeDragDelta == 0) return 0;
+          final elapsedMs = DateTime.now()
+              .difference(lastScrollEdgeDragAt)
+              .inMilliseconds;
+          if (elapsedMs <= 0 || elapsedMs > 90) return 0;
+          return (lastScrollEdgeDragDelta / elapsedMs) * 1000;
+        }
+
+        void startPanelDrag(StateSetter setPanelState) {
+          if (!showHandle) return;
+          setPanelState(() {
+            isPanelDragging = true;
+            isScrollEdgeDragging = false;
+            panelDragOffset = 0;
+            lastScrollEdgeDragDelta = 0;
+          });
+        }
+
+        void updatePanelDrag(double delta, StateSetter setPanelState) {
+          if (!showHandle || delta == 0) return;
+          setPanelState(() {
+            isPanelDragging = true;
+            panelDragOffset = clampPanelDragOffset(panelDragOffset + delta);
+          });
+        }
+
+        void finishPanelDrag(StateSetter setPanelState, {double velocity = 0}) {
+          if (!showHandle) return;
+          final passedDistanceThreshold =
+              (resolvedPosition == HeroUiDrawerPosition.bottom &&
+                  panelDragOffset >= _kDismissDragDistance) ||
+              (resolvedPosition == HeroUiDrawerPosition.top &&
+                  panelDragOffset <= -_kDismissDragDistance);
+          final passedVelocityThreshold =
+              (resolvedPosition == HeroUiDrawerPosition.bottom &&
+                  velocity > _kDismissDragVelocity) ||
+              (resolvedPosition == HeroUiDrawerPosition.top &&
+                  velocity < -_kDismissDragVelocity);
+          final shouldDismiss =
+              passedDistanceThreshold || passedVelocityThreshold;
+
+          setPanelState(() {
+            isPanelDragging = false;
+            isScrollEdgeDragging = false;
+            lastScrollEdgeDragDelta = 0;
+            if (!shouldDismiss) {
+              panelDragOffset = 0;
+            }
+          });
+
+          if (shouldDismiss) {
+            dismissFromDrag();
+          }
+        }
+
+        void cancelPanelDrag(StateSetter setPanelState) {
+          if (!showHandle) return;
+          setPanelState(() {
+            isPanelDragging = false;
+            isScrollEdgeDragging = false;
+            panelDragOffset = 0;
+            lastScrollEdgeDragDelta = 0;
+          });
+        }
+
+        double? scrollEdgeDismissDelta(OverscrollNotification notification) {
+          if (!showHandle || notification.metrics.axis != Axis.vertical) {
+            return null;
+          }
+
+          final metrics = notification.metrics;
+          final canScroll = metrics.maxScrollExtent > 0.5;
+          final overscrollDelta = notification.overscroll.abs();
+          if (overscrollDelta == 0) return null;
+          return switch (resolvedPosition) {
+            HeroUiDrawerPosition.bottom =>
+              metrics.pixels <= 0.5 || !canScroll ? overscrollDelta : null,
+            HeroUiDrawerPosition.top =>
+              ((metrics.maxScrollExtent - metrics.pixels <= 0.5) ||
+                          !canScroll) &&
+                      overscrollDelta > 0
+                  ? -overscrollDelta
+                  : null,
+            HeroUiDrawerPosition.left || HeroUiDrawerPosition.right => null,
+          };
+        }
+
+        double? scrollUpdateDismissDelta(
+          ScrollUpdateNotification notification,
+        ) {
+          if (!showHandle || notification.metrics.axis != Axis.vertical) {
+            return null;
+          }
+          final dragDetails = notification.dragDetails;
+          if (dragDetails == null) return null;
+
+          final metrics = notification.metrics;
+          final dy = dragDetails.delta.dy;
+          final canScroll = metrics.maxScrollExtent > 0.5;
+          final atTop = metrics.pixels <= 0.5;
+          final atBottom = (metrics.maxScrollExtent - metrics.pixels) <= 0.5;
+
+          if (isScrollEdgeDragging) {
+            return dy;
+          }
+
+          return switch (resolvedPosition) {
+            HeroUiDrawerPosition.bottom =>
+              (atTop || !canScroll) && dy > 0 ? dy : null,
+            HeroUiDrawerPosition.top =>
+              (atBottom || !canScroll) && dy < 0 ? dy : null,
+            HeroUiDrawerPosition.left || HeroUiDrawerPosition.right => null,
+          };
         }
 
         Widget buildEdgeScrollShadow({required bool fromTop}) {
@@ -203,62 +363,28 @@ class HeroUiDrawer {
                 : (resolvedPosition == HeroUiDrawerPosition.bottom
                       ? viewPadding.bottom
                       : 0.0);
+            final scrollPhysics = isScrollEdgeDragging
+                ? const NeverScrollableScrollPhysics()
+                : const AlwaysScrollableScrollPhysics();
 
             Widget buildHandle({required EdgeInsets margin}) {
               return GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () => Navigator.of(ctx).pop(),
                 onVerticalDragStart: (_) {
-                  setPanelState(() {
-                    isHandleDragging = true;
-                    panelDragOffset = 0;
-                  });
+                  startPanelDrag(setPanelState);
                 },
                 onVerticalDragUpdate: (details) {
-                  setPanelState(() {
-                    panelDragOffset += details.primaryDelta ?? 0;
-                    panelDragOffset = switch (resolvedPosition) {
-                      HeroUiDrawerPosition.bottom => math.max(
-                        panelDragOffset,
-                        0,
-                      ),
-                      HeroUiDrawerPosition.top => math.min(panelDragOffset, 0),
-                      HeroUiDrawerPosition.left ||
-                      HeroUiDrawerPosition.right => 0,
-                    };
-                  });
+                  updatePanelDrag(details.primaryDelta ?? 0, setPanelState);
                 },
                 onVerticalDragEnd: (details) {
-                  final velocity = details.primaryVelocity ?? 0;
-                  final passedDistanceThreshold =
-                      (resolvedPosition == HeroUiDrawerPosition.bottom &&
-                          panelDragOffset >= 94) ||
-                      (resolvedPosition == HeroUiDrawerPosition.top &&
-                          panelDragOffset <= -94);
-                  final passedVelocityThreshold =
-                      (resolvedPosition == HeroUiDrawerPosition.bottom &&
-                          velocity > 500) ||
-                      (resolvedPosition == HeroUiDrawerPosition.top &&
-                          velocity < -500);
-                  final shouldDismiss =
-                      passedDistanceThreshold || passedVelocityThreshold;
-
-                  setPanelState(() {
-                    isHandleDragging = false;
-                    if (!shouldDismiss) {
-                      panelDragOffset = 0;
-                    }
-                  });
-
-                  if (shouldDismiss) {
-                    dismissFromHandleDrag();
-                  }
+                  finishPanelDrag(
+                    setPanelState,
+                    velocity: details.primaryVelocity ?? 0,
+                  );
                 },
                 onVerticalDragCancel: () {
-                  setPanelState(() {
-                    isHandleDragging = false;
-                    panelDragOffset = 0;
-                  });
+                  cancelPanelDrag(setPanelState);
                 },
                 child: Container(
                   width: double.infinity,
@@ -342,13 +468,92 @@ class HeroUiDrawer {
                         notification.metrics,
                         setPanelState,
                       );
+
+                      if (notification is ScrollUpdateNotification) {
+                        final dragDelta = scrollUpdateDismissDelta(
+                          notification,
+                        );
+                        if (dragDelta != null && dragDelta != 0) {
+                          stickContentToDismissEdge();
+                          setPanelState(() {
+                            isScrollEdgeDragging = true;
+                            isPanelDragging = true;
+                            rememberScrollEdgeDragSample(dragDelta);
+                            panelDragOffset = clampPanelDragOffset(
+                              panelDragOffset + dragDelta,
+                            );
+                          });
+                          return true;
+                        }
+                      }
+
+                      if (notification is OverscrollNotification) {
+                        final edgeDelta = scrollEdgeDismissDelta(notification);
+                        if (edgeDelta != null && edgeDelta != 0) {
+                          stickContentToDismissEdge();
+                          setPanelState(() {
+                            isScrollEdgeDragging = true;
+                            isPanelDragging = true;
+                            rememberScrollEdgeDragSample(edgeDelta);
+                            panelDragOffset = clampPanelDragOffset(
+                              panelDragOffset + edgeDelta,
+                            );
+                          });
+                          return true;
+                        }
+                      }
+
+                      if (isScrollEdgeDragging &&
+                          notification is ScrollEndNotification) {
+                        finishPanelDrag(
+                          setPanelState,
+                          velocity:
+                              notification
+                                  .dragDetails
+                                  ?.velocity
+                                  .pixelsPerSecond
+                                  .dy ??
+                              0,
+                        );
+                        return true;
+                      }
+
                       return false;
                     },
-                    child: SingleChildScrollView(
-                      padding: EdgeInsets.only(bottom: scrollBottomPadding),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [headerSection, body],
+                    child: Listener(
+                      behavior: HitTestBehavior.translucent,
+                      onPointerMove: (event) {
+                        if (!isScrollEdgeDragging) return;
+                        final delta = event.delta.dy;
+                        if (delta == 0) return;
+                        stickContentToDismissEdge();
+                        setPanelState(() {
+                          isPanelDragging = true;
+                          rememberScrollEdgeDragSample(delta);
+                          panelDragOffset = clampPanelDragOffset(
+                            panelDragOffset + delta,
+                          );
+                        });
+                      },
+                      onPointerUp: (_) {
+                        if (!isScrollEdgeDragging) return;
+                        finishPanelDrag(
+                          setPanelState,
+                          velocity: estimateScrollEdgeDragVelocity(),
+                        );
+                      },
+                      onPointerCancel: (_) {
+                        if (!isScrollEdgeDragging) return;
+                        cancelPanelDrag(setPanelState);
+                      },
+                      child: SingleChildScrollView(
+                        controller: scrollController,
+                        physics: scrollPhysics,
+                        padding: EdgeInsets.only(bottom: scrollBottomPadding),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [headerSection, body],
+                        ),
                       ),
                     ),
                   ),
@@ -358,21 +563,29 @@ class HeroUiDrawer {
               clipBehavior: Clip.none,
               children: [
                 Positioned.fill(child: scrollableContent),
-                if (scrollShadow != HeroUiDrawerScrollShadowVariant.off &&
-                    showTopShadow)
+                if (scrollShadow != HeroUiDrawerScrollShadowVariant.off)
                   Positioned(
                     top: 0,
                     left: 0,
                     right: 0,
-                    child: buildEdgeScrollShadow(fromTop: true),
+                    child: AnimatedOpacity(
+                      opacity: showTopShadow ? 1 : 0,
+                      duration: _kScrollShadowFadeDuration,
+                      curve: Curves.easeOutCubic,
+                      child: buildEdgeScrollShadow(fromTop: true),
+                    ),
                   ),
-                if (scrollShadow != HeroUiDrawerScrollShadowVariant.off &&
-                    showBottomShadow)
+                if (scrollShadow != HeroUiDrawerScrollShadowVariant.off)
                   Positioned(
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    child: buildEdgeScrollShadow(fromTop: false),
+                    child: AnimatedOpacity(
+                      opacity: showBottomShadow ? 1 : 0,
+                      duration: _kScrollShadowFadeDuration,
+                      curve: Curves.easeOutCubic,
+                      child: buildEdgeScrollShadow(fromTop: false),
+                    ),
                   ),
                 if (hasFooter)
                   Positioned(
@@ -443,7 +656,7 @@ class HeroUiDrawer {
 
             if (showHandle) {
               panel = AnimatedContainer(
-                duration: isHandleDragging
+                duration: isPanelDragging
                     ? Duration.zero
                     : const Duration(milliseconds: 180),
                 curve: Curves.easeOutCubic,
@@ -478,6 +691,6 @@ class HeroUiDrawer {
           },
         );
       },
-    );
+    ).whenComplete(scrollController.dispose);
   }
 }

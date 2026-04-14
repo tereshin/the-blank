@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +86,13 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   static const double _kRectEpsilon = 0.5;
   static const double _kSwipeTouchSlop = 23;
   static const double _kPrimaryDragScaleX = 1.3;
-  static const double _kPrimaryDragScaleY = 1.1;
+  static const double _kPrimaryDragScaleY = 1.3;
+  static const double _kPrimaryDragEdgeMagnetFactor = 0.22;
+  static const double _kPrimaryDragEdgeOvershootMax = 28;
+  static const double _kPrimaryStripRadius = 36;
+  static const double _kPrimaryStripInset = 5;
+  static const double _kPrimaryStripInnerRadius =
+      _kPrimaryStripRadius - _kPrimaryStripInset;
 
   late int _selectedIndex;
   late final ScrollController _scrollController;
@@ -250,6 +257,9 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
       return;
     }
 
+    // Keep active indicator locked to tab geometry while strip scrolls.
+    _scheduleIndicatorSync();
+
     final position = _scrollController.position;
     final canBack = position.pixels > 0.5;
     final canForward = position.maxScrollExtent - position.pixels > 0.5;
@@ -392,14 +402,47 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     if (stripRenderObject is! RenderBox || !stripRenderObject.hasSize) return;
 
     final localPosition = stripRenderObject.globalToLocal(globalPosition);
+    final stripWidth = stripRenderObject.size.width;
+    final minLeft = 0.0;
+    final maxLeft = math.max(0.0, stripWidth - dragRect.width);
+    final rawLeft = localPosition.dx - (dragRect.width / 2);
+    final magnetizedLeft = _applyEdgeMagnet(
+      rawLeft,
+      min: minLeft,
+      max: maxLeft,
+    );
     final nextRect = Rect.fromLTWH(
-      localPosition.dx - (dragRect.width / 2),
+      magnetizedLeft,
       dragRect.top,
       dragRect.width,
       dragRect.height,
     );
     if (_sameRect(_primaryDragIndicatorRect, nextRect)) return;
     setState(() => _primaryDragIndicatorRect = nextRect);
+  }
+
+  double _applyEdgeMagnet(
+    double value, {
+    required double min,
+    required double max,
+  }) {
+    if (value < min) {
+      final overflow = min - value;
+      final resisted = math.min(
+        _kPrimaryDragEdgeOvershootMax,
+        overflow * _kPrimaryDragEdgeMagnetFactor,
+      );
+      return min - resisted;
+    }
+    if (value > max) {
+      final overflow = value - max;
+      final resisted = math.min(
+        _kPrimaryDragEdgeOvershootMax,
+        overflow * _kPrimaryDragEdgeMagnetFactor,
+      );
+      return max + resisted;
+    }
+    return value;
   }
 
   void _completePrimaryTouchDragSelection(int targetIndex) {
@@ -527,7 +570,10 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     };
   }
 
-  Widget _buildActiveIndicator(_HeroUiTabsTokens tokens) {
+  Widget _buildActiveIndicator(
+    _HeroUiTabsTokens tokens, {
+    bool clampToStripBounds = false,
+  }) {
     final rect = _isPrimaryTouchDragActive
         ? (_primaryDragIndicatorRect ?? _selectedIndicatorRect)
         : _selectedIndicatorRect;
@@ -535,17 +581,35 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
       return const SizedBox.shrink();
     }
 
+    var resolvedRect = rect;
+    if (clampToStripBounds) {
+      final stripContext = _stripKey.currentContext;
+      final stripRenderObject = stripContext?.findRenderObject();
+      if (stripRenderObject is RenderBox && stripRenderObject.hasSize) {
+        final maxLeft = math.max(
+          0.0,
+          stripRenderObject.size.width - rect.width,
+        );
+        resolvedRect = Rect.fromLTWH(
+          rect.left.clamp(0.0, maxLeft).toDouble(),
+          rect.top,
+          rect.width,
+          rect.height,
+        );
+      }
+    }
+
     if (widget.variant == HeroUiTabsVariant.primary) {
-      final radius = rect.height / 2;
+      final radius = resolvedRect.height / 2;
       final scaleX = _isPrimaryIndicatorScaled ? _kPrimaryDragScaleX : 1.0;
       final scaleY = _isPrimaryIndicatorScaled ? _kPrimaryDragScaleY : 1.0;
       return AnimatedPositioned(
         duration: _kAnimationDuration,
         curve: Curves.easeOutCubic,
-        left: rect.left,
-        top: rect.top,
-        width: rect.width,
-        height: rect.height,
+        left: resolvedRect.left,
+        top: resolvedRect.top,
+        width: resolvedRect.width,
+        height: resolvedRect.height,
         child: IgnorePointer(
           child: AnimatedContainer(
             duration: _kAnimationDuration,
@@ -573,9 +637,9 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
     return AnimatedPositioned(
       duration: _kAnimationDuration,
       curve: Curves.easeOutCubic,
-      left: rect.left,
-      top: rect.bottom - _kIndicatorHeight,
-      width: rect.width,
+      left: resolvedRect.left,
+      top: resolvedRect.bottom - _kIndicatorHeight,
+      width: resolvedRect.width,
       height: _kIndicatorHeight,
       child: IgnorePointer(
         child: DecoratedBox(
@@ -744,10 +808,13 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
       HeroUiTabsVariant.primary => DecoratedBox(
         decoration: BoxDecoration(
           color: tokens.stripBackground,
-          borderRadius: BorderRadius.circular(36),
+          borderRadius: BorderRadius.circular(_kPrimaryStripRadius),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          padding: const EdgeInsets.symmetric(
+            horizontal: _kPrimaryStripInset,
+            vertical: _kPrimaryStripInset,
+          ),
           child: tabStrip,
         ),
       ),
@@ -766,6 +833,11 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   }
 
   Widget _buildTabStrip(_HeroUiTabsTokens tokens) {
+    final useNavigationLayout =
+        widget.tabContentOrientation == HeroUiTabContentOrientation.vertical;
+    final hasHorizontalOverflow =
+        widget.behavior == HeroUiTabsBehavior.hug &&
+        (_canScrollBack || _canScrollForward);
     final visibleIndices = _visibleTabIndices();
     final tabButtons = <Widget>[];
 
@@ -789,24 +861,41 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
           )
         : Row(mainAxisSize: MainAxisSize.min, children: tabButtons);
 
-    final stripChildren = <Widget>[_buildActiveIndicator(tokens), tabRow];
+    Widget tabsLayer = widget.behavior == HeroUiTabsBehavior.fill
+        ? tabRow
+        : SingleChildScrollView(
+            controller: _scrollController,
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            child: tabRow,
+          );
 
-    final stripContent = Stack(
+    if (widget.variant == HeroUiTabsVariant.primary) {
+      tabsLayer = ClipRRect(
+        borderRadius: BorderRadius.circular(_kPrimaryStripInnerRadius),
+        clipBehavior: Clip.hardEdge,
+        child: tabsLayer,
+      );
+    }
+
+    final clampIndicatorToStripBounds =
+        !useNavigationLayout &&
+        widget.variant == HeroUiTabsVariant.primary &&
+        hasHorizontalOverflow;
+
+    final children = <Widget>[
+      _buildActiveIndicator(
+        tokens,
+        clampToStripBounds: clampIndicatorToStripBounds,
+      ),
+      tabsLayer,
+    ];
+
+    return Stack(
       key: _stripKey,
       fit: StackFit.passthrough,
       clipBehavior: Clip.none,
-      children: stripChildren,
-    );
-
-    if (widget.behavior == HeroUiTabsBehavior.fill) {
-      return stripContent;
-    }
-
-    return SingleChildScrollView(
-      controller: _scrollController,
-      scrollDirection: Axis.horizontal,
-      physics: const BouncingScrollPhysics(),
-      child: stripContent,
+      children: children,
     );
   }
 

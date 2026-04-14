@@ -174,15 +174,6 @@ class HeroUiTypography {
   static const TextStyle buttonBase = TextStyle(
     fontFamily: fontFamily,
     package: packageName,
-    fontSize: 20.8,
-    fontWeight: FontWeight.w500,
-    height: 22 / 16,
-    letterSpacing: -0.7,
-  );
-
-  static const TextStyle buttonSm = TextStyle(
-    fontFamily: fontFamily,
-    package: packageName,
     fontSize: 18.2,
     fontWeight: FontWeight.w500,
     height: 20 / 14,
@@ -203,7 +194,7 @@ class HeroUiTypography {
     bodyMedium: bodySm,
     bodySmall: bodyXs,
     labelLarge: buttonBase,
-    labelMedium: buttonSm,
+    labelMedium: buttonBase,
     labelSmall: bodyXsMedium,
   );
 }

@@ -5,14 +5,13 @@ import '../../typography/heroui_typography.dart';
 
 enum HeroUiLinkState { defaultState, hover, pressed, focus, disabled }
 
-const TextStyle _kLinkSmStyle = HeroUiTypography.linkSm;
-
 class HeroUiLink extends StatefulWidget {
   const HeroUiLink({
     required this.label,
     super.key,
     this.onTap,
     this.state = HeroUiLinkState.defaultState,
+    this.textStyle = HeroUiTypography.linkSm,
     this.showIcon = false,
     this.icon,
     this.leading,
@@ -22,6 +21,8 @@ class HeroUiLink extends StatefulWidget {
   final String label;
   final VoidCallback? onTap;
   final HeroUiLinkState state;
+  /// Base typography for the label (color, underline, and decoration are overridden from state).
+  final TextStyle textStyle;
   final bool showIcon;
   final Widget? icon;
   final Widget? leading;
@@ -154,7 +155,7 @@ class _HeroUiLinkState extends State<HeroUiLink> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: DefaultTextStyle(
-                style: _kLinkSmStyle.copyWith(
+                style: widget.textStyle.copyWith(
                   color: foreground,
                   decoration: decoration,
                   decorationColor: foreground,
@@ -172,16 +173,11 @@ class _HeroUiLinkState extends State<HeroUiLink> {
                       ),
                       const SizedBox(width: 3),
                     ],
-                    SizedBox(
-                      height: 23,
-                      child: Center(
-                        child: Text(
-                          widget.label,
-                          textHeightBehavior: const TextHeightBehavior(
-                            applyHeightToFirstAscent: false,
-                            applyHeightToLastDescent: false,
-                          ),
-                        ),
+                    Text(
+                      widget.label,
+                      textHeightBehavior: const TextHeightBehavior(
+                        applyHeightToFirstAscent: false,
+                        applyHeightToLastDescent: false,
                       ),
                     ),
                     if (trailingIcon != null) ...[

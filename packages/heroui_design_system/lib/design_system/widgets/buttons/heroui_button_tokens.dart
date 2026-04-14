@@ -38,7 +38,7 @@ _Size _size(HeroUiButtonSize s) => switch (s) {
     7,
     const EdgeInsets.symmetric(horizontal: 16, vertical: 8).copyWith(bottom: 8),
     const EdgeInsets.all(11),
-    HeroUiTypography.buttonSm,
+    HeroUiTypography.buttonBase,
     21,
     21,
   ),

@@ -53,7 +53,7 @@ class _OutlineButtonState extends State<_OutlineButton> {
           ),
           child: Text(
             widget.label,
-            style: HeroUiTypography.buttonSm.copyWith(color: textColor),
+            style: HeroUiTypography.buttonBase.copyWith(color: textColor),
           ),
         ),
       ),
@@ -99,7 +99,7 @@ class _FilledButtonState extends State<_FilledButton> {
           ),
           child: Text(
             widget.label,
-            style: HeroUiTypography.buttonSm.copyWith(
+            style: HeroUiTypography.buttonBase.copyWith(
               color: const Color(0xFFFFFFFF),
             ),
           ),
