@@ -22,6 +22,15 @@ class HeroUiDrawer {
   static const double _kDismissDragDistance = 94;
   static const double _kDismissDragVelocity = 500;
 
+  /// Fill used for scroll-edge shadows — matches [HeroUiSurface] on the panel.
+  static HeroUiSurfaceVariant _scrollShadowSurfaceVariant(
+    HeroUiSurfaceVariant surfaceVariant,
+  ) {
+    return surfaceVariant == HeroUiSurfaceVariant.transparent
+        ? HeroUiSurfaceVariant.defaultVariant
+        : surfaceVariant;
+  }
+
   static Future<T?> show<T>({
     required BuildContext context,
     required Widget body,
@@ -78,12 +87,6 @@ class HeroUiDrawer {
         final bodyMutedColor = isDark
             ? const Color(0xFFA1A1AA)
             : const Color(0xFF71717A);
-        final scrollShadowBase = HeroUiSurface.fillColor(
-          ctx,
-          surfaceVariant == HeroUiSurfaceVariant.transparent
-              ? HeroUiSurfaceVariant.defaultVariant
-              : surfaceVariant,
-        );
 
         final showHandle =
             resolvedPosition == HeroUiDrawerPosition.bottom ||
@@ -298,57 +301,72 @@ class HeroUiDrawer {
           };
         }
 
-        Widget buildEdgeScrollShadow({required bool fromTop}) {
-          final begin = fromTop ? Alignment.topCenter : Alignment.bottomCenter;
-          final end = fromTop ? Alignment.bottomCenter : Alignment.topCenter;
-
-          final gradient = Container(
-            height: _kScrollShadowSize,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: begin,
-                end: end,
-                colors: switch (scrollShadow) {
-                  HeroUiDrawerScrollShadowVariant.off => [
-                    Colors.transparent,
-                    Colors.transparent,
-                  ],
-                  HeroUiDrawerScrollShadowVariant.visible => [
-                    scrollShadowBase,
-                    scrollShadowBase.withValues(alpha: 0),
-                  ],
-                  HeroUiDrawerScrollShadowVariant.blur => [
-                    scrollShadowBase.withValues(alpha: 0.76),
-                    scrollShadowBase.withValues(alpha: 0),
-                  ],
-                },
-              ),
-            ),
-          );
-
-          if (scrollShadow != HeroUiDrawerScrollShadowVariant.blur) {
-            return IgnorePointer(child: gradient);
-          }
-
-          return IgnorePointer(
-            child: ClipRect(
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-                      child: const SizedBox.expand(),
-                    ),
-                  ),
-                  gradient,
-                ],
-              ),
-            ),
-          );
-        }
-
         return StatefulBuilder(
           builder: (context, setPanelState) {
+            final scrollShadowVariant = _scrollShadowSurfaceVariant(
+              surfaceVariant,
+            );
+            final panelFillColor = HeroUiSurface.fillColor(
+              context,
+              surfaceVariant,
+            );
+            final scrollShadowColor = HeroUiSurface.fillColor(
+              context,
+              scrollShadowVariant,
+            );
+
+            Widget buildEdgeScrollShadow({required bool fromTop}) {
+              final begin = fromTop
+                  ? Alignment.topCenter
+                  : Alignment.bottomCenter;
+              final end = fromTop
+                  ? Alignment.bottomCenter
+                  : Alignment.topCenter;
+
+              final gradient = Container(
+                height: _kScrollShadowSize,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: begin,
+                    end: end,
+                    colors: switch (scrollShadow) {
+                      HeroUiDrawerScrollShadowVariant.off => [
+                        Colors.transparent,
+                        Colors.transparent,
+                      ],
+                      HeroUiDrawerScrollShadowVariant.visible => [
+                        scrollShadowColor,
+                        scrollShadowColor.withValues(alpha: 0),
+                      ],
+                      HeroUiDrawerScrollShadowVariant.blur => [
+                        scrollShadowColor,
+                        scrollShadowColor.withValues(alpha: 0),
+                      ],
+                    },
+                  ),
+                ),
+              );
+
+              if (scrollShadow != HeroUiDrawerScrollShadowVariant.blur) {
+                return IgnorePointer(child: gradient);
+              }
+
+              return IgnorePointer(
+                child: ClipRect(
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
+                          child: const SizedBox.expand(),
+                        ),
+                      ),
+                      gradient,
+                    ],
+                  ),
+                ),
+              );
+            }
             final viewPadding = MediaQuery.viewPaddingOf(context);
             final footerBottomInset =
                 _kFooterBottomInset +
@@ -619,6 +637,10 @@ class HeroUiDrawer {
                   borderRadius: borderRadius,
                   child: HeroUiSurface(
                     variant: surfaceVariant,
+                    backgroundColor:
+                        surfaceVariant == HeroUiSurfaceVariant.transparent
+                        ? null
+                        : panelFillColor,
                     borderRadius: 0,
                     showShadow: false,
                     child: Column(

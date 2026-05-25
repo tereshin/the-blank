@@ -2,6 +2,9 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.9
+– Fixed `HeroUiTab` swipe pointer.
+
 ## 0.1.8
 
 - `HeroUiSelect`, `HeroUiComboBox`, and `HeroUiAutocomplete`: added closing animation parity with opening by reversing the same dropdown overlay animation before removing the overlay.

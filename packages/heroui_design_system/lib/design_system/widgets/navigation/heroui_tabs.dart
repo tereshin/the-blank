@@ -93,6 +93,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   static const double _kPrimaryStripInset = 5;
   static const double _kPrimaryStripInnerRadius =
       _kPrimaryStripRadius - _kPrimaryStripInset;
+  static const int _kMaxIndicatorSyncRetries = 12;
 
   late int _selectedIndex;
   late final ScrollController _scrollController;
@@ -100,6 +101,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   final GlobalKey _stripKey = GlobalKey();
   Rect? _selectedIndicatorRect;
   bool _isIndicatorSyncScheduled = false;
+  int _indicatorSyncRetryCount = 0;
   Timer? _swipeHoldTimer;
   int? _activeSwipePointer;
   Offset? _swipePointerDownPosition;
@@ -292,6 +294,19 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
       _isIndicatorSyncScheduled = false;
       if (!mounted) return;
       final nextRect = _measureSelectedTabRect();
+      if (nextRect == null) {
+        // Tab strip may be offstage or not laid out yet (e.g. after swiping
+        // away and back). Keep the last known rect and retry while tickers run.
+        if (TickerMode.valuesOf(context).enabled &&
+            _indicatorSyncRetryCount < _kMaxIndicatorSyncRetries) {
+          _indicatorSyncRetryCount++;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) _scheduleIndicatorSync();
+          });
+        }
+        return;
+      }
+      _indicatorSyncRetryCount = 0;
       if (_sameRect(_selectedIndicatorRect, nextRect)) return;
       setState(() => _selectedIndicatorRect = nextRect);
     });
@@ -656,6 +671,7 @@ class _HeroUiTabsState extends State<HeroUiTabs> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final tokens = _tabsTokens(variant: widget.variant, isDark: isDark);
+    _indicatorSyncRetryCount = 0;
     _scheduleIndicatorSync();
     final header = _buildHeader(context, tokens);
 
