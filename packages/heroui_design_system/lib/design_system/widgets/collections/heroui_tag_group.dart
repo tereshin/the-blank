@@ -194,23 +194,31 @@ class _TagChipState extends State<_TagChip> {
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final cs = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
     final selected = widget.isSelected;
     final disabled = widget.item.isDisabled;
     final isSurface = widget.variant == HeroUiTagVariant.surface;
+
+    const accent = Color(0xFF0485F7);
 
     Color bgColor;
     Color textColor;
     Border? border;
 
     if (selected) {
-      bgColor = const Color(0xFF0485F7).withOpacity(0.15);
-      textColor = const Color(0xFF0485F7);
+      bgColor = accent.withValues(alpha: isDark ? 0.28 : 0.15);
+      textColor = accent;
     } else if (_isHovered && !disabled) {
-      bgColor = isSurface ? const Color(0xFFF5F5F5) : const Color(0xFFE1E1E2);
+      bgColor = isSurface
+          ? (isDark ? const Color(0xFF27272A) : const Color(0xFFF5F5F5))
+          : (isDark ? const Color(0xFF3F3F46) : const Color(0xFFE1E1E2));
       textColor = cs.onSurface;
     } else {
-      bgColor = isSurface ? cs.surface : const Color(0xFFEBEBEC);
+      bgColor = isSurface
+          ? cs.surface
+          : (isDark ? const Color(0xFF27272A) : const Color(0xFFEBEBEC));
       textColor = cs.onSurface;
     }
 

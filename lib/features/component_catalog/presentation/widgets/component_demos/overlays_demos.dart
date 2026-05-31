@@ -551,19 +551,29 @@ class _DrawerDemoPage extends StatelessWidget {
                 for (final pos in HeroUiDrawerPosition.values)
                   _demoButton(
                     pos.name,
-                    onTap: () => HeroUiDrawer.show(
-                      context: context,
-                      position: pos,
-                      title: '${pos.name.toUpperCase()} Drawer',
-                      subtitle: 'Drawer content example',
-                      body: bodyContent,
-                      footerActions: [
-                        _demoButton(
-                          'Save',
-                          onTap: () => Navigator.of(context).pop(),
-                        ),
-                      ],
-                    ),
+                    onTap: () {
+                      final isSheet =
+                          pos == HeroUiDrawerPosition.bottom ||
+                          pos == HeroUiDrawerPosition.top;
+                      HeroUiDrawer.show(
+                        context: context,
+                        position: pos,
+                        title: '${pos.name.toUpperCase()} Drawer',
+                        subtitle: 'Drawer content example',
+                        headerTrailing: isSheet
+                            ? HeroUiCloseButton(
+                                onPressed: () => Navigator.of(context).pop(),
+                              )
+                            : null,
+                        body: bodyContent,
+                        footerActions: [
+                          _demoButton(
+                            'Save',
+                            onTap: () => Navigator.of(context).pop(),
+                          ),
+                        ],
+                      );
+                    },
                   ),
               ],
             ),
@@ -576,6 +586,27 @@ class _DrawerDemoPage extends StatelessWidget {
               'Open minimal',
               onTap: () =>
                   HeroUiDrawer.show(context: context, body: bodyContent),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          const ComponentDemoTitle('Drawer — header slots'),
+          _demoCardSection(
+            child: _demoButton(
+              'Bottom + leading / trailing',
+              onTap: () => HeroUiDrawer.show(
+                context: context,
+                position: HeroUiDrawerPosition.bottom,
+                title: 'Filters',
+                headerLeading: IconButton(
+                  icon: const Icon(Icons.arrow_back_ios_new, size: 18),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                headerTrailing: HeroUiCloseButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                body: bodyContent,
+              ),
             ),
           ),
           const SizedBox(height: 20),
@@ -593,6 +624,9 @@ class _DrawerDemoPage extends StatelessWidget {
                     position: HeroUiDrawerPosition.bottom,
                     title: 'Contact',
                     subtitle: 'Keyboard lifts the panel on small screens',
+                    headerTrailing: HeroUiCloseButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
                     maxHeight: 0.65,
                     body: Padding(
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
@@ -699,6 +733,34 @@ class _DrawerDemoPage extends StatelessWidget {
                 maxHeight: 0.45,
                 body: longScrollBody,
               ),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          const ComponentDemoTitle('Drawer — wide screen max width'),
+          _demoCardSection(
+            child: _demoButton(
+              'Bottom (capped when width > 540)',
+              onTap: () {
+                final screenWidth = MediaQuery.sizeOf(context).width;
+                final useCap = screenWidth > 540;
+                HeroUiDrawer.show(
+                  context: context,
+                  position: HeroUiDrawerPosition.bottom,
+                  title: 'Wide viewport sheet',
+                  subtitle: useCap
+                      ? 'maxWidth: ${HeroUiDrawer.kBottomSheetMaxWidth.toInt()}'
+                      : 'Full width (viewport ≤ 540)',
+                  maxWidth: useCap ? HeroUiDrawer.kBottomSheetMaxWidth : null,
+                  body: bodyContent,
+                  footerActions: [
+                    _demoButton(
+                      'Done',
+                      onTap: () => Navigator.of(context).pop(),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
           const SizedBox(height: 24),

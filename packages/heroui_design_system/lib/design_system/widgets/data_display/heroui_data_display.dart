@@ -6,21 +6,34 @@ import '../../typography/heroui_typography.dart';
 
 enum HeroUiComponentType { defaultType, accent, success, warning, danger }
 
-Color _typeColor(HeroUiComponentType type) => switch (type) {
-  HeroUiComponentType.defaultType => const Color(0xFF18181B),
-  HeroUiComponentType.accent => const Color(0xFF0485F7),
-  HeroUiComponentType.success => const Color(0xFF17C964),
-  HeroUiComponentType.warning => const Color(0xFFF5A524),
-  HeroUiComponentType.danger => const Color(0xFFFF383C),
-};
+Color _typeColor(HeroUiComponentType type, {required bool isDark}) =>
+    switch (type) {
+      HeroUiComponentType.defaultType =>
+        isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B),
+      HeroUiComponentType.accent => const Color(0xFF0485F7),
+      HeroUiComponentType.success => const Color(0xFF17C964),
+      HeroUiComponentType.warning => const Color(0xFFF5A524),
+      HeroUiComponentType.danger => const Color(0xFFFF383C),
+    };
 
-Color _typeSoftBg(HeroUiComponentType type) => switch (type) {
-  HeroUiComponentType.defaultType => const Color(0x1E18181B),
-  HeroUiComponentType.accent => const Color(0x260485F7),
-  HeroUiComponentType.success => const Color(0x2617C964),
-  HeroUiComponentType.warning => const Color(0x26F5A524),
-  HeroUiComponentType.danger => const Color(0x26FF383C),
-};
+Color _typeSoftBg(HeroUiComponentType type, {required bool isDark}) =>
+    switch (type) {
+      HeroUiComponentType.defaultType =>
+        isDark ? const Color(0x33A1A1AA) : const Color(0x1E18181B),
+      HeroUiComponentType.accent => const Color(0x260485F7),
+      HeroUiComponentType.success => const Color(0x2617C964),
+      HeroUiComponentType.warning => const Color(0x26F5A524),
+      HeroUiComponentType.danger => const Color(0x26FF383C),
+    };
+
+Color _neutralSurfaceBg(bool isDark) =>
+    isDark ? const Color(0xFF3F3F46) : const Color(0xFFEBEBEC);
+
+Color _mutedForeground(bool isDark) =>
+    isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A);
+
+bool _isDefaultType(HeroUiComponentType type) =>
+    type == HeroUiComponentType.defaultType;
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // SEPARATOR
@@ -157,17 +170,19 @@ class HeroUiKbd extends StatelessWidget {
                     : const Color(0xFFD4D4D8),
               )
             : null,
-        boxShadow: [
-          BoxShadow(
-            color: const Color.fromRGBO(0, 0, 0, 0.06),
-            blurRadius: 1.3,
-          ),
-          BoxShadow(
-            color: const Color.fromRGBO(0, 0, 0, 0.04),
-            blurRadius: 5.2,
-            offset: const Offset(0, 2.6),
-          ),
-        ],
+        boxShadow: isDark
+            ? const []
+            : const [
+                BoxShadow(
+                  color: Color.fromRGBO(0, 0, 0, 0.06),
+                  blurRadius: 1.3,
+                ),
+                BoxShadow(
+                  color: Color.fromRGBO(0, 0, 0, 0.04),
+                  blurRadius: 5.2,
+                  offset: Offset(0, 2.6),
+                ),
+              ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -230,23 +245,20 @@ class HeroUiAvatar extends StatelessWidget {
   /// Diameter in logical pixels. Default: 46.8.
   final double size;
 
-  Color _bg() => switch (variant) {
+  Color _bg(bool isDark) => switch (variant) {
     HeroUiAvatarVariant.letterSoft ||
-    HeroUiAvatarVariant.iconSoft => _typeSoftBg(type),
+    HeroUiAvatarVariant.iconSoft => _typeSoftBg(type, isDark: isDark),
     HeroUiAvatarVariant.img => Colors.transparent,
-    _ =>
-      type == HeroUiComponentType.defaultType
-          ? const Color(0xFFEBEBEC)
-          : const Color(0xFFEBEBEC),
+    _ => _neutralSurfaceBg(isDark),
   };
 
-  Color _fg() => switch (type) {
-    HeroUiComponentType.defaultType => const Color(0xFF18181B),
-    _ => _typeColor(type),
-  };
+  Color _fg(bool isDark) => _typeColor(type, isDark: isDark);
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bg = _bg(isDark);
+    final fg = _fg(isDark);
     Widget content;
 
     switch (variant) {
@@ -261,9 +273,9 @@ class HeroUiAvatar extends StatelessWidget {
             ? CircleAvatar(
                 radius: size / 2,
                 backgroundImage: provider,
-                backgroundColor: const Color(0xFFEBEBEC),
+                backgroundColor: _neutralSurfaceBg(isDark),
               )
-            : _PlaceholderAvatar(size: size, bg: _bg(), fg: _fg());
+            : _PlaceholderAvatar(size: size, bg: bg, fg: fg);
         return content;
 
       case HeroUiAvatarVariant.icon:
@@ -271,7 +283,7 @@ class HeroUiAvatar extends StatelessWidget {
         final iconSize = size * 0.44;
         content =
             icon ??
-            Icon(Icons.person_outline_rounded, size: iconSize, color: _fg());
+            Icon(Icons.person_outline_rounded, size: iconSize, color: fg);
         break;
 
       case HeroUiAvatarVariant.letter:
@@ -281,14 +293,14 @@ class HeroUiAvatar extends StatelessWidget {
             0,
             (initials?.length ?? 2).clamp(1, 2),
           ),
-          style: _avatarLabelStyle(size).copyWith(color: _fg()),
+          style: _avatarLabelStyle(size).copyWith(color: fg),
         );
     }
 
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(color: _bg(), shape: BoxShape.circle),
+      decoration: BoxDecoration(color: bg, shape: BoxShape.circle),
       alignment: Alignment.center,
       child: content,
     );
@@ -351,28 +363,24 @@ class HeroUiBadge extends StatelessWidget {
   final Widget? endIcon;
 
   _BadgeTokens _tokens(bool isDark) {
-    final typeColor = _typeColor(type);
+    final typeColor = _typeColor(type, isDark: isDark);
 
     return switch (variant) {
       HeroUiBadgeVariant.primary => _BadgeTokens(
-        bg: typeColor,
-        text: type == HeroUiComponentType.defaultType
-            ? const Color(0xFFFFFFFF)
-            : const Color(0xFFFFFFFF),
+        bg: _isDefaultType(type)
+            ? (isDark ? const Color(0xFF3F3F46) : const Color(0xFF18181B))
+            : typeColor,
+        text: const Color(0xFFFFFFFF),
         border: null,
       ),
       HeroUiBadgeVariant.secondary => _BadgeTokens(
         bg: isDark ? const Color(0xFF27272A) : const Color(0xFFEBEBEC),
-        text: typeColor == const Color(0xFF18181B)
-            ? (isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A))
-            : typeColor,
+        text: _isDefaultType(type) ? _mutedForeground(isDark) : typeColor,
         border: isDark ? const Color(0xFF3F3F46) : const Color(0xFFD4D4D8),
       ),
       HeroUiBadgeVariant.soft => _BadgeTokens(
-        bg: _typeSoftBg(type),
-        text: typeColor == const Color(0xFF18181B)
-            ? (isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A))
-            : typeColor,
+        bg: _typeSoftBg(type, isDark: isDark),
+        text: _isDefaultType(type) ? _mutedForeground(isDark) : typeColor,
         border: null,
       ),
     };
@@ -490,7 +498,7 @@ class _HeroUiChipState extends State<HeroUiChip> {
   bool _pressed = false;
 
   _ChipTokens _tokens(bool isDark) {
-    final typeColor = _typeColor(widget.type);
+    final typeColor = _typeColor(widget.type, isDark: isDark);
     final isInteractive = widget.onTap != null && !widget.isDisabled;
     final highlight = isInteractive && (_hovered || _pressed);
 
@@ -505,29 +513,27 @@ class _HeroUiChipState extends State<HeroUiChip> {
                         : const Color(0xFFEBEBEC))),
         text: widget.isSelected
             ? const Color(0xFFFFFFFF)
-            : (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B)),
+            : _typeColor(HeroUiComponentType.defaultType, isDark: isDark),
         border: null,
       ),
       HeroUiChipVariant.secondary => _ChipTokens(
         bg: highlight
             ? (isDark ? const Color(0xFF27272A) : const Color(0xFFE4E4E7))
             : (isDark ? const Color(0xFF18181B) : const Color(0xFFFFFFFF)),
-        text: typeColor == const Color(0xFF18181B)
-            ? (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B))
+        text: _isDefaultType(widget.type)
+            ? _typeColor(HeroUiComponentType.defaultType, isDark: isDark)
             : typeColor,
         border: isDark ? const Color(0xFF3F3F46) : const Color(0xFFD4D4D8),
       ),
       HeroUiChipVariant.soft => _ChipTokens(
-        bg: _typeSoftBg(widget.type),
-        text: typeColor == const Color(0xFF18181B)
-            ? (isDark ? const Color(0xFFA1A1AA) : const Color(0xFF71717A))
-            : typeColor,
+        bg: _typeSoftBg(widget.type, isDark: isDark),
+        text: _isDefaultType(widget.type) ? _mutedForeground(isDark) : typeColor,
         border: null,
       ),
       HeroUiChipVariant.tertiary => _ChipTokens(
         bg: Colors.transparent,
-        text: typeColor == const Color(0xFF18181B)
-            ? (isDark ? const Color(0xFFFCFCFC) : const Color(0xFF18181B))
+        text: _isDefaultType(widget.type)
+            ? _typeColor(HeroUiComponentType.defaultType, isDark: isDark)
             : typeColor,
         border: null,
       ),
@@ -756,7 +762,7 @@ class HeroUiMeter extends StatelessWidget {
     final trackColor = isDark
         ? const Color(0xFF3F3F46)
         : const Color(0xFFE4E4E7);
-    final fillColor = _typeColor(type);
+    final fillColor = _typeColor(type, isDark: isDark);
     final labelColor = isDark
         ? const Color(0xFFFCFCFC)
         : const Color(0xFF18181B);

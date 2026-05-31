@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.10
+
+- `HeroUiFieldset`: uses [HeroUiSurfaceVariant.defaultVariant] in dark mode and [HeroUiSurfaceVariant.secondary] in light.
+- `HeroUiTagGroup`: dark-theme backgrounds and hover states for tag chips (aligned with data-display zinc tokens); selected accent tint adjusted for dark.
+- Data display (`HeroUiAvatar`, `HeroUiBadge`, `HeroUiChip`, `HeroUiMeter`, type tokens): added dark-theme colors for default/neutral types — foreground, soft backgrounds, and primary badge fills; `HeroUiAvatar` and `HeroUiKbd` no longer use light-only surfaces.
+- `HeroUiDrawer`: replaced the bottom/top drag pill with a sheet header bar — centered `title` (`bodySmMedium`), optional `headerLeading` / `headerTrailing`, swipe-to-dismiss on the bar. Subtitle/description stays in scrollable content below the bar.
+- `HeroUiDrawer`: added optional `maxWidth` for bottom/top panels (full width when null; clamped to logical viewport width). Added `kBottomSheetMaxWidth` (468) as a shared token for wide-viewport bottom sheets. Documented that `size` applies only to left/right placements.
+
 ## 0.1.9
 – Fixed `HeroUiTab` swipe pointer.
 

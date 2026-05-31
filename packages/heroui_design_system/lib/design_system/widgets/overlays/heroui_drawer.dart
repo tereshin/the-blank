@@ -6,11 +6,16 @@ enum HeroUiDrawerScrollShadowVariant { off, visible, blur }
 
 /// Shows a drawer styled as a bottom-sheet modal by default.
 ///
-/// Left/right layouts are applied only on large screens, otherwise the drawer
-/// gracefully falls back to a bottom-sheet.
+/// Bottom/top sheets use a fixed header bar with optional [headerLeading],
+/// centered [title], and [headerTrailing]. Left/right layouts are applied only
+/// on large screens; otherwise the drawer falls back to a bottom sheet.
 class HeroUiDrawer {
+  /// Suggested max width for bottom/top sheets on wide viewports (matches toast/time picker scale).
+  static const double kBottomSheetMaxWidth = 468;
+
   static const double _kSideLayoutBreakpoint = 1024;
-  static const double _kHandleHeight = 57;
+  static const double _kSheetHeaderHeight = 57;
+  static const double _kSheetHeaderHorizontalInset = 16;
   static const double _kScrollShadowSize = 56;
   static const Duration _kScrollShadowFadeDuration = Duration(
     milliseconds: 140,
@@ -41,7 +46,15 @@ class HeroUiDrawer {
     String? description,
     List<Widget>? footerActions,
     bool barrierDismissible = true,
+
+    /// Panel width for [HeroUiDrawerPosition.left] and [HeroUiDrawerPosition.right]
+    /// (defaults to 511). Ignored for bottom/top.
     double? size,
+
+    /// Caps panel width for [HeroUiDrawerPosition.bottom] and [HeroUiDrawerPosition.top].
+    /// When null, the panel spans the full viewport width. Clamped to the logical width.
+    /// See [kBottomSheetMaxWidth] for a common token value.
+    double? maxWidth,
 
     /// Max height of the panel as a fraction of the logical window height (0–1).
     /// When null, height follows content (subject to screen bounds).
@@ -53,6 +66,12 @@ class HeroUiDrawer {
     /// - [blur]: backdrop blur + gradient
     HeroUiDrawerScrollShadowVariant scrollShadow =
         HeroUiDrawerScrollShadowVariant.visible,
+
+    /// Leading slot in the top bar for bottom/top sheets (left).
+    Widget? headerLeading,
+
+    /// Trailing slot in the top bar for bottom/top sheets (right).
+    Widget? headerTrailing,
   }) {
     final maxHeightFraction = maxHeight?.clamp(0.0, 1.0);
     final scrollController = ScrollController();
@@ -62,7 +81,7 @@ class HeroUiDrawer {
       barrierDismissible: barrierDismissible,
       barrierLabel: 'Dismiss',
       barrierColor: Colors.black.withValues(alpha: 0.5),
-      transitionDuration: const Duration(milliseconds: 160),
+      transitionDuration: const Duration(milliseconds: 200),
       transitionBuilder: (_, _, _, child) => child,
       pageBuilder: (ctx, anim, _) {
         final media = MediaQuery.of(ctx);
@@ -76,8 +95,10 @@ class HeroUiDrawer {
         final isVertical =
             resolvedPosition == HeroUiDrawerPosition.left ||
             resolvedPosition == HeroUiDrawerPosition.right;
-        final defaultSize = isVertical ? 511.0 : 468.0;
-        final resolvedSize = size ?? defaultSize;
+        final resolvedSize = size ?? 511.0;
+        final resolvedMaxWidth = !isVertical && maxWidth != null
+            ? math.min(maxWidth, media.size.width)
+            : null;
         final resolvedDescription = description ?? subtitle;
 
         final isDark = Theme.of(ctx).brightness == Brightness.dark;
@@ -104,16 +125,16 @@ class HeroUiDrawer {
 
         final borderRadius = switch (resolvedPosition) {
           HeroUiDrawerPosition.right => const BorderRadius.horizontal(
-            left: Radius.circular(36),
+            left: Radius.circular(30),
           ),
           HeroUiDrawerPosition.left => const BorderRadius.horizontal(
-            right: Radius.circular(36),
+            right: Radius.circular(30),
           ),
           HeroUiDrawerPosition.bottom => const BorderRadius.vertical(
-            top: Radius.circular(36),
+            top: Radius.circular(30),
           ),
           HeroUiDrawerPosition.top => const BorderRadius.vertical(
-            bottom: Radius.circular(36),
+            bottom: Radius.circular(30),
           ),
         };
 
@@ -367,6 +388,7 @@ class HeroUiDrawer {
                 ),
               );
             }
+
             final viewPadding = MediaQuery.viewPaddingOf(context);
             final footerBottomInset =
                 _kFooterBottomInset +
@@ -385,10 +407,15 @@ class HeroUiDrawer {
                 ? const NeverScrollableScrollPhysics()
                 : const AlwaysScrollableScrollPhysics();
 
-            Widget buildHandle({required EdgeInsets margin}) {
+            Widget buildSheetHeader({required EdgeInsets margin}) {
+              final titleStyle = HeroUiTypography.bodySmMedium.copyWith(
+                color: titleColor,
+                decoration: TextDecoration.none,
+                decorationColor: Colors.transparent,
+              );
+
               return GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: () => Navigator.of(ctx).pop(),
                 onVerticalDragStart: (_) {
                   startPanelDrag(setPanelState);
                 },
@@ -406,69 +433,93 @@ class HeroUiDrawer {
                 },
                 child: Container(
                   width: double.infinity,
-                  height: _kHandleHeight,
+                  height: _kSheetHeaderHeight,
                   margin: margin,
-                  alignment: Alignment.center,
-                  child: Container(
-                    width: 52,
-                    height: 5,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFDEDEE0),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: _kSheetHeaderHorizontalInset,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: headerLeading ?? const SizedBox.shrink(),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: title != null
+                            ? Text(
+                                title,
+                                style: titleStyle,
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              )
+                            : const SizedBox.shrink(),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: headerTrailing ?? const SizedBox.shrink(),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               );
             }
 
-            final hasHeading = title != null || resolvedDescription != null;
-            final headerSection = hasHeading || !showHandle
+            final hasSideHeading =
+                !showHandle && (title != null || resolvedDescription != null);
+            final scrollHeaderSection = showHandle
+                ? (resolvedDescription != null
+                      ? Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                          child: Text(
+                            resolvedDescription,
+                            style: HeroUiTypography.bodySm.copyWith(
+                              color: bodyMutedColor,
+                              decoration: TextDecoration.none,
+                              decorationColor: Colors.transparent,
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink())
+                : hasSideHeading
                 ? Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      16,
-                      showHandle ? 8 : 16,
-                      16,
-                      16,
-                    ),
+                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: hasHeading
-                              ? Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    if (title != null)
-                                      Text(
-                                        title,
-                                        style: HeroUiTypography.heading4
-                                            .copyWith(
-                                              color: titleColor,
-                                              decoration: TextDecoration.none,
-                                              decorationColor:
-                                                  Colors.transparent,
-                                            ),
-                                      ),
-                                    if (resolvedDescription != null) ...[
-                                      if (title != null)
-                                        const SizedBox(height: 5),
-                                      Text(
-                                        resolvedDescription,
-                                        style: HeroUiTypography.bodySm.copyWith(
-                                          color: bodyMutedColor,
-                                          decoration: TextDecoration.none,
-                                          decorationColor: Colors.transparent,
-                                        ),
-                                      ),
-                                    ],
-                                  ],
-                                )
-                              : const SizedBox.shrink(),
-                        ),
-                        if (!showHandle)
-                          _CloseIconButton(
-                            onTap: () => Navigator.of(ctx).pop(),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (title != null)
+                                Text(
+                                  title,
+                                  style: HeroUiTypography.heading4.copyWith(
+                                    color: titleColor,
+                                    decoration: TextDecoration.none,
+                                    decorationColor: Colors.transparent,
+                                  ),
+                                ),
+                              if (resolvedDescription != null) ...[
+                                if (title != null) const SizedBox(height: 5),
+                                Text(
+                                  resolvedDescription,
+                                  style: HeroUiTypography.bodySm.copyWith(
+                                    color: bodyMutedColor,
+                                    decoration: TextDecoration.none,
+                                    decorationColor: Colors.transparent,
+                                  ),
+                                ),
+                              ],
+                            ],
                           ),
+                        ),
+                        _CloseIconButton(onTap: () => Navigator.of(ctx).pop()),
                       ],
                     ),
                   )
@@ -570,7 +621,7 @@ class HeroUiDrawer {
                         padding: EdgeInsets.only(bottom: scrollBottomPadding),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [headerSection, body],
+                          children: [scrollHeaderSection, body],
                         ),
                       ),
                     ),
@@ -649,11 +700,13 @@ class HeroUiDrawer {
                       children: [
                         if (showHandle &&
                             resolvedPosition == HeroUiDrawerPosition.bottom)
-                          buildHandle(margin: const EdgeInsets.only(top: 1)),
+                          buildSheetHeader(
+                            margin: const EdgeInsets.only(top: 1),
+                          ),
                         Flexible(fit: FlexFit.loose, child: scrollViewport),
                         if (showHandle &&
                             resolvedPosition == HeroUiDrawerPosition.top)
-                          buildHandle(
+                          buildSheetHeader(
                             margin: const EdgeInsets.only(bottom: 10),
                           ),
                       ],
@@ -705,6 +758,8 @@ class HeroUiDrawer {
                     bottom: resolvedPosition != HeroUiDrawerPosition.bottom,
                     child: isVertical
                         ? SizedBox(width: resolvedSize, child: panel)
+                        : resolvedMaxWidth != null
+                        ? SizedBox(width: resolvedMaxWidth, child: panel)
                         : SizedBox(width: double.infinity, child: panel),
                   ),
                 ),

@@ -34,8 +34,11 @@ class HeroUiFieldset extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return HeroUiSurface(
-      variant: HeroUiSurfaceVariant.secondary,
+      variant: isDark
+          ? HeroUiSurfaceVariant.defaultVariant
+          : HeroUiSurfaceVariant.secondary,
       borderRadius: 21,
       padding: padding,
       child: Column(
